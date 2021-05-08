@@ -8,6 +8,8 @@ tags: [youtube, music]
 
 Add music to a youtube playlist :
 
+[Alex Laverty - Music](https://www.youtube.com/playlist?list=PLH8Xx-s33Emo7637FEP4bFnLK3S51vYew)
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLH8Xx-s33Emo7637FEP4bFnLK3S51vYew" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 
 
