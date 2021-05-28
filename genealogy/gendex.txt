@@ -15,7 +15,7 @@ ppl/e/2/e8c134528fe13f77943965ba22e.html|Trainer|Lawrence /Trainer/|19 JUN 1926|
 ppl/e/5/e8c1354e4987371e2f2c7818c5e.html|Laverty|Harry /Laverty/|10 NOV 2016||||
 ppl/6/8/e8c135602137674ad458f12ad86.html|Laverty|Jackson /Laverty/|22 MAY 2019||||
 ppl/a/d/e8c136f3a2877dbabad4334a8da.html|Laverty|Denis /Laverty/|15 MAR 1905||1920||
-ppl/a/6/e8c137ab5627dfb457bffedd76a.html|Goldspring|Nora /Goldspring/|||1944||
+ppl/a/6/e8c137ab5627dfb457bffedd76a.html|Goldspring|Nora /Goldspring/|||23 OCT 1944||
 ppl/5/9/e8c13862b676072c05dd3cbac95.html|McCormick|Sarah /McCormick/|||||
 ppl/2/5/e8c13923220736a00bca3b2a452.html|Easton|Nick /Easton/|||||
 ppl/e/b/e8c1394c6b3633dc32143cf56be.html|Easton|Gabriel /Easton/|||||
@@ -46,7 +46,7 @@ ppl/a/1/e8c94ba9a816c9e073479f121a.html|Laverty|Gerard Michael /Laverty/|17 AUG 
 ppl/7/1/e8c94ba9a9a1b2752f83d246217.html|Laverty|Tom /Laverty/|||||
 ppl/1/7/e8c94ba9ac4c6aae9c554c2471.html|Laverty|Peter /Laverty/|||||
 ppl/9/a/e8c94ba9caa652a6d29e773fca9.html|Laverty|Len /Laverty/|||||
-ppl/6/7/e8c94ba9cb46436bbe50a385176.html|Laverty|John Gregory (Greg) /Laverty/|||||
+ppl/6/7/e8c94ba9cb46436bbe50a385176.html|Laverty|John Gregory /Laverty/|||||
 ppl/3/a/e8c94ba9cbe1c426fd9b0c018a3.html|Laverty|Daniel /Laverty/|||||
 ppl/a/8/e8c94ba9e70638a3a92cbac178a.html|Laverty|Denise /Laverty/|||||
 ppl/d/e/e8c94ba9e8b33ead7d16323f7ed.html|Maxwell|Edith Elaine /Maxwell/|24 JUL 1932|Workington, Cumberland, England|||
