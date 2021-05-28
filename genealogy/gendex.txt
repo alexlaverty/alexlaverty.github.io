@@ -14,7 +14,7 @@ ppl/2/e/e8c12d968e04f24162e2827e3e2.html|McGree|Elsie /McGree/|||||
 ppl/e/2/e8c134528fe13f77943965ba22e.html|Trainer|Lawrence /Trainer/|19 JUN 1926||8 DEC 2010||
 ppl/e/5/e8c1354e4987371e2f2c7818c5e.html|Laverty|Harry /Laverty/|10 NOV 2016||||
 ppl/6/8/e8c135602137674ad458f12ad86.html|Laverty|Jackson /Laverty/|22 MAY 2019||||
-ppl/a/d/e8c136f3a2877dbabad4334a8da.html|Laverty|Denis /Laverty/|15 MAR 1905||1859||
+ppl/a/d/e8c136f3a2877dbabad4334a8da.html|Laverty|Denis /Laverty/|15 MAR 1905||1920||
 ppl/a/6/e8c137ab5627dfb457bffedd76a.html|Goldspring|Nora /Goldspring/|||1944||
 ppl/5/9/e8c13862b676072c05dd3cbac95.html|McCormick|Sarah /McCormick/|||||
 ppl/2/5/e8c13923220736a00bca3b2a452.html|Easton|Nick /Easton/|||||
