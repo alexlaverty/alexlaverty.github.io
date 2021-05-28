@@ -45,7 +45,12 @@
       </a>
     </li> <!-- .nav-item -->
     {% endfor %}
-
+    <li class="nav-item{% if tab.url == page.url %}{{ " active" }}{% endif %}">
+      <a href="/genealogy/" class="nav-link">
+        <i class="fa-fw {{ tab.icon }} ml-xl-3 mr-xl-3 unloaded"></i>
+        <span>GENEALOGY</span>
+      </a>
+    </li> <!-- .nav-item -->
   </ul> <!-- ul.nav.flex-column -->
 
   <div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center">

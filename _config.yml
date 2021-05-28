@@ -17,7 +17,7 @@ timezone: Australia/Sydney
 # --------------------------
 title: Alex Laverty                          # the main title
 
-tagline: Opinions expressed are solely my own   # it will display as the sub-title
+tagline: # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
   A minimal, portfolio, sidebar,
