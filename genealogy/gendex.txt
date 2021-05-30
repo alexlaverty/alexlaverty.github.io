@@ -9,8 +9,8 @@ ppl/7/d/e8c12bec34974df1d6728207cd7.html|Laverty|Peter /Laverty/|||||
 ppl/1/4/e8c12bf9204637c72402cc42941.html|Laverty|Pam /Laverty/|||||
 ppl/9/8/e8c12c07fa02b0470bf97085589.html|Laverty|Melissa /Laverty/|||||
 ppl/8/2/e8c12c1cf0bbb21e4abced8f28.html|Laverty|Andrew /Laverty/|||||
-ppl/d/a/e8c12d075ff645dbf33bfa9f4ad.html|Laverty|Leonard /Laverty/|||||
-ppl/2/e/e8c12d968e04f24162e2827e3e2.html|McGree|Elsie Pearl /McGree/|||||
+ppl/d/a/e8c12d075ff645dbf33bfa9f4ad.html|Laverty|Leonard James /Laverty/|10 OCT 1911||24 JUL 1997||
+ppl/2/e/e8c12d968e04f24162e2827e3e2.html|McGree|Elsie Pearl /McGree/|6 JUL 1924||10 APR 2002||
 ppl/e/2/e8c134528fe13f77943965ba22e.html|Trainer|Lawrence /Trainer/|19 JUN 1926||8 DEC 2010||
 ppl/e/5/e8c1354e4987371e2f2c7818c5e.html|Laverty|Harry /Laverty/|10 NOV 2016|Manly Hospital|||
 ppl/6/8/e8c135602137674ad458f12ad86.html|Laverty|Jackson /Laverty/|22 MAY 2019|Northern Beaches Hospital|||
@@ -117,3 +117,11 @@ ppl/5/4/ec0fd22a6fd6cb056636cb32b45.html|Schroeder|Anna Catherine /Schroeder/|10
 ppl/e/0/ec0fd3c8b787caf8b3fc3499f0e.html|KOCH|Johann Peter /KOCH/|1825|Mannheimer Stadtkreis, Baden-Württemberg, Germany|17 NOV 1909|Austral Eden, Kempsey, New South Wales, Australia|
 ppl/0/d/ec0fd6f88bd4ad93b243eb95ed0.html|McGree|James /McGree/|1846||1928||
 ppl/4/e/ec0fd7707c824f4551e87400be4.html|Sullivan|Bridget /Sullivan/|1853||1940||
+ppl/2/a/ec129ae463b9bee0a3a2396da2.html|McGree|Denis /McGree/|1817|Ireland|23 NOV 1873||
+ppl/9/5/ec129ce08ff4bb3052fbc987259.html|Bany|Catherine /Bany/|1820||17 NOV 1887||
+ppl/5/a/ec12afa365042b05e2627959a5.html|Peile|Edward Harrison /Peile/|||||
+ppl/9/5/ec12b00c22a284d97271851ea59.html|Hurst|Mary Sarah /Hurst/|||||
+ppl/7/e/ec12b50ed856c71bb81df3b02e7.html|Stubbs|David /Stubbs/|||||
+ppl/d/a/ec12b52283c3870af6033d814ad.html|Maxwell|Sarah /Maxwell/|1843||24 OCT 1920||
+ppl/3/6/ec12b6b1a211dc9b15921f00863.html|Storey|William /Storey/|||||
+ppl/c/d/ec12b6c2b3671f26ba23f9f0edc.html|Temple|Isabella /Temple/|10 FEB 1840|Whitehaven, Cumberland, England|JUL 1874|Whitehaven, Cumberland, England|
