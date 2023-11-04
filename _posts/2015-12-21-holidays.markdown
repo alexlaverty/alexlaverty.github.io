@@ -1,0 +1,35 @@
+---
+layout: post
+title:  "Holidays"
+date:   2015-12-21 10:00
+categories: manly-beach
+thumbnail: /images/2015-12-21/1.jpg
+---
+
+Today is officially the first day of the Christmas holidays for me. I set my alarm last night for 5:30am and I managed to get up this morning, so I grabbed my camera and headed down for the sunrise. It's nice and warm this morning at 24 degrees  apparently going to rain later this afternoon.
+And for all the nerds out there that might be interested, as of last night I have converted this site over to a [Jekyll blog](https://jekyllrb.com/) hosted on [Github pages](https://pages.github.com/), which means fast free hosting with version control.
+Feel free to check out my [git repo](https://github.com/livemanlybeach) for this site and raise a pull request ; )
+
+Fire and Flames
+![](/images/2015-12-21/1.jpg)
+
+<!--more-->
+
+Purple Nurple
+![](/images/2015-12-21/2.jpg)
+
+You probably can't tell from this photo but I have mongy pinky toes...
+![](/images/2015-12-21/3.jpg)
+
+Plenty of surfers out already
+![](/images/2015-12-21/4.jpg)
+
+Kayak Sunrise 
+![](/images/2015-12-21/5.jpg)
+
+![](/images/2015-12-21/6.jpg)
+
+![](/images/2015-12-21/7.jpg)
+
+![](/images/2015-12-21/8.jpg)
+
