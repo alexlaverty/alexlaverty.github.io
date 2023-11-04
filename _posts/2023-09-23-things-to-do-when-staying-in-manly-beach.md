@@ -1,7 +1,7 @@
 ---
 title:  "Things to do when staying in Manly"
-date:   2020-02-15 1:00:00
-categories: ["queenscliff"]
+date:   2023-09-23 1:00:00
+categories: ["manly-beach"]
 layout: post
 author: alexlaverty
 navigation: True

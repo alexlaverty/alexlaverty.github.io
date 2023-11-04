@@ -15,10 +15,10 @@ lightavatar: /assets/images/light_bauhaus_logo.png
 darkavatar: /assets/images/dark_bauhaus_logo.png
 
 # A short description (e.g., A blog dedicated to reviewing cat gifs), used as part of the title tag like Ben's Awesome Site | A blog dedicated to reviewing cat gifs instead of Ben's Awesome Site | Long description about a blog dedicated to reviewing cat gifs that would be used when page.title is not defined.
-tagline:
+# tagline:
 
 # A longer description used for the description meta tag. Also used as fallback for pages that don't provide their own description, and also as part of the page's title tag if neither page.title nor site.tagline has been defined.
-description: Alex Laverty Personal Blog
+# description: Alex Laverty Personal Blog
 
 # The full URL to your site. Note: site.github.url will be used by default.
 url:
@@ -38,7 +38,7 @@ logo: /assets/images/light_bauhaus_logo.png
 # Enter your Google Analytics web tracking code (e.g. UA-2110908-2) to activate tracking
 google_analytics: "G-4P23WF01YZ"
 
-permalink: /:year-:month-:day/:title/
+permalink: /:categories/:title/
 
 # Includes an icon in the footer for each username you enter
 footer-links:

@@ -1,0 +1,30 @@
+---
+layout: default
+---
+
+<div class="archive">
+  {% assign manly_years = "" %}
+  {% for post in site.posts %}
+    {% if post.categories contains "manly-beach" %}
+      {% assign post_year = post.date | date: "%Y" %}
+      {% unless manly_years contains post_year %}
+        {% assign manly_years = manly_years | append: post_year | append: "|" %}
+      {% endunless %}
+    {% endif %}
+  {% endfor %}
+
+  {% assign manly_years_split = manly_years | split: "|" %}
+
+  {% for post_year in manly_years_split %}
+    <h1 class="archive-year">{{ post_year }}</h1>
+    {% for post in site.posts %}
+      {% assign post_year_check = post.date | date: "%Y" %}
+      {% if post.categories contains "manly-beach" and post_year_check == post_year %}
+        <div class="archive-item">
+          <span class="post-date archive-date fs-4">{{ post.date | date: "%B %d, %Y" }}</span>
+          <a href="{{ post.url | relative_url }}" class="archive-title fs-4">{{ post.title }}</a>
+        </div>
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+</div>

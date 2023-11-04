@@ -1,5 +1,7 @@
 - name: Home
   link: /
+- name: Manly Beach
+  link: /manly-beach/
 - name: Food
   link: /food-diary/
 
