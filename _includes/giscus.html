@@ -33,9 +33,9 @@
       'data-strict' : '{{ site.comments.giscus.strict | default: '0' }}',
       'data-reactions-enabled': '{{ site.comments.giscus.reactions_enabled | default: '1' }}',
       'data-emit-metadata': '0',
-      'data-theme': 'preferred_color_scheme',
+      'data-theme': '{{ site.comments.giscus.theme}}',
       'data-input-position': '{{ site.comments.giscus.input_position | default: 'bottom' }}',
-      'data-lang': 'en',
+      'data-lang': '{{ site.comments.giscus.lang}}',
       'data-loading': 'lazy',
       crossorigin: 'anonymous',
       async: ''

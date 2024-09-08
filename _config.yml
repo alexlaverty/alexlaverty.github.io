@@ -84,3 +84,4 @@ comments:
     input_position: bottom # optional, default to 'bottom'
     lang: en # optional, default to the value of `site.lang`
     reactions_enabled: 1 # optional, default to the value of `1`
+    theme: light
