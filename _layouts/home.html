@@ -21,15 +21,19 @@ layout: base
     {%- if page.list_title -%}
       <h2 class="post-list-heading">{{ page.list_title }}</h2>
     {%- endif -%}
+
     <ul class="post-list">
       {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
       {%- for post in posts -%}
       <li class="post-item">
+
         <div class="post-content-list">
           {%- if post.image -%}
+          <div class="post-image">
           <a class="post-link" href="{{ post.url | relative_url }}">
             <img class="post-image" src="{{ post.image }}" alt="{{ post.title }}">
           </a>
+          </div>
           {%- endif -%}
           <div class="post-text">
             <h2>
@@ -43,7 +47,6 @@ layout: base
             {%- endif -%}
             <a href="{{ post.url | relative_url }}" style="color: blue;">read more...</a>
           </div>
-
         </div>
         <hr>
       </li>

@@ -90,4 +90,36 @@ hr {
 
 
 
+/* Increase font size for screens smaller than 768px (typically mobile devices) */
+@media screen and (max-width: 768px) {
+  .post-content-list {
+    display: block;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  .post-list {
+    padding: 5px;
+  }
+  .post-image {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100px;
+  }
+}
 
+/* Further increase font size for very small screens (like small smartphones) */
+@media screen and (max-width: 480px) {
+  .post-content-list {
+    display: block;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  .post-list {
+    padding: 5px;
+  }
+  .post-image {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100px;
+  }
+}
