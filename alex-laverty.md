@@ -4,8 +4,6 @@ layout: page
 permalink: /alex-laverty/
 ---
 
-# Alex Laverty
-
 I'm a big data platform cloud engineer living in Sydney Australia.
 
 I enjoy spending time at the beach, surfing, surfing photography and video.

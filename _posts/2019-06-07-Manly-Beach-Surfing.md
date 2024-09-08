@@ -15,5 +15,4 @@ youtubeId: gHhzC9sshiA
 ---
 
 Was up early this morning so decided to go down to the beach to see the sunrise, no sunrise this morning as it was overcast but still managed to  film some great surfing this morning.
-
 {% include youtube.html id=page.youtubeId %}
