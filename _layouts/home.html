@@ -45,7 +45,9 @@ layout: base
             {%- if site.show_excerpts -%}
               <div class="post-excerpt">{{ post.excerpt | markdownify }}</div>
             {%- endif -%}
+            <div style="float: right">
             <a href="{{ post.url | relative_url }}" style="color: blue;">read more...</a>
+            </div>
           </div>
         </div>
         <hr>
