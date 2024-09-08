@@ -34,14 +34,14 @@ layout: base
       {%- if page.categories -%}
       &nbsp;<i class="fas fa-folder-open"></i>
         {% for category in page.categories %}
-          <a href="/category/{{ category }}/">{{ category }}</a>
+          <a href="/category/{{ category }}">{{ category }}</a>
           {%- if forloop.last == false %}, {% endif -%}
         {% endfor %}
       {%- endif -%}
       {%- if page.tags -%}
       &nbsp;<i class="fas fa-tag"></i>
         {% for tag in page.tags %}
-        <a href="/tag/{{ tag }}/">{{ tag }}</a>
+        <a href="/tag/{{ tag }}">{{ tag }}</a>
         {%- if forloop.last == false %}, {% endif -%}
         {% endfor %}
       {%- endif -%}
