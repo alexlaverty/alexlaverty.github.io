@@ -1,31 +1,33 @@
 <aside class="sidebar sidebar-right">
+  <h3>Socials</h3>
+  <ul>
+      <li><a href="https://github.com/alexlaverty" target="_blank">Github</a></li>
+      <li><a href="https://www.youtube.com/@alexlavertyau" target="_blank">Youtube</a></li>
+  </ul>
+  <br>
   <h3>Categories</h3>
   <ul>
-    {% assign categories_list = site.categories %}
-    {% if categories_list.first[0] == null %}
-      {% for category in categories_list %}
-        <li><a href="{{ site.baseurl }}/category/{{ category | slugify }}">{{ category }}</a></li>
-      {% endfor %}
-    {% else %}
-      {% for category in categories_list %}
-        <li><a href="{{ site.baseurl }}/category/{{ category[0] | slugify }}">{{ category[0] }}</a> <span>({{ category[1].size }})</span></li>
-      {% endfor %}
-    {% endif %}
-    {% assign categories_list = nil %}
+    {% assign categories = site.categories | sort %}
+    {% for category in categories %}
+      {% assign category_name = category | first %}
+      {% assign posts = category | last %}
+      <li>
+        <a href="{{ site.baseurl }}/category/{{ category_name | slugify }}">{{ category_name }}</a>
+        <span>({{ posts.size }})</span>
+      </li>
+    {% endfor %}
   </ul>
   <br>
   <h3>Tags</h3>
   <ul>
-    {% assign tags_list = site.tags %}
-    {% if tags_list.first[0] == null %}
-      {% for tag in tags_list %}
-        <li><a href="{{ site.baseurl }}/tag/{{ tag | slugify }}">{{ tag }}</a></li>
-      {% endfor %}
-    {% else %}
-      {% for tag in tags_list %}
-        <li><a href="{{ site.baseurl }}/tag/{{ tag[0] | slugify }}">{{ tag[0] }}</a> <span>({{ tag[1].size }})</span></li>
-      {% endfor %}
-    {% endif %}
-    {% assign tags_list = nil %}
+    {% assign tags = site.tags | sort %}
+    {% for tag in tags %}
+      {% assign tag_name = tag | first %}
+      {% assign posts = tag | last %}
+      <li>
+        <a href="{{ site.baseurl }}/tag/{{ tag_name | slugify }}">{{ tag_name }}</a>
+        <span>({{ posts.size }})</span>
+      </li>
+    {% endfor %}
   </ul>
 </aside>

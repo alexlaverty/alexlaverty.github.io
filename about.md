@@ -16,6 +16,6 @@ My dream would be to buy a block of land and create a permaculture food forest.
 
 If you want to support me or any of the projects I'm working on you can donate via :
 
-<https://www.buymeacoffee.com/alexlaverty>
+<a href="https://www.buymeacoffee.com/alexlaverty" target="_blank">https://www.buymeacoffee.com/alexlaverty</a>
 
 
