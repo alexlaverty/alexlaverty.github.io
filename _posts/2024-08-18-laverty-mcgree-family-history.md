@@ -7,6 +7,7 @@ comments: true
 categories: [genealogy]
 tags: [laverty-family-history]
 image: /images/laverty-family-history/leonard-elsie-black-white.jpg
+description: Laverty and McGree Family History about my paternal grand parents, Leonard James Laverty and Elsie Pearl McGree.
 ---
 
 The information listed here will mainly focus around the descendants and ancestors of my paternal grand parents, Leonard James Laverty and Elsie Pearl McGree.

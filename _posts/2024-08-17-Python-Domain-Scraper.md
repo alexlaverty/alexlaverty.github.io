@@ -7,6 +7,7 @@ toc: true
 comments: true
 categories: [coding]
 tags: [python]
+description: Scraping Domain.com.au Property Listings using Python and BeautifulSoup
 ---
 
 I'm been looking for a block of land on domain.com.au lately, instead of clicking through listings I'd rather dump them out into a CSV file, I'd also like to add and calculate some additional fields in the csv file. The fields I've added are calculating the price per square metre for the property and also the distance from my home. I've also added a suburb review URL for the suburb to learn more about what people have to say about living at that location. I also find the altitude is important to know, the higher up you are the colder it gets.
