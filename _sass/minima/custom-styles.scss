@@ -105,6 +105,9 @@ hr {
     max-width: 100%;
     min-width: 100px;
   }
+  .page-content {
+    width: 100%
+  }
 }
 
 /* Further increase font size for very small screens (like small smartphones) */
@@ -122,4 +125,24 @@ hr {
     max-width: 100%;
     min-width: 100px;
   }
+  .sidebar {
+    display: none;
+  }
+  .page-content {
+    width: 100%
+  }
 }
+
+.page-container {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.sidebar {
+  width: 20%;
+  margin: 20px;
+}
+
+
