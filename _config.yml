@@ -10,7 +10,6 @@ description: >
 
 permalink: /:categories/:title
 
-
 # Build settings
 
 # If you clone the Minima repo and build locally, use this setting.
@@ -26,10 +25,14 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
 
+timezone: Australia/Sydney
 
 # jekyll-seo-tag
 # https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 
+twitter:
+  username: alaverty
+  card: summary
 
 # Theme-specific settings
 
