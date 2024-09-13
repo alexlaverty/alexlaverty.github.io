@@ -8,7 +8,7 @@ author:
 description: >
   Personal website of Alex Laverty
 
-permalink: /:categories/:title
+permalink: /:categories/:slug
 
 # Build settings
 
