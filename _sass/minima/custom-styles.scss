@@ -108,6 +108,12 @@ hr {
   .page-content {
     width: 100%
   }
+  body {
+    font-size: 18px;
+  }
+  a, button {
+    padding: 15px;
+  }
 }
 
 /* Further increase font size for very small screens (like small smartphones) */
@@ -130,6 +136,9 @@ hr {
   }
   .page-content {
     width: 100%
+  }
+  body {
+    font-size: 18px;
   }
 }
 
