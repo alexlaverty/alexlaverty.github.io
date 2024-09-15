@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "AI Song Genration with Suno.com"
+title:  "AI Song Generation with Suno.com"
 date:   2024-09-15 09:00:00
 categories: [blog]
 tags: [suno]
