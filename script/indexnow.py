@@ -1,5 +1,6 @@
 import requests
 import xml.etree.ElementTree as ET
+import json
 
 # Replace with your IndexNow API key and host URL
 INDEXNOW_API_KEY = 'b219f4fe97ce479f8e57e36600538ef4'
@@ -36,6 +37,7 @@ def submit_urls_to_indexnow(urls, api_key):
         "keyLocation": "https://alexlaverty.github.io/b219f4fe97ce479f8e57e36600538ef4.txt",
         "urlList": urls
     }
+    print(json.dumps(payload, indent=4))
     try:
         response = requests.post(INDEXNOW_ENDPOINT, json=payload, headers=headers)
         if response.status_code == 200:
