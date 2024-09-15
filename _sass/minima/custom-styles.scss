@@ -8,8 +8,17 @@
 
 img {
   border-radius: 10px;
-  margin-bottom: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
+
+.highlight {
+  background: #d1ecf0;
+  border-radius: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 .post-content-list {
   display: flex;
   align-items: flex-start;
