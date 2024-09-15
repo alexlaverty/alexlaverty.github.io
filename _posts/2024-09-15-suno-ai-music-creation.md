@@ -5,9 +5,10 @@ date:   2024-09-15 09:00:00
 categories: [blog]
 tags: [suno]
 description: Experimenting with Suno AI-generated songs.
+image: /images/2024-09-15/suno.jpg
 ---
 
-I recently came across [Suno.com](https://suno.com/), a platform that allows you to create AI-generated music.
+I recently came across [Suno.com](https://suno.com/), a platform that allows you to create AI-generated music so I decided to create a song for my boys.
 
 It’s a pretty straightforward tool where you can input lyrics, choose a genre, and let the AI do the rest to produce a song.
 

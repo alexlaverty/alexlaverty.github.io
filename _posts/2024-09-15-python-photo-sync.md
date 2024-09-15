@@ -1,10 +1,11 @@
 ---
 layout: post
-title:  "Syncing Photos with Python"
+title:  "Syncing Photos with Python and browsing them with Immich"
 date:   2024-09-15 09:00:00
 categories: [coding]
 tags: [photo-sync, python]
-description: Python script to sync and organise photos into a date based folder structure.
+description: Python script to sync and organise photos into a date based folder structure and browsing them with Immich.
+image : /images/2024-09-15/2024-09-15_04.png
 ---
 
 Goals for today :
@@ -51,7 +52,7 @@ Also I added a feature where if the destination photo exists it will check if th
 
 I left the script to run overnight and woke up to all my photos copied across to the Z drive all nicely organised.
 
-To view the images I decided to use <https://immich.app/>
+To view the images I decided to use <https://immich.app/> an open source photo organising project, seems to be very popular at the moment, especially in the self-hosted community.
 
 I ran up Immich in a docker container on my computer launching it with a docker-compose.yml file :
 
