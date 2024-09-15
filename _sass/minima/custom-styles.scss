@@ -13,10 +13,16 @@ img {
 }
 
 .highlight {
-  background: #d1ecf0;
+  background: #d2e6ff;
   border-radius: 10px;
   margin-top: 20px;
   margin-bottom: 20px;
+}
+.highlighter-rouge .highlight {
+  background: #d2e6ff;
+}
+pre, code {
+  background-color: #d2e6ff;
 }
 
 .post-content-list {

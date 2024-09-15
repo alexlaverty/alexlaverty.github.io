@@ -140,3 +140,5 @@ When logging into immich I added the `/pictures` path as an external library
 Immich was then able to detect the images and import them, after a while it was organising and sorting them
 
 ![alt text](/images/2024-09-15/2024-09-15_04.png)
+
+Feel like I'm back on top now with my photo album and have everything organised and in the correct folder and naming structure!
