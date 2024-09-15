@@ -13,10 +13,8 @@ navigation: True
 comments: True
 youtubeId: b3Xb_FoiOBU
 ---
-
-{% include youtube.html id=page.youtubeId %}
-
 These are the biggest waves I've seen breaking at Deadmans in person.
+{% include youtube.html id=page.youtubeId %}
 
 <!--more-->
 

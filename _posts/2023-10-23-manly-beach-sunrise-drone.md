@@ -6,6 +6,6 @@ categories: [video]
 tags: [manly-beach,drone]
 youtubeId: nWSVGlBMo70
 ---
-
+Borrowing cousin Carols drone and taking some video of the Manly Beach sunrise
 {% include youtube.html id=page.youtubeId %}
 

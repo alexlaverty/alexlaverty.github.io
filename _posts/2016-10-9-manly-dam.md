@@ -5,8 +5,8 @@ date:   2016-10-9 1:00:00
 categories: [video]
 tags: [manly-dam]
 ---
-
-Can't believe I've lived in Manly for over two years and never bothered to venture out to Manly Dam.
+Can't believe I've lived in Manly for over two years and never bothered to venture out to Manly Dam this place is awesome.
+{% include youtube.html id='UhUYv-_eKyc' %}
 
 It's a 10 minute drive from Manly but when you're there it feels like you're hours outside of Sydney.
 
@@ -16,4 +16,3 @@ Parking is metered at about $5 an hour but you can park outside the park and wal
 
 Will definitely be exploring this place more.
 
-{% include youtube.html id='UhUYv-_eKyc' %}
