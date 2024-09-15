@@ -9,8 +9,7 @@ layout: post
 author: alexlaverty
 youtubeId: JcDId4z8nVk
 ---
-
+Taking Harry To The Aquarium
 {% include youtube.html id=page.youtubeId %}
 
-Taking Harry To The Aquarium
 
