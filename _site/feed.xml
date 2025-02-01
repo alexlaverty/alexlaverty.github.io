@@ -1,31 +1,73 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-02-01T17:08:44+11:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Alex Laverty</title><subtitle>Join Me in Overthinking Absolutely Everything
-</subtitle><author><name>Alex Laverty</name><email>your-email@domain.com</email></author><entry><title type="html">FitCypher - Fitness and Health Tracker</title><link href="http://localhost:4000/fitcypher/fitcypher/" rel="alternate" type="text/html" title="FitCypher - Fitness and Health Tracker" /><published>2025-01-27T16:34:00+11:00</published><updated>2025-01-27T16:34:00+11:00</updated><id>http://localhost:4000/fitcypher/fitcypher</id><content type="html" xml:base="http://localhost:4000/fitcypher/fitcypher/"><![CDATA[<p>Welcome to FitCypher! This project aims to create a comprehensive fitness and health tracker using Django. Throughout this journey, I will be blogging about the development process, sharing insights, challenges, and solutions.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-02-01T18:28:26+11:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Alex Laverty</title><subtitle>Join Me in Overthinking Absolutely Everything
+</subtitle><author><name>Alex Laverty</name><email>your-email@domain.com</email></author><entry><title type="html">New Django Project</title><link href="http://localhost:4000/fitcypher/new-django-project/" rel="alternate" type="text/html" title="New Django Project" /><published>2025-01-27T16:34:00+11:00</published><updated>2025-01-27T16:34:00+11:00</updated><id>http://localhost:4000/fitcypher/new-django-project</id><content type="html" xml:base="http://localhost:4000/fitcypher/new-django-project/"><![CDATA[<h2 id="creating-a-new-django-project">Creating a new Django Project</h2>
 
-<h2 id="desired-features">Desired Features</h2>
+<p>Creating the FitCypher Django Project</p>
 
-<p>FitCypher will include the following features:</p>
+<p>I switch between linux and windows desktops so the commands will be whatever OS I’m on at the time.</p>
 
-<ul>
-  <li><strong>Exercise Tracking</strong>: Log and monitor your workouts.</li>
-  <li><strong>Food Tracking</strong>: Keep a detailed record of your dietary intake.</li>
-  <li><strong>Health Biomarkers/Pathology Results</strong>: Track important health metrics and pathology results.</li>
-  <li><strong>Sleep Tracking</strong>: Monitor your sleep patterns and quality.</li>
-  <li><strong>Third Party Integration</strong>: Intergrate with existing third party apps</li>
-  <li><strong>Additional Features</strong>: We will continuously brainstorm and add more features to enhance the user experience.</li>
-</ul>
+<p>Creating a new python virtual environment and activating it</p>
 
-<h2 id="design-and-development">Design and Development</h2>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>D:\src\fitcypher&gt;virtualenv env
+D:\src\fitcypher&gt;env\Scripts\activate.bat
+</code></pre></div></div>
 
-<p>The project will be built using the following components:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Install Django
+</span><span class="n">pip</span> <span class="n">install</span> <span class="n">django</span>
 
-<ul>
-  <li><strong>Django Website</strong>: The core of our application, providing a robust and scalable framework.</li>
-  <li><strong>API Layer</strong>: To facilitate communication between the frontend and backend.</li>
-  <li><strong>Database Backend</strong>: For storing all user data securely and efficiently.</li>
-</ul>
+<span class="c1"># Create a new project
+</span><span class="n">django</span><span class="o">-</span><span class="n">admin</span> <span class="n">startproject</span> <span class="n">fitcypher</span>
 
-<h2 id="hosting-considerations">Hosting Considerations</h2>
+<span class="c1"># Navigate to the project directory
+</span><span class="n">cd</span> <span class="n">fitcypher</span>
 
-<p>One of the key decisions will be selecting the best hosting solution that is both cost-effective and scalable. This will ensure that FitCypher can grow and adapt to increasing user demands.</p>
+<span class="c1"># Create a new app
+</span><span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">startapp</span> <span class="n">api</span>
 
-<p>Stay tuned for more updates as we embark on this exciting journey to create FitCypher!</p>]]></content><author><name>Alex Laverty</name><email>your-email@domain.com</email></author><category term="fitcypher" /><summary type="html"><![CDATA[Welcome to FitCypher! This project aims to create a comprehensive fitness and health tracker using Django. Throughout this journey, I will be blogging about the development process, sharing insights, challenges, and solutions.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/fitcypher/fitcypher.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/fitcypher/fitcypher.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+<span class="c1"># Add the 'api' to INSTALLED_APPS in settings.py
+</span>
+<span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="sh">'</span><span class="s">django.contrib.admin</span><span class="sh">'</span><span class="p">,</span>
+    <span class="sh">'</span><span class="s">django.contrib.auth</span><span class="sh">'</span><span class="p">,</span>
+    <span class="sh">'</span><span class="s">django.contrib.contenttypes</span><span class="sh">'</span><span class="p">,</span>
+    <span class="sh">'</span><span class="s">django.contrib.sessions</span><span class="sh">'</span><span class="p">,</span>
+    <span class="sh">'</span><span class="s">django.contrib.messages</span><span class="sh">'</span><span class="p">,</span>
+    <span class="sh">'</span><span class="s">django.contrib.staticfiles</span><span class="sh">'</span><span class="p">,</span>
+    <span class="sh">'</span><span class="s">api</span><span class="sh">'</span>
+<span class="p">]</span>
+
+<span class="c1"># Run initial migrations
+</span><span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">migrate</span>
+
+<span class="c1"># Start the development server
+</span><span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">runserver</span>
+</code></pre></div></div>
+
+<p>After that browse the local website :</p>
+
+<p><a href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a></p>
+
+<p>and then hey presto we have lift off :</p>
+
+<p><img src="/assets/images/fitcypher/20250201/001.png" alt="alt text" /></p>
+
+<h2 id="deploying-fitcypher-to-rendercom">Deploying FitCypher to Render.com</h2>
+
+<p>Once you’ve built the site and pushed the code to github you need somewhere to deploy and host the website.</p>
+
+<p>I’ve used <a href="https://render.com">Render.com</a> before and it will monitor the github repo, and if there is a new commit it will redeploy the website with the latest code.</p>
+
+<p>I’ve deployed before via docker container but I’ll give it a go trying to run the django website directly on render, we’ll see how it goes.</p>
+
+<p>Going to follow the documentation here <a href="https://render.com/docs/deploy-django">https://render.com/docs/deploy-django</a></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip install psycopg2-binary
+pip install dj-database-url
+</code></pre></div></div>
+
+<p>On second thought I’m going to try out <a href="https://www.pythonanywhere.com/">PythonAnywhere</a></p>
+
+<p>When I tried Render free tier, first things I noticed were the website goes to sleep if it’s not receiving traffic and when it’s accessed the next time the website has to wake up which takes time and can even time out on the first attempt. Also the database is scheduled deletion every month which means having to setup the database again. It was pretty annoying.</p>
+
+<p>Seems PythonAnywhere will not go to sleep and as long as you log in and click a button saying you’re still using the website it’ll extend for another 3 months, not sure what the go is with the database for free tier.</p>]]></content><author><name>Alex Laverty</name><email>your-email@domain.com</email></author><category term="fitcypher" /><summary type="html"><![CDATA[Creating a new Django Project]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/fitcypher/fitcypher.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/fitcypher/fitcypher.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">FitCypher - Fitness and Health Tracker</title><link href="http://localhost:4000/fitcypher/fitcypher/" rel="alternate" type="text/html" title="FitCypher - Fitness and Health Tracker" /><published>2025-01-27T16:34:00+11:00</published><updated>2025-01-27T16:34:00+11:00</updated><id>http://localhost:4000/fitcypher/fitcypher</id><content type="html" xml:base="http://localhost:4000/fitcypher/fitcypher/"><![CDATA[<p>I’m going to build a fitness and nutrition tracker using Django and document along the way.</p>
+
+<p>The app is going to be called FitCypher and it’ll be hosted in the following github repository :</p>]]></content><author><name>Alex Laverty</name><email>your-email@domain.com</email></author><category term="fitcypher" /><summary type="html"><![CDATA[I’m going to build a fitness and nutrition tracker using Django and document along the way.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/fitcypher/fitcypher.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/fitcypher/fitcypher.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
