@@ -3,7 +3,7 @@ title:  "New Django Project"
 date:   2025-01-27 5:34:00
 layout: post
 categories: ["fitcypher"]
-image: /assets/images/fitcypher/fitcypher.jpg
+image: /assets/images/fitcypher/20250201/django-fitcypher.jpg
 ---
 
 ## Creating a new Django Project
@@ -80,4 +80,10 @@ When I tried Render free tier, first things I noticed were the website goes to s
 
 Seems PythonAnywhere will not go to sleep and as long as you log in and click a button saying you're still using the website it'll extend for another 3 months, not sure what the go is with the database for free tier.
 
+Hmmm so Render.com has a much nicer setup, you can pretty much auth to Github and click a repo and it'll do a webhook on commit to trigger and deployment, where as PythonAnywhere is much more basic, and you basically get a virtual server and ssh console access to login, and you need to git clone your repo, manually git pull and then go into the UI and click reload to make the changes take effect, might have to look into more if there's better ways of triggering deployment on git commit. 
 
+So the basic FitCypher django project is available here :
+
+<https://alexlaverty.pythonanywhere.com/>
+
+I also provisioned a MySQL database on PythonAnywhere, it also had PostGres DB but they required a premium account so I've gone with MySQL.

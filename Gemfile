@@ -1,7 +1,9 @@
-# frozen_string_literal: true
-
+# Gemfile
 source "https://rubygems.org"
-gemspec
 
-gem "jekyll", ENV["JEKYLL_VERSION"] if ENV["JEKYLL_VERSION"]
-gem "kramdown-parser-gfm" if ENV["JEKYLL_VERSION"] == "~> 3.9"
+gem "jekyll", "~> 4.4.1"
+gem "minima", "~> 2.5.2"
+gem "jekyll-feed", "~> 0.17.0"
+gem "jekyll-watch", "~> 2.2.1"
+
+# Add any additional gems you may need here

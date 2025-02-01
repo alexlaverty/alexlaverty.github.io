@@ -15,10 +15,18 @@ body {
     color: #2f3e46;
 }
 
-a:visited {
-    color: #2f3e46;
-}
-
-a:hover {
-    text-decoration: none;
-}
+a:link {
+    color: #03a9f4; /* blue */
+  }
+  
+  a:visited {
+    color: #007ac1; /* darker blue */
+  }
+  
+  a:hover {
+    color: #0097e6; /* lighter blue */
+  }
+  
+  a:active {
+    color: #0065b3; /* even darker blue */
+  }
