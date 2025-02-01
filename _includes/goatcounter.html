@@ -1,9 +1,6 @@
 <script>
     window.goatcounter = window.goatcounter || {};
-    window.goatcounter.path = function() {
-      return "{{ page.url | replace: '/', '' }}"; // Ensure no leading/trailing slashes
-    };
-  </script>
+    window.goatcounter.path = "{{ page.url }}"; // Add the prepend filter
+</script>
   
-  <script data-goatcounter="https://alexlaverty.goatcounter.com/count"
-          async src="https://gc.zgo.at/count.js"></script>
+<script data-goatcounter="https://alexlaverty.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
