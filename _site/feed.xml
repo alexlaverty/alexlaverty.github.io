@@ -1,5 +1,33 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-02-01T21:46:35+11:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Alex Laverty</title><subtitle>Join Me in Overthinking Absolutely Everything
-</subtitle><author><name>Alex Laverty</name><email>your-email@domain.com</email></author><entry><title type="html">New Django Project</title><link href="http://localhost:4000/fitcypher/new-django-project/" rel="alternate" type="text/html" title="New Django Project" /><published>2025-02-01T17:34:00+11:00</published><updated>2025-02-01T17:34:00+11:00</updated><id>http://localhost:4000/fitcypher/new-django-project</id><content type="html" xml:base="http://localhost:4000/fitcypher/new-django-project/"><![CDATA[<h2 id="creating-a-new-django-project">Creating a new Django Project</h2>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-02-01T22:28:06+11:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Alex Laverty</title><subtitle>Join Me in Overthinking Absolutely Everything
+</subtitle><author><name>Alex Laverty</name><email>your-email@domain.com</email></author><entry><title type="html">Generating FitCypher web logos with AI</title><link href="http://localhost:4000/fitcypher/generating-web-logos-with-ai/" rel="alternate" type="text/html" title="Generating FitCypher web logos with AI" /><published>2025-02-01T18:34:00+11:00</published><updated>2025-02-01T18:34:00+11:00</updated><id>http://localhost:4000/fitcypher/generating-web-logos-with-ai</id><content type="html" xml:base="http://localhost:4000/fitcypher/generating-web-logos-with-ai/"><![CDATA[<style>
+.image-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Set the gap between images */
+    justify-content: flex-start; /* Align items to the left */
+    margin-bottom: 10px;
+}
+
+.image-gallery img {
+    width: 200px; /* Adjust the width of the images */
+    height: auto; /* Maintain aspect ratio */
+}
+</style>
+
+<p>I need a logo for the FitCypher app and I am a hopeless artist so I’m using AI image generation to come up with a logo, here’s a few I’ve generated using</p>
+
+<div class="image-gallery">
+    <img src="/assets/images/fitcypher/20250201/fitcypher-logo-001.jpeg" alt="Logo 1" />
+    <img src="/assets/images/fitcypher/20250201/fitcypher-logo-002.jpeg" alt="Logo 2" />
+    <img src="/assets/images/fitcypher/20250201/fitcypher-logo-003.jpeg" alt="Logo 3" />
+    <img src="/assets/images/fitcypher/20250201/fitcypher-logo-004.jpeg" alt="Logo 4" />
+</div>
+
+<p>So far this is the one I’ve chosen to go with but I am open to suggestions :</p>
+
+<div class="image-gallery">
+    <img src="/assets/images/fitcypher/fitcypher-logo.jpg" alt="Logo 1" />
+</div>]]></content><author><name>Alex Laverty</name><email>your-email@domain.com</email></author><category term="fitcypher" /><summary type="html"><![CDATA[]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/fitcypher/fitcypher-logo.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/fitcypher/fitcypher-logo.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">New Django Project</title><link href="http://localhost:4000/fitcypher/new-django-project-copy/" rel="alternate" type="text/html" title="New Django Project" /><published>2025-02-01T17:34:00+11:00</published><updated>2025-02-01T17:34:00+11:00</updated><id>http://localhost:4000/fitcypher/new-django-project%20copy</id><content type="html" xml:base="http://localhost:4000/fitcypher/new-django-project-copy/"><![CDATA[<h2 id="creating-a-new-django-project">Creating a new Django Project</h2>
 
 <p>Creating the FitCypher Django Project</p>
 

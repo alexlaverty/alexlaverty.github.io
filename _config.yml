@@ -86,3 +86,6 @@ analytics:
     id: G-4P23WF01YZ # fill in your Google Analytics ID
   goatcounter:
     id: alexlaverty # fill in your GoatCounter ID
+
+disqus:
+  shortname: alexlaverty
