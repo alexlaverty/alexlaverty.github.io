@@ -1,6 +1,6 @@
 ---
 title:  "New Django Project"
-date:   2025-01-27 5:34:00
+date:   2025-02-01 6:34:00
 layout: post
 categories: ["fitcypher"]
 image: /assets/images/fitcypher/20250201/django-fitcypher.jpg
