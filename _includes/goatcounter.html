@@ -1,6 +1,8 @@
 <script>
     window.goatcounter = window.goatcounter || {};
-    window.goatcounter.path = "{{ page.url }}";
+    window.goatcounter.path = function() {
+      return "{{ page.url | replace: '/', '' }}"; // Ensure no leading/trailing slashes
+    };
   </script>
   
   <script data-goatcounter="https://alexlaverty.goatcounter.com/count"
