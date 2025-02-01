@@ -1,6 +1,6 @@
 <script>
     window.goatcounter = window.goatcounter || {};
-    window.goatcounter.path = "{{ page.url | prepend: '/' }}"; // Ensure leading slash
+    window.goatcounter.path = "{{ page.url | relative_url }}"; 
 </script>
   
-<script data-goatcounter="https://alexlaverty.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+<script data-goatcounter="https://{{ site.goatcounter }}.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
