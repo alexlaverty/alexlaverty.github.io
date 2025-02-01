@@ -25,6 +25,16 @@ layout: base
     {%- else -%}
         • <span itemprop="author" itemscope itemtype="http://schema.org/Person">
           <span class="p-author h-card" itemprop="name">{{ site.author.name }}</span></span>
+        • Views <span class="p-author h-card" id="view-count">1</span>
+        
+          <script>
+            fetch('https://gc.zgo.at/count.json?url=' + window.location.href)
+              .then(response => response.json())
+              .then(data => {
+                document.getElementById('view-count').textContent = data.pageviews;
+              })
+              .catch(error => console.error('Error fetching view count:', error));
+          </script>
     {%- endif -%}</p>
   </header>
   <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
