@@ -1,2 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-01-27T18:03:11+11:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Alex Laverty</title><subtitle>This is my cool website
-</subtitle><author><name>Alex Laverty</name></author><entry><title type="html">Hello World</title><link href="http://localhost:4000/2025/01/27/Hello-World.html" rel="alternate" type="text/html" title="Hello World" /><published>2025-01-27T16:34:00+11:00</published><updated>2025-01-27T16:34:00+11:00</updated><id>http://localhost:4000/2025/01/27/Hello-World</id><content type="html" xml:base="http://localhost:4000/2025/01/27/Hello-World.html"><![CDATA[<p>Hello World</p>]]></content><author><name>Alex Laverty</name></author><summary type="html"><![CDATA[Hello World]]></summary></entry></feed>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-02-01T17:08:44+11:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Alex Laverty</title><subtitle>Join Me in Overthinking Absolutely Everything
+</subtitle><author><name>Alex Laverty</name><email>your-email@domain.com</email></author><entry><title type="html">FitCypher - Fitness and Health Tracker</title><link href="http://localhost:4000/fitcypher/fitcypher/" rel="alternate" type="text/html" title="FitCypher - Fitness and Health Tracker" /><published>2025-01-27T16:34:00+11:00</published><updated>2025-01-27T16:34:00+11:00</updated><id>http://localhost:4000/fitcypher/fitcypher</id><content type="html" xml:base="http://localhost:4000/fitcypher/fitcypher/"><![CDATA[<p>Welcome to FitCypher! This project aims to create a comprehensive fitness and health tracker using Django. Throughout this journey, I will be blogging about the development process, sharing insights, challenges, and solutions.</p>
+
+<h2 id="desired-features">Desired Features</h2>
+
+<p>FitCypher will include the following features:</p>
+
+<ul>
+  <li><strong>Exercise Tracking</strong>: Log and monitor your workouts.</li>
+  <li><strong>Food Tracking</strong>: Keep a detailed record of your dietary intake.</li>
+  <li><strong>Health Biomarkers/Pathology Results</strong>: Track important health metrics and pathology results.</li>
+  <li><strong>Sleep Tracking</strong>: Monitor your sleep patterns and quality.</li>
+  <li><strong>Third Party Integration</strong>: Intergrate with existing third party apps</li>
+  <li><strong>Additional Features</strong>: We will continuously brainstorm and add more features to enhance the user experience.</li>
+</ul>
+
+<h2 id="design-and-development">Design and Development</h2>
+
+<p>The project will be built using the following components:</p>
+
+<ul>
+  <li><strong>Django Website</strong>: The core of our application, providing a robust and scalable framework.</li>
+  <li><strong>API Layer</strong>: To facilitate communication between the frontend and backend.</li>
+  <li><strong>Database Backend</strong>: For storing all user data securely and efficiently.</li>
+</ul>
+
+<h2 id="hosting-considerations">Hosting Considerations</h2>
+
+<p>One of the key decisions will be selecting the best hosting solution that is both cost-effective and scalable. This will ensure that FitCypher can grow and adapt to increasing user demands.</p>
+
+<p>Stay tuned for more updates as we embark on this exciting journey to create FitCypher!</p>]]></content><author><name>Alex Laverty</name><email>your-email@domain.com</email></author><category term="fitcypher" /><summary type="html"><![CDATA[Welcome to FitCypher! This project aims to create a comprehensive fitness and health tracker using Django. Throughout this journey, I will be blogging about the development process, sharing insights, challenges, and solutions.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/fitcypher/fitcypher.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/fitcypher/fitcypher.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

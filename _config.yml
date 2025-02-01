@@ -1,16 +1,26 @@
 title: Alex Laverty
 author:
   name: Alex Laverty
+  email: your-email@domain.com
+lang: en
 
 # The `>` after `description:` means to ignore line-breaks until next key.
 # If you want to omit the line-break after the end of text, use `>-` instead.
 description: >
-  This is my cool website
+  Join Me in Overthinking Absolutely Everything
+
+permalink: /:categories/:slug/
 
 # Build settings
 
 # If you clone the Minima repo and build locally, use this setting.
 theme: minima
+
+github:
+  username: alexlaverty # change to your GitHub username
+
+twitter:
+  username: alaverty # change to your Twitter username
 
 # As of November 2023, GitHub Pages still uses Minima 2.5.1 (https://pages.github.com/versions/). 
 # If you want to use the latest Minima version on GitHub Pages, use the following setting and 
@@ -26,10 +36,11 @@ plugins:
 # If you want to link only specific pages in your header, use this and add the path to the pages
 # in order as they should show up.
 header_pages:
-  - about.md
+  - categories/fitcypher.md
 
 # Set to `true` to show excerpts on the homepage.
-#show_excerpts: false
+show_excerpts: true
+truncatewords: 20
 
 # Minima specific settings, which are only available from Minima 3.0 onward.
 minima:
@@ -46,15 +57,16 @@ minima:
   # Minima date format.
   # The default value is "%b %d, %Y" (e.g. Nov 14, 2023) 
   # Refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this.
-  #date_format: "%b-%d-%Y"
+  date_format: "%d %B %Y"
+
 
   # Generate social links in footer.
-  #social_links:
+  social_links:
   #  - { platform: devto,          user_url: "https://dev.to/jekyll" }
   #  - { platform: dribbble,       user_url: "https://dribbble.com/jekyll" }
   #  - { platform: facebook,       user_url: "https://www.facebook.com/jekyll" }
   #  - { platform: flickr,         user_url: "https://www.flickr.com/photos/jekyll" }
-  #  - { platform: github,         user_url: "https://github.com/jekyll/minima" }
+   - { platform: github,         user_url: "https://github.com/alexlaverty" }
   #  - { platform: gitlab,         user_url: "https://gitlab.com/jekyll" }
   #  - { platform: google_scholar, user_url: "https://scholar.google.com/citations?user=qc6CJjYAAAAJ" }
   #  - { platform: instagram,      user_url: "https://www.instagram.com/jekyll" }
@@ -68,4 +80,9 @@ minima:
   #  - { platform: x,              user_url: "https://x.com/jekyllrb" }
   #  - { platform: youtube,        user_url: "https://www.youtube.com/jekyll" }
 
-
+# Web Analytics Settings
+analytics:
+  google:
+    id: G-4P23WF01YZ # fill in your Google Analytics ID
+  goatcounter:
+    id: alexlaverty # fill in your GoatCounter ID

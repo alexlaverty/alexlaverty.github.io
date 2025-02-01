@@ -8,7 +8,7 @@ layout: base
     margin: 0 auto;
     padding: 20px;
   }
-
+  
   .post-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -16,7 +16,7 @@ layout: base
     padding: 0;
     list-style: none;
   }
-
+  
   .post-card {
     background: #ffffff;
     border-radius: 8px;
@@ -26,7 +26,7 @@ layout: base
     display: flex;
     flex-direction: column;
   }
-
+  
   .post-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.15);
@@ -38,26 +38,26 @@ layout: base
     object-fit: cover;
     display: block;
   }
-
+  
   .post-card-content {
-    padding: 1rem;
+    padding: 1.5rem;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
   }
-
+  
   .post-meta {
     color: #666;
     font-size: 0.9rem;
     margin-top: 0.5rem;
     display: block;
   }
-
+  
   .post-categories {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    /* margin-bottom: 0.75rem; */
+    margin-bottom: 0.75rem;
   }
 
   .post-category {
@@ -73,7 +73,7 @@ layout: base
   .post-category:hover {
     background-color: #e0e0e0;
   }
-
+  
   .post-link {
     color: #333;
     text-decoration: none;
@@ -82,69 +82,49 @@ layout: base
     margin: 0;
     display: block;
   }
-
+  
   .post-link:hover {
     color: #0066cc;
   }
-
+  
   .post-excerpt {
     color: #444;
     font-size: 1rem;
     line-height: 1.6;
     margin-top: 1rem;
   }
-
-  .pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    list-style: none;
-    padding: 2rem 0;
-    gap: 1rem;
+  
+  .category-header {
+    margin-bottom: 2rem;
+    text-align: center;
   }
 
-  .pagination a, .current-page, .pager-edge {
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    text-decoration: none;
-  }
-
-  .pagination a {
-    background: #f0f0f0;
+  .category-title {
+    font-size: 2.5rem;
     color: #333;
+    margin-bottom: 0.5rem;
   }
 
-  .pagination a:hover {
-    background: #e0e0e0;
-  }
-
-  .current-page {
-    background: #0066cc;
-    color: white;
+  .category-description {
+    color: #666;
+    font-size: 1.1rem;
   }
 </style>
 
 <div class="home">
-  {%- if page.title -%}
-    <h1 class="page-heading">{{ page.title }}</h1>
-  {%- endif -%}
+  <div class="category-header">
+    <h1 class="category-title">{{ page.title | default: page.category }}</h1>
+    {% if page.description %}
+      <p class="category-description">{{ page.description }}</p>
+    {% endif %}
+  </div>
 
-  {{ content }}
-
-  {% if site.paginate %}
-    {% assign posts = paginator.posts %}
-  {% else %}
-    {% assign posts = site.posts %}
-  {% endif %}
-
-  {%- if posts.size > 0 -%}
-    {%- if page.list_title -%}
-      <h2 class="post-list-heading">{{ page.list_title }}</h2>
-    {%- endif -%}
-
+  {% assign category_posts = site.posts | where: "categories", page.category %}
+  
+  {%- if category_posts.size > 0 -%}
     <ul class="post-grid">
       {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-      {%- for post in posts -%}
+      {%- for post in category_posts -%}
       <li class="post-card">
         {% if post.image %}
         <a class="post-link" href="{{ post.url | relative_url }}">
@@ -172,24 +152,7 @@ layout: base
       </li>
       {%- endfor -%}
     </ul>
-
-    {% if site.paginate %}
-      <div class="pager">
-        <ul class="pagination">
-        {%- if paginator.previous_page %}
-          <li><a href="{{ paginator.previous_page_path | relative_url }}" class="previous-page">{{ paginator.previous_page }}</a></li>
-        {%- else %}
-          <li><div class="pager-edge">•</div></li>
-        {%- endif %}
-          <li><div class="current-page">{{ paginator.page }}</div></li>
-        {%- if paginator.next_page %}
-          <li><a href="{{ paginator.next_page_path | relative_url }}" class="next-page">{{ paginator.next_page }}</a></li>
-        {%- else %}
-          <li><div class="pager-edge">•</div></li>
-        {%- endif %}
-        </ul>
-      </div>
-    {%- endif %}
-
+  {%- else -%}
+    <p class="no-posts">No posts in this category yet.</p>
   {%- endif -%}
 </div>
