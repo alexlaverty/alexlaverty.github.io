@@ -36,7 +36,6 @@
 
 </footer>
 
-
-{%- if site.goatcounter -%}
+{%- if jekyll.environment == 'production' and site.goatcounter -%}
 {% include goatcounter.html %}
 {%- endif -%}

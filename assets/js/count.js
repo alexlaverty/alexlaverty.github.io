@@ -1,4 +1,3 @@
-<script data-goatcounter="https://alexlaverty.goatcounter.com/count" data-goatcounter-settings='{"path": "{{ page.url }}"}'>
 // GoatCounter: https://www.goatcounter.com
 // This file is released under the ISC license: https://opensource.org/licenses/ISC
 ;(function() {
@@ -270,4 +269,3 @@
 				goatcounter.bind_events()
 		})
 })();
-</script>
