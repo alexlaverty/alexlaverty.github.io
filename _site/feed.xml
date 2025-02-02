@@ -1,5 +1,33 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-02-02T15:17:48+11:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Alex Laverty</title><subtitle>Join Me in Overthinking Absolutely Everything
-</subtitle><author><name>Alex Laverty</name><email>your-email@domain.com</email></author><entry><title type="html">Quick Body Weight Workout</title><link href="http://localhost:4000/fitcypher/quick-bodyweight-workout/" rel="alternate" type="text/html" title="Quick Body Weight Workout" /><published>2025-02-02T13:34:00+11:00</published><updated>2025-02-02T13:34:00+11:00</updated><id>http://localhost:4000/fitcypher/quick-bodyweight-workout</id><content type="html" xml:base="http://localhost:4000/fitcypher/quick-bodyweight-workout/"><![CDATA[<p>Now we’ve added a page to show a list of available Workouts to choose from :</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-02-02T18:47:56+11:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Alex Laverty</title><subtitle>Join Me in Overthinking Absolutely Everything
+</subtitle><author><name>Alex Laverty</name><email>your-email@domain.com</email></author><entry><title type="html">Random Bodyweight Workout with Video!</title><link href="http://localhost:4000/fitcypher/random-youtube-workout/" rel="alternate" type="text/html" title="Random Bodyweight Workout with Video!" /><published>2025-02-02T14:34:00+11:00</published><updated>2025-02-02T14:34:00+11:00</updated><id>http://localhost:4000/fitcypher/random-youtube-workout</id><content type="html" xml:base="http://localhost:4000/fitcypher/random-youtube-workout/"><![CDATA[<p>I have added a new workout page, this one will read a list of youtube videos from a json file, for example :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/src/fitcypher$ cat ui/data/darebee.json 
+[
+  {
+    "id": "4XcGTvcSRxY",
+    "title": "hop heel clicks",
+    "duration": 8
+  },
+  {
+    "id": "wqfRvXc7BHY",
+    "title": "half squat walk",
+    "duration": 19
+  },
+  {
+    "id": "HAQvQXovwuo",
+    "title": "side splits",
+    "duration": 83
+  }
+]
+</code></pre></div></div>
+
+<p>and then will play a random youtube video for the user with a counter of the elapsed time :</p>
+
+<p><img src="/assets/images/fitcypher/20250202/screenshot004.png" alt="alt text" /></p>
+
+<p>Once the user has done the exercise for as long as they want, they click the Complete button, this will save the exercise and duration to the database.</p>
+
+<p>If an exercise video comes up that you don’t like click the skip button and it will go to the next video and will not save the exercise to the database.</p>]]></content><author><name>Alex Laverty</name><email>your-email@domain.com</email></author><category term="fitcypher" /><summary type="html"><![CDATA[I have added a new workout page, this one will read a list of youtube videos from a json file, for example :]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/fitcypher/20250202/body_weight_workout.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/fitcypher/20250202/body_weight_workout.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Quick Body Weight Workout</title><link href="http://localhost:4000/fitcypher/quick-bodyweight-workout/" rel="alternate" type="text/html" title="Quick Body Weight Workout" /><published>2025-02-02T13:34:00+11:00</published><updated>2025-02-02T13:34:00+11:00</updated><id>http://localhost:4000/fitcypher/quick-bodyweight-workout</id><content type="html" xml:base="http://localhost:4000/fitcypher/quick-bodyweight-workout/"><![CDATA[<p>Now we’ve added a page to show a list of available Workouts to choose from :</p>
 
 <p><img src="/assets/images/fitcypher/20250202/screenshot001.png" alt="alt text" /></p>
 
