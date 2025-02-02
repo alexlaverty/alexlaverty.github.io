@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-02-02T18:47:56+11:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Alex Laverty</title><subtitle>Join Me in Overthinking Absolutely Everything
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-02-02T20:09:33+11:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Alex Laverty</title><subtitle>Join Me in Overthinking Absolutely Everything
 </subtitle><author><name>Alex Laverty</name><email>your-email@domain.com</email></author><entry><title type="html">Random Bodyweight Workout with Video!</title><link href="http://localhost:4000/fitcypher/random-youtube-workout/" rel="alternate" type="text/html" title="Random Bodyweight Workout with Video!" /><published>2025-02-02T14:34:00+11:00</published><updated>2025-02-02T14:34:00+11:00</updated><id>http://localhost:4000/fitcypher/random-youtube-workout</id><content type="html" xml:base="http://localhost:4000/fitcypher/random-youtube-workout/"><![CDATA[<p>I have added a new workout page, this one will read a list of youtube videos from a json file, for example :</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/src/fitcypher$ cat ui/data/darebee.json 
@@ -27,7 +27,17 @@
 
 <p>Once the user has done the exercise for as long as they want, they click the Complete button, this will save the exercise and duration to the database.</p>
 
-<p>If an exercise video comes up that you don’t like click the skip button and it will go to the next video and will not save the exercise to the database.</p>]]></content><author><name>Alex Laverty</name><email>your-email@domain.com</email></author><category term="fitcypher" /><summary type="html"><![CDATA[I have added a new workout page, this one will read a list of youtube videos from a json file, for example :]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/fitcypher/20250202/body_weight_workout.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/fitcypher/20250202/body_weight_workout.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Quick Body Weight Workout</title><link href="http://localhost:4000/fitcypher/quick-bodyweight-workout/" rel="alternate" type="text/html" title="Quick Body Weight Workout" /><published>2025-02-02T13:34:00+11:00</published><updated>2025-02-02T13:34:00+11:00</updated><id>http://localhost:4000/fitcypher/quick-bodyweight-workout</id><content type="html" xml:base="http://localhost:4000/fitcypher/quick-bodyweight-workout/"><![CDATA[<p>Now we’ve added a page to show a list of available Workouts to choose from :</p>
+<p>If an exercise video comes up that you don’t like click the skip button and it will go to the next video and will not save the exercise to the database.</p>
+
+<p>Checkout the FitCypher Workouts here :</p>
+
+<p><a href="https://alexlaverty.pythonanywhere.com/workouts">https://alexlaverty.pythonanywhere.com/workouts</a></p>
+
+<p><img src="/assets/images/fitcypher/20250202/screenshot005.png" alt="alt text" /></p>
+
+<p>Or git clone the FitCypher github repo and run it locally :</p>
+
+<p><a href="https://github.com/alexlaverty/fitcypher">https://github.com/alexlaverty/fitcypher</a></p>]]></content><author><name>Alex Laverty</name><email>your-email@domain.com</email></author><category term="fitcypher" /><summary type="html"><![CDATA[I have added a new workout page, this one will read a list of youtube videos from a json file, for example :]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/fitcypher/20250202/screenshot004.png" /><media:content medium="image" url="http://localhost:4000/assets/images/fitcypher/20250202/screenshot004.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Quick Body Weight Workout</title><link href="http://localhost:4000/fitcypher/quick-bodyweight-workout/" rel="alternate" type="text/html" title="Quick Body Weight Workout" /><published>2025-02-02T13:34:00+11:00</published><updated>2025-02-02T13:34:00+11:00</updated><id>http://localhost:4000/fitcypher/quick-bodyweight-workout</id><content type="html" xml:base="http://localhost:4000/fitcypher/quick-bodyweight-workout/"><![CDATA[<p>Now we’ve added a page to show a list of available Workouts to choose from :</p>
 
 <p><img src="/assets/images/fitcypher/20250202/screenshot001.png" alt="alt text" /></p>
 
@@ -37,7 +47,15 @@
 
 <p>I found that with this approach of creating an entry per exercise rep performed the entries page quickly became cluttered with individual reps, so I’ve updated the Entries page to group the exercises by name and provide a count of total exercises :</p>
 
-<p><img src="/assets/images/fitcypher/20250202/screenshot003.png" alt="alt text" /></p>]]></content><author><name>Alex Laverty</name><email>your-email@domain.com</email></author><category term="fitcypher" /><summary type="html"><![CDATA[Now we’ve added a page to show a list of available Workouts to choose from :]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/fitcypher/20250202/body_weight_workout.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/fitcypher/20250202/body_weight_workout.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Django Model</title><link href="http://localhost:4000/fitcypher/django-model/" rel="alternate" type="text/html" title="Django Model" /><published>2025-02-02T12:34:00+11:00</published><updated>2025-02-02T12:34:00+11:00</updated><id>http://localhost:4000/fitcypher/django-model</id><content type="html" xml:base="http://localhost:4000/fitcypher/django-model/"><![CDATA[<p>Today I am working on the FitCypher database backend, to keep it simple the nutrition and health metrics will be posted into a common Entry model :</p>
+<p><img src="/assets/images/fitcypher/20250202/screenshot003.png" alt="alt text" /></p>
+
+<p>Try out FitCypher here :</p>
+
+<p><a href="https://alexlaverty.pythonanywhere.com/">https://alexlaverty.pythonanywhere.com/</a></p>
+
+<p>Or git clone the FitCypher github repo and run it locally :</p>
+
+<p><a href="https://github.com/alexlaverty/fitcypher">https://github.com/alexlaverty/fitcypher</a></p>]]></content><author><name>Alex Laverty</name><email>your-email@domain.com</email></author><category term="fitcypher" /><summary type="html"><![CDATA[Now we’ve added a page to show a list of available Workouts to choose from :]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/fitcypher/20250202/body_weight_workout.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/fitcypher/20250202/body_weight_workout.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Django Model</title><link href="http://localhost:4000/fitcypher/django-model/" rel="alternate" type="text/html" title="Django Model" /><published>2025-02-02T12:34:00+11:00</published><updated>2025-02-02T12:34:00+11:00</updated><id>http://localhost:4000/fitcypher/django-model</id><content type="html" xml:base="http://localhost:4000/fitcypher/django-model/"><![CDATA[<p>Today I am working on the FitCypher database backend, to keep it simple the nutrition and health metrics will be posted into a common Entry model :</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Entry</span><span class="p">(</span><span class="n">models</span><span class="p">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">user</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="nc">ForeignKey</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="p">.</span><span class="n">CASCADE</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="sh">"</span><span class="s">entries</span><span class="sh">"</span><span class="p">)</span>
@@ -206,7 +224,15 @@
 
 <p>To make the API friendly to use we’ll provide an API UI :</p>
 
-<p><img src="/assets/images/fitcypher/20250202/fitcypher-entries-api.png" alt="alt text" /></p>]]></content><author><name>Alex Laverty</name><email>your-email@domain.com</email></author><category term="fitcypher" /><summary type="html"><![CDATA[Today I am working on the FitCypher database backend, to keep it simple the nutrition and health metrics will be posted into a common Entry model :]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/fitcypher/20250201/django-fitcypher.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/fitcypher/20250201/django-fitcypher.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">REST API</title><link href="http://localhost:4000/fitcypher/rest-api/" rel="alternate" type="text/html" title="REST API" /><published>2025-02-02T12:34:00+11:00</published><updated>2025-02-02T12:34:00+11:00</updated><id>http://localhost:4000/fitcypher/rest-api</id><content type="html" xml:base="http://localhost:4000/fitcypher/rest-api/"><![CDATA[<p>We will use Django Rest Framework as the API framework to interact with this model.</p>
+<p><img src="/assets/images/fitcypher/20250202/fitcypher-entries-api.png" alt="alt text" /></p>
+
+<p>Try out FitCypher here :</p>
+
+<p><a href="https://alexlaverty.pythonanywhere.com/">https://alexlaverty.pythonanywhere.com/</a></p>
+
+<p>Or git clone the FitCypher github repo and run it locally :</p>
+
+<p><a href="https://github.com/alexlaverty/fitcypher">https://github.com/alexlaverty/fitcypher</a></p>]]></content><author><name>Alex Laverty</name><email>your-email@domain.com</email></author><category term="fitcypher" /><summary type="html"><![CDATA[Today I am working on the FitCypher database backend, to keep it simple the nutrition and health metrics will be posted into a common Entry model :]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/fitcypher/20250201/django-fitcypher.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/fitcypher/20250201/django-fitcypher.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">REST API</title><link href="http://localhost:4000/fitcypher/rest-api/" rel="alternate" type="text/html" title="REST API" /><published>2025-02-02T12:34:00+11:00</published><updated>2025-02-02T12:34:00+11:00</updated><id>http://localhost:4000/fitcypher/rest-api</id><content type="html" xml:base="http://localhost:4000/fitcypher/rest-api/"><![CDATA[<p>We will use Django Rest Framework as the API framework to interact with this model.</p>
 
 <p>Using API’s allows to either add entries in bulk, allow users to export and import from other systems, allow for automation and scheduled data syncing.</p>
 
@@ -338,7 +364,15 @@
     "tags": "",
     "source": "fitcypher"
 }'
-</code></pre></div></div>]]></content><author><name>Alex Laverty</name><email>your-email@domain.com</email></author><category term="fitcypher" /><summary type="html"><![CDATA[We will use Django Rest Framework as the API framework to interact with this model.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/fitcypher/20250202/django-rest-framework.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/fitcypher/20250202/django-rest-framework.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Generating FitCypher web logos with AI</title><link href="http://localhost:4000/fitcypher/generating-web-logos-with-ai/" rel="alternate" type="text/html" title="Generating FitCypher web logos with AI" /><published>2025-02-01T18:34:00+11:00</published><updated>2025-02-01T18:34:00+11:00</updated><id>http://localhost:4000/fitcypher/generating-web-logos-with-ai</id><content type="html" xml:base="http://localhost:4000/fitcypher/generating-web-logos-with-ai/"><![CDATA[<style>
+</code></pre></div></div>
+
+<p>Try out FitCypher here :</p>
+
+<p><a href="https://alexlaverty.pythonanywhere.com/">https://alexlaverty.pythonanywhere.com/</a></p>
+
+<p>Or git clone the FitCypher github repo and run it locally :</p>
+
+<p><a href="https://github.com/alexlaverty/fitcypher">https://github.com/alexlaverty/fitcypher</a></p>]]></content><author><name>Alex Laverty</name><email>your-email@domain.com</email></author><category term="fitcypher" /><summary type="html"><![CDATA[We will use Django Rest Framework as the API framework to interact with this model.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/fitcypher/20250202/django-rest-framework.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/fitcypher/20250202/django-rest-framework.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Generating FitCypher web logos with AI</title><link href="http://localhost:4000/fitcypher/generating-web-logos-with-ai/" rel="alternate" type="text/html" title="Generating FitCypher web logos with AI" /><published>2025-02-01T18:34:00+11:00</published><updated>2025-02-01T18:34:00+11:00</updated><id>http://localhost:4000/fitcypher/generating-web-logos-with-ai</id><content type="html" xml:base="http://localhost:4000/fitcypher/generating-web-logos-with-ai/"><![CDATA[<style>
 .image-gallery {
     display: flex;
     flex-wrap: wrap;
@@ -366,7 +400,15 @@
 
 <div class="image-gallery">
     <img src="/assets/images/fitcypher/fitcypher-logo.jpg" alt="Logo 1" />
-</div>]]></content><author><name>Alex Laverty</name><email>your-email@domain.com</email></author><category term="fitcypher" /><summary type="html"><![CDATA[]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/fitcypher/fitcypher-logo.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/fitcypher/fitcypher-logo.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">New Django Project</title><link href="http://localhost:4000/fitcypher/new-django-project-copy/" rel="alternate" type="text/html" title="New Django Project" /><published>2025-02-01T17:34:00+11:00</published><updated>2025-02-01T17:34:00+11:00</updated><id>http://localhost:4000/fitcypher/new-django-project%20copy</id><content type="html" xml:base="http://localhost:4000/fitcypher/new-django-project-copy/"><![CDATA[<h2 id="creating-a-new-django-project">Creating a new Django Project</h2>
+</div>
+
+<p>Try out FitCypher here :</p>
+
+<p><a href="https://alexlaverty.pythonanywhere.com/">https://alexlaverty.pythonanywhere.com/</a></p>
+
+<p>Or git clone the FitCypher github repo and run it locally :</p>
+
+<p><a href="https://github.com/alexlaverty/fitcypher">https://github.com/alexlaverty/fitcypher</a></p>]]></content><author><name>Alex Laverty</name><email>your-email@domain.com</email></author><category term="fitcypher" /><summary type="html"><![CDATA[]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/fitcypher/fitcypher-logo.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/fitcypher/fitcypher-logo.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">New Django Project</title><link href="http://localhost:4000/fitcypher/new-django-project-copy/" rel="alternate" type="text/html" title="New Django Project" /><published>2025-02-01T17:34:00+11:00</published><updated>2025-02-01T17:34:00+11:00</updated><id>http://localhost:4000/fitcypher/new-django-project%20copy</id><content type="html" xml:base="http://localhost:4000/fitcypher/new-django-project-copy/"><![CDATA[<h2 id="creating-a-new-django-project">Creating a new Django Project</h2>
 
 <p>Creating the FitCypher Django Project</p>
 
@@ -443,7 +485,15 @@ pip install dj-database-url
 
 <p><a href="https://alexlaverty.pythonanywhere.com/">https://alexlaverty.pythonanywhere.com/</a></p>
 
-<p>I also provisioned a MySQL database on PythonAnywhere, it also had PostGres DB but they required a premium account so I’ve gone with MySQL.</p>]]></content><author><name>Alex Laverty</name><email>your-email@domain.com</email></author><category term="fitcypher" /><summary type="html"><![CDATA[Creating a new Django Project]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/fitcypher/20250201/django-fitcypher.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/fitcypher/20250201/django-fitcypher.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">FitCypher - Fitness and Health Tracker</title><link href="http://localhost:4000/fitcypher/fitcypher/" rel="alternate" type="text/html" title="FitCypher - Fitness and Health Tracker" /><published>2025-02-01T16:34:00+11:00</published><updated>2025-02-01T16:34:00+11:00</updated><id>http://localhost:4000/fitcypher/fitcypher</id><content type="html" xml:base="http://localhost:4000/fitcypher/fitcypher/"><![CDATA[<p>I’m going to build a fitness and nutrition tracker using Django and document along the way.</p>
+<p>I also provisioned a MySQL database on PythonAnywhere, it also had PostGres DB but they required a premium account so I’ve gone with MySQL.</p>
+
+<p>Try out FitCypher here :</p>
+
+<p><a href="https://alexlaverty.pythonanywhere.com/">https://alexlaverty.pythonanywhere.com/</a></p>
+
+<p>Or git clone the FitCypher github repo and run it locally :</p>
+
+<p><a href="https://github.com/alexlaverty/fitcypher">https://github.com/alexlaverty/fitcypher</a></p>]]></content><author><name>Alex Laverty</name><email>your-email@domain.com</email></author><category term="fitcypher" /><summary type="html"><![CDATA[Creating a new Django Project]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/fitcypher/20250201/django-fitcypher.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/fitcypher/20250201/django-fitcypher.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">FitCypher - Fitness and Health Tracker</title><link href="http://localhost:4000/fitcypher/fitcypher/" rel="alternate" type="text/html" title="FitCypher - Fitness and Health Tracker" /><published>2025-02-01T16:34:00+11:00</published><updated>2025-02-01T16:34:00+11:00</updated><id>http://localhost:4000/fitcypher/fitcypher</id><content type="html" xml:base="http://localhost:4000/fitcypher/fitcypher/"><![CDATA[<p>I’m going to build a fitness and nutrition tracker using Django and document along the way.</p>
 
 <p>The app is going to be called FitCypher and the code will be stored in following github repository :</p>
 

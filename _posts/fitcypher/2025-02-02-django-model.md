@@ -140,3 +140,10 @@ To make the API friendly to use we'll provide an API UI :
 
 ![alt text](/assets/images/fitcypher/20250202/fitcypher-entries-api.png)
 
+Try out FitCypher here :
+
+<https://alexlaverty.pythonanywhere.com/>
+
+Or git clone the FitCypher github repo and run it locally :
+
+<https://github.com/alexlaverty/fitcypher>

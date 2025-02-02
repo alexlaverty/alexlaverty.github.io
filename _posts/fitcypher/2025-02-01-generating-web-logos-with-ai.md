@@ -34,3 +34,11 @@ So far this is the one I've chosen to go with but I am open to suggestions :
 <div class="image-gallery">
     <img src="/assets/images/fitcypher/fitcypher-logo.jpg" alt="Logo 1">
 </div>
+
+Try out FitCypher here :
+
+<https://alexlaverty.pythonanywhere.com/>
+
+Or git clone the FitCypher github repo and run it locally :
+
+<https://github.com/alexlaverty/fitcypher>

@@ -87,3 +87,11 @@ So the basic FitCypher django project is available here :
 <https://alexlaverty.pythonanywhere.com/>
 
 I also provisioned a MySQL database on PythonAnywhere, it also had PostGres DB but they required a premium account so I've gone with MySQL.
+
+Try out FitCypher here :
+
+<https://alexlaverty.pythonanywhere.com/>
+
+Or git clone the FitCypher github repo and run it locally :
+
+<https://github.com/alexlaverty/fitcypher>

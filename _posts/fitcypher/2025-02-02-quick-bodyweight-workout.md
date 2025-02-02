@@ -17,3 +17,11 @@ Each time the user performs an exercise they can click the exercise and it will 
 I found that with this approach of creating an entry per exercise rep performed the entries page quickly became cluttered with individual reps, so I've updated the Entries page to group the exercises by name and provide a count of total exercises :
 
 ![alt text](/assets/images/fitcypher/20250202/screenshot003.png)
+
+Try out FitCypher here :
+
+<https://alexlaverty.pythonanywhere.com/>
+
+Or git clone the FitCypher github repo and run it locally :
+
+<https://github.com/alexlaverty/fitcypher>
