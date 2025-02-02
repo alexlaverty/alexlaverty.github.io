@@ -1,5 +1,290 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-02-01T22:53:54+11:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Alex Laverty</title><subtitle>Join Me in Overthinking Absolutely Everything
-</subtitle><author><name>Alex Laverty</name><email>your-email@domain.com</email></author><entry><title type="html">Generating FitCypher web logos with AI</title><link href="http://localhost:4000/fitcypher/generating-web-logos-with-ai/" rel="alternate" type="text/html" title="Generating FitCypher web logos with AI" /><published>2025-02-01T18:34:00+11:00</published><updated>2025-02-01T18:34:00+11:00</updated><id>http://localhost:4000/fitcypher/generating-web-logos-with-ai</id><content type="html" xml:base="http://localhost:4000/fitcypher/generating-web-logos-with-ai/"><![CDATA[<style>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="en" /><updated>2025-02-02T12:29:56+11:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Alex Laverty</title><subtitle>Join Me in Overthinking Absolutely Everything
+</subtitle><author><name>Alex Laverty</name><email>your-email@domain.com</email></author><entry><title type="html">Django Model</title><link href="http://localhost:4000/fitcypher/django-model/" rel="alternate" type="text/html" title="Django Model" /><published>2025-02-02T12:34:00+11:00</published><updated>2025-02-02T12:34:00+11:00</updated><id>http://localhost:4000/fitcypher/django-model</id><content type="html" xml:base="http://localhost:4000/fitcypher/django-model/"><![CDATA[<p>Today I am working on the FitCypher database backend, to keep it simple the nutrition and health metrics will be posted into a common Entry model :</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Entry</span><span class="p">(</span><span class="n">models</span><span class="p">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="nc">ForeignKey</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="p">.</span><span class="n">CASCADE</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="sh">"</span><span class="s">entries</span><span class="sh">"</span><span class="p">)</span>
+    <span class="n">date</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="nc">DateTimeField</span><span class="p">()</span>
+    <span class="n">tracking</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="nc">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+    <span class="n">string_value</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="nc">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">numerical_value</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="nc">DecimalField</span><span class="p">(</span><span class="n">max_digits</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">decimal_places</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">notes</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="nc">TextField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">tags</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="nc">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">source</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="nc">TextField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="sh">"</span><span class="s">fitcypher</span><span class="sh">"</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="sh">"</span><span class="si">{</span><span class="n">self</span><span class="p">.</span><span class="n">date</span><span class="p">.</span><span class="nf">strftime</span><span class="p">(</span><span class="sh">'</span><span class="s">%Y-%m-%d</span><span class="sh">'</span><span class="p">)</span><span class="si">}</span><span class="s">, </span><span class="si">{</span><span class="n">self</span><span class="p">.</span><span class="n">user</span><span class="si">}</span><span class="s">, </span><span class="si">{</span><span class="n">self</span><span class="p">.</span><span class="n">string_value</span><span class="si">}</span><span class="sh">"</span>
+</code></pre></div></div>
+
+<p>This <code class="language-plaintext highlighter-rouge">Entry</code> model is a flexible and generic way to store various health and fitness metrics for users.</p>
+
+<p>Below is an explanation of each field and its purpose:</p>
+
+<hr />
+
+<h3 id="1-user">1. <strong><code class="language-plaintext highlighter-rouge">user</code></strong></h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="n">user</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="nc">ForeignKey</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="p">.</span><span class="n">CASCADE</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="sh">"</span><span class="s">entries</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+<ul>
+  <li><strong>Purpose</strong>: This field establishes a relationship between the <code class="language-plaintext highlighter-rouge">Entry</code> and the <code class="language-plaintext highlighter-rouge">User</code> model. It indicates which user the entry belongs to.</li>
+  <li><strong>Details</strong>:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">on_delete=models.CASCADE</code>: If the user is deleted, all their associated entries will also be deleted.</li>
+      <li><code class="language-plaintext highlighter-rouge">related_name="entries"</code>: This allows you to access all entries for a specific user using <code class="language-plaintext highlighter-rouge">user.entries</code>.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="2-date">2. <strong><code class="language-plaintext highlighter-rouge">date</code></strong></h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="n">date</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="nc">DateTimeField</span><span class="p">()</span>
+</code></pre></div></div>
+<ul>
+  <li><strong>Purpose</strong>: This field stores the date and time when the entry was recorded.</li>
+  <li><strong>Details</strong>:
+    <ul>
+      <li>It is essential for tracking when a specific health metric was logged (e.g., weight on a particular day, steps taken on a specific date).</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="3-tracking">3. <strong><code class="language-plaintext highlighter-rouge">tracking</code></strong></h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="n">tracking</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="nc">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
+</code></pre></div></div>
+<ul>
+  <li><strong>Purpose</strong>: This field specifies what type of health or fitness metric is being tracked (e.g., “weight”, “steps”, “calories”, “heart_rate”).</li>
+  <li><strong>Details</strong>:
+    <ul>
+      <li>It acts as a label or category for the entry, allowing you to differentiate between different types of metrics.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="4-string_value">4. <strong><code class="language-plaintext highlighter-rouge">string_value</code></strong></h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="n">string_value</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="nc">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+<ul>
+  <li><strong>Purpose</strong>: This field stores a textual value for the tracked metric, if applicable.</li>
+  <li><strong>Details</strong>:
+    <ul>
+      <li>It is optional (<code class="language-plaintext highlighter-rouge">null=True, blank=True</code>) because not all metrics will have a textual value.</li>
+      <li>Example: If <code class="language-plaintext highlighter-rouge">tracking="mood"</code>, <code class="language-plaintext highlighter-rouge">string_value</code> could be “happy” or “stressed”.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="5-numerical_value">5. <strong><code class="language-plaintext highlighter-rouge">numerical_value</code></strong></h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="n">numerical_value</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="nc">DecimalField</span><span class="p">(</span><span class="n">max_digits</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">decimal_places</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+<ul>
+  <li><strong>Purpose</strong>: This field stores a numerical value for the tracked metric, if applicable.</li>
+  <li><strong>Details</strong>:
+    <ul>
+      <li>It is optional (<code class="language-plaintext highlighter-rouge">null=True, blank=True</code>) because not all metrics will have a numerical value.</li>
+      <li>Example: If <code class="language-plaintext highlighter-rouge">tracking="weight"</code>, <code class="language-plaintext highlighter-rouge">numerical_value</code> could be <code class="language-plaintext highlighter-rouge">70.5</code> (in kg).</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="6-notes">6. <strong><code class="language-plaintext highlighter-rouge">notes</code></strong></h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="n">notes</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="nc">TextField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+<ul>
+  <li><strong>Purpose</strong>: This field allows users to add additional comments or details about the entry.</li>
+  <li><strong>Details</strong>:
+    <ul>
+      <li>It is optional (<code class="language-plaintext highlighter-rouge">null=True, blank=True</code>).</li>
+      <li>Example: If <code class="language-plaintext highlighter-rouge">tracking="workout"</code>, <code class="language-plaintext highlighter-rouge">notes</code> could describe the type of workout performed (e.g., “30 minutes of cardio and 20 minutes of strength training”).</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="7-tags">7. <strong><code class="language-plaintext highlighter-rouge">tags</code></strong></h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="n">tags</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="nc">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+<ul>
+  <li><strong>Purpose</strong>: This field allows users to add tags or keywords to categorize or filter entries.</li>
+  <li><strong>Details</strong>:
+    <ul>
+      <li>It is optional (<code class="language-plaintext highlighter-rouge">null=True, blank=True</code>).</li>
+      <li>Example: Tags like “morning”, “evening”, “high-intensity”, or “low-carb” can help organize entries.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="8-source">8. <strong><code class="language-plaintext highlighter-rouge">source</code></strong></h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="n">source</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="nc">TextField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="sh">"</span><span class="s">fitcypher</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+<ul>
+  <li><strong>Purpose</strong>: This field indicates the source of the entry (e.g., a specific app, device, or manual entry).</li>
+  <li><strong>Details</strong>:
+    <ul>
+      <li>It has a default value of <code class="language-plaintext highlighter-rouge">"fitcypher"</code>, which could be your app’s name.</li>
+      <li>Example: If the data is synced from a fitness tracker like Fitbit, <code class="language-plaintext highlighter-rouge">source</code> could be <code class="language-plaintext highlighter-rouge">"Fitbit"</code>.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="9-__str__-method">9. <strong><code class="language-plaintext highlighter-rouge">__str__</code> Method</strong></h3>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
+       <span class="k">return</span> <span class="sa">f</span><span class="sh">"</span><span class="si">{</span><span class="n">self</span><span class="p">.</span><span class="n">date</span><span class="p">.</span><span class="nf">strftime</span><span class="p">(</span><span class="sh">'</span><span class="s">%Y-%m-%d</span><span class="sh">'</span><span class="p">)</span><span class="si">}</span><span class="s">, </span><span class="si">{</span><span class="n">self</span><span class="p">.</span><span class="n">user</span><span class="si">}</span><span class="s">, </span><span class="si">{</span><span class="n">self</span><span class="p">.</span><span class="n">string_value</span><span class="si">}</span><span class="sh">"</span>
+</code></pre></div></div>
+<ul>
+  <li><strong>Purpose</strong>: This method provides a human-readable string representation of the <code class="language-plaintext highlighter-rouge">Entry</code> object.</li>
+  <li><strong>Details</strong>:
+    <ul>
+      <li>It is useful for debugging, logging, or displaying the entry in the Django admin interface.</li>
+      <li>Example output: <code class="language-plaintext highlighter-rouge">"2023-10-15, john_doe, 70.5"</code>.</li>
+    </ul>
+  </li>
+</ul>
+
+<hr />
+
+<h3 id="summary-of-use-cases">Summary of Use Cases</h3>
+<ul>
+  <li><strong>Tracking Weight</strong>: <code class="language-plaintext highlighter-rouge">tracking="weight"</code>, <code class="language-plaintext highlighter-rouge">numerical_value=70.5</code>, <code class="language-plaintext highlighter-rouge">notes="After breakfast"</code>, <code class="language-plaintext highlighter-rouge">tags="morning"</code>.</li>
+  <li><strong>Tracking Mood</strong>: <code class="language-plaintext highlighter-rouge">tracking="mood"</code>, <code class="language-plaintext highlighter-rouge">string_value="happy"</code>, <code class="language-plaintext highlighter-rouge">notes="Had a great workout"</code>.</li>
+  <li><strong>Tracking Steps</strong>: <code class="language-plaintext highlighter-rouge">tracking="steps"</code>, <code class="language-plaintext highlighter-rouge">numerical_value=10000</code>, <code class="language-plaintext highlighter-rouge">source="Fitbit"</code>.</li>
+</ul>
+
+<p>This model is highly flexible and can accommodate a wide range of health and fitness metrics, making it a great foundation for a simple health and fitness tracker.</p>
+
+<p>We will use Django Rest Framework as the API framework to interact with this model.</p>
+
+<p>To make the API friendly to use we’ll provide an API UI :</p>
+
+<p><img src="/assets/images/fitcypher/20250202/fitcypher-entries-api.png" alt="alt text" /></p>]]></content><author><name>Alex Laverty</name><email>your-email@domain.com</email></author><category term="fitcypher" /><summary type="html"><![CDATA[Today I am working on the FitCypher database backend, to keep it simple the nutrition and health metrics will be posted into a common Entry model :]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/fitcypher/20250201/django-fitcypher.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/fitcypher/20250201/django-fitcypher.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">REST API</title><link href="http://localhost:4000/fitcypher/rest-api/" rel="alternate" type="text/html" title="REST API" /><published>2025-02-02T12:34:00+11:00</published><updated>2025-02-02T12:34:00+11:00</updated><id>http://localhost:4000/fitcypher/rest-api</id><content type="html" xml:base="http://localhost:4000/fitcypher/rest-api/"><![CDATA[<p>We will use Django Rest Framework as the API framework to interact with this model.</p>
+
+<p>Using API’s allows to either add entries in bulk, allow users to export and import from other systems, allow for automation and scheduled data syncing.</p>
+
+<p>To make the API friendly to use we’ll provide an API UI :</p>
+
+<p><img src="/assets/images/fitcypher/20250202/fitcypher-entries-api.png" alt="alt text" /></p>
+
+<h2 id="rest-api-authentication">Rest API Authentication</h2>
+
+<p>For now we will just use basic authentication, username and password, however in the future we’ll implement some better authentication methods like token authentication.</p>
+
+<h2 id="fitcypher-api-curl-commands">FitCypher API Curl Commands</h2>
+
+<h3 id="get">GET</h3>
+
+<p>Curl Command :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl - X GET http: //127.0.0.1:8000/api/entries/ -u your_username:your_password
+</code></pre></div></div>
+
+<p>JSON Response :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    [{
+        "id": 1,
+        "user": {
+            "id": 1,
+            "username": "alex"
+        },
+        "date": "2025-02-02T07:51:00Z",
+        "tracking": "Food",
+        "string_value": "Apple",
+        "numerical_value": null,
+        "notes": "",
+        "tags": "",
+        "source": "FitCypher"
+    }, {
+        "id": 2,
+        "user": {
+            "id": 1,
+            "username": "alex"
+        },
+        "date": "2025-02-02T07:52:00Z",
+        "tracking": "Exercise",
+        "string_value": "Push Ups",
+        "numerical_value": "10.00",
+        "notes": "",
+        "tags": "",
+        "source": "FitCypher"
+    }]
+</code></pre></div></div>
+
+<p>If you install JQ you can also get pretty printed output via :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -s -X GET http://127.0.0.1:8000/api/entries/ -u your_username:your_password | jq
+[
+  {
+    "id": 1,
+    "user": {
+      "id": 1,
+      "username": "alex"
+    },
+    "date": "2025-02-02T07:51:00Z",
+    "tracking": "Food",
+    "string_value": "Apple",
+    "numerical_value": null,
+    "notes": "",
+    "tags": "",
+    "source": "FitCypher"
+  },
+  {
+    "id": 2,
+    "user": {
+      "id": 1,
+      "username": "alex"
+    },
+    "date": "2025-02-02T07:52:00Z",
+    "tracking": "Exercise",
+    "string_value": "Push Ups",
+    "numerical_value": "10.00",
+    "notes": "",
+    "tags": "",
+    "source": "FitCypher"
+  },
+  {
+    "id": 3,
+    "user": {
+      "id": 1,
+      "username": "alex"
+    },
+    "date": "2023-10-15T12:00:00Z",
+    "tracking": "weight",
+    "string_value": null,
+    "numerical_value": "70.50",
+    "notes": "After breakfast",
+    "tags": "morning",
+    "source": "fitcypher"
+  }
+]
+</code></pre></div></div>
+
+<h3 id="post">POST</h3>
+
+<p>Add a new entry via the API</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -X POST http://127.0.0.1:8000/api/entries/ \
+-H "Content-Type: application/json" \
+-u your_username:your_password \
+-d '{
+    "date": "2023-10-15T12:00:00Z",
+    "tracking": "weight",
+    "numerical_value": 70.5,
+    "notes": "After breakfast",
+    "tags": "morning",
+    "source": "fitcypher"
+}'
+</code></pre></div></div>]]></content><author><name>Alex Laverty</name><email>your-email@domain.com</email></author><category term="fitcypher" /><summary type="html"><![CDATA[We will use Django Rest Framework as the API framework to interact with this model.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/fitcypher/20250201/django-fitcypher.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/fitcypher/20250201/django-fitcypher.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Generating FitCypher web logos with AI</title><link href="http://localhost:4000/fitcypher/generating-web-logos-with-ai/" rel="alternate" type="text/html" title="Generating FitCypher web logos with AI" /><published>2025-02-01T18:34:00+11:00</published><updated>2025-02-01T18:34:00+11:00</updated><id>http://localhost:4000/fitcypher/generating-web-logos-with-ai</id><content type="html" xml:base="http://localhost:4000/fitcypher/generating-web-logos-with-ai/"><![CDATA[<style>
 .image-gallery {
     display: flex;
     flex-wrap: wrap;
