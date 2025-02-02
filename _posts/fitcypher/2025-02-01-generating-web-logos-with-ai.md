@@ -20,7 +20,7 @@ image: /assets/images/fitcypher/fitcypher-logo.jpg
 }
 </style>
 
-I need a logo for the FitCypher app and I am a hopeless artist so I'm using AI image generation to come up with a logo, here's a few I've generated using 
+I need a logo for the FitCypher app and I am a hopeless artist so I'm using [Meta AI](https://www.meta.ai/) image generation to come up with a logo, here's a few I've generated 
 
 <div class="image-gallery">
     <img src="/assets/images/fitcypher/20250201/fitcypher-logo-001.jpeg" alt="Logo 1">
