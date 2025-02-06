@@ -30,3 +30,15 @@ a:link {
   a:active {
     color: #0065b3; /* even darker blue */
   }
+
+
+
+@media only screen and (max-width: 1370px) {
+  ul, ol {
+    margin-left: 0px;
+  }
+  .wrapper {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+}
