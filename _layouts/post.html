@@ -17,25 +17,31 @@ layout: base
         </time>
       {%- endif -%}
       {%- if page.author -%}
-    • {% for author in page.author %}
-      <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span class="p-author h-card" itemprop="name">{{ author }}</span></span>
-        {%- if forloop.last == false %}, {% endif -%}
-    {% endfor %}
-    {%- else -%}
+        • {% for author in page.author %}
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">{{ author }}</span>
+          </span>
+          {%- if forloop.last == false %}, {% endif -%}
+        {% endfor %}
+      {%- else -%}
         • <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <span class="p-author h-card" itemprop="name">{{ site.author.name }}</span></span>
-        • Views <span class="p-author h-card" id="view-count">1</span>
+          <span class="p-author h-card" itemprop="name">{{ site.author.name }}</span>
+        </span>
+        • Views <span class="p-author h-card" id="view-count">-</span>
         
-          <script>
-            fetch('https://gc.zgo.at/count.json?url=' + window.location.href)
-              .then(response => response.json())
-              .then(data => {
-                document.getElementById('view-count').textContent = data.pageviews;
-              })
-              .catch(error => console.error('Error fetching view count:', error));
-          </script>
-    {%- endif -%}</p>
+        <script>
+          fetch('https://{{ site.goatcounter }}.goatcounter.com/counter/' + encodeURIComponent(window.location.pathname))
+            .then(response => response.json())
+            .then(data => {
+              document.getElementById('view-count').textContent = data.count;
+            })
+            .catch(error => {
+              console.error('Error fetching view count:', error);
+              document.getElementById('view-count').textContent = '-';
+            });
+        </script>
+      {%- endif -%}
+    </p>
   </header>
   <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
 
