@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-03-09T14:09:29+11:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Alex Laverty</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>Alex Laverty</name><email>alaverty@gmail.com</email></author><entry><title type="html">List of Fitness Tests</title><link href="http://localhost:4000/health/fitness-tests" rel="alternate" type="text/html" title="List of Fitness Tests" /><published>2025-02-22T11:34:00+11:00</published><updated>2025-02-22T11:34:00+11:00</updated><id>http://localhost:4000/health/fitness-tests</id><content type="html" xml:base="http://localhost:4000/health/fitness-tests"><![CDATA[<p>List of ways to test your fitness</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-03-09T14:47:32+11:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Alex Laverty</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>Alex Laverty</name><email>alaverty@gmail.com</email></author><entry><title type="html">List of Fitness Tests</title><link href="http://localhost:4000/health/fitness-tests" rel="alternate" type="text/html" title="List of Fitness Tests" /><published>2025-02-22T11:34:00+11:00</published><updated>2025-02-22T11:34:00+11:00</updated><id>http://localhost:4000/health/fitness-tests</id><content type="html" xml:base="http://localhost:4000/health/fitness-tests"><![CDATA[<p>List of ways to test your fitness</p>
 
 <p>Continuous Pushups</p>
 
@@ -197,7 +197,75 @@ https://nrpt.co.uk/training/tests/running/cooper.htm</p>
   <li>Record detailed metrics for tracking</li>
   <li>Use standardized equipment when possible</li>
   <li>Have a spotter present for safety when needed</li>
-</ol>]]></content><author><name>Alex Laverty</name><email>alaverty@gmail.com</email></author><category term="health" /><summary type="html"><![CDATA[List of ways to test your fitness]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/20250209/cholesterol.png" /><media:content medium="image" url="http://localhost:4000/assets/images/20250209/cholesterol.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Summary - Total cholesterol and all-cause mortality by sex and age</title><link href="http://localhost:4000/health/cholesterol-study" rel="alternate" type="text/html" title="Summary - Total cholesterol and all-cause mortality by sex and age" /><published>2025-02-09T11:34:00+11:00</published><updated>2025-02-09T11:34:00+11:00</updated><id>http://localhost:4000/health/cholesterol-study</id><content type="html" xml:base="http://localhost:4000/health/cholesterol-study"><![CDATA[<p>Key points from the text :</p>
+</ol>]]></content><author><name>Alex Laverty</name><email>alaverty@gmail.com</email></author><category term="health" /><summary type="html"><![CDATA[List of ways to test your fitness]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/20250209/cholesterol.png" /><media:content medium="image" url="http://localhost:4000/assets/images/20250209/cholesterol.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Optimising Nutrition with Genetic Algorithms</title><link href="http://localhost:4000/optimising-nutrition/optimising-nutrition-with-genetic-algorithms" rel="alternate" type="text/html" title="Optimising Nutrition with Genetic Algorithms" /><published>2025-02-22T11:34:00+11:00</published><updated>2025-02-22T11:34:00+11:00</updated><id>http://localhost:4000/optimising-nutrition/optimising-nutrition-with-genetic-algorithms</id><content type="html" xml:base="http://localhost:4000/optimising-nutrition/optimising-nutrition-with-genetic-algorithms"><![CDATA[<div style="width: 100%; height: 250px; overflow: hidden; margin-bottom: 20px;">
+    <img src="/images/2025-03-09/optimised-nutrition-2.jpg" style="width: 100%; height: 250px; object-fit: cover; object-position: center;" />
+</div>
+<p>Have you ever wondered how to create the perfect meal plan that hits all your nutritional needs? I created a program that uses artificial intelligence to solve this puzzle, and I wanted to share how it works in simple terms.</p>
+
+<h2 id="what-does-it-do">What Does It Do?</h2>
+
+<p>Imagine you’re trying to cook a meal that gives you all your daily vitamins and minerals. You open your fridge and pantry, stare at all the ingredients, and think “How much of each thing should I use to get the perfect balance?” That’s exactly what this program figures out for you!</p>
+
+<h2 id="how-does-it-work">How Does It Work?</h2>
+
+<p>The program uses something called a “genetic algorithm,” which is inspired by how nature evolves. Here’s a simple breakdown:</p>
+
+<ol>
+  <li>
+    <p><strong>First Try</strong>: The program starts by randomly picking foods and amounts (like “100g of spinach, 50g of chicken, 200g of sweet potato”)</p>
+  </li>
+  <li>
+    <p><strong>Scoring</strong>: It checks how good each meal plan is by comparing it to what your body needs daily (vitamins, proteins, etc.)</p>
+  </li>
+  <li><strong>Evolution</strong>: Just like in nature, it:
+    <ul>
+      <li>Keeps the best meal plans</li>
+      <li>Combines them to make new ones (like mixing two recipes)</li>
+      <li>Makes small random changes (like adding a bit more broccoli or less rice)</li>
+    </ul>
+  </li>
+  <li><strong>Repeat</strong>: It does this hundreds of times until it finds really good combinations</li>
+</ol>
+
+<h2 id="what-makes-it-special">What Makes It Special?</h2>
+
+<ul>
+  <li><strong>Different Diets</strong>: It can create meal plans for:
+    <ul>
+      <li>Regular diets (all foods)</li>
+      <li>Vegan diets</li>
+      <li>Whole food plant-based diets</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Smart Balancing</strong>: It’s not just about calories - it looks at over 30 different nutrients!</p>
+  </li>
+  <li><strong>Practical Results</strong>: You get actual recipes with gram-precise measurements of each ingredient</li>
+</ul>
+
+<h2 id="real-world-example">Real-World Example</h2>
+
+<p>Let’s say it creates a meal with:</p>
+<ul>
+  <li>100g spinach</li>
+  <li>150g sweet potato</li>
+  <li>50g chickpeas</li>
+  <li>30g almonds</li>
+</ul>
+
+<p>It will tell you exactly how many vitamins and minerals you’re getting and how close it is to ideal daily values. It’s like having a nutritionist and chef working together!</p>
+
+<h2 id="why-did-i-make-this">Why Did I Make This?</h2>
+
+<p>I was curious if a computer could help solve the complex puzzle of nutrition. Instead of just counting calories or following generic meal plans, this tool tries to find truly optimized combinations of real foods.</p>
+
+<h2 id="want-to-try-it">Want to Try It?</h2>
+
+<p>The program is open source and available on GitHub. While it might look complicated under the hood, the results are easy to understand - just click any recipe to see exactly what to eat and what nutrition you’ll get from it.</p>
+
+<p><em>Note: While this is a fun and interesting experiment, always consult with healthcare professionals about your specific dietary needs!</em></p>
+
+<p><a href="https://alexlaverty.github.io/optimize-nutrition/">Check out the live results here</a></p>]]></content><author><name>Alex Laverty</name><email>alaverty@gmail.com</email></author><category term="optimising-nutrition" /><summary type="html"><![CDATA[Have you ever wondered how to create the perfect meal plan that hits all your nutritional needs? I created a program that uses artificial intelligence to solve this puzzle, and I wanted to share how it works in simple terms.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/20250209/cholesterol.png" /><media:content medium="image" url="http://localhost:4000/assets/images/20250209/cholesterol.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Summary - Total cholesterol and all-cause mortality by sex and age</title><link href="http://localhost:4000/health/cholesterol-study" rel="alternate" type="text/html" title="Summary - Total cholesterol and all-cause mortality by sex and age" /><published>2025-02-09T11:34:00+11:00</published><updated>2025-02-09T11:34:00+11:00</updated><id>http://localhost:4000/health/cholesterol-study</id><content type="html" xml:base="http://localhost:4000/health/cholesterol-study"><![CDATA[<p>Key points from the text :</p>
 
 <p>https://www.nature.com/articles/s41598-018-38461-y</p>
 
@@ -727,8 +795,4 @@ pip install dj-database-url
 
 <p>FitCypher will be hosted on PythonAnywhere free tier for the time being :</p>
 
-<p><a href="https://alexlaverty.pythonanywhere.com/">https://alexlaverty.pythonanywhere.com/</a></p>]]></content><author><name>Alex Laverty</name><email>alaverty@gmail.com</email></author><category term="fitcypher" /><summary type="html"><![CDATA[I’m going to build a fitness and nutrition tracker using Django and document along the way.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/fitcypher/fitcypher.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/fitcypher/fitcypher.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Queenscliff Beach Surfing</title><link href="http://localhost:4000/queenscliff/queenscliff-beach-surfing" rel="alternate" type="text/html" title="Queenscliff Beach Surfing" /><published>2020-02-15T12:00:00+11:00</published><updated>2020-02-15T12:00:00+11:00</updated><id>http://localhost:4000/queenscliff/queenscliff-beach-surfing</id><content type="html" xml:base="http://localhost:4000/queenscliff/queenscliff-beach-surfing"><![CDATA[<p>Some video of the tail end of the large surf from the recent storm. Queenscliff point was firing and had some ridable waves but they looked a bit too awkward for people to catch, starting out dumpy and quickly turning too fat.</p>
-
-<div class="youtube-wrapper">
-    <iframe src="https://www.youtube.com/embed/XjwAR55QXro?modestbranding=1" allowfullscreen=""></iframe>
-</div>]]></content><author><name>alexlaverty</name></author><category term="queenscliff" /><summary type="html"><![CDATA[Some video of the tail end of the large surf from the recent storm. Queenscliff point was firing and had some ridable waves but they looked a bit too awkward for people to catch, starting out dumpy and quickly turning too fat.]]></summary></entry></feed>
+<p><a href="https://alexlaverty.pythonanywhere.com/">https://alexlaverty.pythonanywhere.com/</a></p>]]></content><author><name>Alex Laverty</name><email>alaverty@gmail.com</email></author><category term="fitcypher" /><summary type="html"><![CDATA[I’m going to build a fitness and nutrition tracker using Django and document along the way.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/fitcypher/fitcypher.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/fitcypher/fitcypher.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>

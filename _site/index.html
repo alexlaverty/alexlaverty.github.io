@@ -199,7 +199,7 @@
     color: #666;
     font-style: italic;
     margin-top: 15px;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
   }
 
   hr {
@@ -338,6 +338,86 @@
   <main role="main">
     <div class="container">
   <div class="main-content">
+    
+      <article class="post">
+        <h2 class="post-title"><a class="nice-title" href="/optimising-nutrition/optimising-nutrition-with-genetic-algorithms">Optimising Nutrition with Genetic Algorithms</a></h2>
+        <p class="post-date">February 22, 2025</p>
+        <div class="post-content">
+          <div style="width: 100%; height: 250px; overflow: hidden; margin-bottom: 20px;">
+    <img src="/images/2025-03-09/optimised-nutrition-2.jpg" style="width: 100%; height: 250px; object-fit: cover; object-position: center;" />
+</div>
+<p>Have you ever wondered how to create the perfect meal plan that hits all your nutritional needs? I created a program that uses artificial intelligence to solve this puzzle, and I wanted to share how it works in simple terms.</p>
+
+<h2 id="what-does-it-do">What Does It Do?</h2>
+
+<p>Imagine you’re trying to cook a meal that gives you all your daily vitamins and minerals. You open your fridge and pantry, stare at all the ingredients, and think “How much of each thing should I use to get the perfect balance?” That’s exactly what this program figures out for you!</p>
+
+<h2 id="how-does-it-work">How Does It Work?</h2>
+
+<p>The program uses something called a “genetic algorithm,” which is inspired by how nature evolves. Here’s a simple breakdown:</p>
+
+<ol>
+  <li>
+    <p><strong>First Try</strong>: The program starts by randomly picking foods and amounts (like “100g of spinach, 50g of chicken, 200g of sweet potato”)</p>
+  </li>
+  <li>
+    <p><strong>Scoring</strong>: It checks how good each meal plan is by comparing it to what your body needs daily (vitamins, proteins, etc.)</p>
+  </li>
+  <li><strong>Evolution</strong>: Just like in nature, it:
+    <ul>
+      <li>Keeps the best meal plans</li>
+      <li>Combines them to make new ones (like mixing two recipes)</li>
+      <li>Makes small random changes (like adding a bit more broccoli or less rice)</li>
+    </ul>
+  </li>
+  <li><strong>Repeat</strong>: It does this hundreds of times until it finds really good combinations</li>
+</ol>
+
+<h2 id="what-makes-it-special">What Makes It Special?</h2>
+
+<ul>
+  <li><strong>Different Diets</strong>: It can create meal plans for:
+    <ul>
+      <li>Regular diets (all foods)</li>
+      <li>Vegan diets</li>
+      <li>Whole food plant-based diets</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Smart Balancing</strong>: It’s not just about calories - it looks at over 30 different nutrients!</p>
+  </li>
+  <li><strong>Practical Results</strong>: You get actual recipes with gram-precise measurements of each ingredient</li>
+</ul>
+
+<h2 id="real-world-example">Real-World Example</h2>
+
+<p>Let’s say it creates a meal with:</p>
+<ul>
+  <li>100g spinach</li>
+  <li>150g sweet potato</li>
+  <li>50g chickpeas</li>
+  <li>30g almonds</li>
+</ul>
+
+<p>It will tell you exactly how many vitamins and minerals you’re getting and how close it is to ideal daily values. It’s like having a nutritionist and chef working together!</p>
+
+<h2 id="why-did-i-make-this">Why Did I Make This?</h2>
+
+<p>I was curious if a computer could help solve the complex puzzle of nutrition. Instead of just counting calories or following generic meal plans, this tool tries to find truly optimized combinations of real foods.</p>
+
+<h2 id="want-to-try-it">Want to Try It?</h2>
+
+<p>The program is open source and available on GitHub. While it might look complicated under the hood, the results are easy to understand - just click any recipe to see exactly what to eat and what nutrition you’ll get from it.</p>
+
+<p><em>Note: While this is a fun and interesting experiment, always consult with healthcare professionals about your specific dietary needs!</em></p>
+
+<p><a href="https://alexlaverty.github.io/optimize-nutrition/">Check out the live results here</a></p>
+
+        </div>
+      </article>
+      
+        <hr>
+      
     
       <article class="post">
         <h2 class="post-title"><a class="nice-title" href="/health/fitness-tests">List of Fitness Tests</a></h2>
@@ -587,56 +667,6 @@ https://nrpt.co.uk/training/tests/running/cooper.htm</p>
         </div>
       </article>
       
-        <hr>
-      
-    
-      <article class="post">
-        <h2 class="post-title"><a class="nice-title" href="/fitcypher/random-youtube-workout">Random Bodyweight Workout with Video!</a></h2>
-        <p class="post-date">February 02, 2025</p>
-        <div class="post-content">
-          <p>I have added a new workout page, this one will read a list of youtube videos from a json file, for example :</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/src/fitcypher$ cat ui/data/darebee.json 
-[
-  {
-    "id": "4XcGTvcSRxY",
-    "title": "hop heel clicks",
-    "duration": 8
-  },
-  {
-    "id": "wqfRvXc7BHY",
-    "title": "half squat walk",
-    "duration": 19
-  },
-  {
-    "id": "HAQvQXovwuo",
-    "title": "side splits",
-    "duration": 83
-  }
-]
-</code></pre></div></div>
-
-<p>and then will play a random youtube video for the user with a counter of the elapsed time :</p>
-
-<p><img src="/assets/images/fitcypher/20250202/screenshot004.png" alt="alt text" /></p>
-
-<p>Once the user has done the exercise for as long as they want, they click the Complete button, this will save the exercise and duration to the database.</p>
-
-<p>If an exercise video comes up that you don’t like click the skip button and it will go to the next video and will not save the exercise to the database.</p>
-
-<p>Checkout the FitCypher Workouts here :</p>
-
-<p><a href="https://alexlaverty.pythonanywhere.com/workouts">https://alexlaverty.pythonanywhere.com/workouts</a></p>
-
-<p><img src="/assets/images/fitcypher/20250202/screenshot005.png" alt="alt text" /></p>
-
-<p>Or git clone the FitCypher github repo and run it locally :</p>
-
-<p><a href="https://github.com/alexlaverty/fitcypher">https://github.com/alexlaverty/fitcypher</a></p>
-
-        </div>
-      </article>
-      
     
     <div class="pagination">
   
@@ -655,7 +685,6 @@ https://nrpt.co.uk/training/tests/running/cooper.htm</p>
   </div>
 
   <div class="sidebar">
-    <a href="https://www.buymeacoffee.com/alexlaverty" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
 
     <a href="/">
         <center>
@@ -776,6 +805,16 @@ https://nrpt.co.uk/training/tests/running/cooper.htm</p>
                 
                 
                 <li class="cats">
+                    <a href="/categories/optimising-nutrition">
+                        optimising nutrition
+                        <span>(1)</span>
+                    </a>
+                </li>
+            
+                
+                
+                
+                <li class="cats">
                     <a href="/categories/manly-dam">
                         manly dam
                         <span>(1)</span>
@@ -822,6 +861,13 @@ https://nrpt.co.uk/training/tests/running/cooper.htm</p>
                     </a>
                 </li>
             
+        </ul>
+        <hr>
+    </nav>
+    <nav class="site-nav">
+        <h2>Support</h2>
+        <ul style="padding-top: 10px;">
+            <li class="cats"><a href="https://www.buymeacoffee.com/alexlaverty" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a></li>
         </ul>
         <hr>
     </nav>
