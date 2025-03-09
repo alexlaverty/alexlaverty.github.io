@@ -7,6 +7,7 @@
   <!-- <link rel="stylesheet" href="/assets/css/main.css"> -->
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>About | Alex Laverty</title>
 <meta name="generator" content="Jekyll v4.4.1" />
@@ -153,7 +154,7 @@
   .profile-image img {
     max-width: 100%;
     border-radius: 5%;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
   }
 
   .site-nav ul {
@@ -286,7 +287,44 @@
     padding: 8px;
     border-bottom: 1px solid #eee;
 }
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
 
+.social-icons a {
+    background: #f0f0f0;
+    color: #333;
+    width: 35px;
+    height: 35px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    transform: translateY(-3px);
+}
+
+.social-icons a.youtube:hover {
+    background: #FF0000;
+    color: white;
+}
+
+.social-icons a.linkedin:hover {
+    background: #0077B5;
+    color: white;
+}
+
+.social-icons a.github:hover {
+    background: #333;
+    color: white;
+}
   </style>
 </head>
 <body>

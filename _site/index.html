@@ -7,6 +7,7 @@
   <!-- <link rel="stylesheet" href="/assets/css/main.css"> -->
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>Alex Laverty | Code, Science, Philosophy, Humor</title>
 <meta name="generator" content="Jekyll v4.4.1" />
@@ -154,7 +155,7 @@
   .profile-image img {
     max-width: 100%;
     border-radius: 5%;
-    margin-bottom: 10px;
+    margin-bottom: 0px;
   }
 
   .site-nav ul {
@@ -287,7 +288,44 @@
     padding: 8px;
     border-bottom: 1px solid #eee;
 }
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
 
+.social-icons a {
+    background: #f0f0f0;
+    color: #333;
+    width: 35px;
+    height: 35px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    transform: translateY(-3px);
+}
+
+.social-icons a.youtube:hover {
+    background: #FF0000;
+    color: white;
+}
+
+.social-icons a.linkedin:hover {
+    background: #0077B5;
+    color: white;
+}
+
+.social-icons a.github:hover {
+    background: #333;
+    color: white;
+}
   </style>
 </head>
 <body>
@@ -617,11 +655,26 @@ https://nrpt.co.uk/training/tests/running/cooper.htm</p>
   </div>
 
   <div class="sidebar">
+    <a href="https://www.buymeacoffee.com/alexlaverty" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
+
     <a href="/">
+        <center>
         <h1 class="site-title">Alex Laverty</h1>
+        </center>
     </a>
     <div class="profile-image">
         <a href="/"><img src="/assets/images/alexlaverty.jpg" alt="Alex Laverty"></a>
+    </div>
+    <div class="social-icons">
+        <a href="https://www.youtube.com/@alexlavertyau" class="youtube" target="_blank" title="YouTube">
+            <i class="fab fa-youtube"></i>
+        </a>
+        <!-- <a href="https://linkedin.com/in/YourProfile" class="linkedin" target="_blank" title="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+        </a> -->
+        <a href="https://github.com/alexlaverty" class="github" target="_blank" title="GitHub">
+            <i class="fab fa-github"></i>
+        </a>
     </div>
     <div class="search-container">
         <input type="text" id="search-input" placeholder="Search posts...">
@@ -633,7 +686,9 @@ https://nrpt.co.uk/training/tests/running/cooper.htm</p>
             <li class="cats"><a href="https://alexlaverty.pythonanywhere.com/" target="_blank">FitCypher</a></li>
             <li class="cats"><a href="https://alexlaverty.github.io/optimize-nutrition/" target="_blank">Optimized Nutrition</a></li>
             <li class="cats"><a href="https://www.reddit.com/r/ManlyBeach/" target="_blank">ManlyBeach Subreddit</a></li>
+            <li class="cats"><a href="https://github.com/alexlaverty?tab=repositories" target="_blank">Github Repos</a></li>
         </ul>
+
         <hr>
     </nav>
     <nav class="site-nav">
