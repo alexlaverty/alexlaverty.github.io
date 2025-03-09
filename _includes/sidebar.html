@@ -1,0 +1,22 @@
+<div class="sidebar">
+    <a href="{{ site.baseurl }}/">
+        <h1 class="site-title">Alex Laverty</h1>
+    </a>
+    <div class="profile-image">
+        <a href="{{ site.baseurl }}/"><img src="{{ site.baseurl }}/assets/images/alexlaverty.jpg" alt="Alex Laverty"></a>
+    </div>
+    <nav class="site-nav">
+        <!-- <ul>
+            <li><h2><a href="{{ site.baseurl }}/">Home</a></h2></li>
+            <li><a href="{{ site.baseurl }}/about">About</a></li>
+        </ul>
+        <hr> -->
+       <h2>Categories</h2>
+        <ul style="padding-top: 10px;">
+            {% for category in site.categories %}
+            <li class="cats"><a href="{{ site.baseurl }}/categories/{{ category | first | slugize }}">{{ category | first | replace: '-', ' ' }}</a></li>
+            {% endfor %}
+        </ul>
+        <hr>
+    </nav>
+</div>

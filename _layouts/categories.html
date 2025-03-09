@@ -1,0 +1,81 @@
+---
+layout: default
+---
+
+<div class="container">
+  <div class="main-content">
+    <h1 class="category-title">{{ page.category | replace: '-', ' '}}</h1>
+
+    {% assign category_name = page.category %}
+    {% assign posts_in_category = site.posts | where_exp: "post", "post.categories contains category_name" %}
+
+    {% for post in posts_in_category %}
+      <article class="post">
+        <h2 class="post-title"><a class="nice-title" href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+        <p class="post-date">{{ post.date | date: "%B %d, %Y" }}</p>
+        <div class="post-content">
+          {{ post.content }}
+        </div>
+      </article>
+      {% unless forloop.last %}
+        <hr>
+      {% endunless %}
+    {% endfor %}
+  </div>
+
+  {% include sidebar.html %}
+</div>
+
+<style>
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .main-content {
+    flex: 0 0 80%;
+    max-width: 80%;
+    padding-right: 20px;
+    box-sizing: border-box;
+  }
+
+  .sidebar {
+    flex: 0 0 20%;
+    max-width: 20%;
+    position: sticky;
+    top: 20px;
+    right: 0;
+    padding-left: 20px;
+    box-sizing: border-box;
+    border-left: 1px solid #eee;
+  }
+
+  .post {
+    margin-bottom: 30px;
+  }
+
+  .post-title {
+    margin-bottom: 5px;
+  }
+
+  .post-content img {
+    max-width: 100%;
+    margin-top: 15px;
+  }
+
+  .post-date {
+    color: #666;
+    font-style: italic;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  hr {
+    margin: 30px 0;
+    border: none;
+    border-top: 1px solid #eee;
+  }
+</style>

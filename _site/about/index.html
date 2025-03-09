@@ -1,53 +1,283 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<html lang="en">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Alex Laverty</title>
+  <!-- <link rel="stylesheet" href="/assets/css/main.css"> -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
 <title>About | Alex Laverty</title>
 <meta name="generator" content="Jekyll v4.4.1" />
 <meta property="og:title" content="About" />
 <meta name="author" content="Alex Laverty" />
-<meta property="og:locale" content="en" />
-<meta name="description" content="Join Me in Overthinking Absolutely Everything" />
-<meta property="og:description" content="Join Me in Overthinking Absolutely Everything" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description." />
+<meta property="og:description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description." />
 <link rel="canonical" href="http://localhost:4000/about/" />
 <meta property="og:url" content="http://localhost:4000/about/" />
 <meta property="og:site_name" content="Alex Laverty" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="About" />
-<meta name="twitter:site" content="@alaverty" />
-<meta name="twitter:creator" content="@Alex Laverty" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","author":{"@type":"Person","name":"Alex Laverty"},"description":"Join Me in Overthinking Absolutely Everything","headline":"About","name":"Alex Laverty","url":"http://localhost:4000/about/"}</script>
+{"@context":"https://schema.org","@type":"WebSite","author":{"@type":"Person","name":"Alex Laverty"},"description":"Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.","headline":"About","name":"Alex Laverty","url":"http://localhost:4000/about/"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Alex Laverty" />
+
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f9f9f9;
+    }
+
+    a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .header {
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 15px 0;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .footer {
+      background-color: #333;
+      color: #fff;
+      padding: 30px 0;
+      margin-top: 50px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .footer a {
+      color: #ccc;
+    }
+
+    .footer a:hover {
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .main-content,
+      .sidebar {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+
+      .main-content {
+        padding-right: 0;
+        margin-bottom: 30px;
+      }
+
+      .sidebar {
+        padding-left: 0;
+        border-left: none;
+        border-top: 1px solid #eee;
+        padding-top: 20px;
+      }
+    }
+    .container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .main-content {
+    flex: 0 0 80%;
+    max-width: 80%;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+  }
+
+  .sidebar {
+    flex: 0 0 20%;
+    max-width: 20%;
+    position: sticky;
+    top: 20px;
+    right: 0;
+    padding-left: 20px;
+    box-sizing: border-box;
+    border-left: 1px solid #eee;
+  }
+
+ .sidebar hr {
+  margin: 10px 0;
+ }
+ .sidebar h2 {
+  font-size: 1.2rem;
+ }
+  .site-title {
+    margin-top: 0;
+    font-size: 24px;
+  }
+  .sidebar li {
+    text-transform:capitalize;
+    font-size: 1rem;
+    font-weight: 100;
+  }
+
+
+  .profile-image img {
+    max-width: 100%;
+    border-radius: 5%;
+    margin-bottom: 20px;
+  }
+
+  .site-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .site-nav li {
+    margin-bottom: 10px;
+  }
+
+  .site-nav a {
+    text-decoration: none;
+    color: #333;
+
+  }
+  .site-nav h2 {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+  }
+  .site-nav a:hover {
+    color: #007bff;
+  }
+
+  .post {
+    margin-bottom: 30px;
+  }
+
+  .post-title {
+    margin-bottom: 5px;
+  }
+
+  .post-content img {
+    max-width: 100%;
+    margin-top: 15px;
+  }
+
+  .post-date {
+    color: #666;
+    font-style: italic;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  hr {
+    margin: 30px 0;
+    border: none;
+    border-top: 1px solid #eee;
+  }
+  .youtube-wrapper {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+    margin-top: 15px;
+    margin-bottom: 15px;}
+
+.youtube-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+.category-title {
+  text-transform:capitalize;
+  }
+
+
+  .pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  margin-top: 20px;
+}
+
+.pagination-button {
+  display: inline-block;
+  padding: 8px 15px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: #007bff;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.pagination-button:hover {
+  background-color: #0056b3;
+}
+
+.pagination-info {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.pagination-button.disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+
+
+  </style>
 </head>
-<body><header class="site-header">
-
-  <div class="wrapper"><a class="site-title" rel="author" href="/">Alex Laverty</a><nav class="site-nav">
-        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
-        <label for="nav-trigger">
-          <span class="menu-icon">
-            <svg viewBox="0 0 18 15" width="18px" height="15px">
-              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
-            </svg>
-          </span>
-        </label>
-
-        <div class="trigger"><a class="page-link" href="/categories/fitcypher/">FitCypher</a></div>
-      </nav></div>
-</header>
-<main class="page-content" aria-label="Content">
-      <div class="wrapper">
-        <article class="post">
-
-  <header class="post-header">
-    <h1 class="post-title">About</h1>
+<body>
+  <header class="header">
+    <div class="header-container">
+      <h2><a href="/" class="header-logo">Alex Laverty</a></h2>
+    </div>
   </header>
 
-  <div class="post-content">
-    <p>This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at <a href="https://jekyllrb.com/">jekyllrb.com</a></p>
+  <main role="main">
+    <div class="box">
+    <h1 class="post-title">About</h1>
+    <hr/>
+    <div class="content"><span class="post-text"><p>This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at <a href="https://jekyllrb.com/">jekyllrb.com</a></p>
 
 <p>You can find the source code for Minima at GitHub:
 <a href="https://github.com/jekyll">jekyll</a> /
@@ -57,49 +287,33 @@
 <a href="https://github.com/jekyll">jekyll</a> /
 <a href="https://github.com/jekyll/jekyll">jekyll</a></p>
 
-
-  </div>
-
-</article>
-
-      </div>
-    </main><footer class="site-footer h-card">
-  <data class="u-url" href="/"></data>
-
-  <div class="wrapper">
-
-    <div class="footer-col-wrapper">
-      <div class="footer-col">
-        <p class="feed-subscribe">
-          <a href="http://localhost:4000/feed.xml">
-            <svg class="svg-icon orange">
-              <use xlink:href="/assets/minima-social-icons.svg#rss"></use>
-            </svg><span>Subscribe</span>
-          </a>
-        </p>
-        <ul class="contact-list">
-          <li class="p-name">Alex Laverty</li>
-          <li><a class="u-email" href="mailto:your-email@domain.com">your-email@domain.com</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <p>Join Me in Overthinking Absolutely Everything
-</p>
-      </div>
-    </div>
-
-    <div class="social-links"><ul class="social-media-list"><li>
-  <a rel="me" href="https://github.com/alexlaverty" target="_blank" title="github">
-    <svg class="svg-icon grey">
-      <use xlink:href="/assets/minima-social-icons.svg#github"></use>
-    </svg>
-  </a>
-</li>
-</ul>
+</span></div>
 </div>
 
-  </div>
+  </main>
 
-</footer></body>
+  <footer class="footer">
+    <div class="footer-container">
+      <p>&copy; 2025 Alex Laverty. All rights reserved.</p>
+      <p>
+        <a href="/">Home</a> |
+        <!-- <a href="/about">About</a> -->
+      </p>
+    </div>
+  </footer>
 
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4P23WF01YZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){window.dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4P23WF01YZ');
+</script>
+
+  
+
+  <!-- <script src="/assets/js/main.js"></script> -->
+</body>
 </html>

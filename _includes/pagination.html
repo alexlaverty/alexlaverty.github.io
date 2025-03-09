@@ -1,0 +1,17 @@
+<div class="pagination">
+  {% if paginator.previous_page %}
+    <a href="{{ paginator.previous_page_path | relative_url }}" class="pagination-button prev">← Previous</a>
+  {% else %}
+    <span class="pagination-button disabled">← Previous</span>
+  {% endif %}
+
+  <span class="pagination-info">
+    Page {{ paginator.page }} of {{ paginator.total_pages }}
+  </span>
+
+  {% if paginator.next_page %}
+    <a class="pagination-button next" href="{{ paginator.next_page_path | relative_url }}">Next →</a>
+  {% else %}
+    <span class="pagination-button disabled">Next →</span>
+  {% endif %}
+</div>

@@ -1,0 +1,23 @@
+---
+layout: default
+---
+
+<div class="container">
+  <div class="main-content">
+    {% for post in paginator.posts %}
+      <article class="post">
+        <h2 class="post-title"><a class="nice-title" href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+        <p class="post-date">{{ post.date | date: "%B %d, %Y" }}</p>
+        <div class="post-content">
+          {{ post.content }}
+        </div>
+      </article>
+      {% unless forloop.last %}
+        <hr>
+      {% endunless %}
+    {% endfor %}
+    {% include pagination.html %}
+  </div>
+
+  {% include sidebar.html %}
+

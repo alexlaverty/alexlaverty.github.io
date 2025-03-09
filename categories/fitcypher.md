@@ -1,6 +1,4 @@
 ---
-layout: category
-title: FitCypher
+layout: categories
 category: fitcypher
-description: Articles about the FitCypher Health and Exercise Tracker
 ---

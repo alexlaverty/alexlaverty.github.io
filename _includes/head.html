@@ -1,14 +1,249 @@
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  {%- seo -%}
-  <link rel="stylesheet" href="{{ "/assets/css/style.css" | relative_url }}">
-  {%- feed_meta -%}
-  {%- if jekyll.environment == 'production' and site.google_analytics -%}
-    {%- include google-analytics.html -%}
-  {%- endif -%}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}Alex Laverty</title>
+  <!-- <link rel="stylesheet" href="{{ '/assets/css/main.css'}}"> -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="{{ '/assets/images/favicon.ico' | relative_url }}" type="image/x-icon">
+  {% seo %}
 
-  {%- include custom-head.html -%}
-  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f9f9f9;
+    }
+
+    a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .header {
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 15px 0;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .footer {
+      background-color: #333;
+      color: #fff;
+      padding: 30px 0;
+      margin-top: 50px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .footer a {
+      color: #ccc;
+    }
+
+    .footer a:hover {
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .main-content,
+      .sidebar {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+
+      .main-content {
+        padding-right: 0;
+        margin-bottom: 30px;
+      }
+
+      .sidebar {
+        padding-left: 0;
+        border-left: none;
+        border-top: 1px solid #eee;
+        padding-top: 20px;
+      }
+    }
+    .container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .main-content {
+    flex: 0 0 80%;
+    max-width: 80%;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+  }
+
+  .sidebar {
+    flex: 0 0 20%;
+    max-width: 20%;
+    position: sticky;
+    top: 20px;
+    right: 0;
+    padding-left: 20px;
+    box-sizing: border-box;
+    border-left: 1px solid #eee;
+  }
+
+ .sidebar hr {
+  margin: 10px 0;
+ }
+ .sidebar h2 {
+  font-size: 1.2rem;
+ }
+  .site-title {
+    margin-top: 0;
+    font-size: 24px;
+  }
+  .sidebar li {
+    text-transform:capitalize;
+    font-size: 1rem;
+    font-weight: 100;
+  }
+
+
+  .profile-image img {
+    max-width: 100%;
+    border-radius: 5%;
+    margin-bottom: 20px;
+  }
+
+  .site-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .site-nav li {
+    margin-bottom: 10px;
+  }
+
+  .site-nav a {
+    text-decoration: none;
+    color: #333;
+
+  }
+  .site-nav h2 {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+  }
+  .site-nav a:hover {
+    color: #007bff;
+  }
+
+  .post {
+    margin-bottom: 30px;
+  }
+
+  .post-title {
+    margin-bottom: 5px;
+  }
+
+  .post-content img {
+    max-width: 100%;
+    margin-top: 15px;
+  }
+
+  .post-date {
+    color: #666;
+    font-style: italic;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  hr {
+    margin: 30px 0;
+    border: none;
+    border-top: 1px solid #eee;
+  }
+  .youtube-wrapper {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+    margin-top: 15px;
+    margin-bottom: 15px;}
+
+.youtube-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+.category-title {
+  text-transform:capitalize;
+  }
+
+
+  .pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  margin-top: 20px;
+}
+
+.pagination-button {
+  display: inline-block;
+  padding: 8px 15px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: #007bff;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.pagination-button:hover {
+  background-color: #0056b3;
+}
+
+.pagination-info {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.pagination-button.disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+
+
+  </style>
 </head>

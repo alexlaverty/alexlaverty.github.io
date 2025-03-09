@@ -1,379 +1,668 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Alex Laverty | Join Me in Overthinking Absolutely Everything</title>
+<html lang="en">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alex Laverty</title>
+  <!-- <link rel="stylesheet" href="/assets/css/main.css"> -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Alex Laverty | Code, Science, Philosophy, Humor</title>
 <meta name="generator" content="Jekyll v4.4.1" />
 <meta property="og:title" content="Alex Laverty" />
 <meta name="author" content="Alex Laverty" />
-<meta property="og:locale" content="en" />
-<meta name="description" content="Join Me in Overthinking Absolutely Everything" />
-<meta property="og:description" content="Join Me in Overthinking Absolutely Everything" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description." />
+<meta property="og:description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description." />
 <link rel="canonical" href="http://localhost:4000/" />
 <meta property="og:url" content="http://localhost:4000/" />
 <meta property="og:site_name" content="Alex Laverty" />
 <meta property="og:type" content="website" />
+<link rel="next" href="http://localhost:4000/blog/page2/" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Alex Laverty" />
-<meta name="twitter:site" content="@alaverty" />
-<meta name="twitter:creator" content="@Alex Laverty" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","author":{"@type":"Person","name":"Alex Laverty"},"description":"Join Me in Overthinking Absolutely Everything","headline":"Alex Laverty","name":"Alex Laverty","url":"http://localhost:4000/"}</script>
+{"@context":"https://schema.org","@type":"WebSite","author":{"@type":"Person","name":"Alex Laverty"},"description":"Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.","headline":"Alex Laverty","name":"Alex Laverty","url":"http://localhost:4000/"}</script>
 <!-- End Jekyll SEO tag -->
-<link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Alex Laverty" />
-</head>
-<body><header class="site-header">
 
-  <div class="wrapper"><a class="site-title" rel="author" href="/">Alex Laverty</a><nav class="site-nav">
-        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
-        <label for="nav-trigger">
-          <span class="menu-icon">
-            <svg viewBox="0 0 18 15" width="18px" height="15px">
-              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
-            </svg>
-          </span>
-        </label>
 
-        <div class="trigger"><a class="page-link" href="/categories/fitcypher/">FitCypher</a></div>
-      </nav></div>
-</header>
-<main class="page-content" aria-label="Content">
-      <div class="wrapper">
-        <style>
-  .home {
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f9f9f9;
+    }
+
+    a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .header {
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      padding: 15px 0;
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .footer {
+      background-color: #333;
+      color: #fff;
+      padding: 30px 0;
+      margin-top: 50px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .footer a {
+      color: #ccc;
+    }
+
+    .footer a:hover {
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .main-content,
+      .sidebar {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+
+      .main-content {
+        padding-right: 0;
+        margin-bottom: 30px;
+      }
+
+      .sidebar {
+        padding-left: 0;
+        border-left: none;
+        border-top: 1px solid #eee;
+        padding-top: 20px;
+      }
+    }
+    .container {
+    display: flex;
+    flex-wrap: wrap;
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
   }
 
-  .post-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
-    padding: 0;
-    list-style: none;
+  .main-content {
+    flex: 0 0 80%;
+    max-width: 80%;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
   }
 
-  .post-card {
-    background: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
+  .sidebar {
+    flex: 0 0 20%;
+    max-width: 20%;
+    position: sticky;
+    top: 20px;
+    right: 0;
+    padding-left: 20px;
+    box-sizing: border-box;
+    border-left: 1px solid #eee;
   }
 
-  .post-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+ .sidebar hr {
+  margin: 10px 0;
+ }
+ .sidebar h2 {
+  font-size: 1.2rem;
+ }
+  .site-title {
+    margin-top: 0;
+    font-size: 24px;
   }
-
-  .post-card-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    display: block;
-  }
-
-  .post-card-content {
-    padding: 1rem;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .post-meta {
-    color: #666;
-    font-size: 0.9rem;
-    margin-top: 0.5rem;
-    display: block;
-  }
-
-  .post-categories {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    /* margin-bottom: 0.75rem; */
-  }
-
-  .post-category {
-    font-size: 0.8rem;
-    padding: 0.25rem 0.75rem;
-    border-radius: 16px;
-    background-color: #f0f0f0;
-    color: #666;
-    text-decoration: none;
-    transition: background-color 0.2s ease;
-  }
-
-  .post-category:hover {
-    background-color: #e0e0e0;
-  }
-
-  .post-link {
-    color: #333;
-    text-decoration: none;
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin: 0;
-    display: block;
-  }
-
-  .post-link:hover {
-    color: #0066cc;
-  }
-
-  .post-excerpt {
-    color: #444;
+  .sidebar li {
+    text-transform:capitalize;
     font-size: 1rem;
-    line-height: 1.6;
-    margin-top: 1rem;
+    font-weight: 100;
   }
+
+
+  .profile-image img {
+    max-width: 100%;
+    border-radius: 5%;
+    margin-bottom: 20px;
+  }
+
+  .site-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .site-nav li {
+    margin-bottom: 10px;
+  }
+
+  .site-nav a {
+    text-decoration: none;
+    color: #333;
+
+  }
+  .site-nav h2 {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+  }
+  .site-nav a:hover {
+    color: #007bff;
+  }
+
+  .post {
+    margin-bottom: 30px;
+  }
+
+  .post-title {
+    margin-bottom: 5px;
+  }
+
+  .post-content img {
+    max-width: 100%;
+    margin-top: 15px;
+  }
+
+  .post-date {
+    color: #666;
+    font-style: italic;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  hr {
+    margin: 30px 0;
+    border: none;
+    border-top: 1px solid #eee;
+  }
+  .youtube-wrapper {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+    margin-top: 15px;
+    margin-bottom: 15px;}
+
+.youtube-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+.category-title {
+  text-transform:capitalize;
+  }
+
 
   .pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    list-style: none;
-    padding: 2rem 0;
-    gap: 1rem;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 15px;
+  margin-top: 20px;
+}
 
-  .pagination a, .current-page, .pager-edge {
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    text-decoration: none;
-  }
+.pagination-button {
+  display: inline-block;
+  padding: 8px 15px;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: #007bff;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
 
-  .pagination a {
-    background: #f0f0f0;
-    color: #333;
-  }
+.pagination-button:hover {
+  background-color: #0056b3;
+}
 
-  .pagination a:hover {
-    background: #e0e0e0;
-  }
+.pagination-info {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
 
-  .current-page {
-    background: #0066cc;
-    color: white;
-  }
-</style>
-
-<div class="home">
+.pagination-button.disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
 
 
-  <ul class="post-grid"><li class="post-card">
-        
-        <a class="post-link" href="/health/cholesterol-study/">
-          <img src="/assets/images/20250209/cholesterol.png" alt="Summary - Total cholesterol and all-cause mortality by sex and age" class="post-card-image">
-        </a>
-        
-        <div class="post-card-content">
-          
-          <div class="post-categories">
-            
-              <a href="/categories/health" class="post-category">health</a>
-            
-          </div>
-          
-          <span class="post-meta">09 February 2025</span>
-          <a class="post-link" href="/health/cholesterol-study/">
-            Summary - Total cholesterol and all-cause mortality by sex and age
-          </a><div class="post-excerpt">
-              Key points from the text : https://www.nature.com/articles/s41598-018-38461-y Key Findings U-shaped relationship: The study found a U-shaped relationship between total cholesterol...
-            </div></div>
-
-      </li><li class="post-card">
-        
-        <a class="post-link" href="/fitcypher/random-youtube-workout/">
-          <img src="/assets/images/fitcypher/20250202/screenshot004.png" alt="Random Bodyweight Workout with Video!" class="post-card-image">
-        </a>
-        
-        <div class="post-card-content">
-          
-          <div class="post-categories">
-            
-              <a href="/categories/fitcypher" class="post-category">fitcypher</a>
-            
-          </div>
-          
-          <span class="post-meta">02 February 2025</span>
-          <a class="post-link" href="/fitcypher/random-youtube-workout/">
-            Random Bodyweight Workout with Video!
-          </a><div class="post-excerpt">
-              I have added a new workout page, this one will read a list of youtube videos from a json file,...
-            </div></div>
-
-      </li><li class="post-card">
-        
-        <a class="post-link" href="/fitcypher/quick-bodyweight-workout/">
-          <img src="/assets/images/fitcypher/20250202/body_weight_workout.jpg" alt="Quick Body Weight Workout" class="post-card-image">
-        </a>
-        
-        <div class="post-card-content">
-          
-          <div class="post-categories">
-            
-              <a href="/categories/fitcypher" class="post-category">fitcypher</a>
-            
-          </div>
-          
-          <span class="post-meta">02 February 2025</span>
-          <a class="post-link" href="/fitcypher/quick-bodyweight-workout/">
-            Quick Body Weight Workout
-          </a><div class="post-excerpt">
-              Now we’ve added a page to show a list of available Workouts to choose from : Each time the user...
-            </div></div>
-
-      </li><li class="post-card">
-        
-        <a class="post-link" href="/fitcypher/rest-api/">
-          <img src="/assets/images/fitcypher/20250202/django-rest-framework.jpg" alt="REST API" class="post-card-image">
-        </a>
-        
-        <div class="post-card-content">
-          
-          <div class="post-categories">
-            
-              <a href="/categories/fitcypher" class="post-category">fitcypher</a>
-            
-          </div>
-          
-          <span class="post-meta">02 February 2025</span>
-          <a class="post-link" href="/fitcypher/rest-api/">
-            REST API
-          </a><div class="post-excerpt">
-              We will use Django Rest Framework as the API framework to interact with this model. Using API’s allows to either...
-            </div></div>
-
-      </li><li class="post-card">
-        
-        <a class="post-link" href="/fitcypher/django-model/">
-          <img src="/assets/images/fitcypher/20250201/django-fitcypher.jpg" alt="Django Model" class="post-card-image">
-        </a>
-        
-        <div class="post-card-content">
-          
-          <div class="post-categories">
-            
-              <a href="/categories/fitcypher" class="post-category">fitcypher</a>
-            
-          </div>
-          
-          <span class="post-meta">02 February 2025</span>
-          <a class="post-link" href="/fitcypher/django-model/">
-            Django Model
-          </a><div class="post-excerpt">
-              Today I am working on the FitCypher database backend, to keep it simple the nutrition and health metrics will be...
-            </div></div>
-
-      </li><li class="post-card">
-        
-        <a class="post-link" href="/fitcypher/generating-web-logos-with-ai/">
-          <img src="/assets/images/fitcypher/fitcypher-logo.jpg" alt="Generating FitCypher web logos with AI" class="post-card-image">
-        </a>
-        
-        <div class="post-card-content">
-          
-          <div class="post-categories">
-            
-              <a href="/categories/fitcypher" class="post-category">fitcypher</a>
-            
-          </div>
-          
-          <span class="post-meta">01 February 2025</span>
-          <a class="post-link" href="/fitcypher/generating-web-logos-with-ai/">
-            Generating FitCypher web logos with AI
-          </a><div class="post-excerpt">
-              I need a logo for the FitCypher app and I am a hopeless artist so I’m using Meta AI image...
-            </div></div>
-
-      </li><li class="post-card">
-        
-        <a class="post-link" href="/fitcypher/new-django-project-copy/">
-          <img src="/assets/images/fitcypher/20250201/django-fitcypher.jpg" alt="New Django Project" class="post-card-image">
-        </a>
-        
-        <div class="post-card-content">
-          
-          <div class="post-categories">
-            
-              <a href="/categories/fitcypher" class="post-category">fitcypher</a>
-            
-          </div>
-          
-          <span class="post-meta">01 February 2025</span>
-          <a class="post-link" href="/fitcypher/new-django-project-copy/">
-            New Django Project
-          </a><div class="post-excerpt">
-              Creating a new Django Project Creating the FitCypher Django Project I switch between linux and windows desktops so the commands...
-            </div></div>
-
-      </li><li class="post-card">
-        
-        <a class="post-link" href="/fitcypher/fitcypher/">
-          <img src="/assets/images/fitcypher/fitcypher.jpg" alt="FitCypher - Fitness and Health Tracker" class="post-card-image">
-        </a>
-        
-        <div class="post-card-content">
-          
-          <div class="post-categories">
-            
-              <a href="/categories/fitcypher" class="post-category">fitcypher</a>
-            
-          </div>
-          
-          <span class="post-meta">01 February 2025</span>
-          <a class="post-link" href="/fitcypher/fitcypher/">
-            FitCypher - Fitness and Health Tracker
-          </a><div class="post-excerpt">
-              I’m going to build a fitness and nutrition tracker using Django and document along the way. The app is going...
-            </div></div>
-
-      </li></ul>
-
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-container">
+      <h2><a href="/" class="header-logo">Alex Laverty</a></h2>
     </div>
-      </div>
-    </main><footer class="site-footer h-card">
-  <data class="u-url" href="/"></data>
+  </header>
 
-  <div class="wrapper">
+  <main role="main">
+    <div class="container">
+  <div class="main-content">
+    
+      <article class="post">
+        <h2 class="post-title"><a class="nice-title" href="/health/fitness-tests">List of Fitness Tests</a></h2>
+        <p class="post-date">February 22, 2025</p>
+        <div class="post-content">
+          <p>List of ways to test your fitness</p>
 
-    <div class="footer-col-wrapper">
-      <div class="footer-col">
-        <p class="feed-subscribe">
-          <a href="http://localhost:4000/feed.xml">
-            <svg class="svg-icon orange">
-              <use xlink:href="/assets/minima-social-icons.svg#rss"></use>
-            </svg><span>Subscribe</span>
-          </a>
-        </p>
-        <ul class="contact-list">
-          <li class="p-name">Alex Laverty</li>
-          <li><a class="u-email" href="mailto:your-email@domain.com">your-email@domain.com</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <p>Join Me in Overthinking Absolutely Everything
-</p>
-      </div>
-    </div>
+<p>Continuous Pushups</p>
 
-    <div class="social-links"><ul class="social-media-list"><li>
-  <a rel="me" href="https://github.com/alexlaverty" target="_blank" title="github">
-    <svg class="svg-icon grey">
-      <use xlink:href="/assets/minima-social-icons.svg#github"></use>
-    </svg>
-  </a>
-</li>
+<p>Sit Rise Test</p>
+
+<p>Sit and Reach</p>
+
+<p>One Leg Stand</p>
+
+<p>Reaction Time</p>
+
+<p>Waist-to-Height Ratio</p>
+
+<p>Grip Strength</p>
+
+<p>12 Minute Cooper test
+https://nrpt.co.uk/training/tests/running/cooper.htm</p>
+
+<h1 id="cardiovascular--endurance-tests">Cardiovascular &amp; Endurance Tests</h1>
+<ul>
+  <li>VO2 Max Test (Gold standard for cardiorespiratory fitness)
+    <ul>
+      <li>Metric: ml/kg/min of oxygen consumption</li>
+      <li>Higher scores correlate with lower mortality risk</li>
+    </ul>
+  </li>
+  <li>6-Minute Walk Test
+    <ul>
+      <li>Metric: Distance covered in 6 minutes</li>
+      <li>Predicts functional decline and mortality in older adults</li>
+    </ul>
+  </li>
+  <li>Stair Climb Test
+    <ul>
+      <li>Metric: Time to climb 4 flights of stairs</li>
+      <li>Under 1 minute indicates good cardiac health</li>
+    </ul>
+  </li>
 </ul>
+
+<h1 id="strength--power-tests">Strength &amp; Power Tests</h1>
+<ul>
+  <li>Continuous Pushups
+    <ul>
+      <li>Metric: Number of proper form pushups</li>
+      <li>Strong indicator of overall muscular endurance</li>
+    </ul>
+  </li>
+  <li>Grip Strength
+    <ul>
+      <li>Metric: Force in kilograms using dynamometer</li>
+      <li>Powerful predictor of mortality and disability</li>
+    </ul>
+  </li>
+  <li>30-Second Chair Stand
+    <ul>
+      <li>Metric: Number of stands from sitting position</li>
+      <li>Assesses lower body strength and endurance</li>
+    </ul>
+  </li>
+  <li>Dead Hang Test
+    <ul>
+      <li>Metric: Time hanging from pull-up bar</li>
+      <li>Indicates upper body strength and shoulder health</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="balance--coordination-tests">Balance &amp; Coordination Tests</h1>
+<ul>
+  <li>One Leg Stand (Eyes Open and Closed)
+    <ul>
+      <li>Metric: Time maintaining balance</li>
+      <li>Less than 20 seconds indicates fall risk</li>
+    </ul>
+  </li>
+  <li>Tandem Walk Test
+    <ul>
+      <li>Metric: Walking heel-to-toe in straight line</li>
+      <li>Assesses dynamic balance and coordination</li>
+    </ul>
+  </li>
+  <li>Functional Reach Test
+    <ul>
+      <li>Metric: Distance reached forward while standing</li>
+      <li>Predictor of fall risk</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="flexibility--mobility-tests">Flexibility &amp; Mobility Tests</h1>
+<ul>
+  <li>Sit and Reach
+    <ul>
+      <li>Metric: Distance reached past toes</li>
+      <li>Indicates hamstring and lower back flexibility</li>
+    </ul>
+  </li>
+  <li>Shoulder Mobility Test
+    <ul>
+      <li>Metric: Ability to touch hands behind back</li>
+      <li>Assesses upper body mobility</li>
+    </ul>
+  </li>
+  <li>Thomas Test
+    <ul>
+      <li>Metric: Hip flexor flexibility</li>
+      <li>Important for posture and back health</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="functional-movement-tests">Functional Movement Tests</h1>
+<ul>
+  <li>Sit Rise Test (SRT)
+    <ul>
+      <li>Metric: Ability to sit and rise from floor using minimal support</li>
+      <li>Each point lost correlates with mortality risk</li>
+    </ul>
+  </li>
+  <li>Timed Up and Go (TUG)
+    <ul>
+      <li>Metric: Time to stand, walk 3m, return and sit</li>
+      <li>Predicts fall risk and functional decline</li>
+    </ul>
+  </li>
+  <li>Five Times Sit-to-Stand
+    <ul>
+      <li>Metric: Time to complete 5 chair stands</li>
+      <li>Assesses lower body strength and power</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="body-composition-metrics">Body Composition Metrics</h1>
+<ul>
+  <li>Waist-to-Height Ratio
+    <ul>
+      <li>Metric: Waist circumference divided by height</li>
+      <li>Should be less than 0.5 for optimal health</li>
+    </ul>
+  </li>
+  <li>Body Fat Percentage
+    <ul>
+      <li>Metric: Percentage of body mass that is fat</li>
+      <li>Important indicator of metabolic health</li>
+    </ul>
+  </li>
+  <li>Muscle Mass Index
+    <ul>
+      <li>Metric: Muscle mass relative to height</li>
+      <li>Low scores indicate sarcopenia risk</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="cognitive-physical-tests">Cognitive-Physical Tests</h1>
+<ul>
+  <li>Reaction Time Test
+    <ul>
+      <li>Metric: Time to respond to visual/auditory stimulus</li>
+      <li>Indicates neurological health</li>
+    </ul>
+  </li>
+  <li>Dual-Task Walking Test
+    <ul>
+      <li>Metric: Ability to walk while performing cognitive task</li>
+      <li>Predicts cognitive decline and fall risk</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="recovery-tests">Recovery Tests</h1>
+<ul>
+  <li>Heart Rate Recovery
+    <ul>
+      <li>Metric: Heart rate decrease 1 minute post-exercise</li>
+      <li>Drop of 12+ beats indicates good fitness</li>
+    </ul>
+  </li>
+  <li>Heart Rate Variability (HRV)
+    <ul>
+      <li>Metric: Variation in time between heartbeats</li>
+      <li>Higher variability indicates better health</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="performance-standards">Performance Standards</h1>
+<p>Excellent scores by age group and gender should be provided for each test. Regular retesting (every 3-6 months) is recommended to track progress and identify areas needing attention.</p>
+
+<h1 id="test-protocol-guidelines">Test Protocol Guidelines</h1>
+<ol>
+  <li>Perform tests in the morning when fresh</li>
+  <li>Maintain consistent testing conditions</li>
+  <li>Record detailed metrics for tracking</li>
+  <li>Use standardized equipment when possible</li>
+  <li>Have a spotter present for safety when needed</li>
+</ol>
+
+        </div>
+      </article>
+      
+        <hr>
+      
+    
+      <article class="post">
+        <h2 class="post-title"><a class="nice-title" href="/health/cholesterol-study">Summary - Total cholesterol and all-cause mortality by sex and age</a></h2>
+        <p class="post-date">February 09, 2025</p>
+        <div class="post-content">
+          <p>Key points from the text :</p>
+
+<p>https://www.nature.com/articles/s41598-018-38461-y</p>
+
+<p><img src="/assets/images/20250209/cholesterol.png" alt="alt text" /></p>
+
+<h2 id="key-findings">Key Findings</h2>
+
+<ul>
+  <li>U-shaped relationship: The study found a U-shaped relationship between total cholesterol (TC) levels and mortality. This means that both very low and very high TC levels are associated with higher mortality rates.</li>
+  <li>Optimal TC range: The study suggests that <strong>the optimal TC range for overall survival is between 210-249 mg/dL for most age groups</strong>, except for younger adults.</li>
+  <li>Age and sex differences: The optimal TC range varies by age and sex. Younger adults (18-34 years) have lower optimal TC ranges, while older adults have higher optimal ranges.</li>
+  <li>Low TC levels not always good: The study found that TC levels below 200 mg/dL may not necessarily be a sign of good health. In fact, low TC levels were associated with higher mortality rates in some age groups.</li>
+</ul>
+
+<h2 id="implications">Implications</h2>
+
+<ul>
+  <li>Cholesterol guidelines: The study suggests that current cholesterol guidelines, which recommend a TC range of &lt;200 mg/dL as desirable, may not be applicable to all populations.</li>
+  <li>Diseases associated with low TC: The study highlights the need to identify and manage diseases associated with low TC levels, which may improve survival rates.</li>
+  <li>Individualized approach: The study suggests that a more individualized approach to managing cholesterol levels may be necessary, taking into account age, sex, and other factors.</li>
+</ul>
+
+<h2 id="limitations">Limitations</h2>
+
+<ul>
+  <li>Medication use: The study did not account for the use of lipid-lowering medication, which may have affected the results.</li>
+  <li>Limited generalizability: The study was conducted in a Korean population, and the results may not be generalizable to other ethnic groups.</li>
+</ul>
+
+        </div>
+      </article>
+      
+        <hr>
+      
+    
+      <article class="post">
+        <h2 class="post-title"><a class="nice-title" href="/fitcypher/random-youtube-workout">Random Bodyweight Workout with Video!</a></h2>
+        <p class="post-date">February 02, 2025</p>
+        <div class="post-content">
+          <p>I have added a new workout page, this one will read a list of youtube videos from a json file, for example :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/src/fitcypher$ cat ui/data/darebee.json 
+[
+  {
+    "id": "4XcGTvcSRxY",
+    "title": "hop heel clicks",
+    "duration": 8
+  },
+  {
+    "id": "wqfRvXc7BHY",
+    "title": "half squat walk",
+    "duration": 19
+  },
+  {
+    "id": "HAQvQXovwuo",
+    "title": "side splits",
+    "duration": 83
+  }
+]
+</code></pre></div></div>
+
+<p>and then will play a random youtube video for the user with a counter of the elapsed time :</p>
+
+<p><img src="/assets/images/fitcypher/20250202/screenshot004.png" alt="alt text" /></p>
+
+<p>Once the user has done the exercise for as long as they want, they click the Complete button, this will save the exercise and duration to the database.</p>
+
+<p>If an exercise video comes up that you don’t like click the skip button and it will go to the next video and will not save the exercise to the database.</p>
+
+<p>Checkout the FitCypher Workouts here :</p>
+
+<p><a href="https://alexlaverty.pythonanywhere.com/workouts">https://alexlaverty.pythonanywhere.com/workouts</a></p>
+
+<p><img src="/assets/images/fitcypher/20250202/screenshot005.png" alt="alt text" /></p>
+
+<p>Or git clone the FitCypher github repo and run it locally :</p>
+
+<p><a href="https://github.com/alexlaverty/fitcypher">https://github.com/alexlaverty/fitcypher</a></p>
+
+        </div>
+      </article>
+      
+    
+    <div class="pagination">
+  
+    <span class="pagination-button disabled">← Previous</span>
+  
+
+  <span class="pagination-info">
+    Page 1 of 11
+  </span>
+
+  
+    <a class="pagination-button next" href="/blog/page2/">Next →</a>
+  
 </div>
 
   </div>
 
-</footer></body>
+  <div class="sidebar">
+    <a href="/">
+        <h1 class="site-title">Alex Laverty</h1>
+    </a>
+    <div class="profile-image">
+        <a href="/"><img src="/assets/images/alexlaverty.jpg" alt="Alex Laverty"></a>
+    </div>
+    <nav class="site-nav">
+        <!-- <ul>
+            <li><h2><a href="/">Home</a></h2></li>
+            <li><a href="/about">About</a></li>
+        </ul>
+        <hr> -->
+       <h2>Categories</h2>
+        <ul style="padding-top: 10px;">
+            
+            <li class="cats"><a href="/categories/manly-beach">manly beach</a></li>
+            
+            <li class="cats"><a href="/categories/shelly-beach">shelly beach</a></li>
+            
+            <li class="cats"><a href="/categories/manly-beach-corso">manly beach corso</a></li>
+            
+            <li class="cats"><a href="/categories/queenscliff">queenscliff</a></li>
+            
+            <li class="cats"><a href="/categories/manly-dam">manly dam</a></li>
+            
+            <li class="cats"><a href="/categories/little-manly">little manly</a></li>
+            
+            <li class="cats"><a href="/categories/circular-quay">circular quay</a></li>
+            
+            <li class="cats"><a href="/categories/darling-harbour">darling harbour</a></li>
+            
+            <li class="cats"><a href="/categories/deadmans">deadmans</a></li>
+            
+            <li class="cats"><a href="/categories/sunrise">sunrise</a></li>
+            
+            <li class="cats"><a href="/categories/fitcypher">fitcypher</a></li>
+            
+            <li class="cats"><a href="/categories/health">health</a></li>
+            
+        </ul>
+        <hr>
+    </nav>
+</div>
 
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <p>&copy; 2025 Alex Laverty. All rights reserved.</p>
+      <p>
+        <a href="/">Home</a> |
+        <!-- <a href="/about">About</a> -->
+      </p>
+    </div>
+  </footer>
+
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4P23WF01YZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){window.dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4P23WF01YZ');
+</script>
+
+  
+
+  <!-- <script src="/assets/js/main.js"></script> -->
+</body>
 </html>

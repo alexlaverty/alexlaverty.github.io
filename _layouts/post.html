@@ -1,57 +1,130 @@
 ---
-layout: base
+layout: default
 ---
-<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <header class="post-header">
-    <p class="post-meta">
-      {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-        {{ page.date | date: date_format }}
-      </time>
-      {%- if page.modified_date -%}
-        ~ 
-        {%- assign mdate = page.modified_date | date_to_xmlschema -%}
-        <time class="dt-modified" datetime="{{ mdate }}" itemprop="dateModified">
-          {{ mdate | date: date_format }}
-        </time>
-      {%- endif -%}
-      {%- if page.author -%}
-        • {% for author in page.author %}
-          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-            <span class="p-author h-card" itemprop="name">{{ author }}</span>
-          </span>
-          {%- if forloop.last == false %}, {% endif -%}
-        {% endfor %}
-      {%- else -%}
-        • <span itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <span class="p-author h-card" itemprop="name">{{ site.author.name }}</span>
-        </span>
-        • Views <span class="p-author h-card" id="view-count">-</span>
-        
-        <script>
-          fetch('https://{{ site.goatcounter }}.goatcounter.com/counter/' + encodeURIComponent(window.location.pathname))
-            .then(response => response.json())
-            .then(data => {
-              document.getElementById('view-count').textContent = data.count;
-            })
-            .catch(error => {
-              console.error('Error fetching view count:', error);
-              document.getElementById('view-count').textContent = '-';
-            });
-        </script>
-      {%- endif -%}
-    </p>
-  </header>
-  <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
+<div class="container">
+  <div class="main-content">
+    <article class="post">
 
-  <div class="post-content e-content" itemprop="articleBody">
-    {{ content }}
+    <h2 class="post-title">{{ page.title }}</h2>
+    <!-- {%- if page.image -%}
+    <center>
+    <img src="{{ page.image }}" alt="{{ page.title }}" style="width: 100%; height: 250px; object-fit: cover; border-radius: 20px;">
+    </center>
+    {%- endif -%} -->
+    <p class="post-date">{{ page.date | date: "%B %d, %Y" }}</p>
+
+
+    <div class="post-content">
+        {{ page.content }}
+    </div>
+    {%- if site.disqus.shortname -%}
+    {%- include disqus_comments.html -%}
+    {%- endif -%}
+    </article>
   </div>
 
-  {%- if site.disqus.shortname -%}
-    {%- include disqus_comments.html -%}
-  {%- endif -%}
+  {% include sidebar.html %}
+</div>
 
-  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
-</article>
+<style>
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .main-content {
+    flex: 0 0 80%;
+    max-width: 80%;
+    padding-right: 20px;
+    box-sizing: border-box;
+  }
+
+  .sidebar {
+    flex: 0 0 20%;
+    max-width: 20%;
+    position: sticky;
+    top: 20px;
+    right: 0;
+    padding-left: 20px;
+    box-sizing: border-box;
+    border-left: 1px solid #eee;
+  }
+
+  .site-title {
+    margin-top: 0;
+    font-size: 24px;
+  }
+
+  .profile-image img {
+    max-width: 100%;
+    border-radius: 5%;
+    margin-bottom: 20px;
+  }
+
+  .site-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .site-nav li {
+    margin-bottom: 10px;
+  }
+
+  .site-nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+  }
+
+  .site-nav a:hover {
+    color: #007bff;
+  }
+
+  .post {
+    margin-bottom: 30px;
+  }
+
+  .post-title {
+    margin-bottom: 5px;
+  }
+
+  .post-content img {
+    max-width: 100%;
+    margin-top: 15px;
+  }
+
+  .post-date {
+    color: #666;
+    font-style: italic;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  hr {
+    margin: 30px 0;
+    border: none;
+    border-top: 1px solid #eee;
+  }
+  .youtube-wrapper {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+    margin-top: 15px;
+    margin-bottom: 15px;}
+
+.youtube-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+</style>
