@@ -6,15 +6,37 @@
         <a href="{{ site.baseurl }}/"><img src="{{ site.baseurl }}/assets/images/alexlaverty.jpg" alt="Alex Laverty"></a>
     </div>
     <nav class="site-nav">
-        <!-- <ul>
-            <li><h2><a href="{{ site.baseurl }}/">Home</a></h2></li>
-            <li><a href="{{ site.baseurl }}/about">About</a></li>
-        </ul>
-        <hr> -->
-       <h2>Categories</h2>
+        <h2>Categories</h2>
         <ul style="padding-top: 10px;">
-            {% for category in site.categories %}
-            <li class="cats"><a href="{{ site.baseurl }}/categories/{{ category | first | slugize }}">{{ category | first | replace: '-', ' ' }}</a></li>
+            {% assign categories = site.categories %}
+            {% assign sorted_category_keys = "" | split: "" %}
+
+            {% for category in categories %}
+                {% assign category_key = category | first %}
+                {% assign post_count = site.categories[category_key] | size %}
+
+                {% if post_count < 10 %}
+                    {% assign padded_count = post_count | prepend: "0" %}
+                {% else %}
+                    {% assign padded_count = post_count | plus: 0 %}
+                {% endif %}
+
+                {% assign combined_key = padded_count | append: '#' | append: category_key %}
+                {% assign sorted_category_keys = sorted_category_keys | push: combined_key %}
+            {% endfor %}
+
+            {% assign sorted_category_keys = sorted_category_keys | sort | reverse %}
+
+            {% for combined_key in sorted_category_keys %}
+                {% assign key_components = combined_key | split: '#' %}
+                {% assign category_key = key_components[1] %}
+                {% assign post_count = site.categories[category_key] | size %}
+                <li class="cats">
+                    <a href="{{ site.baseurl }}/categories/{{ category_key | slugize }}">
+                        {{ category_key | replace: '-', ' ' }}
+                        <span>({{ post_count }})</span>
+                    </a>
+                </li>
             {% endfor %}
         </ul>
         <hr>
