@@ -2,11 +2,11 @@
 <html lang="en">
   {% include head.html %}
 <body>
-  <header class="header">
+  <!-- <header class="header">
     <div class="header-container">
       <h2><a href="{{ '/' | relative_url }}" class="header-logo">Alex Laverty</a></h2>
     </div>
-  </header>
+  </header> -->
 
   <main role="main">
     {{ content }}
@@ -27,5 +27,60 @@
   {% endif %}
 
   <!-- <script src="{{ '/assets/js/main.js' | relative_url }}"></script> -->
+  <script src="https://unpkg.com/lunr/lunr.js"></script>
+  <script>
+  let searchIndex;
+  let searchData;
+
+  // Initialize the search when the page loads
+  window.addEventListener('DOMContentLoaded', function() {
+      fetch('{{ site.baseurl }}/search.json')
+          .then(response => response.json())  // Only call json() once
+          .then(data => {
+              searchData = data;
+              searchIndex = lunr(function() {
+                  this.field('title', { boost: 10 });
+                  this.field('content');
+                  this.field('tags');
+                  this.field('category');
+
+                  data.forEach((doc, idx) => {
+                      doc.id = idx;
+                      this.add(doc);
+                  });
+              });
+          })
+          .catch(error => console.error('Error loading search index:', error));
+  });
+
+  // Handle search input
+  document.getElementById('search-input').addEventListener('input', function(e) {
+      const query = e.target.value;
+      const resultsDiv = document.getElementById('search-results');
+      resultsDiv.innerHTML = '';
+
+      if (query === '' || !searchIndex) {  // Check if searchIndex exists
+          return;
+      }
+
+      try {
+          const results = searchIndex.search(query);
+
+          if (results.length === 0) {
+              resultsDiv.innerHTML = '<li>No results found</li>';
+              return;
+          }
+
+          results.forEach(result => {
+              const doc = searchData[result.ref];
+              const li = document.createElement('li');
+              li.innerHTML = `<a href="${doc.url}">${doc.title}</a>`;
+              resultsDiv.appendChild(li);
+          });
+      } catch (error) {
+          console.error('Search error:', error);
+      }
+  });
+  </script>
 </body>
 </html>

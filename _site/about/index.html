@@ -153,7 +153,7 @@
   .profile-image img {
     max-width: 100%;
     border-radius: 5%;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
 
   .site-nav ul {
@@ -264,14 +264,37 @@
 }
 
 
+.search-container {
+    padding: 0rem;
+    margin-bottom: 10px;
+}
+
+#search-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#search-results {
+    list-style: none;
+    padding: 0;
+    margin-top: 0rem;
+}
+
+#search-results li {
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+}
+
   </style>
 </head>
 <body>
-  <header class="header">
+  <!-- <header class="header">
     <div class="header-container">
       <h2><a href="/" class="header-logo">Alex Laverty</a></h2>
     </div>
-  </header>
+  </header> -->
 
   <main role="main">
     <div class="box">
@@ -315,5 +338,60 @@
   
 
   <!-- <script src="/assets/js/main.js"></script> -->
+  <script src="https://unpkg.com/lunr/lunr.js"></script>
+  <script>
+  let searchIndex;
+  let searchData;
+
+  // Initialize the search when the page loads
+  window.addEventListener('DOMContentLoaded', function() {
+      fetch('/search.json')
+          .then(response => response.json())  // Only call json() once
+          .then(data => {
+              searchData = data;
+              searchIndex = lunr(function() {
+                  this.field('title', { boost: 10 });
+                  this.field('content');
+                  this.field('tags');
+                  this.field('category');
+
+                  data.forEach((doc, idx) => {
+                      doc.id = idx;
+                      this.add(doc);
+                  });
+              });
+          })
+          .catch(error => console.error('Error loading search index:', error));
+  });
+
+  // Handle search input
+  document.getElementById('search-input').addEventListener('input', function(e) {
+      const query = e.target.value;
+      const resultsDiv = document.getElementById('search-results');
+      resultsDiv.innerHTML = '';
+
+      if (query === '' || !searchIndex) {  // Check if searchIndex exists
+          return;
+      }
+
+      try {
+          const results = searchIndex.search(query);
+
+          if (results.length === 0) {
+              resultsDiv.innerHTML = '<li>No results found</li>';
+              return;
+          }
+
+          results.forEach(result => {
+              const doc = searchData[result.ref];
+              const li = document.createElement('li');
+              li.innerHTML = `<a href="${doc.url}">${doc.title}</a>`;
+              resultsDiv.appendChild(li);
+          });
+      } catch (error) {
+          console.error('Search error:', error);
+      }
+  });
+  </script>
 </body>
 </html>
