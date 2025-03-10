@@ -12,6 +12,16 @@ layout: default
     <img src="{{ page.image }}" alt="{{ page.title }}" style="width: 100%; height: 250px; object-fit: cover; border-radius: 20px;">
     </center>
     {%- endif -%} -->
+    <!-- Categories -->
+    <div class="post-categories">
+      {% if page.categories %}
+        {% for category in page.categories %}
+          <a href="{{ site.baseurl }}/categories/{{ category | slugify }}" class="category-tag">
+            {{ category }}
+          </a>
+        {% endfor %}
+      {% endif %}
+    </div>
     <p class="post-date">{{ page.date | date: "%B %d, %Y" }}</p>
 
 
@@ -28,105 +38,6 @@ layout: default
 </div>
 
 <style>
-  .container {
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-
-  .main-content {
-    flex: 0 0 80%;
-    max-width: 80%;
-    padding-right: 20px;
-    box-sizing: border-box;
-  }
-
-  .sidebar {
-    flex: 0 0 20%;
-    max-width: 20%;
-    position: sticky;
-    top: 20px;
-    right: 0;
-    padding-left: 20px;
-    box-sizing: border-box;
-    border-left: 1px solid #eee;
-  }
-
-  .site-title {
-    margin-top: 0;
-    font-size: 24px;
-  }
-
-  .profile-image img {
-    max-width: 100%;
-    border-radius: 5%;
-    margin-bottom: 10px;
-  }
-
-  .site-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .site-nav li {
-    margin-bottom: 10px;
-  }
-
-  .site-nav a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-  }
-
-  .site-nav a:hover {
-    color: #007bff;
-  }
-
-  .post {
-    margin-bottom: 30px;
-  }
-
-  .post-title {
-    margin-bottom: 5px;
-  }
-
-  .post-content img {
-    max-width: 100%;
-    margin-top: 15px;
-  }
-
-  .post-date {
-    color: #666;
-    font-style: italic;
-    margin-top: 15px;
-    margin-bottom: 5px;
-  }
-
-  hr {
-    margin: 30px 0;
-    border: none;
-    border-top: 1px solid #eee;
-  }
-  .youtube-wrapper {
-    position: relative;
-    width: 100%;
-    height: 0;
-    padding-bottom: 56.25%;
-    margin-top: 15px;
-    margin-bottom: 15px;}
-
-.youtube-wrapper iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-}
-
 
 
 </style>
