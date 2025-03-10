@@ -7,6 +7,15 @@ layout: default
     {% for post in paginator.posts %}
       <article class="post">
         <h2 class="post-title"><a class="nice-title" href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+        <div class="post-categories">
+          {% if post.categories %}
+            {% for category in post.categories %}
+              <a href="{{ site.baseurl }}/categories/{{ category | slugify }}" class="category-tag">
+                {{ category }}
+              </a>
+            {% endfor %}
+          {% endif %}
+        </div>
         <p class="post-date">{{ post.date | date: "%B %d, %Y" }}</p>
         <div class="post-content">
           {{ post.content }}

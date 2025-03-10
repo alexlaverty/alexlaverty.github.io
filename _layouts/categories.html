@@ -4,22 +4,31 @@ layout: default
 
 <div class="container">
   <div class="main-content">
-    <h1 class="category-title">{{ page.category | replace: '-', ' '}}</h1>
+    <h1 class="category-title">Category: {{ page.category | replace: '-', ' '}}</h1>
 
     {% assign category_name = page.category %}
     {% assign posts_in_category = site.posts | where_exp: "post", "post.categories contains category_name" %}
 
     {% for post in posts_in_category %}
-      <article class="post">
-        <h2 class="post-title"><a class="nice-title" href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-        <p class="post-date">{{ post.date | date: "%B %d, %Y" }}</p>
-        <div class="post-content">
-          {{ post.content }}
-        </div>
-      </article>
-      {% unless forloop.last %}
-        <hr>
-      {% endunless %}
+    <article class="post">
+      <h2 class="post-title"><a class="nice-title" href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+      <p class="post-date">{{ post.date | date: "%B %d, %Y" }}</p>
+      <div class="post-categories">
+        {% if post.categories %}
+        {% for category in post.categories %}
+        <a href="{{ site.baseurl }}/categories/{{ category | slugify }}" class="category-tag">
+          {{ category }}
+        </a>
+        {% endfor %}
+        {% endif %}
+      </div>
+      <div class="post-content">
+        {{ post.content }}
+      </div>
+    </article>
+    {% unless forloop.last %}
+    <hr>
+    {% endunless %}
     {% endfor %}
   </div>
 
