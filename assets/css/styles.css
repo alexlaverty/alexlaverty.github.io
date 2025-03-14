@@ -164,7 +164,13 @@ a:hover {
 .post-title {
     margin-bottom: 5px;
 }
-
+.post-title a {
+    color: #111;
+}
+.post-title a:hover {
+    color: #007bff;
+    text-decoration: underline;
+}
 .post-content img {
     max-width: 100%;
     margin-top: 15px;
@@ -172,7 +178,7 @@ a:hover {
 
 .post-date {
     color: #666;
-    font-style: italic;
+    /* font-style: italic; */
     font-size: 0.9rem;
     /* margin-top: 15px; */
     margin-bottom: 2px;
@@ -204,6 +210,7 @@ hr {
 
 .category-title {
     text-transform: capitalize;
+    font-size: 1.1rem;
 }
 
 
@@ -501,4 +508,206 @@ hr {
     margin: 30px 0;
     border: none;
     border-top: 1px solid #eee;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .main-content,
+    .sidebar {
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding: 0;
+    }
+
+    .main-content {
+        margin-bottom: 30px;
+        order: 2; /* Move main content below sidebar on mobile */
+    }
+
+    .sidebar {
+        position: relative;
+        top: 0;
+        border-left: none;
+        margin-bottom: 20px;
+        order: 1; /* Move sidebar above main content on mobile */
+    }
+
+    .post-content {
+        padding: 0 10px;
+    }
+
+    .post-content img {
+        width: 100%;
+        height: auto;
+    }
+
+    .social-icons {
+        margin: 15px 0;
+    }
+
+    .search-container {
+        padding: 0 10px;
+    }
+
+    .profile-image img {
+        max-width: 200px;
+        margin: 0 auto;
+        display: block;
+    }
+
+    .site-title {
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    .post-categories {
+        padding-right: 10px;
+        padding-left: 0;
+    }
+}
+
+/* Hamburger menu styles */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+}
+
+.hamburger span {
+    width: 30px;
+    height: 3px;
+    background: #333;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+}
+
+/* Media query modifications */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 80%;
+        background: white;
+        padding: 60px 20px 20px 20px;
+        overflow-y: auto;
+        z-index: 5;
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+        box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+    }
+
+    .hamburger.active span:first-child {
+        transform: rotate(45deg);
+    }
+
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active span:last-child {
+        transform: rotate(-45deg);
+    }
+}
+
+
+
+
+.post-header {
+    margin-bottom: 40px;
+}
+
+.post-title {
+    font-size: 2.5rem;
+    line-height: 1.2;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #1a1a1a;
+}
+
+.post-meta {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+    color: #666;
+}
+
+.post-author {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.post-author img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.post-author-name {
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.post-date {
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.post-categories {
+    margin: 20px 0;
+}
+
+.category-tag {
+    display: inline-flex;
+    align-items: center;
+    background-color: #f0f0f0;
+    color: #444;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 20px;
+    margin-right: 8px;
+    transition: all 0.2s ease;
+}
+
+.category-tag:hover {
+    background-color: #e0e0e0;
+    color: #1a1a1a;
+    text-decoration: none;
+}
+
+.post-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin: 30px 0;
 }

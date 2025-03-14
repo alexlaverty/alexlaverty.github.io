@@ -12,16 +12,25 @@ layout: default
     {% for post in posts_in_category %}
     <article class="post">
       <h2 class="post-title"><a class="nice-title" href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-      <p class="post-date">{{ post.date | date: "%B %d, %Y" }}</p>
-      <div class="post-categories">
-        {% if post.categories %}
+      <div class="post-meta">
+        <div class="post-author">
+            <img src="{{ site.baseurl }}/assets/images/alexlaverty.jpg" alt="Alex Laverty">
+            <div>
+                <span class="post-author-name">Alex Laverty</span>
+                <div class="post-date">{{ post.date | date: "%B %d, %Y" }}</div>
+            </div>
+        </div>
+    </div>
+
+    {% if post.categories %}
+    <div class="post-categories">
         {% for category in post.categories %}
         <a href="{{ site.baseurl }}/categories/{{ category | slugify }}" class="category-tag">
-          {{ category }}
+            {{ category }}
         </a>
         {% endfor %}
-        {% endif %}
-      </div>
+    </div>
+    {% endif %}
       <div class="post-content">
         {{ post.content }}
       </div>
