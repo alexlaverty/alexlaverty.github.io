@@ -1,6 +1,6 @@
 ---
 title:  "Optimising Nutrition with Genetic Algorithms"
-date:   2025-02-22 0:34:00
+date:   2025-03-09 0:34:00
 layout: post
 categories: ["optimising-nutrition"]
 image: /assets/images/20250209/cholesterol.png

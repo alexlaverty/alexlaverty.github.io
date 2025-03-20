@@ -1,4 +1,588 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://0.0.0.0:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://0.0.0.0:4000/" rel="alternate" type="text/html" /><updated>2025-03-14T20:35:48+11:00</updated><id>http://0.0.0.0:4000/feed.xml</id><title type="html">Alex Laverty</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>Alex Laverty</name><email>alaverty@gmail.com</email></author><entry><title type="html">List of Fitness Tests</title><link href="http://0.0.0.0:4000/health/fitness-tests" rel="alternate" type="text/html" title="List of Fitness Tests" /><published>2025-02-22T11:34:00+11:00</published><updated>2025-02-22T11:34:00+11:00</updated><id>http://0.0.0.0:4000/health/fitness-tests</id><content type="html" xml:base="http://0.0.0.0:4000/health/fitness-tests"><![CDATA[<p>List of ways to test your fitness</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-03-20T13:54:12+11:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Alex Laverty</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>Alex Laverty</name><email>alaverty@gmail.com</email></author><entry><title type="html">Optimising Nutrition Reviewed By Claude AI</title><link href="http://localhost:4000/optimising-nutrition/optimising-nutrition-ai-review-claude" rel="alternate" type="text/html" title="Optimising Nutrition Reviewed By Claude AI" /><published>2025-03-19T11:00:00+11:00</published><updated>2025-03-19T11:00:00+11:00</updated><id>http://localhost:4000/optimising-nutrition/optimising-nutrition-ai-review-claude</id><content type="html" xml:base="http://localhost:4000/optimising-nutrition/optimising-nutrition-ai-review-claude"><![CDATA[<div style="width: 100%; height: 250px; overflow: hidden; margin-bottom: 20px;">
+    <img src="/images/2025-03-09/optimised-nutrition-2.jpg" style="width: 100%; height: 250px; object-fit: cover; object-position: center;" />
+</div>
+
+<p>I’ve been doing some more work on my nutrition optimisation script, the script is now running on a <a href="https://github.com/alexlaverty/optimize-nutrition/blob/main/.github/workflows/optimize-nutrition.yml">schedule via Github Actions</a>, it now supports a number of diet types All, Vegan, Whole Food Plant Based, Nutrient Dense. Every hour it generates new recipes, it will look at the diet json files and read the exclusion and inclusion lists defined in the JSON file and then randomly select a random number of foods from the Australian Nutrition database csv along with their nutrition data and then the script will do a random number of generations of a genetic algorithm attempting to determine the number of grams per food item required to match as closely as possible to the recommended daily intake of essential vitamins and minerals for a 39 year old male (myself), it then saves the generated recipes in the github repo as JSON and HTML files and generates and index of these recipes and sorts them by score, the lower the score the better and the more the closer it is to matching the micronutrient RDI targets. There is a clean up at the end of the script that deletes recipes with a score that’s higher then the specified value and deletes any recipes over a total of 250 files, so over time the script will continue to generate better recipes and push out the ones with higher scores.</p>
+
+<p>Challenges so far have been the Vegan and WFPB json files, trying to exclude all of the meat items, every time I think I’ve excluded them all I see a vegan recipe generated with a Camel or Emu or some type of fish in it and I need to exclude that item from the list and even more so for Whole Food Plant Based have to exclude the meat and all of the non whole food items like cakes and biscuits and packaged goods etc, so it’s still a work in progress.</p>
+
+<p>I fed the optimising nutrition script into <a href="https://claude.ai/">Claude</a> and asked it to review the code it has provided some good suggestions that I will take on board :</p>
+
+<blockquote>
+  <p>review the logic of this script, I am a 39 year old male moderately active and want to generate recipes that meet 100% of my daily recommended intake of the essential vitamins and minerals, determine any issues in this script and any flaws</p>
+</blockquote>
+
+<h2 id="anthropic-claude-response">Anthropic Claude response</h2>
+
+<p>I’ll review the script and identify any potential issues or flaws specifically for your goal of generating recipes that meet 100% of your daily recommended intake of essential vitamins and minerals as a 39-year-old moderately active male.</p>
+
+<h2 id="overall-analysis">Overall Analysis</h2>
+
+<p>The script uses a genetic algorithm approach to optimize food combinations to meet nutritional requirements, which is a solid approach for this complex problem. Let’s examine specific aspects:</p>
+
+<h3 id="strengths">Strengths</h3>
+<ul>
+  <li>The genetic algorithm approach is appropriate for multi-objective optimization like this</li>
+  <li>The penalties system allows for nuanced handling of different nutrients</li>
+  <li>The code handles water-soluble vs. fat-soluble vitamins differently (appropriate since excess water-soluble vitamins are generally less concerning)</li>
+  <li>Detailed reporting and visualization of results</li>
+</ul>
+
+<h3 id="issues-and-potential-improvements">Issues and Potential Improvements</h3>
+
+<ol>
+  <li><strong>RDI Target Splitting Assumption</strong>
+    <ul>
+      <li>The code divides RDI targets by the number of meals, assuming equal distribution</li>
+      <li>This may not be ideal for all nutrients, as some (like protein) may benefit from distribution throughout the day while others can be consumed in a single meal</li>
+    </ul>
+  </li>
+  <li><strong>Missing UL Values</strong>
+    <ul>
+      <li>Several nutrients in your JSON have RDI but no UL (Upper Limit) specified</li>
+      <li>The <code class="language-plaintext highlighter-rouge">_calculate_nutrition_score</code> function expects UL values for some calculations</li>
+      <li>Without UL values, the function may not properly penalize excessive nutrient intake</li>
+    </ul>
+  </li>
+  <li><strong>Nutrient Density Calculation</strong>
+    <ul>
+      <li>The nutrient density scoring doesn’t account for negative nutrients (like sodium, saturated fats) that should be limited</li>
+    </ul>
+  </li>
+  <li><strong>Fixed Food Amount Ranges</strong>
+    <ul>
+      <li>Food amounts are randomly initialized between 25-100g and mutated in ±20g increments</li>
+      <li>This might not be realistic for all foods (e.g., spices vs. staples)</li>
+    </ul>
+  </li>
+  <li><strong>Food Selection Mechanism</strong>
+    <ul>
+      <li>For diet-specific runs, the code randomly selects 10-30 foods from the filtered dataset</li>
+      <li>This might lead to suboptimal results if key nutritionally dense foods are randomly excluded</li>
+    </ul>
+  </li>
+  <li><strong>Missing Bioavailability Considerations</strong>
+    <ul>
+      <li>The script doesn’t account for nutrient interactions that affect bioavailability</li>
+      <li>For example, iron absorption is affected by vitamin C, zinc absorption by phytates, etc.</li>
+    </ul>
+  </li>
+  <li><strong>Generations and Population Size</strong>
+    <ul>
+      <li>Your implementation randomly selects between 10-300 generations</li>
+      <li>The range is very wide - 10 generations likely won’t be enough for convergence</li>
+      <li>Consider setting a more consistent minimum (e.g., 50+)</li>
+    </ul>
+  </li>
+  <li><strong>Optimization Target</strong>
+    <ul>
+      <li>The fitness function primarily focuses on matching RDI values but doesn’t explicitly optimize for:
+        <ul>
+          <li>Food variety/diversity</li>
+          <li>Food preferences/taste</li>
+          <li>Cost of ingredients</li>
+          <li>Seasonal availability</li>
+          <li>Meal compatibility (foods that work well together)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><strong>Practical Meal Planning</strong>
+    <ul>
+      <li>The script optimizes for nutrients but doesn’t group foods into practical meals</li>
+      <li>No consideration for cooking methods or preparation feasibility</li>
+    </ul>
+  </li>
+  <li><strong>Potential Implementation Issues</strong>
+    <ul>
+      <li>The code references <code class="language-plaintext highlighter-rouge">start_time</code> before defining it in the main function</li>
+      <li>The <code class="language-plaintext highlighter-rouge">_is_nutrition_sufficient</code> function is defined but never used</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="specific-recommendations">Specific Recommendations</h2>
+
+<ol>
+  <li><strong>Add Missing UL Values</strong>
+    <ul>
+      <li>Add upper limits for all nutrients where applicable</li>
+      <li>For nutrients that truly don’t have established ULs, consider setting generous but reasonable values</li>
+    </ul>
+  </li>
+  <li><strong>Adjust Food Amount Constraints</strong>
+    <ul>
+      <li>Consider categorizing foods by typical serving sizes (e.g., spices vs. vegetables)</li>
+      <li>Adjust the mutation ranges based on food categories</li>
+    </ul>
+  </li>
+  <li><strong>Enhance the Food Selection Mechanism</strong>
+    <ul>
+      <li>Instead of purely random selection, ensure representation from key food groups</li>
+      <li>Consider implementing a “seed” system where nutritionally exceptional foods are always included</li>
+    </ul>
+  </li>
+  <li><strong>Incorporate Bioavailability Factors</strong>
+    <ul>
+      <li>Add modifiers for known nutrient interactions</li>
+      <li>Consider time-of-day effects for certain nutrients (e.g., timing of protein intake)</li>
+    </ul>
+  </li>
+  <li><strong>More Strategic Generation Parameters</strong>
+    <ul>
+      <li>Set a higher minimum number of generations (at least 50)</li>
+      <li>Consider implementing early stopping if scores plateau</li>
+    </ul>
+  </li>
+  <li><strong>Add Meal Practicality Factors</strong>
+    <ul>
+      <li>Implement clustering to group compatible foods</li>
+      <li>Add penalties for unusual food combinations</li>
+    </ul>
+  </li>
+  <li><strong>Fix Implementation Issues</strong>
+    <ul>
+      <li>Move the <code class="language-plaintext highlighter-rouge">start_time = time.time()</code> into the appropriate function scope</li>
+      <li>Either use or remove the <code class="language-plaintext highlighter-rouge">_is_nutrition_sufficient</code> function</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>The script has a solid foundation for nutrient optimization but could benefit from refinements to produce more practical, varied, and enjoyable meals while still meeting nutritional requirements. The main philosophical question is whether you want to optimize purely for nutrition or balance nutrition with practical meal planning considerations.</p>
+
+<p>Would you like me to elaborate on any specific aspect of this review or provide code examples for implementing any of these recommendations?</p>
+
+<h2 id="grok-ai-code-review">Grok AI Code Review</h2>
+
+<p>I’ll review your script for generating recipes that meet 100% of your daily recommended intake (RDI) of essential nutrients. As a 39-year-old moderately active male, your RDI values in the JSON look generally appropriate (based on standard guidelines like those from the NIH or USDA), though I’ll point out potential issues and suggest improvements. Here’s my analysis of the script’s logic and potential flaws:</p>
+
+<hr />
+
+<h3 id="strengths-of-the-script">Strengths of the Script</h3>
+<ol>
+  <li><strong>Genetic Algorithm Approach</strong>: Using a genetic algorithm (GA) to optimize nutrient intake is a solid choice for this complex, multi-variable problem. It effectively balances exploration (randomness) and exploitation (optimization toward RDI targets).</li>
+  <li><strong>Flexible Nutrient Targets</strong>: The script scales RDI targets based on the number of meals, which is practical for daily planning.</li>
+  <li><strong>Detailed Reporting</strong>: The JSON and HTML reports are comprehensive, providing actionable insights into food quantities, nutrient profiles, and optimization performance.</li>
+  <li><strong>Penalty System</strong>: Differentiating penalties for under-RDI, over-RDI, and upper limits (UL), with special handling for water-soluble vs. fat-soluble vitamins, is a thoughtful approach to nutrient safety and balance.</li>
+  <li><strong>Diet Type Support</strong>: Filtering foods based on diet types (e.g., vegan, whole food plant-based) adds versatility.</li>
+</ol>
+
+<hr />
+
+<h3 id="issues-and-flaws">Issues and Flaws</h3>
+<p>Here are the key issues I identified in the script, along with their potential impact:</p>
+
+<h4 id="1-missing-upper-limit-ul-enforcement">1. <strong>Missing Upper Limit (UL) Enforcement</strong></h4>
+<ul>
+  <li><strong>Problem</strong>: While the script penalizes exceeding ULs (e.g., in <code class="language-plaintext highlighter-rouge">_calculate_nutrition_score</code>), it doesn’t strictly enforce them. The penalty for exceeding ULs (<code class="language-plaintext highlighter-rouge">over_ul</code>) is randomized between 1.8 and 2.5, which may not be strong enough to prevent unsafe nutrient levels (e.g., Vitamin A at 3000 µg or Zinc at 40 mg).</li>
+  <li><strong>Impact</strong>: For a 39-year-old male, exceeding ULs for certain nutrients (e.g., Vitamin A, Iron) could lead to toxicity over time.</li>
+  <li><strong>Fix</strong>: Add a hard constraint in <code class="language-plaintext highlighter-rouge">evaluate_solution</code> to disqualify solutions exceeding ULs for critical nutrients, or increase the <code class="language-plaintext highlighter-rouge">over_ul</code> penalty significantly (e.g., 10x instead of 2.5x).</li>
+</ul>
+
+<h4 id="2-energy-kj-handling-is-incomplete">2. <strong>Energy (kJ) Handling is Incomplete</strong></h4>
+<ul>
+  <li><strong>Problem</strong>: The script treats “Energy with dietary fibre, equated (kJ)” as a nutrient with an RDI (10,878 kJ) and UL (13,389 kJ), but the logic in <code class="language-plaintext highlighter-rouge">_calculate_nutrition_score</code> re-reads <code class="language-plaintext highlighter-rouge">rdi.json</code> instead of using the passed <code class="language-plaintext highlighter-rouge">targets</code> dictionary. This is inconsistent and assumes the JSON file is always available.</li>
+  <li><strong>Impact</strong>: For a moderately active 39-year-old male, energy needs are ~10,000-11,000 kJ (2400-2600 kcal), which aligns with your RDI. However, the UL seems arbitrary and may not reflect realistic limits. Plus, the re-reading of JSON could fail if the file is missing.</li>
+  <li><strong>Fix</strong>: Use the <code class="language-plaintext highlighter-rouge">targets</code> dictionary consistently for all nutrients, including energy. Define a more realistic UL (e.g., 15,000 kJ) based on activity level and safety margins.</li>
+</ul>
+
+<h4 id="3-food-quantity-range-is-limited">3. <strong>Food Quantity Range is Limited</strong></h4>
+<ul>
+  <li><strong>Problem</strong>: In <code class="language-plaintext highlighter-rouge">create_solution</code>, food amounts are initialized between 25-100g, and mutations adjust by ±20g. This range is too narrow to meet 100% RDI for a full day in one meal (your <code class="language-plaintext highlighter-rouge">number_of_meals=1</code> setting).</li>
+  <li><strong>Impact</strong>: With only 25-100g per food, it’s unlikely to hit high RDIs (e.g., 3400 mg Potassium, 38g Fiber) without including more foods or larger portions.</li>
+  <li><strong>Fix</strong>: Increase the range (e.g., 25-500g) and adjust mutation steps proportionally. Alternatively, use a food database with serving size metadata to scale amounts realistically.</li>
+</ul>
+
+<h4 id="4-nutrient-mapping-mismatch">4. <strong>Nutrient Mapping Mismatch</strong></h4>
+<ul>
+  <li><strong>Problem</strong>: The <code class="language-plaintext highlighter-rouge">nutrient_mapping</code> parameter in <code class="language-plaintext highlighter-rouge">optimize_nutrition</code> is a dictionary from <code class="language-plaintext highlighter-rouge">rdi.json</code>, but the script uses its keys directly as column names in <code class="language-plaintext highlighter-rouge">food_df</code>. However, <code class="language-plaintext highlighter-rouge">rdi.json</code> keys (e.g., “Protein (g)”) don’t match typical food database column names (e.g., “PROTEIN”).</li>
+  <li><strong>Impact</strong>: This causes warnings (<code class="language-plaintext highlighter-rouge">"Column not found"</code>) and sets missing nutrients to 0, skewing optimization results.</li>
+  <li><strong>Fix</strong>: Create a proper mapping dictionary (e.g., <code class="language-plaintext highlighter-rouge">{'Protein (g)': 'PROTEIN', ...}</code>) and pass it to <code class="language-plaintext highlighter-rouge">optimize_nutrition</code>. Ensure <code class="language-plaintext highlighter-rouge">food_df</code> columns align with this mapping.</li>
+</ul>
+
+<h4 id="5-single-meal-assumption">5. <strong>Single-Meal Assumption</strong></h4>
+<ul>
+  <li><strong>Problem</strong>: You set <code class="language-plaintext highlighter-rouge">number_of_meals=1</code>, aiming for 100% RDI in one meal, but the script’s logic (e.g., scaling RDIs by <code class="language-plaintext highlighter-rouge">number_of_meals</code>) assumes multiple meals. This inconsistency could confuse results.</li>
+  <li><strong>Impact</strong>: A single meal hitting 100% RDI (e.g., 10,878 kJ, 91g protein) is impractical for most people due to volume and digestion limits.</li>
+  <li><strong>Fix</strong>: Either adjust <code class="language-plaintext highlighter-rouge">number_of_meals</code> to 3 (typical daily meals) and aim for ~33% RDI per meal, or explicitly design for a single meal with realistic portion constraints (e.g., max 1000g total food).</li>
+</ul>
+
+<h4 id="6-random-food-selection">6. <strong>Random Food Selection</strong></h4>
+<ul>
+  <li><strong>Problem</strong>: The script randomly selects 10-30 foods per run (<code class="language-plaintext highlighter-rouge">n_foods = random.randint(10, 30)</code>), which may exclude nutrient-dense options critical for meeting RDIs (e.g., spinach for folate, salmon for omega-3s).</li>
+  <li><strong>Impact</strong>: This randomness reduces consistency and may fail to meet 100% RDI for some nutrients by chance.</li>
+  <li><strong>Fix</strong>: Pre-filter foods based on nutrient density (e.g., using <code class="language-plaintext highlighter-rouge">nutrient_score</code>) before random selection, or increase the pool size (e.g., 50 foods).</li>
+</ul>
+
+<h4 id="7-lack-of-practicality-constraints">7. <strong>Lack of Practicality Constraints</strong></h4>
+<ul>
+  <li><strong>Problem</strong>: The optimization doesn’t consider meal practicality (e.g., taste compatibility, preparation feasibility, or total volume).</li>
+  <li><strong>Impact</strong>: You might get a “recipe” with 100g of broccoli, 75g of liver, and 50g of almonds—nutrient-rich but unpalatable or hard to prepare together.</li>
+  <li><strong>Fix</strong>: Add constraints like maximum total weight (e.g., 800g), food category diversity (e.g., at least one protein, carb, fat source), or a taste compatibility score.</li>
+</ul>
+
+<h4 id="8-missing-dependencies-and-error-handling">8. <strong>Missing Dependencies and Error Handling</strong></h4>
+<ul>
+  <li><strong>Problem</strong>: The script assumes the presence of <code class="language-plaintext highlighter-rouge">Release 2 - Nutrient file.xlsx</code>, <code class="language-plaintext highlighter-rouge">rdi.json</code>, and diet config files (e.g., <code class="language-plaintext highlighter-rouge">vegan.json</code>). Missing files or mismatched formats will crash it.</li>
+  <li><strong>Impact</strong>: Reduces robustness for real-world use.</li>
+  <li><strong>Fix</strong>: Add try-except blocks around file operations and provide default fallbacks or clear error messages.</li>
+</ul>
+
+<h4 id="9-rdi-values-for-your-profile">9. <strong>RDI Values for Your Profile</strong></h4>
+<ul>
+  <li><strong>Problem</strong>: Some RDI values seem off for a 39-year-old moderately active male:
+    <ul>
+      <li>Protein (91g): High end; typically 56-70g unless very active or muscular.</li>
+      <li>Vitamin D (15 µg): Matches standard, but many adults need more (20-50 µg) depending on sunlight exposure.</li>
+      <li>Omega-3 (1600 mg): High; typical RDI is 250-500 mg EPA/DHA, though 1600 mg aligns with some heart health guidelines.</li>
+    </ul>
+  </li>
+  <li><strong>Impact</strong>: Over- or under-targeting nutrients could skew results.</li>
+  <li><strong>Fix</strong>: Verify RDIs against authoritative sources (e.g., NIH, IOM) and adjust based on your activity level (e.g., ~0.8g protein/kg body weight).</li>
+</ul>
+
+<hr />
+
+<h3 id="suggestions-for-improvement">Suggestions for Improvement</h3>
+<ol>
+  <li><strong>Add a Feasibility Check</strong>: After optimization, validate that the total food weight is reasonable (e.g., 500-1000g for one meal) and nutrients are within safe ranges (RDI ≤ intake ≤ UL).</li>
+  <li><strong>Incorporate Activity Level</strong>: Adjust energy and protein RDIs dynamically based on your moderate activity (e.g., use Harris-Benedict equation for BMR + activity factor).</li>
+  <li><strong>Improve Nutrient Scoring</strong>: Weight nutrients by their physiological importance (e.g., prioritize deficiencies like Vitamin D or Iron over excesses of water-soluble vitamins).</li>
+  <li><strong>Test with Real Data</strong>: Run the script with your food database and check if it consistently hits 100% RDI for all nutrients. Tweak <code class="language-plaintext highlighter-rouge">population_size</code> and <code class="language-plaintext highlighter-rouge">generations</code> if needed.</li>
+  <li><strong>Add a Recipe Generator</strong>: Convert the food list into a practical recipe with preparation instructions (e.g., “Grilled Salmon with Broccoli and Quinoa”).</li>
+</ol>
+
+<hr />
+
+<h3 id="example-fix-for-key-issues">Example Fix for Key Issues</h3>
+<p>Here’s a snippet addressing some critical flaws:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Adjust RDI for activity level (example: 80kg male, moderate activity)
+</span><span class="n">basal_energy</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">80</span> <span class="o">+</span> <span class="mf">6.25</span> <span class="o">*</span> <span class="mi">175</span> <span class="o">-</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">39</span> <span class="o">+</span> <span class="mi">5</span>  <span class="c1"># Harris-Benedict BMR (~1700 kcal)
+</span><span class="n">energy_rdi</span> <span class="o">=</span> <span class="n">basal_energy</span> <span class="o">*</span> <span class="mf">1.55</span>  <span class="c1"># Moderate activity factor (~2600 kcal = 10878 kJ)
+</span><span class="n">rdi_values</span><span class="p">[</span><span class="sh">"</span><span class="s">Energy with dietary fibre, equated (kJ)</span><span class="sh">"</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="sh">"</span><span class="s">rdi</span><span class="sh">"</span><span class="p">:</span> <span class="n">energy_rdi</span><span class="p">,</span> <span class="sh">"</span><span class="s">ul</span><span class="sh">"</span><span class="p">:</span> <span class="n">energy_rdi</span> <span class="o">*</span> <span class="mf">1.3</span><span class="p">}</span>
+
+<span class="c1"># Enforce UL in evaluate_solution
+</span><span class="k">def</span> <span class="nf">evaluate_solution</span><span class="p">(</span><span class="n">solution</span><span class="p">):</span>
+    <span class="n">current_nutrients</span> <span class="o">=</span> <span class="p">{</span><span class="n">nutrient</span><span class="p">:</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">nutrient</span> <span class="ow">in</span> <span class="n">meal_rdi_targets</span><span class="p">}</span>
+    <span class="k">for</span> <span class="n">food</span><span class="p">,</span> <span class="n">amount</span> <span class="ow">in</span> <span class="n">solution</span><span class="p">.</span><span class="nf">items</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">nutrient</span> <span class="ow">in</span> <span class="n">meal_rdi_targets</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">nutrient</span> <span class="ow">in</span> <span class="n">foods_df</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">food</span><span class="p">]:</span>
+                <span class="n">nutrient_per_gram</span> <span class="o">=</span> <span class="n">foods_df</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">food</span><span class="p">][</span><span class="n">nutrient</span><span class="p">]</span> <span class="o">/</span> <span class="n">foods_df</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">food</span><span class="p">][</span><span class="sh">'</span><span class="s">density</span><span class="sh">'</span><span class="p">]</span>
+                <span class="n">current_nutrients</span><span class="p">[</span><span class="n">nutrient</span><span class="p">]</span> <span class="o">+=</span> <span class="n">nutrient_per_gram</span> <span class="o">*</span> <span class="n">amount</span>
+    <span class="c1"># Check ULs
+</span>    <span class="k">with</span> <span class="nf">open</span><span class="p">(</span><span class="sh">'</span><span class="s">rdi.json</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">r</span><span class="sh">'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">nutrient_data</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="nf">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">nutrient</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">current_nutrients</span><span class="p">.</span><span class="nf">items</span><span class="p">():</span>
+        <span class="n">ul</span> <span class="o">=</span> <span class="n">nutrient_data</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">nutrient</span><span class="p">,</span> <span class="p">{}).</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">ul</span><span class="sh">'</span><span class="p">,</span> <span class="nf">float</span><span class="p">(</span><span class="sh">'</span><span class="s">inf</span><span class="sh">'</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="n">ul</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nf">float</span><span class="p">(</span><span class="sh">'</span><span class="s">inf</span><span class="sh">'</span><span class="p">)</span>  <span class="c1"># Disqualify solution
+</span>    <span class="k">return</span> <span class="nf">_calculate_nutrition_score</span><span class="p">(</span><span class="n">current_nutrients</span><span class="p">,</span> <span class="n">meal_rdi_targets</span><span class="p">,</span> <span class="n">penalties</span><span class="p">)</span>
+
+<span class="c1"># Wider food range
+</span><span class="k">def</span> <span class="nf">create_solution</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span><span class="n">food</span><span class="p">:</span> <span class="n">random</span><span class="p">.</span><span class="nf">uniform</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span> <span class="k">for</span> <span class="n">food</span> <span class="ow">in</span> <span class="n">available_foods</span><span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="conclusion-1">Conclusion</h3>
+<p>Your script is a strong foundation for generating nutrient-optimized recipes, but it needs refinement to ensure safety (UL enforcement), practicality (portion sizes, meal feasibility), and accuracy (nutrient mapping, RDI alignment). With the fixes above, it should better meet your goal of 100% RDI for a 39-year-old moderately active male. Let me know if you’d like help testing it with your food database or refining specific parts!</p>]]></content><author><name>Alex Laverty</name><email>alaverty@gmail.com</email></author><category term="optimising-nutrition" /><summary type="html"><![CDATA[]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/20250209/cholesterol.png" /><media:content medium="image" url="http://localhost:4000/assets/images/20250209/cholesterol.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Optimising Nutrition Reviewed By Grok AI</title><link href="http://localhost:4000/optimising-nutrition/optimising-nutrition-ai-review-grok" rel="alternate" type="text/html" title="Optimising Nutrition Reviewed By Grok AI" /><published>2025-03-19T11:00:00+11:00</published><updated>2025-03-19T11:00:00+11:00</updated><id>http://localhost:4000/optimising-nutrition/optimising-nutrition-ai-review-grok</id><content type="html" xml:base="http://localhost:4000/optimising-nutrition/optimising-nutrition-ai-review-grok"><![CDATA[<div style="width: 100%; height: 250px; overflow: hidden; margin-bottom: 20px;">
+    <img src="/images/2025-03-09/optimised-nutrition-2.jpg" style="width: 100%; height: 250px; object-fit: cover; object-position: center;" />
+</div>
+
+<p>I’ve been doing some more work on my nutrition optimisation script, the script is now running on a <a href="https://github.com/alexlaverty/optimize-nutrition/blob/main/.github/workflows/optimize-nutrition.yml">schedule via Github Actions</a>, it now supports a number of diet types All, Vegan, Whole Food Plant Based, Nutrient Dense. Every hour it generates new recipes, it will look at the diet json files and read the exclusion and inclusion lists defined in the JSON file and then randomly select a random number of foods from the Australian Nutrition database csv along with their nutrition data and then the script will do a random number of generations of a genetic algorithm attempting to determine the number of grams per food item required to match as closely as possible to the recommended daily intake of essential vitamins and minerals for a 39 year old male (myself), it then saves the generated recipes in the github repo as JSON and HTML files and generates and index of these recipes and sorts them by score, the lower the score the better and the more the closer it is to matching the micronutrient RDI targets. There is a clean up at the end of the script that deletes recipes with a score that’s higher then the specified value and deletes any recipes over a total of 250 files, so over time the script will continue to generate better recipes and push out the ones with higher scores.</p>
+
+<p>Challenges so far have been the Vegan and WFPB json files, trying to exclude all of the meat items, every time I think I’ve excluded them all I see a vegan recipe generated with a Camel or Emu or some type of fish in it and I need to exclude that item from the list and even more so for Whole Food Plant Based have to exclude the meat and all of the non whole food items like cakes and biscuits and packaged goods etc, so it’s still a work in progress.</p>
+
+<p>I fed the optimising nutrition script into <a href="https://grok.com/">Grok</a> and asked it to review the code it has provided some good suggestions that I will take on board :</p>
+
+<blockquote>
+  <p>review the logic of this script, I am a 39 year old male moderately active and want to generate recipes that meet 100% of my daily recommended intake of the essential vitamins and minerals, determine any issues in this script and any flaws</p>
+</blockquote>
+
+<h2 id="grok-ai-code-review">Grok AI Code Review</h2>
+
+<p>I’ll review your script for generating recipes that meet 100% of your daily recommended intake (RDI) of essential nutrients. As a 39-year-old moderately active male, your RDI values in the JSON look generally appropriate (based on standard guidelines like those from the NIH or USDA), though I’ll point out potential issues and suggest improvements. Here’s my analysis of the script’s logic and potential flaws:</p>
+
+<hr />
+
+<h3 id="strengths-of-the-script">Strengths of the Script</h3>
+<ol>
+  <li><strong>Genetic Algorithm Approach</strong>: Using a genetic algorithm (GA) to optimize nutrient intake is a solid choice for this complex, multi-variable problem. It effectively balances exploration (randomness) and exploitation (optimization toward RDI targets).</li>
+  <li><strong>Flexible Nutrient Targets</strong>: The script scales RDI targets based on the number of meals, which is practical for daily planning.</li>
+  <li><strong>Detailed Reporting</strong>: The JSON and HTML reports are comprehensive, providing actionable insights into food quantities, nutrient profiles, and optimization performance.</li>
+  <li><strong>Penalty System</strong>: Differentiating penalties for under-RDI, over-RDI, and upper limits (UL), with special handling for water-soluble vs. fat-soluble vitamins, is a thoughtful approach to nutrient safety and balance.</li>
+  <li><strong>Diet Type Support</strong>: Filtering foods based on diet types (e.g., vegan, whole food plant-based) adds versatility.</li>
+</ol>
+
+<hr />
+
+<h3 id="issues-and-flaws">Issues and Flaws</h3>
+<p>Here are the key issues I identified in the script, along with their potential impact:</p>
+
+<h4 id="1-missing-upper-limit-ul-enforcement">1. <strong>Missing Upper Limit (UL) Enforcement</strong></h4>
+<ul>
+  <li><strong>Problem</strong>: While the script penalizes exceeding ULs (e.g., in <code class="language-plaintext highlighter-rouge">_calculate_nutrition_score</code>), it doesn’t strictly enforce them. The penalty for exceeding ULs (<code class="language-plaintext highlighter-rouge">over_ul</code>) is randomized between 1.8 and 2.5, which may not be strong enough to prevent unsafe nutrient levels (e.g., Vitamin A at 3000 µg or Zinc at 40 mg).</li>
+  <li><strong>Impact</strong>: For a 39-year-old male, exceeding ULs for certain nutrients (e.g., Vitamin A, Iron) could lead to toxicity over time.</li>
+  <li><strong>Fix</strong>: Add a hard constraint in <code class="language-plaintext highlighter-rouge">evaluate_solution</code> to disqualify solutions exceeding ULs for critical nutrients, or increase the <code class="language-plaintext highlighter-rouge">over_ul</code> penalty significantly (e.g., 10x instead of 2.5x).</li>
+</ul>
+
+<h4 id="2-energy-kj-handling-is-incomplete">2. <strong>Energy (kJ) Handling is Incomplete</strong></h4>
+<ul>
+  <li><strong>Problem</strong>: The script treats “Energy with dietary fibre, equated (kJ)” as a nutrient with an RDI (10,878 kJ) and UL (13,389 kJ), but the logic in <code class="language-plaintext highlighter-rouge">_calculate_nutrition_score</code> re-reads <code class="language-plaintext highlighter-rouge">rdi.json</code> instead of using the passed <code class="language-plaintext highlighter-rouge">targets</code> dictionary. This is inconsistent and assumes the JSON file is always available.</li>
+  <li><strong>Impact</strong>: For a moderately active 39-year-old male, energy needs are ~10,000-11,000 kJ (2400-2600 kcal), which aligns with your RDI. However, the UL seems arbitrary and may not reflect realistic limits. Plus, the re-reading of JSON could fail if the file is missing.</li>
+  <li><strong>Fix</strong>: Use the <code class="language-plaintext highlighter-rouge">targets</code> dictionary consistently for all nutrients, including energy. Define a more realistic UL (e.g., 15,000 kJ) based on activity level and safety margins.</li>
+</ul>
+
+<h4 id="3-food-quantity-range-is-limited">3. <strong>Food Quantity Range is Limited</strong></h4>
+<ul>
+  <li><strong>Problem</strong>: In <code class="language-plaintext highlighter-rouge">create_solution</code>, food amounts are initialized between 25-100g, and mutations adjust by ±20g. This range is too narrow to meet 100% RDI for a full day in one meal (your <code class="language-plaintext highlighter-rouge">number_of_meals=1</code> setting).</li>
+  <li><strong>Impact</strong>: With only 25-100g per food, it’s unlikely to hit high RDIs (e.g., 3400 mg Potassium, 38g Fiber) without including more foods or larger portions.</li>
+  <li><strong>Fix</strong>: Increase the range (e.g., 25-500g) and adjust mutation steps proportionally. Alternatively, use a food database with serving size metadata to scale amounts realistically.</li>
+</ul>
+
+<h4 id="4-nutrient-mapping-mismatch">4. <strong>Nutrient Mapping Mismatch</strong></h4>
+<ul>
+  <li><strong>Problem</strong>: The <code class="language-plaintext highlighter-rouge">nutrient_mapping</code> parameter in <code class="language-plaintext highlighter-rouge">optimize_nutrition</code> is a dictionary from <code class="language-plaintext highlighter-rouge">rdi.json</code>, but the script uses its keys directly as column names in <code class="language-plaintext highlighter-rouge">food_df</code>. However, <code class="language-plaintext highlighter-rouge">rdi.json</code> keys (e.g., “Protein (g)”) don’t match typical food database column names (e.g., “PROTEIN”).</li>
+  <li><strong>Impact</strong>: This causes warnings (<code class="language-plaintext highlighter-rouge">"Column not found"</code>) and sets missing nutrients to 0, skewing optimization results.</li>
+  <li><strong>Fix</strong>: Create a proper mapping dictionary (e.g., <code class="language-plaintext highlighter-rouge">{'Protein (g)': 'PROTEIN', ...}</code>) and pass it to <code class="language-plaintext highlighter-rouge">optimize_nutrition</code>. Ensure <code class="language-plaintext highlighter-rouge">food_df</code> columns align with this mapping.</li>
+</ul>
+
+<h4 id="5-single-meal-assumption">5. <strong>Single-Meal Assumption</strong></h4>
+<ul>
+  <li><strong>Problem</strong>: You set <code class="language-plaintext highlighter-rouge">number_of_meals=1</code>, aiming for 100% RDI in one meal, but the script’s logic (e.g., scaling RDIs by <code class="language-plaintext highlighter-rouge">number_of_meals</code>) assumes multiple meals. This inconsistency could confuse results.</li>
+  <li><strong>Impact</strong>: A single meal hitting 100% RDI (e.g., 10,878 kJ, 91g protein) is impractical for most people due to volume and digestion limits.</li>
+  <li><strong>Fix</strong>: Either adjust <code class="language-plaintext highlighter-rouge">number_of_meals</code> to 3 (typical daily meals) and aim for ~33% RDI per meal, or explicitly design for a single meal with realistic portion constraints (e.g., max 1000g total food).</li>
+</ul>
+
+<h4 id="6-random-food-selection">6. <strong>Random Food Selection</strong></h4>
+<ul>
+  <li><strong>Problem</strong>: The script randomly selects 10-30 foods per run (<code class="language-plaintext highlighter-rouge">n_foods = random.randint(10, 30)</code>), which may exclude nutrient-dense options critical for meeting RDIs (e.g., spinach for folate, salmon for omega-3s).</li>
+  <li><strong>Impact</strong>: This randomness reduces consistency and may fail to meet 100% RDI for some nutrients by chance.</li>
+  <li><strong>Fix</strong>: Pre-filter foods based on nutrient density (e.g., using <code class="language-plaintext highlighter-rouge">nutrient_score</code>) before random selection, or increase the pool size (e.g., 50 foods).</li>
+</ul>
+
+<h4 id="7-lack-of-practicality-constraints">7. <strong>Lack of Practicality Constraints</strong></h4>
+<ul>
+  <li><strong>Problem</strong>: The optimization doesn’t consider meal practicality (e.g., taste compatibility, preparation feasibility, or total volume).</li>
+  <li><strong>Impact</strong>: You might get a “recipe” with 100g of broccoli, 75g of liver, and 50g of almonds—nutrient-rich but unpalatable or hard to prepare together.</li>
+  <li><strong>Fix</strong>: Add constraints like maximum total weight (e.g., 800g), food category diversity (e.g., at least one protein, carb, fat source), or a taste compatibility score.</li>
+</ul>
+
+<h4 id="8-missing-dependencies-and-error-handling">8. <strong>Missing Dependencies and Error Handling</strong></h4>
+<ul>
+  <li><strong>Problem</strong>: The script assumes the presence of <code class="language-plaintext highlighter-rouge">Release 2 - Nutrient file.xlsx</code>, <code class="language-plaintext highlighter-rouge">rdi.json</code>, and diet config files (e.g., <code class="language-plaintext highlighter-rouge">vegan.json</code>). Missing files or mismatched formats will crash it.</li>
+  <li><strong>Impact</strong>: Reduces robustness for real-world use.</li>
+  <li><strong>Fix</strong>: Add try-except blocks around file operations and provide default fallbacks or clear error messages.</li>
+</ul>
+
+<h4 id="9-rdi-values-for-your-profile">9. <strong>RDI Values for Your Profile</strong></h4>
+<ul>
+  <li><strong>Problem</strong>: Some RDI values seem off for a 39-year-old moderately active male:
+    <ul>
+      <li>Protein (91g): High end; typically 56-70g unless very active or muscular.</li>
+      <li>Vitamin D (15 µg): Matches standard, but many adults need more (20-50 µg) depending on sunlight exposure.</li>
+      <li>Omega-3 (1600 mg): High; typical RDI is 250-500 mg EPA/DHA, though 1600 mg aligns with some heart health guidelines.</li>
+    </ul>
+  </li>
+  <li><strong>Impact</strong>: Over- or under-targeting nutrients could skew results.</li>
+  <li><strong>Fix</strong>: Verify RDIs against authoritative sources (e.g., NIH, IOM) and adjust based on your activity level (e.g., ~0.8g protein/kg body weight).</li>
+</ul>
+
+<hr />
+
+<h3 id="suggestions-for-improvement">Suggestions for Improvement</h3>
+<ol>
+  <li><strong>Add a Feasibility Check</strong>: After optimization, validate that the total food weight is reasonable (e.g., 500-1000g for one meal) and nutrients are within safe ranges (RDI ≤ intake ≤ UL).</li>
+  <li><strong>Incorporate Activity Level</strong>: Adjust energy and protein RDIs dynamically based on your moderate activity (e.g., use Harris-Benedict equation for BMR + activity factor).</li>
+  <li><strong>Improve Nutrient Scoring</strong>: Weight nutrients by their physiological importance (e.g., prioritize deficiencies like Vitamin D or Iron over excesses of water-soluble vitamins).</li>
+  <li><strong>Test with Real Data</strong>: Run the script with your food database and check if it consistently hits 100% RDI for all nutrients. Tweak <code class="language-plaintext highlighter-rouge">population_size</code> and <code class="language-plaintext highlighter-rouge">generations</code> if needed.</li>
+  <li><strong>Add a Recipe Generator</strong>: Convert the food list into a practical recipe with preparation instructions (e.g., “Grilled Salmon with Broccoli and Quinoa”).</li>
+</ol>
+
+<hr />
+
+<h3 id="example-fix-for-key-issues">Example Fix for Key Issues</h3>
+<p>Here’s a snippet addressing some critical flaws:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Adjust RDI for activity level (example: 80kg male, moderate activity)
+</span><span class="n">basal_energy</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="mi">80</span> <span class="o">+</span> <span class="mf">6.25</span> <span class="o">*</span> <span class="mi">175</span> <span class="o">-</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">39</span> <span class="o">+</span> <span class="mi">5</span>  <span class="c1"># Harris-Benedict BMR (~1700 kcal)
+</span><span class="n">energy_rdi</span> <span class="o">=</span> <span class="n">basal_energy</span> <span class="o">*</span> <span class="mf">1.55</span>  <span class="c1"># Moderate activity factor (~2600 kcal = 10878 kJ)
+</span><span class="n">rdi_values</span><span class="p">[</span><span class="sh">"</span><span class="s">Energy with dietary fibre, equated (kJ)</span><span class="sh">"</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="sh">"</span><span class="s">rdi</span><span class="sh">"</span><span class="p">:</span> <span class="n">energy_rdi</span><span class="p">,</span> <span class="sh">"</span><span class="s">ul</span><span class="sh">"</span><span class="p">:</span> <span class="n">energy_rdi</span> <span class="o">*</span> <span class="mf">1.3</span><span class="p">}</span>
+
+<span class="c1"># Enforce UL in evaluate_solution
+</span><span class="k">def</span> <span class="nf">evaluate_solution</span><span class="p">(</span><span class="n">solution</span><span class="p">):</span>
+    <span class="n">current_nutrients</span> <span class="o">=</span> <span class="p">{</span><span class="n">nutrient</span><span class="p">:</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">nutrient</span> <span class="ow">in</span> <span class="n">meal_rdi_targets</span><span class="p">}</span>
+    <span class="k">for</span> <span class="n">food</span><span class="p">,</span> <span class="n">amount</span> <span class="ow">in</span> <span class="n">solution</span><span class="p">.</span><span class="nf">items</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">nutrient</span> <span class="ow">in</span> <span class="n">meal_rdi_targets</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">nutrient</span> <span class="ow">in</span> <span class="n">foods_df</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">food</span><span class="p">]:</span>
+                <span class="n">nutrient_per_gram</span> <span class="o">=</span> <span class="n">foods_df</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">food</span><span class="p">][</span><span class="n">nutrient</span><span class="p">]</span> <span class="o">/</span> <span class="n">foods_df</span><span class="p">.</span><span class="n">loc</span><span class="p">[</span><span class="n">food</span><span class="p">][</span><span class="sh">'</span><span class="s">density</span><span class="sh">'</span><span class="p">]</span>
+                <span class="n">current_nutrients</span><span class="p">[</span><span class="n">nutrient</span><span class="p">]</span> <span class="o">+=</span> <span class="n">nutrient_per_gram</span> <span class="o">*</span> <span class="n">amount</span>
+    <span class="c1"># Check ULs
+</span>    <span class="k">with</span> <span class="nf">open</span><span class="p">(</span><span class="sh">'</span><span class="s">rdi.json</span><span class="sh">'</span><span class="p">,</span> <span class="sh">'</span><span class="s">r</span><span class="sh">'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">nutrient_data</span> <span class="o">=</span> <span class="n">json</span><span class="p">.</span><span class="nf">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">nutrient</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">current_nutrients</span><span class="p">.</span><span class="nf">items</span><span class="p">():</span>
+        <span class="n">ul</span> <span class="o">=</span> <span class="n">nutrient_data</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="n">nutrient</span><span class="p">,</span> <span class="p">{}).</span><span class="nf">get</span><span class="p">(</span><span class="sh">'</span><span class="s">ul</span><span class="sh">'</span><span class="p">,</span> <span class="nf">float</span><span class="p">(</span><span class="sh">'</span><span class="s">inf</span><span class="sh">'</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">value</span> <span class="o">&gt;</span> <span class="n">ul</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nf">float</span><span class="p">(</span><span class="sh">'</span><span class="s">inf</span><span class="sh">'</span><span class="p">)</span>  <span class="c1"># Disqualify solution
+</span>    <span class="k">return</span> <span class="nf">_calculate_nutrition_score</span><span class="p">(</span><span class="n">current_nutrients</span><span class="p">,</span> <span class="n">meal_rdi_targets</span><span class="p">,</span> <span class="n">penalties</span><span class="p">)</span>
+
+<span class="c1"># Wider food range
+</span><span class="k">def</span> <span class="nf">create_solution</span><span class="p">():</span>
+    <span class="k">return</span> <span class="p">{</span><span class="n">food</span><span class="p">:</span> <span class="n">random</span><span class="p">.</span><span class="nf">uniform</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span> <span class="k">for</span> <span class="n">food</span> <span class="ow">in</span> <span class="n">available_foods</span><span class="p">}</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="conclusion">Conclusion</h3>
+<p>Your script is a strong foundation for generating nutrient-optimized recipes, but it needs refinement to ensure safety (UL enforcement), practicality (portion sizes, meal feasibility), and accuracy (nutrient mapping, RDI alignment). With the fixes above, it should better meet your goal of 100% RDI for a 39-year-old moderately active male. Let me know if you’d like help testing it with your food database or refining specific parts!</p>]]></content><author><name>Alex Laverty</name><email>alaverty@gmail.com</email></author><category term="optimising-nutrition" /><summary type="html"><![CDATA[]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/20250209/cholesterol.png" /><media:content medium="image" url="http://localhost:4000/assets/images/20250209/cholesterol.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Optimising Nutrition with Genetic Algorithms</title><link href="http://localhost:4000/optimising-nutrition/optimising-nutrition-with-genetic-algorithms" rel="alternate" type="text/html" title="Optimising Nutrition with Genetic Algorithms" /><published>2025-03-09T11:34:00+11:00</published><updated>2025-03-09T11:34:00+11:00</updated><id>http://localhost:4000/optimising-nutrition/optimising-nutrition-with-genetic-algorithms</id><content type="html" xml:base="http://localhost:4000/optimising-nutrition/optimising-nutrition-with-genetic-algorithms"><![CDATA[<div style="width: 100%; height: 250px; overflow: hidden; margin-bottom: 20px;">
+    <img src="/images/2025-03-09/optimised-nutrition-2.jpg" style="width: 100%; height: 250px; object-fit: cover; object-position: center;" />
+</div>
+
+<p>I have been working on creating an <a href="https://github.com/alexlaverty/optimize-nutrition/blob/main/app.py">Optimising Nutrition with Genetic Algorithms</a> python script that will randomly select a number of foods from the <a href="https://www.foodstandards.gov.au/science-data/monitoringnutrients/afcd">Australian Food Composition Database</a> will then generate random amounts for each food in grams for a number of specified generations with each generation trying to get closer and closer to matching 100% of the Daily Recommended Intake (RDI) for each essential vitamin and mineral, so the end result will be a list of ingredients and the amount in grams you should eat to get as close as possible to the RDI.</p>
+
+<p><img src="/assets/images/20250310/script.png" alt="alt text" /></p>
+
+<p><img src="/assets/images/20250310/genetic_algorithm_animation.gif" alt="alt text" /></p>
+
+<p>Kind of like a whole food version of <a href="https://www.youtube.com/watch?v=t8NCigh54jg">Soylent</a></p>
+
+<p>This would be helpful for some one wanting to do a daily eating plan and wants to hit their micronutrient RDI’s.</p>
+
+<p>You can view the index of recipes generated by genetic algorithm here :
+<a href="https://alexlaverty.github.io/optimize-nutrition/">https://alexlaverty.github.io/optimize-nutrition/</a></p>
+
+<p>They are sorted by score, a lower score is better, a lower score means it’s closer to matching the RDI’s and the higher the score the further away from matching the RDI’s.</p>
+
+<p>I have also specified different diet types to generate for All, meaning all foods in the database, Vegan to exclude any animal products, and WFPB meaning Whole Food Plant Based which excludes food if they do not match this criteria.</p>
+
+<p>The script and repo is still a work in progress, so I am open to any feedback or suggestions.</p>
+
+<p>This script is designed to optimize meal planning using a genetic algorithm, which is a type of artificial intelligence inspired by natural selection.</p>
+
+<p>The main goal is to select and adjust quantities of various foods to ensure that the daily nutritional requirements such as essential vitamins and minerals are met.</p>
+
+<p>By using a genetic algorithm, the script evolves a set of food combinations over multiple generations, gradually improving the meal plan to better meet these nutritional targets.</p>
+
+<h2 id="key-features-and-functionality">Key Features and Functionality:</h2>
+
+<h3 id="food-selection-and-customization">Food Selection and Customization:</h3>
+<p>The script begins by reading a dataset of foods, each with nutritional information. It allows for dietary customization, such as selecting only vegan or whole-food plant-based foods, by applying exclusion rules. This ensures the optimization is tailored to different diet types.</p>
+
+<h3 id="genetic-algorithm">Genetic Algorithm:</h3>
+<p>The core of the optimization is the genetic algorithm. The algorithm works by simulating the process of natural selection:</p>
+
+<p>It starts with a randomly selected population of meal plans (combinations of foods and their quantities).
+Over several generations, the algorithm “evolves” better solutions by selecting the best meal plans (those that are closer to the nutritional targets), and creating new meal plans through processes like crossover (mixing different plans) and mutation (random changes).
+This evolutionary process continues until an optimal or satisfactory meal plan is found.</p>
+
+<h3 id="nutrient-calculation">Nutrient Calculation:</h3>
+<p>Each food item in the selected meal plans is analyzed for its contribution to meeting the daily recommended intake (RDI) of various nutrients.</p>
+
+<p>The script calculates how much of each nutrient each food provides, ensuring that the final combination meets or comes close to the daily nutritional goals for essential vitamins and minerals.</p>
+
+<h3 id="output-and-reports">Output and Reports:</h3>
+<p>After running the optimization process, the script generates detailed reports in various formats. These include:</p>
+
+<p>JSON files containing the optimized meal plans, which can be saved and reused. Markdown and HTML files summarizing the results in an easily readable format.</p>
+
+<p>These reports show key details like the optimization score (how well the meal plan meets the nutritional goals), the number of foods used, and how the nutrients in the meal plan are distributed across different categories (e.g., nutrients at good levels, below target, or above target).</p>
+
+<h3 id="scalability-and-flexibility">Scalability and Flexibility:</h3>
+<p>The script is designed to be flexible, allowing it to handle various numbers of foods (from 5 to 20) and a customizable number of generations (up to 300). This means the user can adjust how complex and refined the meal plan optimization process is.</p>
+
+<h3 id="how-genetic-algorithms-help-in-meal-planning">How Genetic Algorithms Help in Meal Planning:</h3>
+<p>Genetic algorithms are particularly well-suited for problems like meal optimization, where the number of possible food combinations is large and complex. Instead of manually trying every possible combination, which would be time-consuming and inefficient, the genetic algorithm simulates the natural process of evolution to “search” for the best combination efficiently.</p>
+
+<p>By creating a population of meal plans and evolving them through generations, the algorithm can gradually find the combination of foods that best meets the nutritional targets, all while considering factors like variety and balance in the meal.</p>
+
+<p>In summary, this script automates the process of meal planning by intelligently selecting and adjusting food items to meet nutritional needs, making use of genetic algorithms to improve the meal plans over time. It provides a flexible, automated solution for anyone looking to optimize their diet for specific health goals or dietary preferences.</p>
+
+<h2 id="analysis-of-the-results">Analysis of the Results</h2>
+
+<p>After letting the script run every hour for a few days I fed the table into ChatGPT and asked it to analyse the results.</p>
+
+<p>Here is ChatGPT’s analysis of the trends and optimal values based on the provided data:</p>
+
+<h3 id="key-observations"><strong>Key Observations</strong></h3>
+<ol>
+  <li><strong>Best Score Range:</strong>
+    <ul>
+      <li>The lowest (best) scores are in the range <strong>5.07 to 6.17</strong>.</li>
+      <li>The worst scores are above <strong>20</strong>, with the worst being <strong>31.85</strong>.</li>
+    </ul>
+  </li>
+  <li><strong>Diet Type Trends:</strong>
+    <ul>
+      <li><strong>Best scores (≤6.17):</strong> Mostly “all” and “vegan” diets.</li>
+      <li><strong>Worst scores (&gt;20):</strong> Mostly “wfpb” (Whole Food Plant-Based).</li>
+      <li><strong>Implication:</strong> The best-performing recipes tend to include all food groups or vegan options, while purely whole-food plant-based diets seem harder to optimize.</li>
+    </ul>
+  </li>
+  <li><strong>Number of Ingredients (Foods):</strong>
+    <ul>
+      <li><strong>Best scores (≤6.17):</strong> Use between <strong>10 to 20 ingredients</strong>.</li>
+      <li><strong>Worst scores (&gt;20):</strong> Often have very few ingredients (e.g., 5–8), suggesting that having more variety contributes to better nutritional balance.</li>
+    </ul>
+  </li>
+  <li><strong>Nutrient Balance (OK/Low/High):</strong>
+    <ul>
+      <li><strong>Best scores (≤6.17):</strong> Tend to have around <strong>17-20 nutrients at OK levels,</strong> 9-12 nutrients below target, and <strong>0-2 above target</strong>.</li>
+      <li><strong>Worst scores (&gt;20):</strong> Have significantly more nutrients below target (e.g., 20-28 low), meaning they fail to meet nutritional needs.</li>
+    </ul>
+  </li>
+  <li><strong>Generations &amp; Computation Time:</strong>
+    <ul>
+      <li>The best runs typically required <strong>150-300 generations</strong> and computation times ranging <strong>450s to 2000s</strong>.</li>
+      <li>The worst runs often completed in very few generations (<strong>3-50</strong>), meaning they likely didn’t converge to a well-optimized solution.</li>
+    </ul>
+  </li>
+</ol>
+
+<hr />
+
+<h3 id="optimal-recipe-parameters-for-genetic-algorithm"><strong>Optimal Recipe Parameters for Genetic Algorithm</strong></h3>
+<p>If you’re generating recipes, these values would likely yield the best results:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Optimal Range</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Diet Type</strong></td>
+      <td>All or Vegan</td>
+    </tr>
+    <tr>
+      <td><strong>Number of Ingredients</strong></td>
+      <td>10 - 20</td>
+    </tr>
+    <tr>
+      <td><strong>Nutrients (OK/Low/High)</strong></td>
+      <td>~18/10/2</td>
+    </tr>
+    <tr>
+      <td><strong>Generations</strong></td>
+      <td>150 - 300</td>
+    </tr>
+    <tr>
+      <td><strong>Computation Time</strong></td>
+      <td>500s - 2000s</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Using this analysis I’m going to continue to tweak the script and add in more features to get recipes that more closely match the recommended daily requirements for the essential vitamins and minerals and also adding more requirements to match, calories, other things that are not essential but still desirable.</p>
+
+<p>I’ve also been working on a UI which updates in real time and shows you a chart of the score as it decreases with each generation :</p>
+
+<p><img src="/assets/images/20250310/optimise-nutrition-ui.png" alt="alt text" /></p>]]></content><author><name>Alex Laverty</name><email>alaverty@gmail.com</email></author><category term="optimising-nutrition" /><summary type="html"><![CDATA[]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/20250209/cholesterol.png" /><media:content medium="image" url="http://localhost:4000/assets/images/20250209/cholesterol.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">List of Fitness Tests</title><link href="http://localhost:4000/health/fitness-tests" rel="alternate" type="text/html" title="List of Fitness Tests" /><published>2025-02-22T11:34:00+11:00</published><updated>2025-02-22T11:34:00+11:00</updated><id>http://localhost:4000/health/fitness-tests</id><content type="html" xml:base="http://localhost:4000/health/fitness-tests"><![CDATA[<p>List of ways to test your fitness</p>
 
 <p>Continuous Pushups</p>
 
@@ -197,151 +781,7 @@ https://nrpt.co.uk/training/tests/running/cooper.htm</p>
   <li>Record detailed metrics for tracking</li>
   <li>Use standardized equipment when possible</li>
   <li>Have a spotter present for safety when needed</li>
-</ol>]]></content><author><name>Alex Laverty</name><email>alaverty@gmail.com</email></author><category term="health" /><summary type="html"><![CDATA[List of ways to test your fitness]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://0.0.0.0:4000/assets/images/20250209/cholesterol.png" /><media:content medium="image" url="http://0.0.0.0:4000/assets/images/20250209/cholesterol.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Optimising Nutrition with Genetic Algorithms</title><link href="http://0.0.0.0:4000/optimising-nutrition/optimising-nutrition-with-genetic-algorithms" rel="alternate" type="text/html" title="Optimising Nutrition with Genetic Algorithms" /><published>2025-02-22T11:34:00+11:00</published><updated>2025-02-22T11:34:00+11:00</updated><id>http://0.0.0.0:4000/optimising-nutrition/optimising-nutrition-with-genetic-algorithms</id><content type="html" xml:base="http://0.0.0.0:4000/optimising-nutrition/optimising-nutrition-with-genetic-algorithms"><![CDATA[<div style="width: 100%; height: 250px; overflow: hidden; margin-bottom: 20px;">
-    <img src="/images/2025-03-09/optimised-nutrition-2.jpg" style="width: 100%; height: 250px; object-fit: cover; object-position: center;" />
-</div>
-
-<p>I have been working on creating an <a href="https://github.com/alexlaverty/optimize-nutrition/blob/main/app.py">Optimising Nutrition with Genetic Algorithms</a> python script that will randomly select a number of foods from the <a href="https://www.foodstandards.gov.au/science-data/monitoringnutrients/afcd">Australian Food Composition Database</a> will then generate random amounts for each food in grams for a number of specified generations with each generation trying to get closer and closer to matching 100% of the Daily Recommended Intake (RDI) for each essential vitamin and mineral, so the end result will be a list of ingredients and the amount in grams you should eat to get as close as possible to the RDI.</p>
-
-<p><img src="/assets/images/20250310/script.png" alt="alt text" /></p>
-
-<p><img src="/assets/images/20250310/genetic_algorithm_animation.gif" alt="alt text" /></p>
-
-<p>Kind of like a whole food version of <a href="https://www.youtube.com/watch?v=t8NCigh54jg">Soylent</a></p>
-
-<p>This would be helpful for some one wanting to do a daily eating plan and wants to hit their micronutrient RDI’s.</p>
-
-<p>You can view the index of recipes generated by genetic algorithm here :
-<a href="https://alexlaverty.github.io/optimize-nutrition/">https://alexlaverty.github.io/optimize-nutrition/</a></p>
-
-<p>They are sorted by score, a lower score is better, a lower score means it’s closer to matching the RDI’s and the higher the score the further away from matching the RDI’s.</p>
-
-<p>I have also specified different diet types to generate for All, meaning all foods in the database, Vegan to exclude any animal products, and WFPB meaning Whole Food Plant Based which excludes food if they do not match this criteria.</p>
-
-<p>The script and repo is still a work in progress, so I am open to any feedback or suggestions.</p>
-
-<p>This script is designed to optimize meal planning using a genetic algorithm, which is a type of artificial intelligence inspired by natural selection.</p>
-
-<p>The main goal is to select and adjust quantities of various foods to ensure that the daily nutritional requirements such as essential vitamins and minerals are met.</p>
-
-<p>By using a genetic algorithm, the script evolves a set of food combinations over multiple generations, gradually improving the meal plan to better meet these nutritional targets.</p>
-
-<h2 id="key-features-and-functionality">Key Features and Functionality:</h2>
-
-<h3 id="food-selection-and-customization">Food Selection and Customization:</h3>
-<p>The script begins by reading a dataset of foods, each with nutritional information. It allows for dietary customization, such as selecting only vegan or whole-food plant-based foods, by applying exclusion rules. This ensures the optimization is tailored to different diet types.</p>
-
-<h3 id="genetic-algorithm">Genetic Algorithm:</h3>
-<p>The core of the optimization is the genetic algorithm. The algorithm works by simulating the process of natural selection:</p>
-
-<p>It starts with a randomly selected population of meal plans (combinations of foods and their quantities).
-Over several generations, the algorithm “evolves” better solutions by selecting the best meal plans (those that are closer to the nutritional targets), and creating new meal plans through processes like crossover (mixing different plans) and mutation (random changes).
-This evolutionary process continues until an optimal or satisfactory meal plan is found.</p>
-
-<h3 id="nutrient-calculation">Nutrient Calculation:</h3>
-<p>Each food item in the selected meal plans is analyzed for its contribution to meeting the daily recommended intake (RDI) of various nutrients.</p>
-
-<p>The script calculates how much of each nutrient each food provides, ensuring that the final combination meets or comes close to the daily nutritional goals for essential vitamins and minerals.</p>
-
-<h3 id="output-and-reports">Output and Reports:</h3>
-<p>After running the optimization process, the script generates detailed reports in various formats. These include:</p>
-
-<p>JSON files containing the optimized meal plans, which can be saved and reused. Markdown and HTML files summarizing the results in an easily readable format.</p>
-
-<p>These reports show key details like the optimization score (how well the meal plan meets the nutritional goals), the number of foods used, and how the nutrients in the meal plan are distributed across different categories (e.g., nutrients at good levels, below target, or above target).</p>
-
-<h3 id="scalability-and-flexibility">Scalability and Flexibility:</h3>
-<p>The script is designed to be flexible, allowing it to handle various numbers of foods (from 5 to 20) and a customizable number of generations (up to 300). This means the user can adjust how complex and refined the meal plan optimization process is.</p>
-
-<h3 id="how-genetic-algorithms-help-in-meal-planning">How Genetic Algorithms Help in Meal Planning:</h3>
-<p>Genetic algorithms are particularly well-suited for problems like meal optimization, where the number of possible food combinations is large and complex. Instead of manually trying every possible combination, which would be time-consuming and inefficient, the genetic algorithm simulates the natural process of evolution to “search” for the best combination efficiently.</p>
-
-<p>By creating a population of meal plans and evolving them through generations, the algorithm can gradually find the combination of foods that best meets the nutritional targets, all while considering factors like variety and balance in the meal.</p>
-
-<p>In summary, this script automates the process of meal planning by intelligently selecting and adjusting food items to meet nutritional needs, making use of genetic algorithms to improve the meal plans over time. It provides a flexible, automated solution for anyone looking to optimize their diet for specific health goals or dietary preferences.</p>
-
-<h2 id="analysis-of-the-results">Analysis of the Results</h2>
-
-<p>After letting the script run every hour for a few days I fed the table into ChatGPT and asked it to analyse the results.</p>
-
-<p>Here is ChatGPT’s analysis of the trends and optimal values based on the provided data:</p>
-
-<h3 id="key-observations"><strong>Key Observations</strong></h3>
-<ol>
-  <li><strong>Best Score Range:</strong>
-    <ul>
-      <li>The lowest (best) scores are in the range <strong>5.07 to 6.17</strong>.</li>
-      <li>The worst scores are above <strong>20</strong>, with the worst being <strong>31.85</strong>.</li>
-    </ul>
-  </li>
-  <li><strong>Diet Type Trends:</strong>
-    <ul>
-      <li><strong>Best scores (≤6.17):</strong> Mostly “all” and “vegan” diets.</li>
-      <li><strong>Worst scores (&gt;20):</strong> Mostly “wfpb” (Whole Food Plant-Based).</li>
-      <li><strong>Implication:</strong> The best-performing recipes tend to include all food groups or vegan options, while purely whole-food plant-based diets seem harder to optimize.</li>
-    </ul>
-  </li>
-  <li><strong>Number of Ingredients (Foods):</strong>
-    <ul>
-      <li><strong>Best scores (≤6.17):</strong> Use between <strong>10 to 20 ingredients</strong>.</li>
-      <li><strong>Worst scores (&gt;20):</strong> Often have very few ingredients (e.g., 5–8), suggesting that having more variety contributes to better nutritional balance.</li>
-    </ul>
-  </li>
-  <li><strong>Nutrient Balance (OK/Low/High):</strong>
-    <ul>
-      <li><strong>Best scores (≤6.17):</strong> Tend to have around <strong>17-20 nutrients at OK levels,</strong> 9-12 nutrients below target, and <strong>0-2 above target</strong>.</li>
-      <li><strong>Worst scores (&gt;20):</strong> Have significantly more nutrients below target (e.g., 20-28 low), meaning they fail to meet nutritional needs.</li>
-    </ul>
-  </li>
-  <li><strong>Generations &amp; Computation Time:</strong>
-    <ul>
-      <li>The best runs typically required <strong>150-300 generations</strong> and computation times ranging <strong>450s to 2000s</strong>.</li>
-      <li>The worst runs often completed in very few generations (<strong>3-50</strong>), meaning they likely didn’t converge to a well-optimized solution.</li>
-    </ul>
-  </li>
-</ol>
-
-<hr />
-
-<h3 id="optimal-recipe-parameters-for-genetic-algorithm"><strong>Optimal Recipe Parameters for Genetic Algorithm</strong></h3>
-<p>If you’re generating recipes, these values would likely yield the best results:</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Parameter</th>
-      <th>Optimal Range</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Diet Type</strong></td>
-      <td>All or Vegan</td>
-    </tr>
-    <tr>
-      <td><strong>Number of Ingredients</strong></td>
-      <td>10 - 20</td>
-    </tr>
-    <tr>
-      <td><strong>Nutrients (OK/Low/High)</strong></td>
-      <td>~18/10/2</td>
-    </tr>
-    <tr>
-      <td><strong>Generations</strong></td>
-      <td>150 - 300</td>
-    </tr>
-    <tr>
-      <td><strong>Computation Time</strong></td>
-      <td>500s - 2000s</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Using this analysis I’m going to continue to tweak the script and add in more features to get recipes that more closely match the recommended daily requirements for the essential vitamins and minerals and also adding more requirements to match, calories, other things that are not essential but still desirable.</p>
-
-<p>I’ve also been working on a UI which updates in real time and shows you a chart of the score as it decreases with each generation :</p>
-
-<p><img src="/assets/images/20250310/optimise-nutrition-ui.png" alt="alt text" /></p>]]></content><author><name>Alex Laverty</name><email>alaverty@gmail.com</email></author><category term="optimising-nutrition" /><summary type="html"><![CDATA[]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://0.0.0.0:4000/assets/images/20250209/cholesterol.png" /><media:content medium="image" url="http://0.0.0.0:4000/assets/images/20250209/cholesterol.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Summary - Total cholesterol and all-cause mortality by sex and age</title><link href="http://0.0.0.0:4000/health/cholesterol-study" rel="alternate" type="text/html" title="Summary - Total cholesterol and all-cause mortality by sex and age" /><published>2025-02-09T11:34:00+11:00</published><updated>2025-02-09T11:34:00+11:00</updated><id>http://0.0.0.0:4000/health/cholesterol-study</id><content type="html" xml:base="http://0.0.0.0:4000/health/cholesterol-study"><![CDATA[<p>Key points from the text :</p>
+</ol>]]></content><author><name>Alex Laverty</name><email>alaverty@gmail.com</email></author><category term="health" /><summary type="html"><![CDATA[List of ways to test your fitness]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/20250209/cholesterol.png" /><media:content medium="image" url="http://localhost:4000/assets/images/20250209/cholesterol.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Summary - Total cholesterol and all-cause mortality by sex and age</title><link href="http://localhost:4000/health/cholesterol-study" rel="alternate" type="text/html" title="Summary - Total cholesterol and all-cause mortality by sex and age" /><published>2025-02-09T11:34:00+11:00</published><updated>2025-02-09T11:34:00+11:00</updated><id>http://localhost:4000/health/cholesterol-study</id><content type="html" xml:base="http://localhost:4000/health/cholesterol-study"><![CDATA[<p>Key points from the text :</p>
 
 <p>https://www.nature.com/articles/s41598-018-38461-y</p>
 
@@ -369,7 +809,7 @@ This evolutionary process continues until an optimal or satisfactory meal plan i
 <ul>
   <li>Medication use: The study did not account for the use of lipid-lowering medication, which may have affected the results.</li>
   <li>Limited generalizability: The study was conducted in a Korean population, and the results may not be generalizable to other ethnic groups.</li>
-</ul>]]></content><author><name>Alex Laverty</name><email>alaverty@gmail.com</email></author><category term="health" /><summary type="html"><![CDATA[Key points from the text :]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://0.0.0.0:4000/assets/images/20250209/cholesterol.png" /><media:content medium="image" url="http://0.0.0.0:4000/assets/images/20250209/cholesterol.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Random Bodyweight Workout with Video!</title><link href="http://0.0.0.0:4000/fitcypher/random-youtube-workout" rel="alternate" type="text/html" title="Random Bodyweight Workout with Video!" /><published>2025-02-02T14:34:00+11:00</published><updated>2025-02-02T14:34:00+11:00</updated><id>http://0.0.0.0:4000/fitcypher/random-youtube-workout</id><content type="html" xml:base="http://0.0.0.0:4000/fitcypher/random-youtube-workout"><![CDATA[<p>I have added a new workout page, this one will read a list of youtube videos from a json file, for example :</p>
+</ul>]]></content><author><name>Alex Laverty</name><email>alaverty@gmail.com</email></author><category term="health" /><summary type="html"><![CDATA[Key points from the text :]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/20250209/cholesterol.png" /><media:content medium="image" url="http://localhost:4000/assets/images/20250209/cholesterol.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Random Bodyweight Workout with Video!</title><link href="http://localhost:4000/fitcypher/random-youtube-workout" rel="alternate" type="text/html" title="Random Bodyweight Workout with Video!" /><published>2025-02-02T14:34:00+11:00</published><updated>2025-02-02T14:34:00+11:00</updated><id>http://localhost:4000/fitcypher/random-youtube-workout</id><content type="html" xml:base="http://localhost:4000/fitcypher/random-youtube-workout"><![CDATA[<p>I have added a new workout page, this one will read a list of youtube videos from a json file, for example :</p>
 
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/src/fitcypher$ cat ui/data/darebee.json 
 [
@@ -407,7 +847,7 @@ This evolutionary process continues until an optimal or satisfactory meal plan i
 
 <p>Or git clone the FitCypher github repo and run it locally :</p>
 
-<p><a href="https://github.com/alexlaverty/fitcypher">https://github.com/alexlaverty/fitcypher</a></p>]]></content><author><name>Alex Laverty</name><email>alaverty@gmail.com</email></author><category term="fitcypher" /><summary type="html"><![CDATA[I have added a new workout page, this one will read a list of youtube videos from a json file, for example :]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://0.0.0.0:4000/assets/images/fitcypher/20250202/screenshot004.png" /><media:content medium="image" url="http://0.0.0.0:4000/assets/images/fitcypher/20250202/screenshot004.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Quick Body Weight Workout</title><link href="http://0.0.0.0:4000/fitcypher/quick-bodyweight-workout" rel="alternate" type="text/html" title="Quick Body Weight Workout" /><published>2025-02-02T13:34:00+11:00</published><updated>2025-02-02T13:34:00+11:00</updated><id>http://0.0.0.0:4000/fitcypher/quick-bodyweight-workout</id><content type="html" xml:base="http://0.0.0.0:4000/fitcypher/quick-bodyweight-workout"><![CDATA[<p>Now we’ve added a page to show a list of available Workouts to choose from :</p>
+<p><a href="https://github.com/alexlaverty/fitcypher">https://github.com/alexlaverty/fitcypher</a></p>]]></content><author><name>Alex Laverty</name><email>alaverty@gmail.com</email></author><category term="fitcypher" /><summary type="html"><![CDATA[I have added a new workout page, this one will read a list of youtube videos from a json file, for example :]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/fitcypher/20250202/screenshot004.png" /><media:content medium="image" url="http://localhost:4000/assets/images/fitcypher/20250202/screenshot004.png" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Quick Body Weight Workout</title><link href="http://localhost:4000/fitcypher/quick-bodyweight-workout" rel="alternate" type="text/html" title="Quick Body Weight Workout" /><published>2025-02-02T13:34:00+11:00</published><updated>2025-02-02T13:34:00+11:00</updated><id>http://localhost:4000/fitcypher/quick-bodyweight-workout</id><content type="html" xml:base="http://localhost:4000/fitcypher/quick-bodyweight-workout"><![CDATA[<p>Now we’ve added a page to show a list of available Workouts to choose from :</p>
 
 <p><img src="/assets/images/fitcypher/20250202/screenshot001.png" alt="alt text" /></p>
 
@@ -425,7 +865,147 @@ This evolutionary process continues until an optimal or satisfactory meal plan i
 
 <p>Or git clone the FitCypher github repo and run it locally :</p>
 
-<p><a href="https://github.com/alexlaverty/fitcypher">https://github.com/alexlaverty/fitcypher</a></p>]]></content><author><name>Alex Laverty</name><email>alaverty@gmail.com</email></author><category term="fitcypher" /><summary type="html"><![CDATA[Now we’ve added a page to show a list of available Workouts to choose from :]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://0.0.0.0:4000/assets/images/fitcypher/20250202/body_weight_workout.jpg" /><media:content medium="image" url="http://0.0.0.0:4000/assets/images/fitcypher/20250202/body_weight_workout.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Django Model</title><link href="http://0.0.0.0:4000/fitcypher/django-model" rel="alternate" type="text/html" title="Django Model" /><published>2025-02-02T12:34:00+11:00</published><updated>2025-02-02T12:34:00+11:00</updated><id>http://0.0.0.0:4000/fitcypher/django-model</id><content type="html" xml:base="http://0.0.0.0:4000/fitcypher/django-model"><![CDATA[<p>Today I am working on the FitCypher database backend, to keep it simple the nutrition and health metrics will be posted into a common Entry model :</p>
+<p><a href="https://github.com/alexlaverty/fitcypher">https://github.com/alexlaverty/fitcypher</a></p>]]></content><author><name>Alex Laverty</name><email>alaverty@gmail.com</email></author><category term="fitcypher" /><summary type="html"><![CDATA[Now we’ve added a page to show a list of available Workouts to choose from :]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/fitcypher/20250202/body_weight_workout.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/fitcypher/20250202/body_weight_workout.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">REST API</title><link href="http://localhost:4000/fitcypher/rest-api" rel="alternate" type="text/html" title="REST API" /><published>2025-02-02T12:34:00+11:00</published><updated>2025-02-02T12:34:00+11:00</updated><id>http://localhost:4000/fitcypher/rest-api</id><content type="html" xml:base="http://localhost:4000/fitcypher/rest-api"><![CDATA[<p>We will use Django Rest Framework as the API framework to interact with this model.</p>
+
+<p>Using API’s allows to either add entries in bulk, allow users to export and import from other systems, allow for automation and scheduled data syncing.</p>
+
+<p>To make the API friendly to use we’ll provide an API UI :</p>
+
+<p><img src="/assets/images/fitcypher/20250202/fitcypher-entries-api.png" alt="alt text" /></p>
+
+<h2 id="rest-api-authentication">Rest API Authentication</h2>
+
+<p>For now we will just use basic authentication, username and password, however in the future we’ll implement some better authentication methods like token authentication.</p>
+
+<h2 id="fitcypher-api-curl-commands">FitCypher API Curl Commands</h2>
+
+<h3 id="get">GET</h3>
+
+<p>Curl Command :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl - X GET http: //127.0.0.1:8000/api/entries/ -u your_username:your_password
+</code></pre></div></div>
+
+<p>JSON Response :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    [{
+        "id": 1,
+        "user": {
+            "id": 1,
+            "username": "alex"
+        },
+        "date": "2025-02-02T07:51:00Z",
+        "tracking": "Food",
+        "string_value": "Apple",
+        "numerical_value": null,
+        "notes": "",
+        "tags": "",
+        "source": "FitCypher"
+    }, {
+        "id": 2,
+        "user": {
+            "id": 1,
+            "username": "alex"
+        },
+        "date": "2025-02-02T07:52:00Z",
+        "tracking": "Exercise",
+        "string_value": "Push Ups",
+        "numerical_value": "10.00",
+        "notes": "",
+        "tags": "",
+        "source": "FitCypher"
+    }]
+</code></pre></div></div>
+
+<p>If you install JQ you can also get pretty printed output via :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -s -X GET http://127.0.0.1:8000/api/entries/ -u your_username:your_password | jq
+[
+  {
+    "id": 1,
+    "user": {
+      "id": 1,
+      "username": "alex"
+    },
+    "date": "2025-02-02T07:51:00Z",
+    "tracking": "Food",
+    "string_value": "Apple",
+    "numerical_value": null,
+    "notes": "",
+    "tags": "",
+    "source": "FitCypher"
+  },
+  {
+    "id": 2,
+    "user": {
+      "id": 1,
+      "username": "alex"
+    },
+    "date": "2025-02-02T07:52:00Z",
+    "tracking": "Exercise",
+    "string_value": "Push Ups",
+    "numerical_value": "10.00",
+    "notes": "",
+    "tags": "",
+    "source": "FitCypher"
+  },
+  {
+    "id": 3,
+    "user": {
+      "id": 1,
+      "username": "alex"
+    },
+    "date": "2023-10-15T12:00:00Z",
+    "tracking": "weight",
+    "string_value": null,
+    "numerical_value": "70.50",
+    "notes": "After breakfast",
+    "tags": "morning",
+    "source": "fitcypher"
+  }
+]
+</code></pre></div></div>
+
+<h3 id="post">POST</h3>
+
+<p>Add a new entry via the API</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -X POST http://127.0.0.1:8000/api/entries/ \
+-H "Content-Type: application/json" \
+-u your_username:your_password \
+-d '{
+    "date": "2023-10-15T12:00:00Z",
+    "tracking": "weight",
+    "numerical_value": 70.5,
+    "notes": "After breakfast",
+    "tags": "morning",
+    "source": "fitcypher"
+}'
+</code></pre></div></div>
+
+<p>Add a new entry via the API to the PythonAnywhere hosted instance :</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -X POST https://alexlaverty.pythonanywhere.com/api/entries/ \
+-H "Content-Type: application/json" \
+-u your_username:your_password \
+-d '{
+    "date": "2023-10-15T12:00:00Z",
+    "tracking": "food",
+    "string_value": "Banana",
+    "numerical_value": "",
+    "notes": "",
+    "tags": "",
+    "source": "fitcypher"
+}'
+</code></pre></div></div>
+
+<p>Try out FitCypher here :</p>
+
+<p><a href="https://alexlaverty.pythonanywhere.com/">https://alexlaverty.pythonanywhere.com/</a></p>
+
+<p>Or git clone the FitCypher github repo and run it locally :</p>
+
+<p><a href="https://github.com/alexlaverty/fitcypher">https://github.com/alexlaverty/fitcypher</a></p>]]></content><author><name>Alex Laverty</name><email>alaverty@gmail.com</email></author><category term="fitcypher" /><summary type="html"><![CDATA[We will use Django Rest Framework as the API framework to interact with this model.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/fitcypher/20250202/django-rest-framework.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/fitcypher/20250202/django-rest-framework.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Django Model</title><link href="http://localhost:4000/fitcypher/django-model" rel="alternate" type="text/html" title="Django Model" /><published>2025-02-02T12:34:00+11:00</published><updated>2025-02-02T12:34:00+11:00</updated><id>http://localhost:4000/fitcypher/django-model</id><content type="html" xml:base="http://localhost:4000/fitcypher/django-model"><![CDATA[<p>Today I am working on the FitCypher database backend, to keep it simple the nutrition and health metrics will be posted into a common Entry model :</p>
 
 <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Entry</span><span class="p">(</span><span class="n">models</span><span class="p">.</span><span class="n">Model</span><span class="p">):</span>
     <span class="n">user</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="nc">ForeignKey</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="p">.</span><span class="n">CASCADE</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="sh">"</span><span class="s">entries</span><span class="sh">"</span><span class="p">)</span>
@@ -602,147 +1182,7 @@ This evolutionary process continues until an optimal or satisfactory meal plan i
 
 <p>Or git clone the FitCypher github repo and run it locally :</p>
 
-<p><a href="https://github.com/alexlaverty/fitcypher">https://github.com/alexlaverty/fitcypher</a></p>]]></content><author><name>Alex Laverty</name><email>alaverty@gmail.com</email></author><category term="fitcypher" /><summary type="html"><![CDATA[Today I am working on the FitCypher database backend, to keep it simple the nutrition and health metrics will be posted into a common Entry model :]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://0.0.0.0:4000/assets/images/fitcypher/20250201/django-fitcypher.jpg" /><media:content medium="image" url="http://0.0.0.0:4000/assets/images/fitcypher/20250201/django-fitcypher.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">REST API</title><link href="http://0.0.0.0:4000/fitcypher/rest-api" rel="alternate" type="text/html" title="REST API" /><published>2025-02-02T12:34:00+11:00</published><updated>2025-02-02T12:34:00+11:00</updated><id>http://0.0.0.0:4000/fitcypher/rest-api</id><content type="html" xml:base="http://0.0.0.0:4000/fitcypher/rest-api"><![CDATA[<p>We will use Django Rest Framework as the API framework to interact with this model.</p>
-
-<p>Using API’s allows to either add entries in bulk, allow users to export and import from other systems, allow for automation and scheduled data syncing.</p>
-
-<p>To make the API friendly to use we’ll provide an API UI :</p>
-
-<p><img src="/assets/images/fitcypher/20250202/fitcypher-entries-api.png" alt="alt text" /></p>
-
-<h2 id="rest-api-authentication">Rest API Authentication</h2>
-
-<p>For now we will just use basic authentication, username and password, however in the future we’ll implement some better authentication methods like token authentication.</p>
-
-<h2 id="fitcypher-api-curl-commands">FitCypher API Curl Commands</h2>
-
-<h3 id="get">GET</h3>
-
-<p>Curl Command :</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl - X GET http: //127.0.0.1:8000/api/entries/ -u your_username:your_password
-</code></pre></div></div>
-
-<p>JSON Response :</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    [{
-        "id": 1,
-        "user": {
-            "id": 1,
-            "username": "alex"
-        },
-        "date": "2025-02-02T07:51:00Z",
-        "tracking": "Food",
-        "string_value": "Apple",
-        "numerical_value": null,
-        "notes": "",
-        "tags": "",
-        "source": "FitCypher"
-    }, {
-        "id": 2,
-        "user": {
-            "id": 1,
-            "username": "alex"
-        },
-        "date": "2025-02-02T07:52:00Z",
-        "tracking": "Exercise",
-        "string_value": "Push Ups",
-        "numerical_value": "10.00",
-        "notes": "",
-        "tags": "",
-        "source": "FitCypher"
-    }]
-</code></pre></div></div>
-
-<p>If you install JQ you can also get pretty printed output via :</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -s -X GET http://127.0.0.1:8000/api/entries/ -u your_username:your_password | jq
-[
-  {
-    "id": 1,
-    "user": {
-      "id": 1,
-      "username": "alex"
-    },
-    "date": "2025-02-02T07:51:00Z",
-    "tracking": "Food",
-    "string_value": "Apple",
-    "numerical_value": null,
-    "notes": "",
-    "tags": "",
-    "source": "FitCypher"
-  },
-  {
-    "id": 2,
-    "user": {
-      "id": 1,
-      "username": "alex"
-    },
-    "date": "2025-02-02T07:52:00Z",
-    "tracking": "Exercise",
-    "string_value": "Push Ups",
-    "numerical_value": "10.00",
-    "notes": "",
-    "tags": "",
-    "source": "FitCypher"
-  },
-  {
-    "id": 3,
-    "user": {
-      "id": 1,
-      "username": "alex"
-    },
-    "date": "2023-10-15T12:00:00Z",
-    "tracking": "weight",
-    "string_value": null,
-    "numerical_value": "70.50",
-    "notes": "After breakfast",
-    "tags": "morning",
-    "source": "fitcypher"
-  }
-]
-</code></pre></div></div>
-
-<h3 id="post">POST</h3>
-
-<p>Add a new entry via the API</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -X POST http://127.0.0.1:8000/api/entries/ \
--H "Content-Type: application/json" \
--u your_username:your_password \
--d '{
-    "date": "2023-10-15T12:00:00Z",
-    "tracking": "weight",
-    "numerical_value": 70.5,
-    "notes": "After breakfast",
-    "tags": "morning",
-    "source": "fitcypher"
-}'
-</code></pre></div></div>
-
-<p>Add a new entry via the API to the PythonAnywhere hosted instance :</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -X POST https://alexlaverty.pythonanywhere.com/api/entries/ \
--H "Content-Type: application/json" \
--u your_username:your_password \
--d '{
-    "date": "2023-10-15T12:00:00Z",
-    "tracking": "food",
-    "string_value": "Banana",
-    "numerical_value": "",
-    "notes": "",
-    "tags": "",
-    "source": "fitcypher"
-}'
-</code></pre></div></div>
-
-<p>Try out FitCypher here :</p>
-
-<p><a href="https://alexlaverty.pythonanywhere.com/">https://alexlaverty.pythonanywhere.com/</a></p>
-
-<p>Or git clone the FitCypher github repo and run it locally :</p>
-
-<p><a href="https://github.com/alexlaverty/fitcypher">https://github.com/alexlaverty/fitcypher</a></p>]]></content><author><name>Alex Laverty</name><email>alaverty@gmail.com</email></author><category term="fitcypher" /><summary type="html"><![CDATA[We will use Django Rest Framework as the API framework to interact with this model.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://0.0.0.0:4000/assets/images/fitcypher/20250202/django-rest-framework.jpg" /><media:content medium="image" url="http://0.0.0.0:4000/assets/images/fitcypher/20250202/django-rest-framework.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Generating FitCypher web logos with AI</title><link href="http://0.0.0.0:4000/fitcypher/generating-web-logos-with-ai" rel="alternate" type="text/html" title="Generating FitCypher web logos with AI" /><published>2025-02-01T18:34:00+11:00</published><updated>2025-02-01T18:34:00+11:00</updated><id>http://0.0.0.0:4000/fitcypher/generating-web-logos-with-ai</id><content type="html" xml:base="http://0.0.0.0:4000/fitcypher/generating-web-logos-with-ai"><![CDATA[<style>
+<p><a href="https://github.com/alexlaverty/fitcypher">https://github.com/alexlaverty/fitcypher</a></p>]]></content><author><name>Alex Laverty</name><email>alaverty@gmail.com</email></author><category term="fitcypher" /><summary type="html"><![CDATA[Today I am working on the FitCypher database backend, to keep it simple the nutrition and health metrics will be posted into a common Entry model :]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/fitcypher/20250201/django-fitcypher.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/fitcypher/20250201/django-fitcypher.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Generating FitCypher web logos with AI</title><link href="http://localhost:4000/fitcypher/generating-web-logos-with-ai" rel="alternate" type="text/html" title="Generating FitCypher web logos with AI" /><published>2025-02-01T18:34:00+11:00</published><updated>2025-02-01T18:34:00+11:00</updated><id>http://localhost:4000/fitcypher/generating-web-logos-with-ai</id><content type="html" xml:base="http://localhost:4000/fitcypher/generating-web-logos-with-ai"><![CDATA[<style>
 .image-gallery {
     display: flex;
     flex-wrap: wrap;
@@ -778,97 +1218,4 @@ This evolutionary process continues until an optimal or satisfactory meal plan i
 
 <p>Or git clone the FitCypher github repo and run it locally :</p>
 
-<p><a href="https://github.com/alexlaverty/fitcypher">https://github.com/alexlaverty/fitcypher</a></p>]]></content><author><name>Alex Laverty</name><email>alaverty@gmail.com</email></author><category term="fitcypher" /><summary type="html"><![CDATA[]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://0.0.0.0:4000/assets/images/fitcypher/fitcypher-logo.jpg" /><media:content medium="image" url="http://0.0.0.0:4000/assets/images/fitcypher/fitcypher-logo.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">New Django Project</title><link href="http://0.0.0.0:4000/fitcypher/new-django-project-copy" rel="alternate" type="text/html" title="New Django Project" /><published>2025-02-01T17:34:00+11:00</published><updated>2025-02-01T17:34:00+11:00</updated><id>http://0.0.0.0:4000/fitcypher/new-django-project%20copy</id><content type="html" xml:base="http://0.0.0.0:4000/fitcypher/new-django-project-copy"><![CDATA[<h2 id="creating-a-new-django-project">Creating a new Django Project</h2>
-
-<p>Creating the FitCypher Django Project</p>
-
-<p>I switch between linux and windows desktops so the commands will be whatever OS I’m on at the time.</p>
-
-<p>Creating a new python virtual environment and activating it</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>D:\src\fitcypher&gt;virtualenv env
-D:\src\fitcypher&gt;env\Scripts\activate.bat
-</code></pre></div></div>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Install Django
-</span><span class="n">pip</span> <span class="n">install</span> <span class="n">django</span>
-
-<span class="c1"># Create a new project
-</span><span class="n">django</span><span class="o">-</span><span class="n">admin</span> <span class="n">startproject</span> <span class="n">fitcypher</span>
-
-<span class="c1"># Navigate to the project directory
-</span><span class="n">cd</span> <span class="n">fitcypher</span>
-
-<span class="c1"># Create a new app
-</span><span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">startapp</span> <span class="n">api</span>
-
-<span class="c1"># Add the 'api' to INSTALLED_APPS in settings.py
-</span>
-<span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="sh">'</span><span class="s">django.contrib.admin</span><span class="sh">'</span><span class="p">,</span>
-    <span class="sh">'</span><span class="s">django.contrib.auth</span><span class="sh">'</span><span class="p">,</span>
-    <span class="sh">'</span><span class="s">django.contrib.contenttypes</span><span class="sh">'</span><span class="p">,</span>
-    <span class="sh">'</span><span class="s">django.contrib.sessions</span><span class="sh">'</span><span class="p">,</span>
-    <span class="sh">'</span><span class="s">django.contrib.messages</span><span class="sh">'</span><span class="p">,</span>
-    <span class="sh">'</span><span class="s">django.contrib.staticfiles</span><span class="sh">'</span><span class="p">,</span>
-    <span class="sh">'</span><span class="s">api</span><span class="sh">'</span>
-<span class="p">]</span>
-
-<span class="c1"># Run initial migrations
-</span><span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">migrate</span>
-
-<span class="c1"># Start the development server
-</span><span class="n">python</span> <span class="n">manage</span><span class="p">.</span><span class="n">py</span> <span class="n">runserver</span>
-</code></pre></div></div>
-
-<p>After that browse the local website :</p>
-
-<p><a href="http://127.0.0.1:8000/">http://127.0.0.1:8000/</a></p>
-
-<p>and then hey presto we have lift off :</p>
-
-<p><img src="/assets/images/fitcypher/20250201/001.png" alt="alt text" /></p>
-
-<h2 id="deploying-fitcypher-to-rendercom">Deploying FitCypher to Render.com</h2>
-
-<p>Once you’ve built the site and pushed the code to github you need somewhere to deploy and host the website.</p>
-
-<p>I’ve used <a href="https://render.com">Render.com</a> before and it will monitor the github repo, and if there is a new commit it will redeploy the website with the latest code.</p>
-
-<p>I’ve deployed before via docker container but I’ll give it a go trying to run the django website directly on render, we’ll see how it goes.</p>
-
-<p>Going to follow the documentation here <a href="https://render.com/docs/deploy-django">https://render.com/docs/deploy-django</a></p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pip install psycopg2-binary
-pip install dj-database-url
-</code></pre></div></div>
-
-<p>On second thought I’m going to try out <a href="https://www.pythonanywhere.com/">PythonAnywhere</a></p>
-
-<p>When I tried Render free tier, first things I noticed were the website goes to sleep if it’s not receiving traffic and when it’s accessed the next time the website has to wake up which takes time and can even time out on the first attempt. Also the database is scheduled deletion every month which means having to setup the database again. It was pretty annoying.</p>
-
-<p>Seems PythonAnywhere will not go to sleep and as long as you log in and click a button saying you’re still using the website it’ll extend for another 3 months, not sure what the go is with the database for free tier.</p>
-
-<p>Hmmm so Render.com has a much nicer setup, you can pretty much auth to Github and click a repo and it’ll do a webhook on commit to trigger and deployment, where as PythonAnywhere is much more basic, and you basically get a virtual server and ssh console access to login, and you need to git clone your repo, manually git pull and then go into the UI and click reload to make the changes take effect, might have to look into more if there’s better ways of triggering deployment on git commit.</p>
-
-<p>So the basic FitCypher django project is available here :</p>
-
-<p><a href="https://alexlaverty.pythonanywhere.com/">https://alexlaverty.pythonanywhere.com/</a></p>
-
-<p>I also provisioned a MySQL database on PythonAnywhere, it also had PostGres DB but they required a premium account so I’ve gone with MySQL.</p>
-
-<p>Try out FitCypher here :</p>
-
-<p><a href="https://alexlaverty.pythonanywhere.com/">https://alexlaverty.pythonanywhere.com/</a></p>
-
-<p>Or git clone the FitCypher github repo and run it locally :</p>
-
-<p><a href="https://github.com/alexlaverty/fitcypher">https://github.com/alexlaverty/fitcypher</a></p>]]></content><author><name>Alex Laverty</name><email>alaverty@gmail.com</email></author><category term="fitcypher" /><summary type="html"><![CDATA[Creating a new Django Project]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://0.0.0.0:4000/assets/images/fitcypher/20250201/django-fitcypher.jpg" /><media:content medium="image" url="http://0.0.0.0:4000/assets/images/fitcypher/20250201/django-fitcypher.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">FitCypher - Fitness and Health Tracker</title><link href="http://0.0.0.0:4000/fitcypher/fitcypher" rel="alternate" type="text/html" title="FitCypher - Fitness and Health Tracker" /><published>2025-02-01T16:34:00+11:00</published><updated>2025-02-01T16:34:00+11:00</updated><id>http://0.0.0.0:4000/fitcypher/fitcypher</id><content type="html" xml:base="http://0.0.0.0:4000/fitcypher/fitcypher"><![CDATA[<p>I’m going to build a fitness and nutrition tracker using Django and document along the way.</p>
-
-<p>The app is going to be called FitCypher and the code will be stored in following github repository :</p>
-
-<p><a href="https://github.com/alexlaverty/fitcypher">https://github.com/alexlaverty/fitcypher</a></p>
-
-<p>FitCypher will be hosted on PythonAnywhere free tier for the time being :</p>
-
-<p><a href="https://alexlaverty.pythonanywhere.com/">https://alexlaverty.pythonanywhere.com/</a></p>]]></content><author><name>Alex Laverty</name><email>alaverty@gmail.com</email></author><category term="fitcypher" /><summary type="html"><![CDATA[I’m going to build a fitness and nutrition tracker using Django and document along the way.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://0.0.0.0:4000/assets/images/fitcypher/fitcypher.jpg" /><media:content medium="image" url="http://0.0.0.0:4000/assets/images/fitcypher/fitcypher.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+<p><a href="https://github.com/alexlaverty/fitcypher">https://github.com/alexlaverty/fitcypher</a></p>]]></content><author><name>Alex Laverty</name><email>alaverty@gmail.com</email></author><category term="fitcypher" /><summary type="html"><![CDATA[]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/fitcypher/fitcypher-logo.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/fitcypher/fitcypher-logo.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
