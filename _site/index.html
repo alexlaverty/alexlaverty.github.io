@@ -40,6 +40,67 @@
   <div class="main-content">
     
       <article class="post">
+        <h2 class="post-title"><a class="nice-title" href="/optimising-nutrition/real-time-nutrition-optimizer-ui">Real-time Nutrition Optimizer UI</a></h2>
+        <div class="post-meta">
+          <div class="post-author">
+              <img src="/assets/images/alexlaverty.jpg" alt="Alex Laverty">
+              <div>
+                  <span class="post-author-name">Alex Laverty</span>
+                  <div class="post-date">March 30, 2025</div>
+              </div>
+          </div>
+      </div>
+
+      
+      <div class="post-categories">
+          
+          <a href="/categories/optimising-nutrition" class="category-tag">
+              optimising-nutrition
+          </a>
+          
+      </div>
+      
+        <div class="post-content">
+          <div style="width: 100%; height: 250px; overflow: hidden; margin-bottom: 20px;">
+    <img src="/images/2025-03-09/optimised-nutrition-2.jpg" style="width: 100%; height: 250px; object-fit: cover; object-position: center;" />
+</div>
+
+<p>I recently worked on creating such a UI for a Python-based genetic nutrition optimizer project. The goal was a web application where users could set optimization parameters, run the Python script via a Flask backend, and observe the optimization progress live through WebSockets (SocketIO).</p>
+
+<p>Here’s what the resulting UI looks like :</p>
+
+<p><img src="/assets/images/20250330/web-ui-screenshot.png" alt="" /></p>
+
+<p>You can test out the application here :</p>
+
+<p><a href="https://optimize-nutrition.onrender.com/">https://optimize-nutrition.onrender.com/</a></p>
+
+<p>My initial approach involved using Claude 3.7 to help generate the necessary JavaScript code for the frontend. The core requirements included displaying user controls, a status/progress indicator, a dynamically updating chart showing the optimization score over generations, a table listing the foods in the current best solution, and another detailed table showing the corresponding micronutrient levels – all updating with each generation reported by the backend. However, integrating the asynchronous updates from SocketIO to reliably refresh all these components simultaneously proved difficult. I encountered issues synchronizing the updates across the chart and multiple tables based on the data streamed from the backend, preventing me from achieving a fully functional and stable UI despite various attempts.</p>
+
+<p>As a next step in the development process, I decided to use Google’s new Gemini 2.5 Pro Experimental model with the same set of requirements and my existing Python backend code (Flask, SocketIO, and the optimization logic). I provided the model with the context of the project, the Python code structure, and the specific frontend requirements, including the need for simultaneous updates to the chart and both tables based on the <code class="language-plaintext highlighter-rouge">generation_update</code> event emitted by SocketIO. This approach yielded functional JavaScript code that successfully integrated with the backend.</p>
+
+<p>The key code improvements primarily involved structuring the frontend JavaScript to handle the SocketIO events effectively. The generated code established clear listeners for different backend events (<code class="language-plaintext highlighter-rouge">status_update</code>, <code class="language-plaintext highlighter-rouge">initial_foods</code>, <code class="language-plaintext highlighter-rouge">generation_update</code>, <code class="language-plaintext highlighter-rouge">optimization_complete</code>, etc.). Crucially, the handler for the <code class="language-plaintext highlighter-rouge">generation_update</code> event was designed to parse all relevant data sent from the backend in that single event (current generation number, score, food amounts, and detailed nutrient profile) and then proceed to update <em>all</em> corresponding UI elements: the progress bar, the score chart, the food amounts table, and the nutrient profile table. For the dynamic tables, the logic included clearing the existing table body (<code class="language-plaintext highlighter-rouge">tbody.innerHTML = ''</code>) before iterating through the new data for the current generation and appending the updated rows (<code class="language-plaintext highlighter-rouge">&lt;tr&gt;</code>) and cells (<code class="language-plaintext highlighter-rouge">&lt;td&gt;</code>). Gemini 2.5 Pro Experimental also provided the necessary HTML table structures and basic CSS for layout and features like scrollable tables with sticky headers.</p>
+
+<p>For users interacting with the resulting web UI, here’s a breakdown of what you’ll see:</p>
+
+<ul>
+  <li><strong>Controls:</strong> Input fields allow setting parameters like Diet Type, Number of Foods, Generations, and Population Size before starting the optimization.</li>
+  <li><strong>Status &amp; Progress:</strong> A status bar displays messages from the backend (e.g., “Running Generation X/Y”), and a progress bar fills based on the generation count.</li>
+  <li><strong>Score History Chart:</strong> This line graph tracks the optimization’s performance. The horizontal axis (X-axis) represents the generation number, while the vertical axis (Y-axis) shows the ‘Score’ of the best solution found in that generation. A lower score indicates a better nutritional match to the targets, so ideally, this line should trend downwards as the optimization progresses.</li>
+  <li><strong>Real-time Food Amounts Table:</strong> This table lists the specific foods and their corresponding amounts (in grams) that make up the best meal plan found in the <em>most recent</em> generation reported.</li>
+  <li><strong>Nutrient Profile Table:</strong> This detailed table complements the food list. It shows the calculated nutritional breakdown for the <em>current best</em> meal plan listed above. For each nutrient, it displays the total calculated ‘Amount’ (with units), the percentage of the target for that specific meal (‘% Meal Target’), the percentage of the total recommended daily intake (‘% Daily RDI’), and a ‘Status’ indicator (typically LOW, OK, or HIGH based on the meal target percentage). Both the food amounts and nutrient profile tables update simultaneously with each generation update.</li>
+</ul>
+
+<p>This resulting interface now provides the intended real-time feedback, allowing observation of how the genetic algorithm refines the meal plan and its nutritional profile over successive generations.</p>
+
+
+        </div>
+      </article>
+      
+        <hr>
+      
+    
+      <article class="post">
         <h2 class="post-title"><a class="nice-title" href="/optimising-nutrition/optimising-nutrition-ai-review-grok">Optimising Nutrition Reviewed By Grok AI</a></h2>
         <div class="post-meta">
           <div class="post-author">
@@ -536,180 +597,6 @@
         </div>
       </article>
       
-        <hr>
-      
-    
-      <article class="post">
-        <h2 class="post-title"><a class="nice-title" href="/optimising-nutrition/optimising-nutrition-with-genetic-algorithms">Optimising Nutrition with Genetic Algorithms</a></h2>
-        <div class="post-meta">
-          <div class="post-author">
-              <img src="/assets/images/alexlaverty.jpg" alt="Alex Laverty">
-              <div>
-                  <span class="post-author-name">Alex Laverty</span>
-                  <div class="post-date">March 09, 2025</div>
-              </div>
-          </div>
-      </div>
-
-      
-      <div class="post-categories">
-          
-          <a href="/categories/optimising-nutrition" class="category-tag">
-              optimising-nutrition
-          </a>
-          
-      </div>
-      
-        <div class="post-content">
-          <div style="width: 100%; height: 250px; overflow: hidden; margin-bottom: 20px;">
-    <img src="/images/2025-03-09/optimised-nutrition-2.jpg" style="width: 100%; height: 250px; object-fit: cover; object-position: center;" />
-</div>
-
-<p>I have been working on creating an <a href="https://github.com/alexlaverty/optimize-nutrition/blob/main/app.py">Optimising Nutrition with Genetic Algorithms</a> python script that will randomly select a number of foods from the <a href="https://www.foodstandards.gov.au/science-data/monitoringnutrients/afcd">Australian Food Composition Database</a> will then generate random amounts for each food in grams for a number of specified generations with each generation trying to get closer and closer to matching 100% of the Daily Recommended Intake (RDI) for each essential vitamin and mineral, so the end result will be a list of ingredients and the amount in grams you should eat to get as close as possible to the RDI.</p>
-
-<p><img src="/assets/images/20250310/script.png" alt="alt text" /></p>
-
-<p><img src="/assets/images/20250310/genetic_algorithm_animation.gif" alt="alt text" /></p>
-
-<p>Kind of like a whole food version of <a href="https://www.youtube.com/watch?v=t8NCigh54jg">Soylent</a></p>
-
-<p>This would be helpful for some one wanting to do a daily eating plan and wants to hit their micronutrient RDI’s.</p>
-
-<p>You can view the index of recipes generated by genetic algorithm here :
-<a href="https://alexlaverty.github.io/optimize-nutrition/">https://alexlaverty.github.io/optimize-nutrition/</a></p>
-
-<p>They are sorted by score, a lower score is better, a lower score means it’s closer to matching the RDI’s and the higher the score the further away from matching the RDI’s.</p>
-
-<p>I have also specified different diet types to generate for All, meaning all foods in the database, Vegan to exclude any animal products, and WFPB meaning Whole Food Plant Based which excludes food if they do not match this criteria.</p>
-
-<p>The script and repo is still a work in progress, so I am open to any feedback or suggestions.</p>
-
-<p>This script is designed to optimize meal planning using a genetic algorithm, which is a type of artificial intelligence inspired by natural selection.</p>
-
-<p>The main goal is to select and adjust quantities of various foods to ensure that the daily nutritional requirements such as essential vitamins and minerals are met.</p>
-
-<p>By using a genetic algorithm, the script evolves a set of food combinations over multiple generations, gradually improving the meal plan to better meet these nutritional targets.</p>
-
-<h2 id="key-features-and-functionality">Key Features and Functionality:</h2>
-
-<h3 id="food-selection-and-customization">Food Selection and Customization:</h3>
-<p>The script begins by reading a dataset of foods, each with nutritional information. It allows for dietary customization, such as selecting only vegan or whole-food plant-based foods, by applying exclusion rules. This ensures the optimization is tailored to different diet types.</p>
-
-<h3 id="genetic-algorithm">Genetic Algorithm:</h3>
-<p>The core of the optimization is the genetic algorithm. The algorithm works by simulating the process of natural selection:</p>
-
-<p>It starts with a randomly selected population of meal plans (combinations of foods and their quantities).
-Over several generations, the algorithm “evolves” better solutions by selecting the best meal plans (those that are closer to the nutritional targets), and creating new meal plans through processes like crossover (mixing different plans) and mutation (random changes).
-This evolutionary process continues until an optimal or satisfactory meal plan is found.</p>
-
-<h3 id="nutrient-calculation">Nutrient Calculation:</h3>
-<p>Each food item in the selected meal plans is analyzed for its contribution to meeting the daily recommended intake (RDI) of various nutrients.</p>
-
-<p>The script calculates how much of each nutrient each food provides, ensuring that the final combination meets or comes close to the daily nutritional goals for essential vitamins and minerals.</p>
-
-<h3 id="output-and-reports">Output and Reports:</h3>
-<p>After running the optimization process, the script generates detailed reports in various formats. These include:</p>
-
-<p>JSON files containing the optimized meal plans, which can be saved and reused. Markdown and HTML files summarizing the results in an easily readable format.</p>
-
-<p>These reports show key details like the optimization score (how well the meal plan meets the nutritional goals), the number of foods used, and how the nutrients in the meal plan are distributed across different categories (e.g., nutrients at good levels, below target, or above target).</p>
-
-<h3 id="scalability-and-flexibility">Scalability and Flexibility:</h3>
-<p>The script is designed to be flexible, allowing it to handle various numbers of foods (from 5 to 20) and a customizable number of generations (up to 300). This means the user can adjust how complex and refined the meal plan optimization process is.</p>
-
-<h3 id="how-genetic-algorithms-help-in-meal-planning">How Genetic Algorithms Help in Meal Planning:</h3>
-<p>Genetic algorithms are particularly well-suited for problems like meal optimization, where the number of possible food combinations is large and complex. Instead of manually trying every possible combination, which would be time-consuming and inefficient, the genetic algorithm simulates the natural process of evolution to “search” for the best combination efficiently.</p>
-
-<p>By creating a population of meal plans and evolving them through generations, the algorithm can gradually find the combination of foods that best meets the nutritional targets, all while considering factors like variety and balance in the meal.</p>
-
-<p>In summary, this script automates the process of meal planning by intelligently selecting and adjusting food items to meet nutritional needs, making use of genetic algorithms to improve the meal plans over time. It provides a flexible, automated solution for anyone looking to optimize their diet for specific health goals or dietary preferences.</p>
-
-<h2 id="analysis-of-the-results">Analysis of the Results</h2>
-
-<p>After letting the script run every hour for a few days I fed the table into ChatGPT and asked it to analyse the results.</p>
-
-<p>Here is ChatGPT’s analysis of the trends and optimal values based on the provided data:</p>
-
-<h3 id="key-observations"><strong>Key Observations</strong></h3>
-<ol>
-  <li><strong>Best Score Range:</strong>
-    <ul>
-      <li>The lowest (best) scores are in the range <strong>5.07 to 6.17</strong>.</li>
-      <li>The worst scores are above <strong>20</strong>, with the worst being <strong>31.85</strong>.</li>
-    </ul>
-  </li>
-  <li><strong>Diet Type Trends:</strong>
-    <ul>
-      <li><strong>Best scores (≤6.17):</strong> Mostly “all” and “vegan” diets.</li>
-      <li><strong>Worst scores (&gt;20):</strong> Mostly “wfpb” (Whole Food Plant-Based).</li>
-      <li><strong>Implication:</strong> The best-performing recipes tend to include all food groups or vegan options, while purely whole-food plant-based diets seem harder to optimize.</li>
-    </ul>
-  </li>
-  <li><strong>Number of Ingredients (Foods):</strong>
-    <ul>
-      <li><strong>Best scores (≤6.17):</strong> Use between <strong>10 to 20 ingredients</strong>.</li>
-      <li><strong>Worst scores (&gt;20):</strong> Often have very few ingredients (e.g., 5–8), suggesting that having more variety contributes to better nutritional balance.</li>
-    </ul>
-  </li>
-  <li><strong>Nutrient Balance (OK/Low/High):</strong>
-    <ul>
-      <li><strong>Best scores (≤6.17):</strong> Tend to have around <strong>17-20 nutrients at OK levels,</strong> 9-12 nutrients below target, and <strong>0-2 above target</strong>.</li>
-      <li><strong>Worst scores (&gt;20):</strong> Have significantly more nutrients below target (e.g., 20-28 low), meaning they fail to meet nutritional needs.</li>
-    </ul>
-  </li>
-  <li><strong>Generations &amp; Computation Time:</strong>
-    <ul>
-      <li>The best runs typically required <strong>150-300 generations</strong> and computation times ranging <strong>450s to 2000s</strong>.</li>
-      <li>The worst runs often completed in very few generations (<strong>3-50</strong>), meaning they likely didn’t converge to a well-optimized solution.</li>
-    </ul>
-  </li>
-</ol>
-
-<hr />
-
-<h3 id="optimal-recipe-parameters-for-genetic-algorithm"><strong>Optimal Recipe Parameters for Genetic Algorithm</strong></h3>
-<p>If you’re generating recipes, these values would likely yield the best results:</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Parameter</th>
-      <th>Optimal Range</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><strong>Diet Type</strong></td>
-      <td>All or Vegan</td>
-    </tr>
-    <tr>
-      <td><strong>Number of Ingredients</strong></td>
-      <td>10 - 20</td>
-    </tr>
-    <tr>
-      <td><strong>Nutrients (OK/Low/High)</strong></td>
-      <td>~18/10/2</td>
-    </tr>
-    <tr>
-      <td><strong>Generations</strong></td>
-      <td>150 - 300</td>
-    </tr>
-    <tr>
-      <td><strong>Computation Time</strong></td>
-      <td>500s - 2000s</td>
-    </tr>
-  </tbody>
-</table>
-
-<p>Using this analysis I’m going to continue to tweak the script and add in more features to get recipes that more closely match the recommended daily requirements for the essential vitamins and minerals and also adding more requirements to match, calories, other things that are not essential but still desirable.</p>
-
-<p>I’ve also been working on a UI which updates in real time and shows you a chart of the score as it decreases with each generation :</p>
-
-<p><img src="/assets/images/20250310/optimise-nutrition-ui.png" alt="alt text" /></p>
-
-        </div>
-      </article>
-      
     
     <div class="pagination">
   
@@ -826,7 +713,7 @@ This evolutionary process continues until an optimal or satisfactory meal plan i
             <li class="cats">
                 <a href="/categories/optimising-nutrition">
                     optimising nutrition
-                    <span>(3)</span>
+                    <span>(4)</span>
                 </a>
             </li>
             
