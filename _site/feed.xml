@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-03-30T10:06:08+11:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Alex Laverty</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>Alex Laverty</name><email>alaverty@gmail.com</email></author><entry><title type="html">Real-time Nutrition Optimizer UI</title><link href="http://localhost:4000/optimising-nutrition/real-time-nutrition-optimizer-ui" rel="alternate" type="text/html" title="Real-time Nutrition Optimizer UI" /><published>2025-03-30T11:00:00+11:00</published><updated>2025-03-30T11:00:00+11:00</updated><id>http://localhost:4000/optimising-nutrition/real-time-nutrition-optimizer-ui</id><content type="html" xml:base="http://localhost:4000/optimising-nutrition/real-time-nutrition-optimizer-ui"><![CDATA[<div style="width: 100%; height: 250px; overflow: hidden; margin-bottom: 20px;">
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-17T10:16:39+10:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Alex Laverty</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>Alex Laverty</name><email>alaverty@gmail.com</email></author><entry><title type="html">Real-time Nutrition Optimizer UI</title><link href="http://localhost:4000/optimising-nutrition/real-time-nutrition-optimizer-ui" rel="alternate" type="text/html" title="Real-time Nutrition Optimizer UI" /><published>2025-03-30T11:00:00+11:00</published><updated>2025-03-30T11:00:00+11:00</updated><id>http://localhost:4000/optimising-nutrition/real-time-nutrition-optimizer-ui</id><content type="html" xml:base="http://localhost:4000/optimising-nutrition/real-time-nutrition-optimizer-ui"><![CDATA[<div style="width: 100%; height: 250px; overflow: hidden; margin-bottom: 20px;">
     <img src="/images/2025-03-09/optimised-nutrition-2.jpg" style="width: 100%; height: 250px; object-fit: cover; object-position: center;" />
 </div>
 
@@ -28,7 +28,253 @@
   <li><strong>Nutrient Profile Table:</strong> This detailed table complements the food list. It shows the calculated nutritional breakdown for the <em>current best</em> meal plan listed above. For each nutrient, it displays the total calculated ‘Amount’ (with units), the percentage of the target for that specific meal (‘% Meal Target’), the percentage of the total recommended daily intake (‘% Daily RDI’), and a ‘Status’ indicator (typically LOW, OK, or HIGH based on the meal target percentage). Both the food amounts and nutrient profile tables update simultaneously with each generation update.</li>
 </ul>
 
-<p>This resulting interface now provides the intended real-time feedback, allowing observation of how the genetic algorithm refines the meal plan and its nutritional profile over successive generations.</p>]]></content><author><name>Alex Laverty</name><email>alaverty@gmail.com</email></author><category term="optimising-nutrition" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">Optimising Nutrition Reviewed By Claude AI</title><link href="http://localhost:4000/optimising-nutrition/optimising-nutrition-ai-review-claude" rel="alternate" type="text/html" title="Optimising Nutrition Reviewed By Claude AI" /><published>2025-03-19T11:00:00+11:00</published><updated>2025-03-19T11:00:00+11:00</updated><id>http://localhost:4000/optimising-nutrition/optimising-nutrition-ai-review-claude</id><content type="html" xml:base="http://localhost:4000/optimising-nutrition/optimising-nutrition-ai-review-claude"><![CDATA[<div style="width: 100%; height: 250px; overflow: hidden; margin-bottom: 20px;">
+<p>This resulting interface now provides the intended real-time feedback, allowing observation of how the genetic algorithm refines the meal plan and its nutritional profile over successive generations.</p>]]></content><author><name>Alex Laverty</name><email>alaverty@gmail.com</email></author><category term="optimising-nutrition" /><summary type="html"><![CDATA[]]></summary></entry><entry><title type="html">ChatGPT Deep Research Optimised Nutrition</title><link href="http://localhost:4000/optimising-nutrition/chatgpt-deep-research-optimised-nutrition" rel="alternate" type="text/html" title="ChatGPT Deep Research Optimised Nutrition" /><published>2025-03-30T11:00:00+11:00</published><updated>2025-03-30T11:00:00+11:00</updated><id>http://localhost:4000/optimising-nutrition/chatgpt-deep-research-optimised-nutrition</id><content type="html" xml:base="http://localhost:4000/optimising-nutrition/chatgpt-deep-research-optimised-nutrition"><![CDATA[<p>Thought I would give ChatGPT’s Deep Research option a try today.</p>
+
+<p>With the Deep Research option instead of asking a question and getting an immediate response, the question is submitted and chatgpt will work on the problem for a number of minutes checking a lot of different sources online and then eventually coming back with an answer, so the deep research prompt I gave it was :</p>
+
+<p>“theoretically based off foods available in coles and woolworths in sydney australia, what is the least amount of ingredients for the least amount of money that would provide all the required micronutrients vitamins and minerals a 39 year old adult male would require to be fit and healthy? give me that list of foods”</p>
+
+<h2 id="chatgpt-responded-with-">Chatgpt responded with :</h2>
+
+<p>To find the cheapest and most minimal list of ingredients from Coles and Woolworths in Sydney that covers all essential micronutrients for a 39-year-old male, could you please clarify the following:</p>
+
+<ol>
+  <li>Do you have any dietary restrictions (e.g., vegetarian, vegan, gluten-free)?</li>
+  <li>Should this food list cover macronutrients (calories, protein, fat, carbs) too, or only vitamins and minerals?</li>
+  <li>Are you looking for daily consumption cost, or weekly/monthly affordability?</li>
+  <li>Should the diet be sustainable for long-term daily use or is a short-term solution okay?</li>
+</ol>
+
+<p>With that info, I can tailor the food list more accurately to your needs.”</p>
+
+<h2 id="my-response-">My response :</h2>
+
+<ol>
+  <li>Lactose intolerant</li>
+  <li>should cover macronutrient requirements and micronutrient requirements</li>
+  <li>lets go daily</li>
+  <li>short-term”</li>
+</ol>
+
+<h2 id="chatgpt-">Chatgpt :</h2>
+
+<p>Great. I’ll look into the cheapest combination of foods available at Coles and Woolworths in Sydney that can meet all the daily macro- and micronutrient requirements for a 39-year-old lactose-intolerant male. This list will prioritize minimal ingredients and low cost while ensuring full nutritional coverage for short-term use.</p>
+
+<p>I’ll let you know as soon as I have a complete list ready for you.</p>
+
+<p>Research completed in 7m · 37 sources · 75 searches</p>
+
+<p>Chatgpt thought about this problem for 7 minutes then returned the following output and also provided a URL to view this output :</p>
+
+<p><a href="https://chatgpt.com/s/dr_6816c6fe13cc8191a197cefa405bd741">https://chatgpt.com/s/dr_6816c6fe13cc8191a197cefa405bd741</a></p>
+
+<h2 id="minimal-cost-complete-diet-39year-old-male-lactose-free">Minimal-Cost Complete Diet (39‑year-old Male, Lactose-Free)</h2>
+
+<p>To meet the estimated daily needs of a 39‑year-old male (≈2,300–2,500 kcal) with minimal cost and ingredients, we use inexpensive, nutrient‑dense staples available at Coles/Woolworths. The menu below provides all macronutrients (protein ≈96 g, fat ≈64 g, carbs ≈343 g, fiber ≈67 g) and most essential vitamins/minerals at or above Australian RDI levels (e.g. iron, folate, vitamin C, A, K, B‐vitamins)
+healthline.com
+medicalnewstoday.com
+. (Fiber intake ≈67 g greatly exceeds the 25–30 g recommendation
+dietitiansaustralia.org.au
+.) All dairy is omitted (or replaced by fortified alternatives). Total cost is roughly $4–5 AUD/day. Key nutrition sources include grains, legumes, eggs and vegetables; citrus fruit supplies vitamin C; iodized salt or seafood can provide iodine. (Calcium from this diet is only ~450 mg – below the ~1,000 mg RDI
+betterhealth.vic.gov.au
+ – so a calcium-rich add‑on (e.g. fortified soy milk, tofu or supplement) is recommended for longer-term use.)</p>
+<h2 id="rolled-oats-coleswoolies-brand--150-g-dry-15-cups">Rolled oats (Coles/Woolies brand) – 150 g dry (≈1.5 cups).</h2>
+<p>Provides ≈570 kcal, ≈20 g protein, 84 g carbs (≈16 g fiber), 14 g fat
+woolworths.com.au
+woolworths.com.au
+. Rich in complex carbs, fiber and B vitamins. Cost ≈$0.30.</p>
+<h2 id="white-rice-medium-grain--160-g-dry-08-cup">White rice (medium-grain) – 160 g dry (~0.8 cup).</h2>
+<p>Provides ≈570 kcal, ≈11 g protein, 127 g carbs (virtually no fiber)
+calorieking.com
+. Cheap staple; when combined with lentils yields a complete amino acid profile. Cost ≈$0.25.</p>
+<h2 id="lentils-dried-split-or-whole--100-g-dry">Lentils (dried, split or whole) – 100 g dry.</h2>
+<p>Provides ≈350 kcal, ≈26 g protein, 60 g carbs and 30 g fiber
+fatsecret.com
+. Very high in plant protein, fiber, folate (≈90% DV per cooked cup
+healthline.com
+) and iron (≈7.5 mg, 42% DV
+fatsecret.com
+). One of the cheapest protein sources ($0.40/100 g).</p>
+<h2 id="eggs-large--3-eggs-150-g">Eggs (large) – 3 eggs (≈150 g).</h2>
+<p>Provides ≈230 kcal, 18 g protein, 15 g fat. They deliver high-quality protein and key micronutrients: choline and B12 (≈3–4 μg, &gt;100% RDI), vitamin A, D and E
+pmc.ncbi.nlm.nih.gov
+. Extremely cost-efficient for protein and vitamins
+pmc.ncbi.nlm.nih.gov
+. Cost ≈$0.75.</p>
+<h2 id="peanut-butter-smooth--2-tbsp-32-g">Peanut butter (smooth) – 2 tbsp (32 g).</h2>
+<p>Provides ≈190 kcal, 8 g protein, 16 g fat, 6 g carbs, 2.6 g fiber (per 32 g). Supplies healthy monounsaturated fats plus many micronutrients: vitamin E (≈60% DV/100g), niacin (B3, 84% DV/100g), B6, folate, magnesium (37% DV/100g) and copper, manganese
+healthline.com
+. (Choose “natural” peanut butter with just peanuts/salt.) Cost ≈$0.17.</p>
+<h2 id="dark-leafy-greens-eg-spinach-kale--200-g-raw-1-large-bag-frozen">Dark leafy greens (e.g. spinach, kale) – 200 g raw (≈1 large bag frozen).</h2>
+<p>Only ≈46 kcal, but very rich in vitamin C, vitamin A (beta-carotene), vitamin K, folate and iron. For example, spinach is “rich in iron, vitamins C and E, potassium, and magnesium”
+medicalnewstoday.com
+ and provides some calcium (≈100 mg/200g, though absorption is low). Cost ≈$0.80.</p>
+<h2 id="carrots-or-mixed-vegetables--200-g-raw">Carrots or mixed vegetables – 200 g raw.</h2>
+<p>Adds vitamins (especially A from beta‑carotene), potassium and extra fiber (≈5–6 g). E.g. 200 g carrots give ≈80 kcal. Carrots are very cheap (≈$0.20).
+Fruit (citrus) – 2 medium oranges (≈320 g total). Provides ≈150 kcal, ≈146 mg vitamin C (about 2–3× RDI)
+healthline.com
+, plus some potassium and fiber (8 g). Oranges are inexpensive ($1.60 for two). (Any citrus or other vitamin‑C fruit can substitute; vitamin C is water-soluble so abundant fruit/veg cover it easily
+eatforhealth.gov.au
+.)</p>
+<h2 id="yeast-spread-vegemitenutritional-yeast--10-g-1-tsp">Yeast spread (Vegemite/nutritional yeast) – 10 g (≈1 tsp).</h2>
+<p>Virtually no calories but a very dense source of B‑vitamins. Provides thiamin (B1), riboflavin (B2), niacin (B3) and often added B6/B12. Helps ensure B‑vitamin and B12 intake in this diet. Cost ≈$0.18.</p>
+<h2 id="iodized-salt--2-g">Iodized salt – ~2 g.</h2>
+<p>Supplies iodine (bread is iodized in AUS, but adding iodized salt ensures ~70–140 μg iodine, ~50–100% of RDI). (Alternatively, a small portion of seaweed or canned fish can cover iodine.)</p>
+<h2 id="macronutrient-and-cost-summary">Macronutrient and Cost Summary:</h2>
+<p>The above daily quantities give ≈2330 kcal (≈25% protein, 24% fat, 51% carbs by energy), ~96 g protein, ~64 g fat (mainly unsaturated), ~343 g carbs and ~67 g fiber. Total estimated cost is about $4–5 AUD per day (assuming ~$0.30 oats, $0.25 rice, $0.40 lentils, $0.75 eggs, $0.17 peanut butter, $0.80 greens, $0.20 carrots, $1.60 oranges, $0.18 Vegemite).</p>
+<h2 id="micronutrients-this-mix-covers-nearly-all-rdis">Micronutrients: This mix covers nearly all RDIs.</h2>
+<p>For example, lentils and greens supply ample iron and folate
+healthline.com
+, oranges and spinach provide vitamin C
+eatforhealth.gov.au
+medicalnewstoday.com
+, carrots and spinach supply provitamin A (vitamin A), and spinach supplies vitamin K and magnesium
+medicalnewstoday.com
+. Eggs contribute vitamin D, A and B12, peanut butter adds vitamin E, B3, B6 and magnesium
+healthline.com
+. Fiber intake (~67 g) well exceeds recommendations
+dietitiansaustralia.org.au
+, benefiting gut health. The only notable shortfall is calcium (≈450 mg); to meet the ~1,000 mg RDI
+betterhealth.vic.gov.au
+ one could add a calcium-rich item (e.g. 200 mL calcium-fortified soy milk adds ≈200–300 mg, or a serving of tofu/sardines) or consider a supplement if used beyond a few weeks. 
+ ## Notes: 
+ Prepare legumes and rice in batches (soak lentils 5–10 min, simmer ~20 min). Oats can be cooked as porridge or soaked overnight. Eggs can be boiled or scrambled. Use minimal oil (≈15 g/day) for cooking (adds ~130 kcal as shown). Salt and pepper for seasoning. Vegemite can be spread thinly on toast or stirred into porridge for B‑vitamins. Carrots and oranges add variety and needed vitamins. This regimen prioritizes cost and completeness over taste/variety.</p>
+<h2 id="sources">Sources:</h2>
+<p>Nutrient values and RDI guidelines are drawn from Australian nutrition references
+eatforhealth.gov.au
+dietitiansaustralia.org.au
+fatsecret.com
+healthline.com
+healthline.com
+medicalnewstoday.com
+healthline.com
+betterhealth.vic.gov.au
+; food prices are based on Coles/Woolworths store-brand estimates.
+Citations</p>
+
+<p>The 9 Healthiest Beans and Legumes You Can Eat</p>
+
+<p>https://www.healthline.com/nutrition/healthiest-beans-legumes</p>
+
+<p>Spinach: Nutrition and health benefits</p>
+
+<p>https://www.medicalnewstoday.com/articles/270609</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Fibres for your gut: sorting through the roughage</td>
+      <td>Dietitians Australia</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>https://dietitiansaustralia.org.au/health-advice/fibres-your-gut-sorting-through-roughage</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Calcium</td>
+      <td>Better Health Channel</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>https://www.betterhealth.vic.gov.au/health/healthyliving/calcium</p>
+
+<p>Woolworths Supermarket - Buy Groceries Online</p>
+
+<p>https://www.woolworths.com.au/shop/productdetails/196293/woolworths-australian-rolled-oats?srsltid=AfmBOoqFsmVmJWV7pRg7XNf43azzsOpohuEuCwbjVXqjoAhV-nCMq_td</p>
+
+<p>Woolworths Supermarket - Buy Groceries Online</p>
+
+<p>https://www.woolworths.com.au/shop/productdetails/196293/woolworths-australian-rolled-oats?srsltid=AfmBOoqFsmVmJWV7pRg7XNf43azzsOpohuEuCwbjVXqjoAhV-nCMq_td</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Calories in SunRice White Medium Grain Rice, raw</td>
+      <td>CalorieKing (Australia)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>https://www.calorieking.com/au/en/foods/f/calories-in-rice-white-medium-grain-rice-raw/tBRpWbJ9TZKWTd7vxXsGWA</p>
+
+<p>Calories in 100 g of Lentils and Nutrition Facts</p>
+
+<p>https://www.fatsecret.com/calories-nutrition/usda/lentils?portionid=61010&amp;portionamount=100.000</p>
+
+<p>Calories in 100 g of Lentils and Nutrition Facts</p>
+
+<p>https://www.fatsecret.com/calories-nutrition/usda/lentils?portionid=61010&amp;portionamount=100.000
+Eggs Are Cost-Efficient in Delivering Several Shortfall Nutrients in the American Diet: A Cost-Analysis in Children and Adults - PMC</p>
+
+<p>https://pmc.ncbi.nlm.nih.gov/articles/PMC7469040/</p>
+
+<p>Peanut Butter Nutrition: Is It Good for You?</p>
+
+<p>https://www.healthline.com/nutrition/is-peanut-butter-bad-for-you</p>
+
+<p>20 Foods That Are High in Vitamin C</p>
+
+<p>https://www.healthline.com/nutrition/vitamin-c-foods</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Vitamin C</td>
+      <td>Eat For Health</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>https://www.eatforhealth.gov.au/nutrient-reference-values/nutrients/vitamin-c
+All Sources
+healthline
+medicalnewstoday
+dietitia…ralia.org
+betterhealth.vic.gov
+woolworths.com
+calorieking
+fatsecret
+pmc.ncbi.nlm.nih
+eatforhealth.gov</p>]]></content><author><name>Alex Laverty</name><email>alaverty@gmail.com</email></author><category term="optimising-nutrition" /><summary type="html"><![CDATA[Thought I would give ChatGPT’s Deep Research option a try today.]]></summary></entry><entry><title type="html">Nutrient-Dense Instant-Pot Meals for Longevity</title><link href="http://localhost:4000/optimising-nutrition/nutrient-dense-instant-pot-meals-for-longevity" rel="alternate" type="text/html" title="Nutrient-Dense Instant-Pot Meals for Longevity" /><published>2025-03-30T11:00:00+11:00</published><updated>2025-03-30T11:00:00+11:00</updated><id>http://localhost:4000/optimising-nutrition/nutrient-dense-instant-pot-meals-for-longevity</id><content type="html" xml:base="http://localhost:4000/optimising-nutrition/nutrient-dense-instant-pot-meals-for-longevity"><![CDATA[<p>Ingredients (makes ~3 servings, all in one pot):</p>
+<ul>
+  <li>150 g dry red lentils (rinsed)</li>
+  <li>150 g canned chickpeas (drained)</li>
+  <li>100 g brown rice (uncooked)</li>
+  <li>150 g broccoli florets (fresh or frozen)</li>
+  <li>100 g leafy greens (spinach or kale)</li>
+  <li>100 g carrot, chopped</li>
+  <li>100 g sweet potato, diced</li>
+  <li>100–150 g tomato (fresh chopped or canned crushed)</li>
+  <li>100 g onion (1 medium), chopped</li>
+  <li>2 garlic cloves (about 6 g), minced</li>
+  <li>1 tsp fresh ginger (or 2 g dried)</li>
+  <li>1 tsp ground turmeric</li>
+  <li>1 tsp ground cumin, 1 tsp coriander, ½ tsp cinnamon, pinch of black pepper (optional)</li>
+  <li>1 Tbsp extra-virgin olive oil (15 mL)</li>
+  <li>1 Tbsp ground flaxseed (10–15 g)</li>
+  <li>800 mL water or low-sodium vegetable broth (add more if needed)</li>
+  <li>Fresh herbs (parsley/coriander) or lemon juice to taste (optional garnish)</li>
+</ul>
+
+<p>Nutrition (approximate per total batch):</p>
+
+<p>Calories: ~1,870 kcal (for whole pot)</p>
+
+<p>Protein: ~75 g (40% daily value) – from lentils, chickpeas, flax
+medicalnewstoday.com</p>
+
+<p>Carbohydrates: ~300 g (of which ~66 g fiber)
+medicalnewstoday.com
+ (low-glycemic from beans/grains)</p>
+
+<p>Fat: ~48 g (mostly unsaturated from olive oil/flaxseed)</p>
+
+<p>Fiber: ~66 g (≫ recommended 30 g; high soluble fiber lowers LDL and blood sugar)
+medicalnewstoday.com</p>]]></content><author><name>Alex Laverty</name><email>alaverty@gmail.com</email></author><category term="optimising-nutrition" /><summary type="html"><![CDATA[Ingredients (makes ~3 servings, all in one pot): 150 g dry red lentils (rinsed) 150 g canned chickpeas (drained) 100 g brown rice (uncooked) 150 g broccoli florets (fresh or frozen) 100 g leafy greens (spinach or kale) 100 g carrot, chopped 100 g sweet potato, diced 100–150 g tomato (fresh chopped or canned crushed) 100 g onion (1 medium), chopped 2 garlic cloves (about 6 g), minced 1 tsp fresh ginger (or 2 g dried) 1 tsp ground turmeric 1 tsp ground cumin, 1 tsp coriander, ½ tsp cinnamon, pinch of black pepper (optional) 1 Tbsp extra-virgin olive oil (15 mL) 1 Tbsp ground flaxseed (10–15 g) 800 mL water or low-sodium vegetable broth (add more if needed) Fresh herbs (parsley/coriander) or lemon juice to taste (optional garnish)]]></summary></entry><entry><title type="html">Optimising Nutrition Reviewed By Claude AI</title><link href="http://localhost:4000/optimising-nutrition/optimising-nutrition-ai-review-claude" rel="alternate" type="text/html" title="Optimising Nutrition Reviewed By Claude AI" /><published>2025-03-19T11:00:00+11:00</published><updated>2025-03-19T11:00:00+11:00</updated><id>http://localhost:4000/optimising-nutrition/optimising-nutrition-ai-review-claude</id><content type="html" xml:base="http://localhost:4000/optimising-nutrition/optimising-nutrition-ai-review-claude"><![CDATA[<div style="width: 100%; height: 250px; overflow: hidden; margin-bottom: 20px;">
     <img src="/images/2025-03-09/optimised-nutrition-2.jpg" style="width: 100%; height: 250px; object-fit: cover; object-position: center;" />
 </div>
 
@@ -895,321 +1141,4 @@ https://nrpt.co.uk/training/tests/running/cooper.htm</p>
 
 <p>Or git clone the FitCypher github repo and run it locally :</p>
 
-<p><a href="https://github.com/alexlaverty/fitcypher">https://github.com/alexlaverty/fitcypher</a></p>]]></content><author><name>Alex Laverty</name><email>alaverty@gmail.com</email></author><category term="fitcypher" /><summary type="html"><![CDATA[Now we’ve added a page to show a list of available Workouts to choose from :]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/fitcypher/20250202/body_weight_workout.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/fitcypher/20250202/body_weight_workout.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">REST API</title><link href="http://localhost:4000/fitcypher/rest-api" rel="alternate" type="text/html" title="REST API" /><published>2025-02-02T12:34:00+11:00</published><updated>2025-02-02T12:34:00+11:00</updated><id>http://localhost:4000/fitcypher/rest-api</id><content type="html" xml:base="http://localhost:4000/fitcypher/rest-api"><![CDATA[<p>We will use Django Rest Framework as the API framework to interact with this model.</p>
-
-<p>Using API’s allows to either add entries in bulk, allow users to export and import from other systems, allow for automation and scheduled data syncing.</p>
-
-<p>To make the API friendly to use we’ll provide an API UI :</p>
-
-<p><img src="/assets/images/fitcypher/20250202/fitcypher-entries-api.png" alt="alt text" /></p>
-
-<h2 id="rest-api-authentication">Rest API Authentication</h2>
-
-<p>For now we will just use basic authentication, username and password, however in the future we’ll implement some better authentication methods like token authentication.</p>
-
-<h2 id="fitcypher-api-curl-commands">FitCypher API Curl Commands</h2>
-
-<h3 id="get">GET</h3>
-
-<p>Curl Command :</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl - X GET http: //127.0.0.1:8000/api/entries/ -u your_username:your_password
-</code></pre></div></div>
-
-<p>JSON Response :</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    [{
-        "id": 1,
-        "user": {
-            "id": 1,
-            "username": "alex"
-        },
-        "date": "2025-02-02T07:51:00Z",
-        "tracking": "Food",
-        "string_value": "Apple",
-        "numerical_value": null,
-        "notes": "",
-        "tags": "",
-        "source": "FitCypher"
-    }, {
-        "id": 2,
-        "user": {
-            "id": 1,
-            "username": "alex"
-        },
-        "date": "2025-02-02T07:52:00Z",
-        "tracking": "Exercise",
-        "string_value": "Push Ups",
-        "numerical_value": "10.00",
-        "notes": "",
-        "tags": "",
-        "source": "FitCypher"
-    }]
-</code></pre></div></div>
-
-<p>If you install JQ you can also get pretty printed output via :</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -s -X GET http://127.0.0.1:8000/api/entries/ -u your_username:your_password | jq
-[
-  {
-    "id": 1,
-    "user": {
-      "id": 1,
-      "username": "alex"
-    },
-    "date": "2025-02-02T07:51:00Z",
-    "tracking": "Food",
-    "string_value": "Apple",
-    "numerical_value": null,
-    "notes": "",
-    "tags": "",
-    "source": "FitCypher"
-  },
-  {
-    "id": 2,
-    "user": {
-      "id": 1,
-      "username": "alex"
-    },
-    "date": "2025-02-02T07:52:00Z",
-    "tracking": "Exercise",
-    "string_value": "Push Ups",
-    "numerical_value": "10.00",
-    "notes": "",
-    "tags": "",
-    "source": "FitCypher"
-  },
-  {
-    "id": 3,
-    "user": {
-      "id": 1,
-      "username": "alex"
-    },
-    "date": "2023-10-15T12:00:00Z",
-    "tracking": "weight",
-    "string_value": null,
-    "numerical_value": "70.50",
-    "notes": "After breakfast",
-    "tags": "morning",
-    "source": "fitcypher"
-  }
-]
-</code></pre></div></div>
-
-<h3 id="post">POST</h3>
-
-<p>Add a new entry via the API</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -X POST http://127.0.0.1:8000/api/entries/ \
--H "Content-Type: application/json" \
--u your_username:your_password \
--d '{
-    "date": "2023-10-15T12:00:00Z",
-    "tracking": "weight",
-    "numerical_value": 70.5,
-    "notes": "After breakfast",
-    "tags": "morning",
-    "source": "fitcypher"
-}'
-</code></pre></div></div>
-
-<p>Add a new entry via the API to the PythonAnywhere hosted instance :</p>
-
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -X POST https://alexlaverty.pythonanywhere.com/api/entries/ \
--H "Content-Type: application/json" \
--u your_username:your_password \
--d '{
-    "date": "2023-10-15T12:00:00Z",
-    "tracking": "food",
-    "string_value": "Banana",
-    "numerical_value": "",
-    "notes": "",
-    "tags": "",
-    "source": "fitcypher"
-}'
-</code></pre></div></div>
-
-<p>Try out FitCypher here :</p>
-
-<p><a href="https://alexlaverty.pythonanywhere.com/">https://alexlaverty.pythonanywhere.com/</a></p>
-
-<p>Or git clone the FitCypher github repo and run it locally :</p>
-
-<p><a href="https://github.com/alexlaverty/fitcypher">https://github.com/alexlaverty/fitcypher</a></p>]]></content><author><name>Alex Laverty</name><email>alaverty@gmail.com</email></author><category term="fitcypher" /><summary type="html"><![CDATA[We will use Django Rest Framework as the API framework to interact with this model.]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/fitcypher/20250202/django-rest-framework.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/fitcypher/20250202/django-rest-framework.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry><entry><title type="html">Django Model</title><link href="http://localhost:4000/fitcypher/django-model" rel="alternate" type="text/html" title="Django Model" /><published>2025-02-02T12:34:00+11:00</published><updated>2025-02-02T12:34:00+11:00</updated><id>http://localhost:4000/fitcypher/django-model</id><content type="html" xml:base="http://localhost:4000/fitcypher/django-model"><![CDATA[<p>Today I am working on the FitCypher database backend, to keep it simple the nutrition and health metrics will be posted into a common Entry model :</p>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">Entry</span><span class="p">(</span><span class="n">models</span><span class="p">.</span><span class="n">Model</span><span class="p">):</span>
-    <span class="n">user</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="nc">ForeignKey</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="p">.</span><span class="n">CASCADE</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="sh">"</span><span class="s">entries</span><span class="sh">"</span><span class="p">)</span>
-    <span class="n">date</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="nc">DateTimeField</span><span class="p">()</span>
-    <span class="n">tracking</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="nc">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
-    <span class="n">string_value</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="nc">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">numerical_value</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="nc">DecimalField</span><span class="p">(</span><span class="n">max_digits</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">decimal_places</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">notes</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="nc">TextField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">tags</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="nc">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-    <span class="n">source</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="nc">TextField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="sh">"</span><span class="s">fitcypher</span><span class="sh">"</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="sh">"</span><span class="si">{</span><span class="n">self</span><span class="p">.</span><span class="n">date</span><span class="p">.</span><span class="nf">strftime</span><span class="p">(</span><span class="sh">'</span><span class="s">%Y-%m-%d</span><span class="sh">'</span><span class="p">)</span><span class="si">}</span><span class="s">, </span><span class="si">{</span><span class="n">self</span><span class="p">.</span><span class="n">user</span><span class="si">}</span><span class="s">, </span><span class="si">{</span><span class="n">self</span><span class="p">.</span><span class="n">string_value</span><span class="si">}</span><span class="sh">"</span>
-</code></pre></div></div>
-
-<p>This <code class="language-plaintext highlighter-rouge">Entry</code> model is a flexible and generic way to store various health and fitness metrics for users.</p>
-
-<p>Below is an explanation of each field and its purpose:</p>
-
-<hr />
-
-<h3 id="1-user">1. <strong><code class="language-plaintext highlighter-rouge">user</code></strong></h3>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="n">user</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="nc">ForeignKey</span><span class="p">(</span><span class="n">User</span><span class="p">,</span> <span class="n">on_delete</span><span class="o">=</span><span class="n">models</span><span class="p">.</span><span class="n">CASCADE</span><span class="p">,</span> <span class="n">related_name</span><span class="o">=</span><span class="sh">"</span><span class="s">entries</span><span class="sh">"</span><span class="p">)</span>
-</code></pre></div></div>
-<ul>
-  <li><strong>Purpose</strong>: This field establishes a relationship between the <code class="language-plaintext highlighter-rouge">Entry</code> and the <code class="language-plaintext highlighter-rouge">User</code> model. It indicates which user the entry belongs to.</li>
-  <li><strong>Details</strong>:
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">on_delete=models.CASCADE</code>: If the user is deleted, all their associated entries will also be deleted.</li>
-      <li><code class="language-plaintext highlighter-rouge">related_name="entries"</code>: This allows you to access all entries for a specific user using <code class="language-plaintext highlighter-rouge">user.entries</code>.</li>
-    </ul>
-  </li>
-</ul>
-
-<hr />
-
-<h3 id="2-date">2. <strong><code class="language-plaintext highlighter-rouge">date</code></strong></h3>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="n">date</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="nc">DateTimeField</span><span class="p">()</span>
-</code></pre></div></div>
-<ul>
-  <li><strong>Purpose</strong>: This field stores the date and time when the entry was recorded.</li>
-  <li><strong>Details</strong>:
-    <ul>
-      <li>It is essential for tracking when a specific health metric was logged (e.g., weight on a particular day, steps taken on a specific date).</li>
-    </ul>
-  </li>
-</ul>
-
-<hr />
-
-<h3 id="3-tracking">3. <strong><code class="language-plaintext highlighter-rouge">tracking</code></strong></h3>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="n">tracking</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="nc">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span>
-</code></pre></div></div>
-<ul>
-  <li><strong>Purpose</strong>: This field specifies what type of health or fitness metric is being tracked (e.g., “weight”, “steps”, “calories”, “heart_rate”).</li>
-  <li><strong>Details</strong>:
-    <ul>
-      <li>It acts as a label or category for the entry, allowing you to differentiate between different types of metrics.</li>
-    </ul>
-  </li>
-</ul>
-
-<hr />
-
-<h3 id="4-string_value">4. <strong><code class="language-plaintext highlighter-rouge">string_value</code></strong></h3>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="n">string_value</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="nc">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-</code></pre></div></div>
-<ul>
-  <li><strong>Purpose</strong>: This field stores a textual value for the tracked metric, if applicable.</li>
-  <li><strong>Details</strong>:
-    <ul>
-      <li>It is optional (<code class="language-plaintext highlighter-rouge">null=True, blank=True</code>) because not all metrics will have a textual value.</li>
-      <li>Example: If <code class="language-plaintext highlighter-rouge">tracking="mood"</code>, <code class="language-plaintext highlighter-rouge">string_value</code> could be “happy” or “stressed”.</li>
-    </ul>
-  </li>
-</ul>
-
-<hr />
-
-<h3 id="5-numerical_value">5. <strong><code class="language-plaintext highlighter-rouge">numerical_value</code></strong></h3>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="n">numerical_value</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="nc">DecimalField</span><span class="p">(</span><span class="n">max_digits</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">decimal_places</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-</code></pre></div></div>
-<ul>
-  <li><strong>Purpose</strong>: This field stores a numerical value for the tracked metric, if applicable.</li>
-  <li><strong>Details</strong>:
-    <ul>
-      <li>It is optional (<code class="language-plaintext highlighter-rouge">null=True, blank=True</code>) because not all metrics will have a numerical value.</li>
-      <li>Example: If <code class="language-plaintext highlighter-rouge">tracking="weight"</code>, <code class="language-plaintext highlighter-rouge">numerical_value</code> could be <code class="language-plaintext highlighter-rouge">70.5</code> (in kg).</li>
-    </ul>
-  </li>
-</ul>
-
-<hr />
-
-<h3 id="6-notes">6. <strong><code class="language-plaintext highlighter-rouge">notes</code></strong></h3>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="n">notes</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="nc">TextField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-</code></pre></div></div>
-<ul>
-  <li><strong>Purpose</strong>: This field allows users to add additional comments or details about the entry.</li>
-  <li><strong>Details</strong>:
-    <ul>
-      <li>It is optional (<code class="language-plaintext highlighter-rouge">null=True, blank=True</code>).</li>
-      <li>Example: If <code class="language-plaintext highlighter-rouge">tracking="workout"</code>, <code class="language-plaintext highlighter-rouge">notes</code> could describe the type of workout performed (e.g., “30 minutes of cardio and 20 minutes of strength training”).</li>
-    </ul>
-  </li>
-</ul>
-
-<hr />
-
-<h3 id="7-tags">7. <strong><code class="language-plaintext highlighter-rouge">tags</code></strong></h3>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="n">tags</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="nc">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-</code></pre></div></div>
-<ul>
-  <li><strong>Purpose</strong>: This field allows users to add tags or keywords to categorize or filter entries.</li>
-  <li><strong>Details</strong>:
-    <ul>
-      <li>It is optional (<code class="language-plaintext highlighter-rouge">null=True, blank=True</code>).</li>
-      <li>Example: Tags like “morning”, “evening”, “high-intensity”, or “low-carb” can help organize entries.</li>
-    </ul>
-  </li>
-</ul>
-
-<hr />
-
-<h3 id="8-source">8. <strong><code class="language-plaintext highlighter-rouge">source</code></strong></h3>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="n">source</span> <span class="o">=</span> <span class="n">models</span><span class="p">.</span><span class="nc">TextField</span><span class="p">(</span><span class="n">null</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="sh">"</span><span class="s">fitcypher</span><span class="sh">"</span><span class="p">)</span>
-</code></pre></div></div>
-<ul>
-  <li><strong>Purpose</strong>: This field indicates the source of the entry (e.g., a specific app, device, or manual entry).</li>
-  <li><strong>Details</strong>:
-    <ul>
-      <li>It has a default value of <code class="language-plaintext highlighter-rouge">"fitcypher"</code>, which could be your app’s name.</li>
-      <li>Example: If the data is synced from a fitness tracker like Fitbit, <code class="language-plaintext highlighter-rouge">source</code> could be <code class="language-plaintext highlighter-rouge">"Fitbit"</code>.</li>
-    </ul>
-  </li>
-</ul>
-
-<hr />
-
-<h3 id="9-__str__-method">9. <strong><code class="language-plaintext highlighter-rouge">__str__</code> Method</strong></h3>
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="k">def</span> <span class="nf">__str__</span><span class="p">(</span><span class="n">self</span><span class="p">):</span>
-       <span class="k">return</span> <span class="sa">f</span><span class="sh">"</span><span class="si">{</span><span class="n">self</span><span class="p">.</span><span class="n">date</span><span class="p">.</span><span class="nf">strftime</span><span class="p">(</span><span class="sh">'</span><span class="s">%Y-%m-%d</span><span class="sh">'</span><span class="p">)</span><span class="si">}</span><span class="s">, </span><span class="si">{</span><span class="n">self</span><span class="p">.</span><span class="n">user</span><span class="si">}</span><span class="s">, </span><span class="si">{</span><span class="n">self</span><span class="p">.</span><span class="n">string_value</span><span class="si">}</span><span class="sh">"</span>
-</code></pre></div></div>
-<ul>
-  <li><strong>Purpose</strong>: This method provides a human-readable string representation of the <code class="language-plaintext highlighter-rouge">Entry</code> object.</li>
-  <li><strong>Details</strong>:
-    <ul>
-      <li>It is useful for debugging, logging, or displaying the entry in the Django admin interface.</li>
-      <li>Example output: <code class="language-plaintext highlighter-rouge">"2023-10-15, john_doe, 70.5"</code>.</li>
-    </ul>
-  </li>
-</ul>
-
-<hr />
-
-<h3 id="summary-of-use-cases">Summary of Use Cases</h3>
-<ul>
-  <li><strong>Tracking Weight</strong>: <code class="language-plaintext highlighter-rouge">tracking="weight"</code>, <code class="language-plaintext highlighter-rouge">numerical_value=70.5</code>, <code class="language-plaintext highlighter-rouge">notes="After breakfast"</code>, <code class="language-plaintext highlighter-rouge">tags="morning"</code>.</li>
-  <li><strong>Tracking Mood</strong>: <code class="language-plaintext highlighter-rouge">tracking="mood"</code>, <code class="language-plaintext highlighter-rouge">string_value="happy"</code>, <code class="language-plaintext highlighter-rouge">notes="Had a great workout"</code>.</li>
-  <li><strong>Tracking Steps</strong>: <code class="language-plaintext highlighter-rouge">tracking="steps"</code>, <code class="language-plaintext highlighter-rouge">numerical_value=10000</code>, <code class="language-plaintext highlighter-rouge">source="Fitbit"</code>.</li>
-</ul>
-
-<p>This model is highly flexible and can accommodate a wide range of health and fitness metrics, making it a great foundation for a simple health and fitness tracker.</p>
-
-<p>We will use Django Rest Framework as the API framework to interact with this model.</p>
-
-<p>To make the API friendly to use we’ll provide an API UI :</p>
-
-<p><img src="/assets/images/fitcypher/20250202/fitcypher-entries-api.png" alt="alt text" /></p>
-
-<p>Try out FitCypher here :</p>
-
-<p><a href="https://alexlaverty.pythonanywhere.com/">https://alexlaverty.pythonanywhere.com/</a></p>
-
-<p>Or git clone the FitCypher github repo and run it locally :</p>
-
-<p><a href="https://github.com/alexlaverty/fitcypher">https://github.com/alexlaverty/fitcypher</a></p>]]></content><author><name>Alex Laverty</name><email>alaverty@gmail.com</email></author><category term="fitcypher" /><summary type="html"><![CDATA[Today I am working on the FitCypher database backend, to keep it simple the nutrition and health metrics will be posted into a common Entry model :]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/fitcypher/20250201/django-fitcypher.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/fitcypher/20250201/django-fitcypher.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
+<p><a href="https://github.com/alexlaverty/fitcypher">https://github.com/alexlaverty/fitcypher</a></p>]]></content><author><name>Alex Laverty</name><email>alaverty@gmail.com</email></author><category term="fitcypher" /><summary type="html"><![CDATA[Now we’ve added a page to show a list of available Workouts to choose from :]]></summary><media:thumbnail xmlns:media="http://search.yahoo.com/mrss/" url="http://localhost:4000/assets/images/fitcypher/20250202/body_weight_workout.jpg" /><media:content medium="image" url="http://localhost:4000/assets/images/fitcypher/20250202/body_weight_workout.jpg" xmlns:media="http://search.yahoo.com/mrss/" /></entry></feed>
