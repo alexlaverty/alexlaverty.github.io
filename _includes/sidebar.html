@@ -1,98 +1,68 @@
-<div class="mobile-header">
-    <button class="hamburger" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
-    <div class="mobile-profile">
-       <!-- <center> <img src="{{ site.baseurl }}/assets/images/alexlaverty.jpg" alt="Alex Laverty" width="60%"></center> -->
-       <!-- <center><h2><a href="/">Alex Laverty</a></h2></center> -->
-    </div>
-</div>
+<aside id="sidebar" class="sidebar">
+  <header class="sidebar-header">
+    <a href="{{'/' | absolute_url}}"><img src="{{site.avatar | absolute_url}}" alt="avatar" class="avatar"
+        loading="lazy"></a>
+    <h2><a href="{{'/' | absolute_url}}" aria-label="Website Title">{{site.title}}</a></h2>
+    <p class="tagline">{{site.tagline}}</p>
+  </header>
 
-<div class="sidebar">
-
-    <a href="{{ site.baseurl }}/">
-        <center>
-            <h1 class="site-title">Alex Laverty</h1>
-        </center>
-    </a>
-    <div class="profile-image">
-        <a href="{{ site.baseurl }}/"><img src="{{ site.baseurl }}/assets/images/alexlaverty.jpg"
-                alt="Alex Laverty"></a>
-    </div>
-    <div class="social-icons">
-        <a href="https://www.youtube.com/@alexlavertyau" class="youtube" target="_blank" title="YouTube">
-            <i class="fab fa-youtube"></i>
+  <nav class="sidebar-nav">
+    <ul>
+      <li>
+        <a href="{{'/' | absolute_url}}">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="33" fill="currentColor" class="bi bi-house"
+            viewBox="0 0 16 16">
+            <path
+              d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z" />
+          </svg>
+          <span>Home</span>
         </a>
-        <!-- <a href="https://linkedin.com/in/YourProfile" class="linkedin" target="_blank" title="LinkedIn">
-            <i class="fab fa-linkedin-in"></i>
-        </a> -->
-        <a href="https://github.com/alexlaverty" class="github" target="_blank" title="GitHub">
-            <i class="fab fa-github"></i>
+      </li>
+      <li>
+        <a href="{{'/projects' | absolute_url}}">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="33" fill="currentColor" class="bi bi-folder"
+            viewBox="0 0 16 16">
+            <path
+              d="M.54 3.87.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.826a2 2 0 0 1-1.991-1.819l-.637-7a2 2 0 0 1 .342-1.31zM2.19 4a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4zm4.69-1.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139q.323-.119.684-.12h5.396z" />
+          </svg>
+          <span>Projects</span>
         </a>
+      </li>
+      <li>
+        <a href="{{'/about' | absolute_url}}">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="33" fill="currentColor" class="bi bi-info-circle"
+            viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+            <path
+              d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0" />
+          </svg>
+          <span>About</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="sidebar-icons-actions">
+    <div class="sidebar-social-icons">
+      {% include social-icons.html %}
     </div>
-    <div class="search-container">
-        <input type="text" id="search-input" placeholder="Search posts...">
-        <ul id="search-results"></ul>
+
+    <div class="sidebar-blog-resources">
+      <a href="{{'/search' | absolute_url}}" aria-label="Pesquisar"><i class="fa-solid fa-magnifying-glass"></i></a>
+
+      <a href="{{'/feed.xml' | absolute_url}}" aria-label="Feed RSS" target="_blank">
+        <i class="fa-solid fa-rss"></i>
+      </a>
     </div>
-    <nav class="site-nav">
-        <h2>Projects</h2>
-        <ul style="padding-top: 10px;">
-            <li class="cats"><a href="https://alexlaverty.pythonanywhere.com/" target="_blank">FitCypher</a></li>
-            <li class="cats"><a href="https://alexlaverty.github.io/optimize-nutrition/" target="_blank">Optimized
-                    Nutrition</a></li>
-            <li class="cats"><a href="https://www.reddit.com/r/ManlyBeach/" target="_blank">ManlyBeach Subreddit</a>
-            </li>
-            <li class="cats"><a href="https://github.com/alexlaverty?tab=repositories" target="_blank">Github Repos</a>
-            </li>
-        </ul>
+  </div>
 
-        <hr>
-    </nav>
-    <nav class="site-nav">
-        <h2>Categories</h2>
-        <ul style="padding-top: 10px;">
-            {% assign categories = site.categories %}
-            {% assign sorted_category_keys = "" | split: "" %}
+  <footer class="sidebar-footer">
+    <p>
+      <a href="{{site.licenseUrl}}" target="_blank">{{site.license}}</a>
+      <i>&bull;</i>
+      <span id="currentYear">2023</span>
+    </p>
+    <p>Made with <a href="https://jekyllrb.com/" target="_blank">Jekyll</a></p>
+  </footer>
 
-            {% for category in categories %}
-            {% assign category_key = category | first %}
-            {% assign post_count = site.categories[category_key] | size %}
-
-            {% if post_count < 10 %}
-            {% assign padded_count = post_count | prepend: "0" %}
-            {% else %}
-            {% assign padded_count = post_count | plus: 0 %}
-            {% endif %}
-
-            {% assign combined_key = padded_count | append: '#' | append: category_key %}
-            {% assign sorted_category_keys = sorted_category_keys | push: combined_key %}
-            {% endfor %}
-
-            {% assign sorted_category_keys = sorted_category_keys | sort | reverse %}
-
-            {% for combined_key in sorted_category_keys %}
-            {% assign key_components = combined_key | split: '#' %}
-            {% assign category_key = key_components[1] %}
-            {% assign post_count = site.categories[category_key] | size %}
-            <li class="cats">
-                <a href="{{ site.baseurl }}/categories/{{ category_key | slugize }}">
-                    {{ category_key | replace: '-', ' ' }}
-                    <span>({{ post_count }})</span>
-                </a>
-            </li>
-            {% endfor %}
-        </ul>
-        <hr>
-    </nav>
-    <nav class="site-nav">
-        <h2>Support</h2>
-        <ul style="padding-top: 10px;">
-            <li class="cats"><a href="https://www.buymeacoffee.com/alexlaverty" target="_blank"><img
-                        src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee"
-                        style="height: 60px !important;width: 217px !important;"></a></li>
-        </ul>
-        <hr>
-    </nav>
-</div>
+</aside>

@@ -1,0 +1,28 @@
+## Project Card Template
+# Use the template below to create a new project card
+# For each new project, copy the template and fill in the information
+# In 'stack' use the "Brand slug" available at:
+# https://github.com/simple-icons/simple-icons/blob/master/slugs.md
+# ---------------------------------------------------------
+# - name: "Name Project"
+#   description: >
+#     Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+#     Porro sit, rerum neque quae asperiores perspiciatis
+#     eligendi quam illum recusandae ex. Dolor placeat
+#     quidem accusamus eius aperiam voluptatem quos facilis.
+#   image: "assets/img/banner/banner-projetos-500x300.png"
+#   repository: "https://github.com/elainefs"
+#   deploy: "https://github.com/elainefs"
+#   stacks:
+#     - stack: javascript
+#     - stack: html5
+# ---------------------------------------------------------
+
+- name: "Photo Sync"
+  description: >
+    This Python script organizes image and video files by date, copying them into a structured directory based on their creation date. It supports various file types and uses intelligent date detection methods.
+  image: "assets/img/mockup.png"
+  repository: "https://github.com/alexlaverty/photo-sync"
+  deploy: "https://github.com/alexlaverty/photo-sync"
+  stacks:
+    - stack: python

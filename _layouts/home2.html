@@ -1,0 +1,61 @@
+---
+layout: default
+---
+
+<main class="post-list">
+  {% for post in site.tags.pinned %}
+  <a href="{{ post.url | absolute_url }}">
+    <div class="card-post hidden-animation" style="display: flex; align-items: flex-start; gap: 1rem;">
+      {% if post.image %}
+      <div class="card-post-thumbnail" style="flex-shrink: 0;">
+        <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px;">
+      </div>
+      {% endif %}
+      <div class="card-post-meta" style="flex: 1;">
+        <h2>{{ post.title }}</h2>
+        <p class="card-post-description text-secondary text-truncate">{{ post.description }}</p>
+        <p class="card-post-info text-secondary">
+          <span>
+            <i class="fa-regular fa-calendar"></i>
+            <time>{{ post.date | date: "%d . %m . %Y" }}</time>
+          </span>
+          <!-- <i>&bull;</i>
+          <span>
+            <i class="fa-regular fa-clock"></i>
+            {% include read-time.html content=post.content %}
+          </span> -->
+        </p>
+      </div>
+    </div>
+  </a>
+  {% endfor %}
+
+  {% for post in site.posts %}
+  {% unless post.tags contains 'pinned' %}
+  <a href="{{ post.url | absolute_url }}">
+    <div class="card-post hidden-animation" style="display: flex; align-items: flex-start; gap: 1rem;">
+      {% if post.image %}
+      <div class="card-post-thumbnail" style="flex-shrink: 0;">
+        <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px;">
+      </div>
+      {% endif %}
+      <div class="card-post-meta" style="flex: 1;">
+        <h2>{{ post.title }}</h2>
+        <p class="card-post-description text-secondary text-truncate">{{ post.description }}</p>
+        <p class="card-post-info text-secondary">
+          <span>
+            <i class="fa-regular fa-calendar"></i>
+            <time>{{ post.date | date: "%d . %m . %Y" }}</time>
+          </span>
+          <!-- <i>&bull;</i>
+          <span>
+            <i class="fa-regular fa-clock"></i>
+            {% include read-time.html content=post.content %}
+          </span> -->
+        </p>
+      </div>
+    </div>
+  </a>
+  {% endunless %}
+  {% endfor %}
+</main>

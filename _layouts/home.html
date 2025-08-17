@@ -1,0 +1,83 @@
+---
+layout: default
+---
+
+<main class="main-content hidden-animation">
+  <section class="post-list-content" style="width: 75%; max-width: 75%;">
+  {% for post in site.tags.pinned %}
+  <article class="card-post hidden-animation" style="margin-bottom: 2rem; border-bottom: 1px solid #eee; padding-bottom: 2rem;">
+    <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem;">
+      {% if post.image %}
+      <div class="card-post-thumbnail" style="flex-shrink: 0;">
+        <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px;">
+      </div>
+      {% endif %}
+      <div class="card-post-meta" style="flex: 1;">
+        <h2><a href="{{ post.url | absolute_url }}">{{ post.title }}</a></h2>
+        <p class="card-post-description text-secondary">{{ post.description }}</p>
+        <p class="card-post-info text-secondary">
+          <span>
+            <i class="fa-regular fa-calendar"></i>
+            <time>{{ post.date | date: "%d . %m . %Y" }}</time>
+          </span>
+          <!-- <i>&bull;</i>
+          <span>
+            <i class="fa-regular fa-clock"></i>
+            {% include read-time.html content=post.content %}
+          </span> -->
+        </p>
+      </div>
+    </div>
+    
+    <!-- Full post content -->
+    <div class="post-content">
+      {{ post.content }}
+    </div>
+    
+    <div style="margin-top: 1rem;">
+      <a href="{{ post.url | absolute_url }}" class="read-more-link">Read full post →</a>
+    </div>
+  </article>
+  {% endfor %}
+
+  {% for post in site.posts %}
+  {% unless post.tags contains 'pinned' %}
+  <article class="card-post hidden-animation" style="margin-bottom: 2rem; border-bottom: 1px solid #eee; padding-bottom: 2rem;">
+    <div style="display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem;">
+      {% if post.image %}
+      <div class="card-post-thumbnail" style="flex-shrink: 0;">
+        <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px;">
+      </div>
+      {% endif %}
+      <div class="card-post-meta" style="flex: 1;">
+        <h2><a href="{{ post.url | absolute_url }}">{{ post.title }}</a></h2>
+        <p class="card-post-description text-secondary">{{ post.description }}</p>
+        <p class="card-post-info text-secondary">
+          <span>
+            <i class="fa-regular fa-calendar"></i>
+            <time>{{ post.date | date: "%d . %m . %Y" }}</time>
+          </span>
+          <!-- <i>&bull;</i>
+          <span>
+            <i class="fa-regular fa-clock"></i>
+            {% include read-time.html content=post.content %}
+          </span> -->
+        </p>
+      </div>
+    </div>
+    
+    <!-- Full post content -->
+    <div class="post-content">
+      {{ post.content }}
+    </div>
+    
+    <div style="margin-top: 1rem;">
+      <a href="{{ post.url | absolute_url }}" class="read-more-link">Read full post →</a>
+    </div>
+  </article>
+  {% endunless %}
+  {% endfor %}
+  </section>
+
+  {% include post-panel.html %}
+</main>

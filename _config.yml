@@ -1,75 +1,91 @@
-# Welcome to Jekyll!
-#
-# This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
-# For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
-#
-# If you need help with YAML syntax, here are some quick references for you:
-# https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
-# https://learnxinyminutes.com/docs/yaml/
-#
 # Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
-
-email: your-email@example.com
-description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  jekyll
+url: "" # the base hostname & protocol for your site, e.g. https://USERNAME.github.io
 
-title : Alex Laverty
-tagline: Code, Science, Philosophy, Humor
-author :
-  name : Alex Laverty
-  email : alaverty@gmail.com
-  github : alexlaverty
-  twitter : alaverty
-  feedburner : alavertyN
+# Change to your lang - This doesn't translate the theme, it just defines the main language the content is written in.
+lang: pt-BR
 
-permalink: /:categories/:slug
-paginate: 3
-paginate_path: "/blog/page:num/"
+timezone: Australia/Sydney # Change to your timezone - https://kevinnovak.github.io/Time-Zone-Picker/
 
-# Build settings
-#theme: minima
-plugins:
-  - jekyll-feed
-  - jekyll-paginate
-  - jekyll-seo-tag
-  - jekyll-sitemap
+title: Alex Laverty
+tagline: 
+description: This is my blog
+avatar: "assets/img/alex.png" # The avatar on sidebar
+
+# Social profiles
+email: youemail@domain.com
+github: alexlaverty
+linkedin: alexlaverty
+instagram:
+# mastodon:
+#   instance: mastodon.social
+#   user: elainefs
+
+# Url for you account: Buy Me A Coffee, Ko-fi, Patreon, etc.
+donate: https://buymeacoffee.com/alexlaverty
 
 google_analytics: G-4P23WF01YZ
 
 disqus:
   shortname: alexlaverty
 
-# Exclude from processing.
-# The following items will not be processed, by default.
-# Any item listed under the `exclude:` key here will be automatically added to
-# the internal "default list".
-#
-# Excluded items can be processed by explicitly listing the directories or
-# their entries' file path in the `include:` list.
-#
-# exclude:
-#   - .sass-cache/
-#   - .jekyll-cache/
-#   - gemfiles/
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules/
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+# License - eg: Copyright, CC BY-NC-SA 4.0, etc.
+license: MIT License
+licenseUrl: "https://github.com/elainefs/jekyll-theme-case/blob/main/LICENSE"
+
+# Build settings
+kramdown:
+  syntax_highlighter: rouge
+  syntax_highlighter_opts: # Rouge Options - https://github.com/jneen/rouge#full-options
+    css_class: highlight
+    default_lang: console
+    span:
+      line_numbers: false
+    block:
+      line_numbers: false
+      start_line: 1
+
+plugins:
+  - jekyll-toc
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-minifier
+
+toc:
+  min_level: 2
+  max_level: 2
+
+jekyll-minifier:
+  exclude: "atom.xml"
+  uglifier_args:
+    harmony: true
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+      toc: true
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      permalink: /:title
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: "page"
+
+exclude:
+  - "*.gem"
+  - "*.gemspec"
+  - tools
+  - README.md
+  - LICENSE
+  - rollup.config.js
+  - package*.json
+
+include:
+  - _pages

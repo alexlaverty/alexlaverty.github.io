@@ -2,8 +2,16 @@
 layout: default
 ---
 
-<div class="box">
-    <h1 class="post-title">{{ page.title }}</h1>
-    <hr/>
-    <div class="content"><span class="post-text">{{ content }}</span></div>
-</div>
+<main class="main-content hidden-animation">
+  <article>
+    <header>
+      <h1 class="page-title">{{page.title}}</h1>
+    </header>
+
+    <section class="content">
+      {{content}}
+    </section>
+  </article>
+
+  {% include page-panel.html %}
+</main>
