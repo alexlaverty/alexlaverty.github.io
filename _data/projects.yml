@@ -26,3 +26,12 @@
   deploy: "https://github.com/alexlaverty/photo-sync"
   stacks:
     - stack: python
+
+- name: "ManlyBeach SubReddit Bot"
+  description: >
+    Code that scrapes news about Manly Beach and posts it to the Manly Beach SubReddit.
+  image: "assets/images/manly-beach.jpg"
+  repository: "https://github.com/alexlaverty/manlybeach-reddit-bot"
+  deploy: "https://github.com/alexlaverty/manlybeach-reddit-bot"
+  stacks:
+    - stack: python

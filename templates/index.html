@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jekyll Post Writer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        textarea {
+            height: 300px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #imageUpload {
+            display: none;
+        }
+        .image-upload-wrapper {
+            margin-bottom: 15px;
+        }
+        /* Styles for the preview section */
+        #preview {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+        #preview h2 {
+            margin-top: 0;
+        }
+        #preview img {
+            max-width: 100%; /* Ensures the image does not exceed the width of its container */
+            height: auto;    /* Maintains the aspect ratio of the image */
+            display: block;  /* Removes any extra space below the image */
+            object-fit: contain; /* Ensures the entire image is visible while maintaining aspect ratio */
+            max-height: 300px; /* Limits the height of the image */
+        }
+    </style>
+    <script>
+        function uploadImage() {
+            const fileInput = document.getElementById('imageUpload');
+            const formData = new FormData();
+            formData.append('image', fileInput.files[0]);
+            fetch('/upload_image', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(markdown => {
+                const textarea = document.getElementById('content');
+                const cursorPos = textarea.selectionStart;
+                const textBefore = textarea.value.substring(0, cursorPos);
+                const textAfter = textarea.value.substring(cursorPos);
+                textarea.value = textBefore + '\n' + markdown + '\n' + textAfter;
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</head>
+<body>
+    <h1>Create Jekyll Post</h1>
+    <div class="image-upload-wrapper">
+        <input type="file" id="imageUpload" accept=".png,.jpg,.jpeg,.gif" onchange="uploadImage()">
+        <button type="button" onclick="document.getElementById('imageUpload').click()">Add Image</button>
+    </div>
+    <form action="{{ url_for('save') }}" method="post">
+        <div class="form-group">
+            <label for="content">Content (Markdown):</label>
+            <textarea id="content" name="content" required></textarea>
+        </div>
+        <button type="submit">Save Post</button>
+    </form>
+
+    <!-- Preview Section -->
+    <h2>Preview</h2>
+    <div id="preview">
+        {{ preview_html | safe }}
+    </div>
+</body>
