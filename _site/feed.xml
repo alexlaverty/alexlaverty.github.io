@@ -1,6 +1,34 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="pt-BR"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="pt-BR" /><updated>2025-08-17T18:25:05+10:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Alex Laverty</title><subtitle>This is my blog</subtitle><entry><title type="html">17-08-2025</title><link href="http://localhost:4000/17-08-2025" rel="alternate" type="text/html" title="17-08-2025" /><published>2025-08-17T17:20:44+10:00</published><updated>2025-08-17T17:20:44+10:00</updated><id>http://localhost:4000/17-08-2025</id><content type="html" xml:base="http://localhost:4000/17-08-2025"><![CDATA[<p>Let’s test if this markdown thing works.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="pt-BR"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="pt-BR" /><updated>2025-08-18T06:34:04+10:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Alex Laverty</title><subtitle>This is my blog</subtitle><entry><title type="html">Monday the 18th of August 2025</title><link href="http://localhost:4000/monday-the-18th-of-august-2025" rel="alternate" type="text/html" title="Monday the 18th of August 2025" /><published>2025-08-18T05:33:25+10:00</published><updated>2025-08-18T05:33:25+10:00</updated><id>http://localhost:4000/monday-the-18th-of-august-2025</id><content type="html" xml:base="http://localhost:4000/monday-the-18th-of-august-2025"><![CDATA[<p>A plane crash landed on Mona Vale golf course yesterday</p>
 
-<p><img src="/assets/images/5bbd1ddfd2194fc49dc6d5fba5451900.png" alt="" /></p>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[Let’s test if this markdown thing works.]]></summary></entry><entry><title type="html">Nutrient-Dense Instant-Pot Meals for Longevity v2.0</title><link href="http://localhost:4000/nutrient-dense-instant-pot-meals-for-longevity-2" rel="alternate" type="text/html" title="Nutrient-Dense Instant-Pot Meals for Longevity v2.0" /><published>2025-03-30T11:00:00+11:00</published><updated>2025-03-30T11:00:00+11:00</updated><id>http://localhost:4000/nutrient-dense-instant-pot-meals-for-longevity-2</id><content type="html" xml:base="http://localhost:4000/nutrient-dense-instant-pot-meals-for-longevity-2"><![CDATA[<p>Ingredients (makes ~3 servings, all in one pot):</p>
+<div class="video-container" style="margin: 2rem 0; text-align: center;">
+  <video controls="" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" preload="auto">
+    <source src="/assets/videos/5999bf83d3f84ad1ae0db4fec96487b1.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  
+</div>
+
+<p>The beginning of AI robot sports :</p>
+
+<div class="video-container" style="margin: 2rem 0; text-align: center;">
+  <video controls="" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" preload="auto">
+    <source src="/assets/videos/9769a49bca44401097ff5080cafa46c5.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  
+</div>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[A plane crash landed on Mona Vale golf course yesterday]]></summary></entry><entry><title type="html">17-08-2025</title><link href="http://localhost:4000/17-08-2025" rel="alternate" type="text/html" title="17-08-2025" /><published>2025-08-17T17:43:16+10:00</published><updated>2025-08-17T17:43:16+10:00</updated><id>http://localhost:4000/17-08-2025</id><content type="html" xml:base="http://localhost:4000/17-08-2025"><![CDATA[<p>Testing to see if I can use my new Jekyll UI editor to create a markdown file and have my cron job upload it to github.</p>
+
+<p>Manly Corso in the 1970s</p>
+
+<p><img src="/assets/images/ccc8c9bacd0a48f6975ab02a16f7afe9.jpg" alt="" /></p>
+
+<p>ChatGPT generated image I made for the boys of them playing Fortnite</p>
+
+<p><img src="/assets/images/e9f0ca416e8c43e0ae4c81c2d989bd47.png" alt="" /></p>
+
+<p>Asking Chatgpt to generate me an image in the style half above, half below of the ocean</p>
+
+<p><img src="/assets/images/e83e5dc83f664d54bceee47e735da992.png" alt="" /></p>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[Testing to see if I can use my new Jekyll UI editor to create a markdown file and have my cron job upload it to github.]]></summary></entry><entry><title type="html">Nutrient-Dense Instant-Pot Meals for Longevity v2.0</title><link href="http://localhost:4000/nutrient-dense-instant-pot-meals-for-longevity-2" rel="alternate" type="text/html" title="Nutrient-Dense Instant-Pot Meals for Longevity v2.0" /><published>2025-03-30T11:00:00+11:00</published><updated>2025-03-30T11:00:00+11:00</updated><id>http://localhost:4000/nutrient-dense-instant-pot-meals-for-longevity-2</id><content type="html" xml:base="http://localhost:4000/nutrient-dense-instant-pot-meals-for-longevity-2"><![CDATA[<p>Ingredients (makes ~3 servings, all in one pot):</p>
 <ul>
   <li>30 g dry rolled oats</li>
   <li>150 g dry lentils (rinsed)</li>
@@ -121,4 +149,4 @@ Queenscliff Fjord</p>
 
 <iframe class="embed-youtube-video" loading="lazy" src="https://www.youtube.com/embed/JcDId4z8nVk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>]]></content><author><name>alexlaverty</name></author><category term="darling-harbour" /><summary type="html"><![CDATA[Taking Harry To The Aquarium]]></summary></entry><entry><title type="html">Queenscliff Sunset Surf</title><link href="http://localhost:4000/Queenscliff-Sunset-Surf" rel="alternate" type="text/html" title="Queenscliff Sunset Surf" /><published>2017-04-12T11:00:00+10:00</published><updated>2017-04-12T11:00:00+10:00</updated><id>http://localhost:4000/Queenscliff-Sunset-Surf</id><content type="html" xml:base="http://localhost:4000/Queenscliff-Sunset-Surf"><![CDATA[<p>Looked like we were in for a good sunset so I decided to take the GoPro out for a surf</p>
 
-<iframe class="embed-youtube-video" loading="lazy" src="https://www.youtube.com/embed/4g8xlb7hUBU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>]]></content><author><name>alexlaverty</name></author><category term="queenscliff" /><summary type="html"><![CDATA[Looked like we were in for a good sunset so I decided to take the GoPro out for a surf]]></summary></entry><entry><title type="html">Circular Quay to Manly Ferry Hyperlapse 2</title><link href="http://localhost:4000/circular-quay-to-manly-hyperlapse-2" rel="alternate" type="text/html" title="Circular Quay to Manly Ferry Hyperlapse 2" /><published>2016-10-28T12:00:00+11:00</published><updated>2016-10-28T12:00:00+11:00</updated><id>http://localhost:4000/circular-quay-to-manly-hyperlapse-2</id><content type="html" xml:base="http://localhost:4000/circular-quay-to-manly-hyperlapse-2"><![CDATA[<iframe class="embed-youtube-video" loading="lazy" src="https://www.youtube.com/embed/ELwgpHI1ArE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>]]></content><author><name></name></author><category term="circular-quay" /><summary type="html"><![CDATA[]]></summary></entry></feed>
+<iframe class="embed-youtube-video" loading="lazy" src="https://www.youtube.com/embed/4g8xlb7hUBU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>]]></content><author><name>alexlaverty</name></author><category term="queenscliff" /><summary type="html"><![CDATA[Looked like we were in for a good sunset so I decided to take the GoPro out for a surf]]></summary></entry></feed>

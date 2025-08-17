@@ -33,15 +33,58 @@
             border-radius: 4px;
             cursor: pointer;
             margin-right: 10px;
+            margin-bottom: 5px;
         }
         button:hover {
             background-color: #45a049;
         }
-        #imageUpload {
+        #imageUpload, #videoUpload {
             display: none;
         }
-        .image-upload-wrapper {
+        .upload-wrapper {
             margin-bottom: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .upload-btn {
+            background-color: #007bff;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .upload-btn:hover {
+            background-color: #0056b3;
+        }
+        .video-upload-btn {
+            background-color: #ff6b35;
+        }
+        .video-upload-btn:hover {
+            background-color: #e55a2b;
+        }
+        .upload-status {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+        }
+        .upload-status.uploading {
+            background-color: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+            display: block;
+        }
+        .upload-status.success {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            display: block;
+        }
+        .upload-status.error {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            display: block;
         }
         /* Styles for the preview section */
         #preview {
@@ -55,40 +98,146 @@
             margin-top: 0;
         }
         #preview img {
-            max-width: 100%; /* Ensures the image does not exceed the width of its container */
-            height: auto;    /* Maintains the aspect ratio of the image */
-            display: block;  /* Removes any extra space below the image */
-            object-fit: contain; /* Ensures the entire image is visible while maintaining aspect ratio */
-            max-height: 300px; /* Limits the height of the image */
+            max-width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+            max-height: 300px;
+        }
+        #preview video {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
         }
     </style>
     <script>
         function uploadImage() {
             const fileInput = document.getElementById('imageUpload');
+            if (!fileInput.files[0]) {
+                alert('Please select an image file');
+                return;
+            }
+
+            showUploadStatus('Uploading image...', 'uploading');
+            
             const formData = new FormData();
             formData.append('image', fileInput.files[0]);
+            
             fetch('/upload_image', {
                 method: 'POST',
                 body: formData
             })
-            .then(response => response.text())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Upload failed');
+                }
+                return response.text();
+            })
             .then(markdown => {
                 const textarea = document.getElementById('content');
                 const cursorPos = textarea.selectionStart;
                 const textBefore = textarea.value.substring(0, cursorPos);
                 const textAfter = textarea.value.substring(cursorPos);
                 textarea.value = textBefore + '\n' + markdown + '\n' + textAfter;
+                
+                // Move cursor after inserted text
+                textarea.selectionStart = textarea.selectionEnd = cursorPos + markdown.length + 2;
+                textarea.focus();
+                
+                showUploadStatus('Image uploaded successfully!', 'success');
+                fileInput.value = ''; // Clear file input
+                
+                setTimeout(() => hideUploadStatus(), 3000);
             })
-            .catch(error => console.error('Error:', error));
+            .catch(error => {
+                console.error('Error:', error);
+                showUploadStatus('Error uploading image: ' + error.message, 'error');
+                setTimeout(() => hideUploadStatus(), 5000);
+            });
+        }
+
+        function uploadVideo() {
+            const fileInput = document.getElementById('videoUpload');
+            if (!fileInput.files[0]) {
+                alert('Please select a video file');
+                return;
+            }
+
+            const file = fileInput.files[0];
+            const maxSize = 100 * 1024 * 1024; // 100MB
+            
+            if (file.size > maxSize) {
+                alert('Video file is too large. Maximum size is 100MB.');
+                return;
+            }
+
+            showUploadStatus('Uploading video... This may take a while.', 'uploading');
+            
+            const formData = new FormData();
+            formData.append('video', file);
+            
+            fetch('/upload_video', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Upload failed');
+                }
+                return response.text();
+            })
+            .then(jekyllInclude => {
+                const textarea = document.getElementById('content');
+                const cursorPos = textarea.selectionStart;
+                const textBefore = textarea.value.substring(0, cursorPos);
+                const textAfter = textarea.value.substring(cursorPos);
+                textarea.value = textBefore + '\n' + jekyllInclude + '\n' + textAfter;
+                
+                // Move cursor after inserted text
+                textarea.selectionStart = textarea.selectionEnd = cursorPos + jekyllInclude.length + 2;
+                textarea.focus();
+                
+                showUploadStatus('Video uploaded successfully!', 'success');
+                fileInput.value = ''; // Clear file input
+                
+                setTimeout(() => hideUploadStatus(), 3000);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showUploadStatus('Error uploading video: ' + error.message, 'error');
+                setTimeout(() => hideUploadStatus(), 5000);
+            });
+        }
+
+        function showUploadStatus(message, type) {
+            const statusDiv = document.getElementById('uploadStatus');
+            statusDiv.textContent = message;
+            statusDiv.className = 'upload-status ' + type;
+        }
+
+        function hideUploadStatus() {
+            const statusDiv = document.getElementById('uploadStatus');
+            statusDiv.className = 'upload-status';
         }
     </script>
 </head>
 <body>
     <h1>Create Jekyll Post</h1>
-    <div class="image-upload-wrapper">
+    
+    <div class="upload-wrapper">
         <input type="file" id="imageUpload" accept=".png,.jpg,.jpeg,.gif" onchange="uploadImage()">
-        <button type="button" onclick="document.getElementById('imageUpload').click()">Add Image</button>
+        <button type="button" class="upload-btn" onclick="document.getElementById('imageUpload').click()">
+            📷 Add Image
+        </button>
+        
+        <input type="file" id="videoUpload" accept=".mp4,.mov,.avi,.mkv,.webm,.m4v" onchange="uploadVideo()">
+        <button type="button" class="upload-btn video-upload-btn" onclick="document.getElementById('videoUpload').click()">
+            🎥 Add Video
+        </button>
     </div>
+    
+    <div id="uploadStatus" class="upload-status"></div>
+    
     <form action="{{ url_for('save') }}" method="post">
         <div class="form-group">
             <label for="content">Content (Markdown):</label>
@@ -103,3 +252,4 @@
         {{ preview_html | safe }}
     </div>
 </body>
+</html>

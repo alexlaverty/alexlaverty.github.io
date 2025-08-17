@@ -11,12 +11,19 @@ app = Flask(__name__)
 
 # Configure upload settings
 UPLOAD_FOLDER = 'assets/images'
+VIDEO_FOLDER = 'assets/videos'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+ALLOWED_VIDEO_EXTENSIONS = {'mp4'}  # Only MP4 now
+
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB max file size
+app.config['VIDEO_FOLDER'] = VIDEO_FOLDER
+app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024  # 100MB max file size for videos
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+def allowed_video_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_VIDEO_EXTENSIONS
 
 def extract_youtube_id(url):
     """Extract YouTube video ID from various YouTube URL formats"""
@@ -59,6 +66,21 @@ date: {date} +1100
 categories: blog
 ---
 """
+
+def format_date_title(date_obj):
+    """Format date as 'Monday the 18th of August 2025'"""
+    day_name = date_obj.strftime('%A')
+    day = date_obj.day
+    month_name = date_obj.strftime('%B')
+    year = date_obj.year
+    
+    # Add ordinal suffix to day
+    if 4 <= day <= 20 or 24 <= day <= 30:
+        suffix = "th"
+    else:
+        suffix = ["st", "nd", "rd"][day % 10 - 1]
+    
+    return f"{day_name} the {day}{suffix} of {month_name} {year}"
 
 @app.route('/', methods=['GET'])
 def index():
@@ -111,14 +133,47 @@ def upload_image():
     
     return 'Invalid file type', 400
 
+@app.route('/upload_video', methods=['POST'])
+def upload_video():
+    if 'video' not in request.files:
+        return 'No video file', 400
+    
+    file = request.files['video']
+    if file.filename == '':
+        return 'No selected file', 400
+    
+    if file and allowed_video_file(file.filename):
+        # Only accept MP4 files
+        ext = file.filename.rsplit('.', 1)[1].lower()
+        if ext != 'mp4':
+            return 'Only MP4 video files are supported', 400
+            
+        unique_filename = f"{uuid.uuid4().hex}.mp4"
+        
+        # Ensure upload directory exists
+        os.makedirs(app.config['VIDEO_FOLDER'], exist_ok=True)
+        
+        # Save the file
+        filepath = os.path.join(app.config['VIDEO_FOLDER'], unique_filename)
+        file.save(filepath)
+        
+        # Return Jekyll include syntax for video (MP4 only)
+        return f'{{% include video.html src="/assets/videos/{unique_filename}" %}}'
+    
+    return 'Invalid video file type. Only MP4 files are supported.', 400
+
 @app.route('/assets/images/<filename>')
 def serve_image(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
+@app.route('/assets/videos/<filename>')
+def serve_video(filename):
+    return send_from_directory(app.config['VIDEO_FOLDER'], filename)
+
 @app.route('/save', methods=['POST'])
 def save():
     now = datetime.datetime.now()
-    title = now.strftime('%d-%m-%Y')
+    title = format_date_title(now)  # Use the new formatted title
     content = request.form['content']
     
     processed_content = process_content(content)

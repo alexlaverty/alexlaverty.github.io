@@ -1,0 +1,16 @@
+<div class="video-container" style="margin: 2rem 0; text-align: center;">
+  <video 
+    controls 
+    style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);"
+    preload="auto"
+    {% if include.poster %}poster="{{ include.poster | relative_url }}"{% endif %}
+  >
+    <source src="{{ include.src | relative_url }}" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  {% if include.caption %}
+  <figcaption style="font-size: 1.4rem; color: #666; margin-top: 0.5rem; font-style: italic;">
+    {{ include.caption }}
+  </figcaption>
+  {% endif %}
+</div>
