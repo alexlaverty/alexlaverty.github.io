@@ -1,8 +1,7 @@
 .post-list {
-  width: calc(100vw - 350px);
-  float: right;
-  height: 100vh;
-  margin-top: 2rem;
+  width: 100%;
+  padding: 0 15px;
+  box-sizing: border-box;
 }
 
 .post-list a {
@@ -15,20 +14,14 @@
 }
 
 .card-post {
-  border-radius: 5px;
-  padding: 1rem 2rem;
-  box-shadow: 1px 1px 1px #d1d9e6;
-  transition: border-left 0.5s ease;
-  width: 85%;
-  margin: 0 auto 1rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
 }
 
-.card-post:hover {
-  border-left: 1rem solid var(--details-color-blue);
-}
 
 .card-post-info {
-  margin-top: 3rem;
+  margin-top: 1rem;
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;

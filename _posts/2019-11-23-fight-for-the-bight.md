@@ -8,14 +8,12 @@ navigation: True
 comments: True
 youtubeId: _DonS7J-k_w
 image: /images/2019-11-23/fftb.png
-description: Today was the Fight for Bite demonstration where a large group of surfers paddled out into the ocean and formed a large circle to protest  a Norwegian oil company called Equinor who want to create a deep-sea drilling operation in the Great Australian Bight off the coast of South Australia.
+# description: Today was the Fight for Bite demonstration where a large group of surfers paddled out into the ocean and formed a large circle to protest  a Norwegian oil company called Equinor who want to create a deep-sea drilling operation in the Great Australian Bight off the coast of South Australia.
 ---
 
 Today was the [Fight For The Bight](https://www.fightforthebight.org.au/) demonstration where a large group of surfers paddled out into the ocean and formed a large circle to protest  a Norwegian oil company called Equinor who want to create a deep-sea drilling operation in the Great Australian Bight off the coast of South Australia.
 
 {% include youtube.html id=page.youtubeId %}
-
-<!--more-->
 
 Went down down to Manly Beaches South Steyne and took some video of the event, also at the end of the video some bonus footage of an electric hydrofoil surf boarder.
 

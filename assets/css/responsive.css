@@ -50,7 +50,8 @@
   .main-content {
     width: 100vw;
     margin-top: 4rem;
-    padding: 0 2rem;
+    padding: 5px 5px 5px 5px;
+    display: block;
   }
 
   .main-content article {
@@ -70,7 +71,13 @@
   }
 
   .main-content .content img {
-    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+  .main-content .content iframe,
+  .main-content .content video {
+    max-width: 100%;
+    height: auto;
   }
 
   .post-meta span {

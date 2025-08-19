@@ -12,8 +12,8 @@ layout: default
             Published on <time>{{ page.date | date: "%d . %m . %Y"}}</time>
           </span>
           <i>&bull;</i>
-          <!-- {% include read-time.html content=page.content %} -->
-          <!-- <i>&bull;</i> -->
+          {% include read-time.html content=page.content %}
+          <i>&bull;</i>
           <span class="post-categories">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="25" fill="currentColor" class="bi bi-archive"
               viewBox="0 0 16 16">
@@ -29,10 +29,21 @@ layout: default
         <img src="{{page.image.path | absolute_url}}" alt="{{page.image.alt}}" loading="lazy" />
         <figcaption>{{page.image.caption}}</figcaption>
       </figure>
+<!-- 
+  SEO Tip: Make sure all images have descriptive alt tags. This is important for both SEO and accessibility.
+  For example:
+  <img src="path/to/image.jpg" alt="A descriptive summary of the image content">
+-->
 
     </header>
 
     <section class="content content-post">
+<!-- 
+  SEO Tip: Using a clear hierarchy of header tags (h2, h3, etc.) within your post content can help search engines understand the structure of your content and improve your site's SEO.
+  For example:
+  ## This is a main section (h2)
+  ### This is a sub-section (h3)
+-->
       {{content}}
     </section>
 
