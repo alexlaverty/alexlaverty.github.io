@@ -1,5 +1,5 @@
-.post-list {
-  width: 100%;
+.post-list-content {
+  width: 75%;
   padding: 0 15px;
   box-sizing: border-box;
 }
@@ -13,10 +13,8 @@
   color: var(--details-color-blue);
 }
 
-.card-post {
-  border-bottom: 1px solid #eee;
-  padding-bottom: 2rem;
-  margin-bottom: 2rem;
+.post-panel {
+  width: 25%;
 }
 
 

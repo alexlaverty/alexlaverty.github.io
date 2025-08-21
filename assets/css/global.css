@@ -65,6 +65,7 @@ img {
   float: right;
   padding: 0 4rem;
   display: flex;
+  flex-wrap: wrap; /* Add this line */
 }
 
 .main-content article {

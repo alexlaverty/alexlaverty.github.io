@@ -50,7 +50,8 @@
   .main-content {
     width: 100vw;
     margin-top: 4rem;
-    padding: 5px 5px 5px 5px;
+    padding: 0; /* Remove padding */
+    float: none; /* Clear float */
     display: block;
   }
 

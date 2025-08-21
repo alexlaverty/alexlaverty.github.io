@@ -1,7 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="pt-BR"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="pt-BR" /><updated>2025-08-20T07:31:53+10:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Alex Laverty</title><subtitle>This is my blog</subtitle><entry><title type="html">Monday the 18th of August 2025</title><link href="http://localhost:4000/monday-the-18th-of-august-2025" rel="alternate" type="text/html" title="Monday the 18th of August 2025" /><published>2025-08-18T05:33:25+10:00</published><updated>2025-08-18T05:33:25+10:00</updated><id>http://localhost:4000/monday-the-18th-of-august-2025</id><content type="html" xml:base="http://localhost:4000/monday-the-18th-of-august-2025"><![CDATA[<p>A plane crash landed on Mona Vale golf course yesterday</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="pt-BR"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" hreflang="pt-BR" /><updated>2025-08-22T06:53:34+10:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Alex Laverty</title><subtitle>This is my blog</subtitle><entry><title type="html">Thursday the 21st of August 2025</title><link href="http://localhost:4000/thursday-the-21st-of-august-2025" rel="alternate" type="text/html" title="Thursday the 21st of August 2025" /><published>2025-08-21T19:19:14+10:00</published><updated>2025-08-21T19:19:14+10:00</updated><id>http://localhost:4000/thursday-the-21st-of-august-2025</id><content type="html" xml:base="http://localhost:4000/thursday-the-21st-of-august-2025"><![CDATA[<p>Honda have released a new Honda Prelude</p>
 
 <div class="video-container" style="margin: 2rem 0; text-align: center;">
-  <video controls="" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" preload="auto">
+  <video controls="" style="max-height: 600px; max-width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" preload="auto">
+    <source src="/assets/videos/80693453831549d6b6b7a2ab9bf8df59.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+  
+</div>
+
+<p>I still like the model Prelude I used to drive better, similar to this one</p>
+
+<p><img src="/assets/images/1dc16c9d77064b95b60d3f6708adc9cd.jpeg" alt="" /></p>]]></content><author><name></name></author><category term="blog" /><summary type="html"><![CDATA[Honda have released a new Honda Prelude Your browser does not support the video tag. I still like the model Prelude I used to drive better, similar to this one]]></summary></entry><entry><title type="html">Monday the 18th of August 2025</title><link href="http://localhost:4000/monday-the-18th-of-august-2025" rel="alternate" type="text/html" title="Monday the 18th of August 2025" /><published>2025-08-18T05:33:25+10:00</published><updated>2025-08-18T05:33:25+10:00</updated><id>http://localhost:4000/monday-the-18th-of-august-2025</id><content type="html" xml:base="http://localhost:4000/monday-the-18th-of-august-2025"><![CDATA[<p>A plane crash landed on Mona Vale golf course yesterday</p>
+
+<div class="video-container" style="margin: 2rem 0; text-align: center;">
+  <video controls="" style="max-height: 600px; max-width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" preload="auto">
     <source src="/assets/videos/5999bf83d3f84ad1ae0db4fec96487b1.mp4" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
@@ -11,7 +23,7 @@
 <p>The beginning of AI robot sports :</p>
 
 <div class="video-container" style="margin: 2rem 0; text-align: center;">
-  <video controls="" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" preload="auto">
+  <video controls="" style="max-height: 600px; max-width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);" preload="auto">
     <source src="/assets/videos/9769a49bca44401097ff5080cafa46c5.mp4" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
@@ -145,6 +157,4 @@ Queenscliff Fjord</p>
 
 <p>I took my DSLR with me and my 300mm Canon lense, my hands were freezing and was hard to keep the camera steady but I still managed to get some good video!</p>]]></content><author><name>alexlaverty</name></author><category term="deadmans" /><summary type="html"><![CDATA[These are the biggest waves I’ve seen breaking at Deadmans in person.]]></summary></entry><entry><title type="html">SEA LIFE Sydney Aquarium</title><link href="http://localhost:4000/Sea-Life-Sydney-Aquarium" rel="alternate" type="text/html" title="SEA LIFE Sydney Aquarium" /><published>2018-04-28T20:00:00+10:00</published><updated>2018-04-28T20:00:00+10:00</updated><id>http://localhost:4000/Sea-Life-Sydney-Aquarium</id><content type="html" xml:base="http://localhost:4000/Sea-Life-Sydney-Aquarium"><![CDATA[<p>Taking Harry To The Aquarium</p>
 
-<iframe class="embed-youtube-video" loading="lazy" src="https://www.youtube.com/embed/JcDId4z8nVk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>]]></content><author><name>alexlaverty</name></author><category term="darling-harbour" /><summary type="html"><![CDATA[Taking Harry To The Aquarium]]></summary></entry><entry><title type="html">Queenscliff Sunset Surf</title><link href="http://localhost:4000/Queenscliff-Sunset-Surf" rel="alternate" type="text/html" title="Queenscliff Sunset Surf" /><published>2017-04-12T11:00:00+10:00</published><updated>2017-04-12T11:00:00+10:00</updated><id>http://localhost:4000/Queenscliff-Sunset-Surf</id><content type="html" xml:base="http://localhost:4000/Queenscliff-Sunset-Surf"><![CDATA[<p>Looked like we were in for a good sunset so I decided to take the GoPro out for a surf</p>
-
-<iframe class="embed-youtube-video" loading="lazy" src="https://www.youtube.com/embed/4g8xlb7hUBU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>]]></content><author><name>alexlaverty</name></author><category term="queenscliff" /><summary type="html"><![CDATA[Looked like we were in for a good sunset so I decided to take the GoPro out for a surf]]></summary></entry></feed>
+<iframe class="embed-youtube-video" loading="lazy" src="https://www.youtube.com/embed/JcDId4z8nVk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>]]></content><author><name>alexlaverty</name></author><category term="darling-harbour" /><summary type="html"><![CDATA[Taking Harry To The Aquarium]]></summary></entry></feed>

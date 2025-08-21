@@ -14,10 +14,13 @@
 }
 
 .post-banner img,
-.content-post img {
+.content-post img,
+.content-post video {
   border-radius: 0.5rem;
   object-fit: contain;
   object-position: 50% 50%;
+  max-height: 500px; /* Restrict video height */
+  width: auto; /* Allow width to adjust proportionally */
 }
 
 .content-post a {

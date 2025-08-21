@@ -1,0 +1,31 @@
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  padding: 1rem 0;
+  border-top: 1px solid #eee;
+  width: 100%; /* Add this line */
+}
+
+.pagination a,
+.pagination span {
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.pagination a:hover {
+  background-color: var(--details-color-blue);
+  color: #fff;
+}
+
+.pagination .previous,
+.pagination .next {
+  font-weight: bold;
+}
+
+.pagination .page_number {
+  font-size: 1.5rem;
+}
