@@ -49,8 +49,8 @@
 
   .main-content {
     width: 100vw;
-    margin-top: 4rem;
-    padding: 0; /* Remove padding */
+    margin-top: 3rem;
+    padding: 5px; /* Remove padding */
     float: none; /* Clear float */
     display: block;
   }

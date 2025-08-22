@@ -24,3 +24,28 @@
   flex-wrap: wrap;
   gap: 1rem;
 }
+
+
+/* Default (desktop) */
+.post-list-content {
+  width: 75%;
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+
+.post-panel {
+  width: 25%;
+  max-width: 25%;
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+  .post-list-content {
+    width: 100%;
+    padding: 0 10px;
+  }
+
+  .post-panel {
+    display: none; /* hide sidebar */
+  }
+}
