@@ -35,3 +35,12 @@
   deploy: "https://github.com/alexlaverty/manlybeach-reddit-bot"
   stacks:
     - stack: python
+
+- name: "AussieNewsVideos SubReddit Bot"
+  description: >
+    Script that publishes Australian News Youtube Videos to r/AussieNewsVideos.
+  image: "assets/img/mockup.png"
+  repository: "https://github.com/alexlaverty/aussienewsvideos"
+  deploy: "https://github.com/alexlaverty/aussienewsvideos"
+  stacks:
+    - stack: python
