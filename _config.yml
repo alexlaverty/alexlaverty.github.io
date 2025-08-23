@@ -7,9 +7,9 @@ lang: en
 
 timezone: Australia/Sydney # Change to your timezone - https://kevinnovak.github.io/Time-Zone-Picker/
 
-title: Alex Laverty - Web Developer and Photographer
+title: Alex Laverty
 tagline:
-description: Alex Laverty's blog about web development, photography, and travel.
+description: The ramblings of a mad man.
 avatar: "assets/img/alex.png" # The avatar on sidebar
 
 # Social profiles
