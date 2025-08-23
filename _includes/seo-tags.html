@@ -25,8 +25,13 @@
 <meta name="twitter:description" content="{{page.description}}">
 {% else %}
 <meta property="og:type" content="website">
+{% if page.description %}
+<meta property="og:description" content="{{page.description}}">
+<meta name="twitter:description" content="{{page.description}}">
+{% else %}
 <meta property="og:description" content="{{site.description}}">
+<meta name="twitter:description" content="{{site.description}}">
+{% endif %}
 <meta property="og:image" content="{{'/assets/img/favicon/' | absolute_url}}apple-icon.png">
 <meta name="twitter:image" content="{{'/assets/img/favicon/' | absolute_url}}apple-icon.png">
-<meta name="twitter:description" content="{{site.description}}">
 {% endif %}

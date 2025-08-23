@@ -1,15 +1,15 @@
 # Site settings
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. https://USERNAME.github.io
+url: "https://alexlaverty.github.io" # the base hostname & protocol for your site, e.g. https://USERNAME.github.io
 
 # Change to your lang - This doesn't translate the theme, it just defines the main language the content is written in.
-lang: pt-BR
+lang: en
 
 timezone: Australia/Sydney # Change to your timezone - https://kevinnovak.github.io/Time-Zone-Picker/
 
-title: Alex Laverty
-tagline: 
-description: This is my blog
+title: Alex Laverty - Web Developer and Photographer
+tagline:
+description: Alex Laverty's blog about web development, photography, and travel.
 avatar: "assets/img/alex.png" # The avatar on sidebar
 
 # Social profiles
