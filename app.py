@@ -3,21 +3,24 @@ import datetime
 import re
 import os
 import urllib.parse
-import markdown  # Import markdown library
+import markdown
 from werkzeug.utils import secure_filename
 import uuid
+import glob
 
 app = Flask(__name__)
+
+# --- Your existing configuration and helper functions remain the same ---
 
 # Configure upload settings
 UPLOAD_FOLDER = 'assets/images'
 VIDEO_FOLDER = 'assets/videos'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
-ALLOWED_VIDEO_EXTENSIONS = {'mp4'}  # Only MP4 now
+ALLOWED_VIDEO_EXTENSIONS = {'mp4'}
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['VIDEO_FOLDER'] = VIDEO_FOLDER
-app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024  # 100MB max file size for videos
+app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024
 
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -26,22 +29,16 @@ def allowed_video_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_VIDEO_EXTENSIONS
 
 def extract_youtube_id(url):
-    """Extract YouTube video ID from various YouTube URL formats"""
     parsed_url = urllib.parse.urlparse(url)
-    
     if parsed_url.netloc == 'youtu.be':
         return parsed_url.path.lstrip('/')
-    
     if parsed_url.netloc in ['www.youtube.com', 'youtube.com']:
         query = urllib.parse.parse_qs(parsed_url.query)
         return query.get('v', [None])[0]
-    
     return None
 
 def process_content(content):
-    """Process content to convert YouTube links to embed format"""
     youtube_pattern = r'(https?://(?:www\.)?(?:youtube\.com/watch\?v=|youtu\.be/)[^\s]+)'
-    
     def replace_with_embed(match):
         url = match.group(0)
         video_id = extract_youtube_id(url)
@@ -68,112 +65,54 @@ categories: blog
 """
 
 def format_date_title(date_obj):
-    """Format date as 'Monday the 18th of August 2025'"""
     day_name = date_obj.strftime('%A')
     day = date_obj.day
     month_name = date_obj.strftime('%B')
     year = date_obj.year
-    
-    # Add ordinal suffix to day
     if 4 <= day <= 20 or 24 <= day <= 30:
         suffix = "th"
     else:
         suffix = ["st", "nd", "rd"][day % 10 - 1]
-    
     return f"{day_name} the {day}{suffix} of {month_name} {year}"
+
+# --- Route modifications start here ---
 
 @app.route('/', methods=['GET'])
 def index():
-    # Get today's date
     today = datetime.datetime.now().strftime('%Y-%m-%d')
     posts_dir = '_posts'
-    filename = f"{today}-*.md"  # Match today's Markdown file
-
-    # Find the Markdown file for today
-    matching_files = [f for f in os.listdir(posts_dir) if re.match(rf"{today}-.*\.md", f)]
+    
+    # Use glob to find today's markdown file
+    matching_files = glob.glob(os.path.join(posts_dir, f"{today}-*.md"))
+    
+    html_content = "<p>No content for today. Start writing!</p>"
+    raw_content = ""
 
     if matching_files:
-        filepath = os.path.join(posts_dir, matching_files[0])
-        with open(filepath, 'r') as f:
-            content = f.read()
+        filepath = matching_files[0]
+        with open(filepath, 'r', encoding='utf-8') as f:
+            full_file_content = f.read()
 
-        # Extract content after frontmatter
-        _, content = content.split('---', 2)[-1], content.split('---', 2)[-1]
-
-        # Convert Markdown to HTML
-        html_content = markdown.markdown(content)
-    else:
-        html_content = "<p>No content available for today.</p>"
-
-    return render_template('index.html', preview_html=html_content)
-
-@app.route('/upload_image', methods=['POST'])
-def upload_image():
-    if 'image' not in request.files:
-        return 'No image file', 400
-    
-    file = request.files['image']
-    if file.filename == '':
-        return 'No selected file', 400
-    
-    if file and allowed_file(file.filename):
-        # Generate unique filename
-        ext = file.filename.rsplit('.', 1)[1].lower()
-        unique_filename = f"{uuid.uuid4().hex}.{ext}"
+        # Separate frontmatter from the main content
+        parts = full_file_content.split('---', 2)
+        if len(parts) == 3:
+            # The actual markdown content for editing is after the second '---'
+            raw_content = parts[2].strip()
+        else:
+            # Fallback for malformed files
+            raw_content = full_file_content
         
-        # Ensure upload directory exists
-        os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
-        
-        # Save the file
-        filepath = os.path.join(app.config['UPLOAD_FOLDER'], unique_filename)
-        file.save(filepath)
-        
-        # Return markdown image syntax
-        return f"![](/assets/images/{unique_filename})"
+        # Generate HTML preview from the raw content
+        html_content = markdown.markdown(raw_content)
     
-    return 'Invalid file type', 400
-
-@app.route('/upload_video', methods=['POST'])
-def upload_video():
-    if 'video' not in request.files:
-        return 'No video file', 400
-    
-    file = request.files['video']
-    if file.filename == '':
-        return 'No selected file', 400
-    
-    if file and allowed_video_file(file.filename):
-        # Only accept MP4 files
-        ext = file.filename.rsplit('.', 1)[1].lower()
-        if ext != 'mp4':
-            return 'Only MP4 video files are supported', 400
-            
-        unique_filename = f"{uuid.uuid4().hex}.mp4"
-        
-        # Ensure upload directory exists
-        os.makedirs(app.config['VIDEO_FOLDER'], exist_ok=True)
-        
-        # Save the file
-        filepath = os.path.join(app.config['VIDEO_FOLDER'], unique_filename)
-        file.save(filepath)
-        
-        # Return Jekyll include syntax for video (MP4 only)
-        return f'{{% include video.html src="/assets/videos/{unique_filename}" %}}'
-    
-    return 'Invalid video file type. Only MP4 files are supported.', 400
-
-@app.route('/assets/images/<filename>')
-def serve_image(filename):
-    return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
-
-@app.route('/assets/videos/<filename>')
-def serve_video(filename):
-    return send_from_directory(app.config['VIDEO_FOLDER'], filename)
+    # Pass both the preview and the raw content to the template
+    return render_template('index.html', preview_html=html_content, existing_content=raw_content)
 
 @app.route('/save', methods=['POST'])
 def save():
     now = datetime.datetime.now()
-    title = format_date_title(now)  # Use the new formatted title
+    title = format_date_title(now)
+    # This is the new, edited content from the form
     content = request.form['content']
     
     processed_content = process_content(content)
@@ -183,16 +122,73 @@ def save():
     
     filepath = os.path.join(posts_dir, create_filename(title))
     
+    frontmatter = ""
+    # Check if the file already exists to preserve its frontmatter
     if os.path.exists(filepath):
-        with open(filepath, 'a') as f:
-            f.write('\n\n')
-            f.write(processed_content)
+        with open(filepath, 'r', encoding='utf-8') as f:
+            full_file_content = f.read()
+        
+        parts = full_file_content.split('---', 2)
+        if len(parts) == 3:
+            # Reconstruct the frontmatter block
+            frontmatter = f"---{parts[1]}---"
+        else:
+            # If frontmatter is missing or malformed, create a new one
+            frontmatter = create_frontmatter(title)
     else:
-        with open(filepath, 'w') as f:
-            f.write(create_frontmatter(title))
-            f.write(processed_content)
+        # If the file is new, create the frontmatter
+        frontmatter = create_frontmatter(title)
+
+    # Write the file in 'w' mode (overwrite) with the frontmatter and new content
+    with open(filepath, 'w', encoding='utf-8') as f:
+        f.write(frontmatter)
+        f.write('\n') # Ensure there's a newline after the frontmatter
+        f.write(processed_content)
     
     return redirect(url_for('index'))
+
+# --- Your other routes remain the same ---
+@app.route('/upload_image', methods=['POST'])
+def upload_image():
+    if 'image' not in request.files:
+        return 'No image file', 400
+    file = request.files['image']
+    if file.filename == '':
+        return 'No selected file', 400
+    if file and allowed_file(file.filename):
+        ext = file.filename.rsplit('.', 1)[1].lower()
+        unique_filename = f"{uuid.uuid4().hex}.{ext}"
+        os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
+        filepath = os.path.join(app.config['UPLOAD_FOLDER'], unique_filename)
+        file.save(filepath)
+        return f"![](/assets/images/{unique_filename})"
+    return 'Invalid file type', 400
+
+@app.route('/upload_video', methods=['POST'])
+def upload_video():
+    if 'video' not in request.files:
+        return 'No video file', 400
+    file = request.files['video']
+    if file.filename == '':
+        return 'No selected file', 400
+    if file and allowed_video_file(file.filename):
+        ext = file.filename.rsplit('.', 1)[1].lower()
+        if ext != 'mp4':
+            return 'Only MP4 video files are supported', 400
+        unique_filename = f"{uuid.uuid4().hex}.mp4"
+        os.makedirs(app.config['VIDEO_FOLDER'], exist_ok=True)
+        filepath = os.path.join(app.config['VIDEO_FOLDER'], unique_filename)
+        file.save(filepath)
+        return f'{{% include video.html src="/assets/videos/{unique_filename}" %}}'
+    return 'Invalid video file type. Only MP4 files are supported.', 400
+
+@app.route('/assets/images/<filename>')
+def serve_image(filename):
+    return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
+
+@app.route('/assets/videos/<filename>')
+def serve_video(filename):
+    return send_from_directory(app.config['VIDEO_FOLDER'], filename)
 
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=7000)

@@ -241,7 +241,8 @@
     <form action="{{ url_for('save') }}" method="post">
         <div class="form-group">
             <label for="content">Content (Markdown):</label>
-            <textarea id="content" name="content" required></textarea>
+            <!-- THIS IS THE UPDATED LINE -->
+            <textarea id="content" name="content" required>{{ existing_content | safe }}</textarea>
         </div>
         <button type="submit">Save Post</button>
     </form>
