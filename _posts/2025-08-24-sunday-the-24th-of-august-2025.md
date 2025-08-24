@@ -26,7 +26,7 @@ Now using the Coles price scraper I can also optimize this recipe for cost, when
 
 I also intend on feeding this data into AI to help me identify patterns of how Coles fluctuates their prices.
 
-## "Based off all of our converstations..."
+## "Based off all of our conversations..."
 
 If you've used ChatGPT for a long time, it's always fun to prompt it with requests that start with :
 
