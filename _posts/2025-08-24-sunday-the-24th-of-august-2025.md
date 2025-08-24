@@ -26,15 +26,15 @@ Now using the Coles price scraper I can also optimize this recipe for cost, when
 
 I also intend on feeding this data into AI to help me identify patterns of how Coles fluctuates their prices.
 
-## "Based off all of our last converstations..."
+## "Based off all of our converstations..."
 
 If you've used ChatGPT for a long time, it's always fun to prompt it with requests that start with :
 
-"Based off all of our last conversations...." 
+"Based off all of our conversations...." 
 
 for example :
 
-## Based off all of our last conversations write an about.md for my Jekyll blog
+## Based off all of our conversations write an about.md for my Jekyll blog
 
 ### About Me
 
@@ -56,13 +56,13 @@ This blog is my long-term notebook—a place to archive ideas, share experiments
 
 If any of these things resonate with you, I’d love to have you along for the ride.
 
-## Based off all of our last conversations generate an image of what you think I look like
+## Based off all of our conversations generate an image of what you think I look like
 
 This is what chatgpt generated and I think it's pretty close, tall, thin, Macbook Pro, by the beach surrounded by nature :
 
 ![](/assets/images/c06fde3a66cc48c388723a7139755c57.png)
 
-## Based off all of our last conversations generate me an image of a Scout patch
+## Based off all of our conversations generate me an image of a Scout patch
 
 Similarly Chatgpt created a Scout patch for me based off my interests
 
