@@ -81,3 +81,7 @@ I asked Google VEO to animate this image for me, I was hoping to use an animated
 {% include video.html src="/assets/videos/1b80760963e3493d9a7b22fb50aa68a5.mp4" %}
 
 It looks great and is what I want, however I don't like the fact that the camera angle is panning and zooming in. I asked Google VEO to redo it but the "camera is fixed, do not pan the camera, do not tilt, do not zoom, only animate the water and trees", however after 3 attempts every response has the video angle moving across the screen which is just going to look weird and distracting in teams calls... oh well will have to attempt again later in a future update.
+
+Using Google VEO to animate the boys playing Fortnite
+
+{% include video.html src="/assets/videos/ec5fda1d804040ba9a0322ec2c27c131.mp4" %}
