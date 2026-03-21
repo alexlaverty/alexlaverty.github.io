@@ -1,6 +1,6 @@
 ---
 title:  "Coles Specials — 5 Cheap & Maximally Nutritious Recipes (22 March 2026)"
-date:   2026-03-22 0:00:00
+date:   2026-03-21 0:00:00
 layout: post
 categories: ["optimising-nutrition"]
 ---
