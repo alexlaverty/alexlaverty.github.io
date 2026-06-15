@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostList from '../../components/PostList.astro';
+import { getPublishedPosts, getCategories, slugify } from '../../utils';
+
+export async function getStaticPaths() {
+  const posts = await getPublishedPosts();
+  const cats = await getCategories();
+  return cats.map((c) => ({
+    params: { category: c.slug },
+    props: {
+      name: c.name,
+      posts: posts.filter((p) => slugify(p.data.category) === c.slug),
+    },
+  }));
+}
+
+const { name, posts } = Astro.props;
+---
+
+<BaseLayout title={`${name} posts`} description={`Posts in the ${name} category.`}>
+  <section class="wrap cat-page">
+    <p class="eyebrow"><a href="/categories/">Categories</a></p>
+    <h1>{name}</h1>
+    <p class="cat-sub">{posts.length} {posts.length === 1 ? 'post' : 'posts'}</p>
+    <PostList posts={posts} />
+  </section>
+  <style>
+    .cat-page { padding-top: 2.5rem; }
+    .cat-sub { color: var(--ink-faint); margin-top: -0.4rem; margin-bottom: 1.6rem; }
+  </style>
+</BaseLayout>

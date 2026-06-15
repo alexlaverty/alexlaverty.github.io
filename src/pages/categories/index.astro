@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCategories, getTags } from '../../utils';
+
+const categories = await getCategories();
+const tags = await getTags();
+---
+
+<BaseLayout title="Categories" description="Browse posts by category and tag.">
+  <section class="wrap taxonomy">
+    <p class="eyebrow">Browse</p>
+    <h1>Categories</h1>
+    <ul class="cat-grid">
+      {
+        categories.map((c) => (
+          <li>
+            <a class="cat-card" href={`/categories/${c.slug}/`}>
+              <span class="cat-name">{c.name}</span>
+              <span class="cat-count">{c.count} {c.count === 1 ? 'post' : 'posts'}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <h2>Tags</h2>
+    <div class="tag-cloud">
+      {
+        tags.map((t) => (
+          <a class="tag-link" href={`/tags/${t.slug}/`}>
+            #{t.name} <span class="tag-n">{t.count}</span>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <style>
+    .taxonomy { padding-top: 2.5rem; }
+    .cat-grid {
+      list-style: none;
+      margin: 1.5rem 0 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.8rem;
+    }
+    .cat-card {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      padding: 1rem 1.15rem;
+      background: var(--paper-raised);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      text-decoration: none;
+      color: var(--ink);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    }
+    .cat-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); border-color: var(--sun); }
+    .cat-name { font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; }
+    .cat-count { color: var(--ink-faint); font-size: 0.85rem; }
+    .tag-cloud { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+    .tag-link {
+      display: inline-flex;
+      gap: 0.35rem;
+      align-items: center;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(106, 90, 147, 0.1);
+      color: var(--dusk-deep);
+      text-decoration: none;
+      font-size: 0.85rem;
+    }
+    .tag-link:hover { background: rgba(106, 90, 147, 0.2); color: var(--dusk-deep); }
+    .tag-n { color: var(--ink-faint); font-size: 0.78rem; }
+  </style>
+</BaseLayout>

@@ -1,0 +1,71 @@
+---
+import type { Post } from '../utils';
+import { slugify } from '../utils';
+
+interface Props {
+  posts: Post[];
+}
+const { posts } = Astro.props;
+
+const dateFmt = (d: Date) =>
+  d.toLocaleDateString('en-AU', { year: 'numeric', month: 'short', day: 'numeric' });
+---
+
+<ul class="post-list">
+  {
+    posts.map((p) => (
+      <li class="post-list-item">
+        <a class="post-list-card" href={`/blog/${p.id}/`}>
+          <div class="post-list-head">
+            <span class="post-list-title">{p.data.title}</span>
+            <time class="post-list-date" datetime={p.data.pubDate.toISOString()}>
+              {dateFmt(p.data.pubDate)}
+            </time>
+          </div>
+          <p class="post-list-desc">{p.data.description}</p>
+          <div class="post-list-meta">
+            <span class="pill">{p.data.category}</span>
+            {p.data.tags.slice(0, 4).map((t) => (
+              <span class="tag-chip">#{t}</span>
+            ))}
+          </div>
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .post-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.8rem; }
+  .post-list-card {
+    display: block;
+    padding: 1.1rem 1.25rem;
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: var(--ink);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  }
+  .post-list-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+    border-color: var(--sun);
+  }
+  .post-list-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .post-list-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.18rem;
+    line-height: 1.25;
+  }
+  .post-list-date { color: var(--ink-faint); font-size: 0.82rem; white-space: nowrap; }
+  .post-list-desc { margin: 0.4rem 0 0.7rem; color: var(--ink-soft); font-size: 0.95rem; }
+  .post-list-meta { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
+  .tag-chip { font-size: 0.78rem; color: var(--ink-faint); }
+</style>
