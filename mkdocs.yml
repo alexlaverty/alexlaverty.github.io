@@ -1,0 +1,59 @@
+site_name: Alex Laverty
+site_url: https://alexlaverty.github.io/
+repo_url: https://github.com/alexlaverty/alexlaverty.github.io
+repo_name: alexlaverty/alexlaverty.github.io
+
+# No `nav:` section on purpose — navigation is generated automatically from
+# the folder structure under docs/. Top-level folders become top-nav tabs,
+# subfolders become collapsible sections in the left sidebar.
+
+theme:
+  name: material
+  features:
+    - navigation.tabs          # top navigation bar from top-level folders
+    - navigation.tabs.sticky   # keep top nav visible while scrolling
+    - navigation.sections      # render top-level subfolders as sidebar sections
+    - navigation.indexes       # a folder's index.md acts as its section landing page
+    - navigation.top           # back-to-top button
+    - navigation.footer        # prev/next page links in the footer
+    - toc.follow               # right-hand anchor menu follows scroll position
+    - search.suggest
+    - search.highlight
+    - content.code.copy        # copy button on code blocks
+  palette:
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition                 # !!! note / warning / tip callout boxes
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true          # anchor link icon next to each heading
+  - pymdownx.details           # collapsible admonitions
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences       # nested code blocks, mermaid diagrams
+  - pymdownx.tabbed:
+      alternate_style: true    # content tabs
+  - pymdownx.tasklist:
+      custom_checkbox: true    # - [x] task lists

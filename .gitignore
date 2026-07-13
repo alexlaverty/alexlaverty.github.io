@@ -1,21 +1,10 @@
-# build output
-dist/
-.output/
+# MkDocs build output
+site/
 
-# dependencies
-node_modules/
+# Material for MkDocs cache
+.cache/
 
-# astro
-.astro/
-
-# environment / logs
-.env
-.env.production
-*.log
-npm-debug.log*
-
-# editor / os
-.vscode/
-.idea/
-.DS_Store
-Thumbs.db
+# Python
+__pycache__/
+.venv/
+venv/

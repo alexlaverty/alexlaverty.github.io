@@ -1,34 +1,30 @@
-# How I Built a World in Code
+# alexlaverty.github.io
 
-The source for [alexlaverty.github.io](https://alexlaverty.github.io) — a blog
-series on the procedural-generation techniques behind a cosy, procedurally
-generated VR world for the Meta Quest 2, built in Godot with Claude Code.
+Personal site built with [MkDocs](https://www.mkdocs.org/) and
+[Material for MkDocs](https://squidfunk.github.io/mkdocs-material/),
+published to GitHub Pages at <https://alexlaverty.github.io/>.
 
-Built with [Astro](https://astro.build) and deployed to GitHub Pages.
+## How it works
 
-## Develop
+- Markdown content lives under [`docs/`](docs/).
+- Navigation is generated automatically from the folder structure:
+  top-level folders → top nav tabs, subfolders → left sidebar sections,
+  page headings → right sidebar anchor menu.
+- Pushing to `main` triggers the
+  [Deploy MkDocs to GitHub Pages](.github/workflows/deploy.yml) workflow,
+  which builds the site and deploys it to GitHub Pages.
 
-```sh
-npm install
-npm run dev      # local dev server at http://localhost:4321
-npm run build    # production build into dist/
-npm run preview  # preview the production build
+## Local development
+
+```bash
+pip install -r requirements.txt
+mkdocs serve
 ```
 
-## Writing a post
+Open <http://127.0.0.1:8000> — the site live-reloads as you edit.
 
-1. Add a Markdown file to `src/content/blog/`. The file name (without `.md`) is
-   the URL slug and **must match the matching `slug` in `src/series.ts`**.
-2. Give it frontmatter: `title`, `description`, `pubDate` (see an existing post).
-3. That's it — the post automatically becomes a live link on the homepage and in
-   the series, and gets prev/next navigation. Until a post's file exists, the
-   series shows it as "coming soon".
+## Adding content
 
-`src/series.ts` is the master plan: the full ordered list of all 17 posts,
-grouped into sections. Edit it to change ordering, titles or blurbs.
-
-## Deployment
-
-Every push to `main` triggers `.github/workflows/deploy.yml`, which builds the
-site and publishes it to GitHub Pages. Make sure the repo's
-**Settings → Pages → Source** is set to **GitHub Actions**.
+Drop a `.md` file anywhere under `docs/`, start it with a `# Heading`,
+then commit and push. To add a new top-nav tab, create a new top-level
+folder under `docs/` with an `index.md` inside.
