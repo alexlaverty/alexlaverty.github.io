@@ -37,6 +37,10 @@ theme:
 
 plugins:
   - search
+  - tags                       # frontmatter tags: [...] + listing on docs/tags.md
+  - git-revision-date-localized:
+      type: date               # "last updated" on each page from git history
+      fallback_to_build_date: true
 
 markdown_extensions:
   - admonition                 # !!! note / warning / tip callout boxes

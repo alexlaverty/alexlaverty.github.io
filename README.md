@@ -28,3 +28,6 @@ Open <http://127.0.0.1:8000> — the site live-reloads as you edit.
 Drop a `.md` file anywhere under `docs/`, start it with a `# Heading`,
 then commit and push. To add a new sidebar section, create a new folder
 under `docs/` with an `index.md` inside.
+
+Folder structure, page conventions, and writing style are documented in
+[CLAUDE.md](CLAUDE.md).
