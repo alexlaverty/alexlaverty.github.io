@@ -4,15 +4,12 @@ repo_url: https://github.com/alexlaverty/alexlaverty.github.io
 repo_name: alexlaverty/alexlaverty.github.io
 
 # No `nav:` section on purpose — navigation is generated automatically from
-# the folder structure under docs/. Top-level folders become top-nav tabs,
-# subfolders become collapsible sections in the left sidebar.
+# the folder structure under docs/. Folders become collapsible sections in
+# the left sidebar, collapsed by default.
 
 theme:
   name: material
   features:
-    - navigation.tabs          # top navigation bar from top-level folders
-    - navigation.tabs.sticky   # keep top nav visible while scrolling
-    - navigation.sections      # render top-level subfolders as sidebar sections
     - navigation.indexes       # a folder's index.md acts as its section landing page
     - navigation.top           # back-to-top button
     - navigation.footer        # prev/next page links in the footer

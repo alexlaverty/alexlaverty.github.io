@@ -48,11 +48,10 @@ Callout boxes for notes, tips, and warnings:
 
 ## Tables
 
-| Feature        | Where it shows up          |
-| -------------- | -------------------------- |
-| Top-level dirs | Top navigation tabs        |
-| Subfolders     | Left sidebar sections      |
-| Page headings  | Right sidebar anchor menu  |
+| Feature        | Where it shows up                     |
+| -------------- | ------------------------------------- |
+| Folders        | Collapsible left sidebar sections     |
+| Page headings  | Right sidebar anchor menu             |
 
 ## Task lists
 

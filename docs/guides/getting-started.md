@@ -23,15 +23,15 @@ Create a new `.md` file under `docs/`:
 ```text
 docs/
 ├── index.md              ← home page
-├── guides/               ← "Guides" tab in the top nav
-│   ├── index.md          ← landing page for the tab
+├── guides/               ← "Guides" section in the left sidebar
+│   ├── index.md          ← landing page for the section
 │   └── getting-started.md
-├── projects/             ← "Projects" tab
-└── reference/            ← "Reference" tab
+├── projects/             ← "Projects" section
+└── reference/            ← "Reference" section
 ```
 
-To add a whole new top-nav tab, just create a new top-level folder under
-`docs/` with an `index.md` inside it.
+To add a whole new sidebar section, just create a new folder under `docs/`
+with an `index.md` inside it.
 
 ## Publish
 

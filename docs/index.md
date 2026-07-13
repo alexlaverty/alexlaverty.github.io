@@ -9,8 +9,8 @@ and published automatically to GitHub Pages on every push to `main`.
 Markdown files live in the `docs/` folder of the repository. The navigation
 is generated automatically from the folder structure:
 
-- **Top-level folders** under `docs/` become tabs in the top navigation bar.
-- **Subfolders** become collapsible sections in the left sidebar.
+- **Folders** under `docs/` become collapsible sections in the left sidebar,
+  collapsed by default.
 - **Headings on each page** become the anchor menu in the right sidebar.
 
 ## Adding a new page
