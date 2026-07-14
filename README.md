@@ -75,5 +75,9 @@ settings in `config.yaml`):
 python new-hero.py docs/<path-to-page>.md
 ```
 
+In a Claude Code session, `/write-article <topic>` researches a topic
+on the web and creates a complete article page — filed, tagged, linked
+from its section index, with hero image and summary.
+
 Folder structure, page conventions, and writing style are documented in
 [CLAUDE.md](CLAUDE.md).
