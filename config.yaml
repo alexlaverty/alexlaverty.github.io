@@ -1,0 +1,44 @@
+# Settings for new-hero.py — AI hero image generation via ComfyUI.
+hero:
+  comfyui: http://127.0.0.1:8188
+
+  # A key from `styles` below, or "random" to sample a different style
+  # per image (useful while deciding which style to standardise on).
+  style: random
+
+  # width:height of generated hero images
+  aspect: "21:9"
+
+  # ComfyUI model files (Flux 2 Klein setup)
+  unet: flux-2-klein-9b-fp8.safetensors
+  clip: qwen_3_8b_fp8mixed.safetensors
+  vae: flux2-vae.safetensors
+
+  # Sampling: 9B base model wants ~20 steps / cfg ~4; if you switch to a
+  # distilled Klein model, use steps: 4 and cfg: 1.
+  steps: 20
+  cfg: 4.0
+  negative: >-
+    text, lettering, typography, watermark, signature, photorealistic,
+    3d render, glossy, low quality, blurry
+
+  # Fixed style clauses appended to Claude's subject description. The
+  # locked wording is what keeps images consistent across the site.
+  styles:
+    engraved-duotone: >-
+      vintage copperplate engraving illustration, fine cross-hatched
+      linework, woodcut texture, dark ink on aged cream paper with muted
+      green accent tones, 19th century scientific illustration style,
+      classic technical book cover art
+    watercolor: >-
+      loose watercolor and gouache illustration, soft translucent washes,
+      muted natural palette, visible paper grain, gentle colour bleed,
+      hand-painted
+    flat-editorial: >-
+      flat editorial vector illustration, bold simple geometric shapes,
+      limited four-colour palette, subtle grain texture, generous
+      negative space, modern magazine style
+    retro-screenprint: >-
+      mid-century screen print poster, bold silhouettes, grainy ink
+      texture, three-colour palette, retro travel poster style, slight
+      ink misregistration

@@ -63,6 +63,24 @@
   }
 }
 
+/* ---------- summary lede (frontmatter summary:, hooks/hero.py) ---------- */
+
+.md-typeset .page-summary {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--al-muted);
+  margin: 0.2rem 0 0.8rem;
+}
+
+/* ---------- hero images (frontmatter image:, hooks/hero.py) ---------- */
+
+.md-typeset img.page-hero {
+  width: 100%;
+  border-radius: 0.6rem;
+  border: 1px solid var(--al-card-border);
+  margin: 0.2rem 0 0.6rem;
+}
+
 /* ---------- left nav ---------- */
 
 .md-nav__link--active {

@@ -4,6 +4,10 @@
     so search engines get headline, date, and author explicitly. -#}
 {% block extrahead %}
   {{ super() }}
+  {% if page.meta and page.meta.image and page.canonical_url %}
+    <meta property="og:image" content="{{ page.canonical_url ~ page.meta.image }}">
+    <meta name="twitter:card" content="summary_large_image">
+  {% endif %}
   {% if page.config is defined and page.config.date is defined %}
     <script type="application/ld+json">
     {

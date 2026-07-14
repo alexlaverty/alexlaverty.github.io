@@ -114,6 +114,24 @@ across all page types (the site-wide index), and blog `categories` only
 filter the daily log chronologically. Prefer tag names that match topic
 folder names so the threads line up.
 
+## Hero images
+
+Pages can carry an AI-generated hero image, displayed under the H1 (by
+`hooks/hero.py`) and used as the `og:image` social preview:
+
+```bash
+python new-hero.py docs/<path>.md   # one page; needs ComfyUI running + claude CLI
+python new-hero.py --all            # every content page that lacks an image
+python new-hero.py <path> --force   # regenerate
+```
+
+Claude describes the subject from the page content; a fixed style clause
+from `config.yaml` (`hero:` section — style, aspect ratio, ComfyUI
+models, sampling) keeps images visually consistent. The image is saved
+to `img/` next to the page and referenced via `image:` frontmatter, with
+the style recorded in `image_style:`. Don't hand-write `image:` values —
+generate them, or regenerate with `--force`.
+
 ## Page conventions
 
 Every page starts with frontmatter, then a single `#` H1:
