@@ -114,23 +114,29 @@ across all page types (the site-wide index), and blog `categories` only
 filter the daily log chronologically. Prefer tag names that match topic
 folder names so the threads line up.
 
-## Hero images
+## Hero images and page summaries
 
-Pages can carry an AI-generated hero image, displayed under the H1 (by
-`hooks/hero.py`) and used as the `og:image` social preview:
+Pages can carry an AI-generated hero image and a short summary lede.
+`hooks/hero.py` renders them as Title → summary → hero image → content,
+and the image doubles as the `og:image` social preview:
 
 ```bash
-python new-hero.py docs/<path>.md   # one page; needs ComfyUI running + claude CLI
+python new-hero.py docs/<path>.md   # hero (+ summary if missing); needs ComfyUI + claude CLI
 python new-hero.py --all            # every content page that lacks an image
+python new-hero.py --summary --all  # add summaries only; no ComfyUI needed
 python new-hero.py <path> --force   # regenerate
 ```
 
-Claude describes the subject from the page content; a fixed style clause
-from `config.yaml` (`hero:` section — style, aspect ratio, ComfyUI
-models, sampling) keeps images visually consistent. The image is saved
-to `img/` next to the page and referenced via `image:` frontmatter, with
-the style recorded in `image_style:`. Don't hand-write `image:` values —
-generate them, or regenerate with `--force`.
+Claude produces the image subject and the 2–3 sentence summary from the
+page content in one call; a fixed style clause from `config.yaml`
+(`hero:` section — style, aspect ratio, ComfyUI models, sampling) keeps
+images visually consistent. Results land in frontmatter: `image:`
+(saved under `img/` next to the page), `image_style:`, and `summary:`.
+Don't hand-write `image:` values; `summary:` may be hand-edited if the
+generated text needs correcting. Pages with a `## Summary` section
+(video pages) never get a frontmatter summary. `summary:` is the
+on-page lede; `description` stays the ~150-char meta/search snippet —
+they are different fields.
 
 ## Page conventions
 
