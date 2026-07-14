@@ -1,0 +1,7 @@
+# No `url:` on purpose — with authors_profiles enabled, the author name
+# then links to the generated profile page at /author/alex/.
+authors:
+  alex:
+    name: Alex Laverty
+    description: Site author
+    avatar: https://github.com/alexlaverty.png

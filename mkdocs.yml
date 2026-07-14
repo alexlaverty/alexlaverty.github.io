@@ -38,7 +38,15 @@ theme:
         icon: material/brightness-4
         name: Switch to light mode
 
+hooks:
+  - hooks/tag_pages.py         # per-tag listing pages + count-ordered index on tags.md
+
 plugins:
+  - blog:                      # daily log; posts live in docs/posts/
+      blog_dir: .              # home page doubles as the blog index (recent posts listed there)
+      post_url_format: "{date}/{slug}"
+      archive_date_format: MMMM yyyy
+      authors_profiles: true   # generates /author/alex/ with that author's posts
   - search
   - tags                       # frontmatter tags: [...] + listing on docs/tags.md
   - git-revision-date-localized:

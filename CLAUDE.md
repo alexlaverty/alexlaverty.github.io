@@ -1,7 +1,7 @@
 # CLAUDE.md
 
 Personal knowledge site for Alex Laverty, built with MkDocs Material and
-deployed to GitHub Pages at https://alexlaverty.github.io/ on every push to
+deployed to GitHub Pages at https://laverty.io/ on every push to
 `main`. Markdown lives under `docs/`; navigation is generated from the
 folder structure (no `nav:` in mkdocs.yml — keep it that way).
 
@@ -11,6 +11,8 @@ folder structure (no `nav:` in mkdocs.yml — keep it that way).
 pip install -r requirements.txt   # once
 mkdocs serve                      # live preview at http://127.0.0.1:8000
 mkdocs build --strict             # what CI runs; broken internal links fail the build
+python new-daily.py [category …]  # scaffold today's daily log post
+python new-video.py <url> [tag …] # generate a video summary page (needs yt-dlp + claude CLI)
 ```
 
 Always run `mkdocs build --strict` before committing content changes.
@@ -18,7 +20,10 @@ Always run `mkdocs build --strict` before committing content changes.
 ## Folder structure rules
 
 Topic-first, not type-first. Top-level folders under `docs/` are topics
-(`permaculture/`, `ai-coding/`), never content types (`guides/`, `blog/`).
+(`permaculture/`, `ai-coding/`), never content types (`guides/`,
+`tutorials/`). Two sanctioned exceptions: `docs/posts/` (the daily log —
+see "Daily log vs project pages") and `docs/videos/` (video summaries —
+see "Video summary pages").
 
 1. **One folder per topic**, kebab-case, named for the term someone would
    search for: `real-estate/`, not `property-stuff/`.
@@ -37,6 +42,73 @@ Topic-first, not type-first. Top-level folders under `docs/` are topics
 6. **Moving/renaming a published page breaks its URL.** Prefer getting the
    name right first. If a move is genuinely needed, flag it to Alex — it
    may warrant adding the mkdocs-redirects plugin.
+
+## Daily log vs project pages
+
+Two kinds of content with different lifecycles:
+
+- **Daily log posts** (`docs/posts/YYYY-MM-DD.md`) are append-only
+  journal entries: what happened today, written once, not edited later.
+  Handled by the Material blog plugin with `blog_dir: .` — the home page
+  (`docs/index.md`) is the blog index, so recent posts are listed on the
+  front page; posts don't appear in the sidebar nav.
+- **Project pages** (topic folders like `permaculture/`) are evergreen
+  reference pages, updated in place as the project evolves.
+
+The rule connecting them: the daily post records what happened; anything
+durable gets distilled into the relevant topic page, and the post links
+to it (from a post the path is `../permaculture/worm-farm-setup.md`).
+Don't let reference material accumulate in the blog.
+
+Scaffold today's post with `python new-daily.py [category …]`. Posts are
+the one exception to the "no dates in filenames" rule and use their own
+frontmatter (no `description`/`tags` needed):
+
+```markdown
+---
+date: 2026-07-14
+authors:
+  - alex
+categories:
+  - permaculture
+---
+
+# 14 July 2026
+
+Moved the worm farm into shade; midday temps were cooking it. Details in
+[worm farm setup](../permaculture/worm-farm-setup.md).
+```
+
+- `date` is required and drives the URL (`/2026/07/14/…`).
+- `authors` keys come from `docs/.authors.yml`.
+- `categories` are optional, must match top-level topic folder names, and
+  give a per-topic chronological view of the work.
+- The writing style rules below apply to posts too. Short is fine — two
+  sentences is a valid daily post.
+
+## Video summary pages
+
+`docs/videos/` holds one page per YouTube video worth sharing: the video
+embedded up top, an AI-generated summary and key points below. Pages are
+generated, not hand-written:
+
+```bash
+python new-video.py <youtube-url> [tag ...]   # requires yt-dlp + claude CLI
+```
+
+The script fetches subtitles, has Claude write the summary, creates
+`docs/videos/<title-slug>.md`, and appends a link to `docs/videos/index.md`.
+Every video page gets the `videos` tag plus 1–3 topic tags (supplied as
+arguments, or suggested by Claude from the site's existing tags). Tags are
+how videos connect to topics — a permaculture video is tagged
+`permaculture`, not filed in `permaculture/`. Keep the AI-disclosure line
+the script adds at the bottom of each page.
+
+How the three categorisation mechanisms divide up: topic folders say what
+a page is about (navigation), frontmatter tags collect cross-topic threads
+across all page types (the site-wide index), and blog `categories` only
+filter the daily log chronologically. Prefer tag names that match topic
+folder names so the threads line up.
 
 ## Page conventions
 
@@ -57,9 +129,14 @@ What this page is about in one or two sentences, then straight into it.
 
 - `description` is required — it becomes the meta description.
 - `tags` are lowercase kebab-case, 1–4 per page. Reuse existing tags
-  (check `docs/tags.md` output or grep the frontmatter) before inventing
-  new ones. Tags are for cross-topic threads (e.g. `automation` appearing
-  in both `ai-coding/` and `real-estate/`).
+  (check the rendered `/tags/` page, which shows counts, or grep the
+  frontmatter) before inventing new ones. Tags are for cross-topic
+  threads (e.g. `automation` appearing in both `ai-coding/` and
+  `real-estate/`). Each tag gets its own listing page at `/tags/<tag>/`,
+  generated at build time by `hooks/tag_pages.py` — never create tag
+  pages by hand. The same hook fills the count-ordered index on
+  `docs/tags.md`, and a widget in `overrides/main.html` shows all tags
+  with counts in the right sidebar.
 - Exactly one H1 per page. Use `##`/`###` for structure — they feed the
   right-hand anchor menu. Don't skip levels.
 - Images go in an `img/` folder next to the page, with descriptive
@@ -133,7 +210,7 @@ Good (target voice):
 > seller). Six weeks in it processes roughly 2 kg of scraps a week. The
 > first attempt failed — details below.
 
-## SEO checklist (applies to every new page)
+## SEO checklist (applies to every new topic page; daily posts exempt)
 
 - Slug and H1 contain the term someone would actually search.
 - `description` frontmatter present, factual, ~150 chars.

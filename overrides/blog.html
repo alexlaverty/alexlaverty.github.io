@@ -1,0 +1,27 @@
+{#-
+  Override of material/templates/blog.html (blog view pages: index,
+  archive, category, author profile). Change from upstream: author
+  profile pages (under author/) show only their page content — the bio —
+  without the post listing. Re-sync with upstream when mkdocs-material
+  changes this template.
+-#}
+{% extends "main.html" %}
+{% block container %}
+  <div class="md-content" data-md-component="content">
+    <div class="md-content__inner">
+      <header class="md-typeset">
+        {{ page.content }}
+      </header>
+      {% if not page.url.startswith("author/") %}
+        {% for post in posts %}
+          {% include "partials/post.html" %}
+        {% endfor %}
+        {% if pagination %}
+          {% block pagination %}
+            {% include "partials/pagination.html" %}
+          {% endblock %}
+        {% endif %}
+      {% endif %}
+    </div>
+  </div>
+{% endblock %}

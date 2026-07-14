@@ -1,5 +1,88 @@
 {% extends "base.html" %}
 
+{#- BlogPosting structured data on blog posts (pages with a post date),
+    so search engines get headline, date, and author explicitly. -#}
+{% block extrahead %}
+  {{ super() }}
+  {% if page.config is defined and page.config.date is defined %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": {{ page.title | tojson }},
+      "datePublished": "{{ page.config.date.created.strftime('%Y-%m-%d') }}",
+      "mainEntityOfPage": {{ (config.site_url ~ page.url) | tojson }},
+      "author": {
+        "@type": "Person",
+        "name": "Alex Laverty",
+        "url": {{ (config.site_url ~ "author/alex/") | tojson }}
+      }
+    }
+    </script>
+  {% endif %}
+{% endblock %}
+
+{#- Tag list in the right sidebar, below the table of contents: every tag
+    with its page count, most-used first. Reads the tags.json index the
+    tags plugin exports on every build. -#}
+{% block scripts %}
+  {{ super() }}
+  <style>
+    .tags-sidebar { padding: 1.2em 0 0 .6em; }
+    .tags-sidebar .md-nav__title { padding: 0 0 .4em; box-shadow: none; }
+    .tags-sidebar .tags-sidebar__count { opacity: .55; font-size: .9em; }
+  </style>
+  <script>
+    (function () {
+      var sidebar = document.querySelector(
+        ".md-sidebar--secondary .md-sidebar__inner"
+      );
+      if (!sidebar) return;
+      var root = "{{ base_url }}";
+      fetch(root + "/tags.json")
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (data) {
+          if (!data || !data.mappings) return;
+          var counts = {};
+          data.mappings.forEach(function (m) {
+            (m.tags || []).forEach(function (t) {
+              counts[t] = (counts[t] || 0) + 1;
+            });
+          });
+          var tags = Object.keys(counts).sort(function (a, b) {
+            return counts[b] - counts[a] || a.localeCompare(b);
+          });
+          if (!tags.length) return;
+          var nav = document.createElement("nav");
+          nav.className = "md-nav tags-sidebar";
+          var title = document.createElement("div");
+          title.className = "md-nav__title";
+          title.textContent = "Tags";
+          nav.appendChild(title);
+          var list = document.createElement("ul");
+          list.className = "md-nav__list";
+          tags.forEach(function (tag) {
+            var item = document.createElement("li");
+            item.className = "md-nav__item";
+            var link = document.createElement("a");
+            link.className = "md-nav__link";
+            link.href = root + "/tags/" + tag + "/";
+            link.textContent = tag + " ";
+            var count = document.createElement("span");
+            count.className = "tags-sidebar__count";
+            count.textContent = "(" + counts[tag] + ")";
+            link.appendChild(count);
+            item.appendChild(link);
+            list.appendChild(item);
+          });
+          nav.appendChild(list);
+          sidebar.appendChild(nav);
+        })
+        .catch(function () { /* no tags.json; skip the widget */ });
+    })();
+  </script>
+{% endblock %}
+
 {% block analytics %}
   {{ super() }}
   <script data-goatcounter="https://lavertyio.goatcounter.com/count"
