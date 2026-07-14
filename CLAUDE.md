@@ -50,8 +50,12 @@ Two kinds of content with different lifecycles:
 - **Daily log posts** (`docs/posts/YYYY-MM-DD.md`) are append-only
   journal entries: what happened today, written once, not edited later.
   Handled by the Material blog plugin with `blog_dir: .` — the home page
-  (`docs/index.md`) is the blog index, so recent posts are listed on the
-  front page; posts don't appear in the sidebar nav.
+  (`docs/index.md`) is the blog index; posts don't appear in the sidebar
+  nav. The front page shows a unified timeline (built by
+  `hooks/timeline.py`, rendered by `overrides/blog.html`): blog posts by
+  publish date merged with content pages by last git commit date, newest
+  first, ten per page with extra pages at `/page/N/`. Topic landing
+  `index.md` pages are excluded from the timeline.
 - **Project pages** (topic folders like `permaculture/`) are evergreen
   reference pages, updated in place as the project evolves.
 

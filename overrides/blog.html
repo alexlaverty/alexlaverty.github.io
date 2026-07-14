@@ -1,9 +1,16 @@
 {#-
   Override of material/templates/blog.html (blog view pages: index,
-  archive, category, author profile). Change from upstream: author
-  profile pages (under author/) show only their page content — the bio —
-  without the post listing. Re-sync with upstream when mkdocs-material
-  changes this template.
+  archive, category, author profile). Changes from upstream:
+
+  - The home page (and generated /page/N/ pages) render the unified
+    timeline built by hooks/timeline.py — blog posts and recently
+    updated pages merged, newest first, ten per page — instead of the
+    plugin's posts-only listing.
+  - Author profile pages (under author/) show only their page content,
+    without a post listing.
+
+  Archive and category views keep the stock behaviour. Re-sync with
+  upstream when mkdocs-material changes this template.
 -#}
 {% extends "main.html" %}
 {% block container %}
@@ -12,7 +19,53 @@
       <header class="md-typeset">
         {{ page.content }}
       </header>
-      {% if not page.url.startswith("author/") %}
+      {% if page.file.src_uri == "index.md" or (page.meta and page.meta.timeline_page) %}
+        {% set current = page.meta.timeline_page | default(1) %}
+        {% set start = (current - 1) * timeline_per_page %}
+        {% for entry in timeline[start:start + timeline_per_page] %}
+          <article class="md-post md-post--excerpt">
+            <header class="md-post__header">
+              <div class="md-post__meta md-meta">
+                <ul class="md-meta__list">
+                  {% if entry.kind == "post" %}
+                    <li class="md-meta__item">
+                      <a href="{{ 'author/alex/' | url }}" class="md-meta__link">
+                        {{- "Alex Laverty" -}}
+                      </a>
+                    </li>
+                  {% endif %}
+                  <li class="md-meta__item">{{ entry.date }}</li>
+                  <li class="md-meta__item">
+                    {{ "posted" if entry.kind == "post" else "updated" }}
+                  </li>
+                </ul>
+              </div>
+            </header>
+            <div class="md-post__content md-typeset">
+              <h2><a href="{{ entry.url | url }}">{{ entry.title }}</a></h2>
+              {% if entry.text %}
+                <p>{{ entry.text }}</p>
+              {% endif %}
+            </div>
+          </article>
+        {% endfor %}
+        {% set page_count = ((timeline | length) + timeline_per_page - 1)
+                            // timeline_per_page %}
+        {% if page_count > 1 %}
+          <nav class="md-pagination">
+            {% for n in range(1, page_count + 1) %}
+              {% if n == current %}
+                <span class="md-pagination__current">{{ n }}</span>
+              {% else %}
+                <a class="md-pagination__link"
+                   href="{{ ('page/' ~ n ~ '/') | url if n > 1 else base_url ~ '/' }}">
+                  {{- n -}}
+                </a>
+              {% endif %}
+            {% endfor %}
+          </nav>
+        {% endif %}
+      {% elif not page.url.startswith("author/") %}
         {% for post in posts %}
           {% include "partials/post.html" %}
         {% endfor %}

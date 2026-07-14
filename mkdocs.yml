@@ -40,6 +40,7 @@ theme:
 
 hooks:
   - hooks/tag_pages.py         # per-tag listing pages + count-ordered index on tags.md
+  - hooks/timeline.py          # unified home page timeline (posts + updated pages, /page/N/)
 
 plugins:
   - blog:                      # daily log; posts live in docs/posts/
@@ -47,6 +48,7 @@ plugins:
       post_url_format: "{date}/{slug}"
       archive_date_format: MMMM yyyy
       authors_profiles: true   # generates /author/alex/ with that author's posts
+      pagination: false        # home pagination comes from hooks/timeline.py instead
   - search
   - tags                       # frontmatter tags: [...] + listing on docs/tags.md
   - git-revision-date-localized:
