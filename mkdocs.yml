@@ -11,6 +11,7 @@ repo_name: alexlaverty/alexlaverty.github.io
 
 theme:
   name: material
+  custom_dir: overrides       # main.html injects the GoatCounter analytics snippet
   features:
     - navigation.indexes       # a folder's index.md acts as its section landing page
     - navigation.top           # back-to-top button
