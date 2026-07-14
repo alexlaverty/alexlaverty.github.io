@@ -1,5 +1,7 @@
-site_name: Alex Laverty
-site_url: https://alexlaverty.github.io/
+site_name: Laverty.io
+site_url: https://laverty.io/
+site_author: Alex Laverty
+copyright: "&copy; Alex Laverty"
 repo_url: https://github.com/alexlaverty/alexlaverty.github.io
 repo_name: alexlaverty/alexlaverty.github.io
 
