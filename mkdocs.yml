@@ -42,6 +42,7 @@ hooks:
   - hooks/tag_pages.py         # per-tag listing pages + count-ordered index on tags.md
   - hooks/timeline.py          # unified home page timeline (posts + updated pages, /page/N/)
   - hooks/hero.py              # shows frontmatter `image:` under the page H1
+  - hooks/section_index.py     # landing pages auto-link any section page not linked by hand
 
 plugins:
   - blog:                      # daily log; posts live in docs/posts/

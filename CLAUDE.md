@@ -29,7 +29,10 @@ see "Video summary pages").
    search for: `real-estate/`, not `property-stuff/`.
 2. **Every folder has an `index.md`** — a short landing page that says what
    the section covers and links to its pages. It renders as the section's
-   clickable entry in the sidebar (`navigation.indexes`).
+   clickable entry in the sidebar (`navigation.indexes`). Prefer
+   hand-written links with a short descriptor; `hooks/section_index.py`
+   is the safety net that auto-appends a "Pages" list of anything left
+   unlinked at build time, so pages are never orphaned.
 3. **Stay flat until it hurts.** Pages go directly in the topic folder.
    Only add a subfolder when a distinct sub-topic has 3+ pages (e.g.
    `ai-coding/claude-code/`). Maximum depth: 3 levels below `docs/`.
@@ -251,7 +254,9 @@ Good (target voice):
 ## Publishing workflow
 
 1. Add or edit pages under `docs/`.
-2. If a new page was added, link it from its topic's `index.md`.
+2. If a new page was added, link it from its topic's `index.md` with a
+   short descriptor (the section_index hook auto-links anything you
+   forget, but hand-written entries read better).
 3. `mkdocs build --strict` — must pass.
 4. Commit with a plain message describing the content change; push to
    `main`. GitHub Actions (`.github/workflows/deploy.yml`) builds and

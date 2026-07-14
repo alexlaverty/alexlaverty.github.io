@@ -11,3 +11,6 @@ survives — or fails to.
 - [Memory of Mankind](memory-of-mankind/index.md) — an archive of ceramic
   tablets in the Hallstatt salt mine, meant to outlast digital storage by
   thousands of years.
+- [The oldest written artifacts and why they survived](oldest-written-artifacts.md)
+  — the documents historians value most, the materials that preserved
+  them, and why survival is mostly accidental.
