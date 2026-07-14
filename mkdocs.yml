@@ -2,8 +2,6 @@ site_name: Laverty.io
 site_url: https://laverty.io/
 site_author: Alex Laverty
 copyright: "&copy; Alex Laverty"
-repo_url: https://github.com/alexlaverty/alexlaverty.github.io
-repo_name: alexlaverty/alexlaverty.github.io
 
 # No `nav:` section on purpose — navigation is generated automatically from
 # the folder structure under docs/. Folders become collapsible sections in
@@ -21,22 +19,24 @@ theme:
     - search.highlight
     - content.code.copy        # copy button on code blocks
   palette:
-    # Light mode
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      primary: indigo
-      accent: indigo
+    # Light mode — first entry is the default; colours come from
+    # docs/stylesheets/extra.css (primary/accent: custom)
+    - scheme: default
+      primary: custom
+      accent: custom
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
     # Dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      primary: indigo
-      accent: indigo
+    - scheme: slate
+      primary: custom
+      accent: custom
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
+
+extra_css:
+  - stylesheets/extra.css
 
 hooks:
   - hooks/tag_pages.py         # per-tag listing pages + count-ordered index on tags.md

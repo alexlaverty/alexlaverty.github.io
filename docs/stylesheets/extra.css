@@ -1,0 +1,101 @@
+/* Theme customisations: green/slate palette, wide layout with minimal
+   gutters, and card-style right sidebar blocks. Light is the default
+   scheme; dark matches the slate/green dashboard design. */
+
+/* ---------- palette: light ---------- */
+
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: #ffffff;          /* header background */
+  --md-primary-fg-color--light: #f8fafc;
+  --md-primary-fg-color--dark: #e2e8f0;
+  --md-primary-bg-color: #1f2937;          /* text/icons on header */
+  --md-primary-bg-color--light: #475569;
+  --md-accent-fg-color: #16a34a;
+  --md-accent-fg-color--transparent: rgba(22, 163, 74, 0.1);
+  --md-typeset-a-color: #15803d;           /* links */
+  --al-card-bg: #f8fafc;
+  --al-card-border: #e2e8f0;
+  --al-muted: #64748b;
+}
+
+/* ---------- palette: dark ---------- */
+
+[data-md-color-scheme="slate"] {
+  --md-default-bg-color: #0d1117;
+  --md-primary-fg-color: #0d1117;          /* header background */
+  --md-primary-fg-color--light: #151b23;
+  --md-primary-fg-color--dark: #0b0e13;
+  --md-primary-bg-color: #e6edf3;          /* text/icons on header */
+  --md-primary-bg-color--light: #8b949e;
+  --md-accent-fg-color: #22c55e;
+  --md-accent-fg-color--transparent: rgba(34, 197, 94, 0.1);
+  --md-typeset-a-color: #4ade80;           /* links */
+  --md-code-bg-color: #161b22;
+  --md-footer-bg-color: #0b0e13;
+  --md-footer-bg-color--dark: #0b0e13;
+  --al-card-bg: #151b23;
+  --al-card-border: #262e3a;
+  --al-muted: #8b949e;
+}
+
+/* ---------- header ---------- */
+
+/* White (light) / slate (dark) header needs a border to separate it
+   from the page instead of relying on colour contrast */
+.md-header {
+  border-bottom: 1px solid var(--al-card-border);
+  box-shadow: none;
+}
+
+/* ---------- layout: use the full viewport width ---------- */
+
+.md-grid {
+  max-width: 100%;
+}
+
+/* Tighter outer gutters on the sidebars */
+@media screen and (min-width: 76.25em) {
+  .md-sidebar--primary {
+    padding-left: 0.2rem;
+  }
+  .md-sidebar--secondary {
+    padding-right: 0.2rem;
+  }
+}
+
+/* ---------- left nav ---------- */
+
+.md-nav__link--active {
+  color: var(--md-typeset-a-color);
+  font-weight: 600;
+}
+
+/* ---------- right sidebar: card-style blocks ---------- */
+
+@media screen and (min-width: 60em) {
+  /* Pages without headings render an empty TOC nav; hide its card */
+  .md-sidebar--secondary .md-nav--secondary:not(:has(.md-nav__list li)) {
+    display: none;
+  }
+
+  .md-sidebar--secondary .md-nav--secondary,
+  .md-sidebar--secondary .tags-sidebar {
+    background: var(--al-card-bg);
+    border: 1px solid var(--al-card-border);
+    border-radius: 0.6rem;
+    padding: 0.7rem 0.8rem;
+    margin: 0 0.4rem 0.9rem 0;
+  }
+
+  /* Card headers: small uppercase labels, like the dashboard design */
+  .md-sidebar--secondary .md-nav--secondary > .md-nav__title,
+  .md-sidebar--secondary .tags-sidebar > .md-nav__title {
+    background: transparent;
+    box-shadow: none;
+    text-transform: uppercase;
+    font-size: 0.62rem;
+    letter-spacing: 0.08em;
+    color: var(--al-muted);
+    padding: 0 0 0.5em;
+  }
+}

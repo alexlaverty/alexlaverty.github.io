@@ -220,6 +220,7 @@ A markdown bullet list of the key points and takeaways.
         input=prompt,
         capture_output=True,
         text=True,
+        encoding="utf-8",   # Windows defaults to cp1252, garbling em dashes etc.
     )
 
     if result.returncode != 0:
@@ -335,16 +336,16 @@ tags:
 
 # {title}
 
+## Summary
+
+{sections["summary"]}
+
 <iframe src="https://www.youtube-nocookie.com/embed/{video_id}"
         title="{esc_title}"
         allowfullscreen
         style="width:100%;aspect-ratio:16/9;border:0;"></iframe>
 
 [Watch on YouTube](https://www.youtube.com/watch?v={video_id}){f" — {source_bits}" if source_bits else ""}.
-
-## Summary
-
-{sections["summary"]}
 
 ## Key points
 

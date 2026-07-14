@@ -9,16 +9,16 @@ tags:
 
 # Free procedural tree generator for game development
 
+## Summary
+
+EZ-Tree is a free web-based tool for generating procedural trees for games. It includes multiple tree species (ash, oak, pine, aspen, bushes) with extensive controls over bark texture, branches, leaves, and growth direction. Trees export as PNG for 2D games or GLB/GLTF 3D models for use in game engines and 3D software like Blender. The tool is open-source under the MIT license, requires no installation, and is available at easytree.dev.
+
 <iframe src="https://www.youtube-nocookie.com/embed/CySygTHDFGU"
         title="Free procedural tree generator for game development"
         allowfullscreen
         style="width:100%;aspect-ratio:16/9;border:0;"></iframe>
 
 [Watch on YouTube](https://www.youtube.com/watch?v=CySygTHDFGU) — Gamefromscratch — 4 February 2026.
-
-## Summary
-
-EZ-Tree is a free web-based tool for generating procedural trees for games. It includes multiple tree species (ash, oak, pine, aspen, bushes) with extensive controls over bark texture, branches, leaves, and growth direction. Trees export as PNG for 2D games or GLB/GLTF 3D models for use in game engines and 3D software like Blender. The tool is open-source under the MIT license, requires no installation, and is available at easytree.dev.
 
 ## Key points
 

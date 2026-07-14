@@ -27,9 +27,8 @@
     tags plugin exports on every build. -#}
 {% block scripts %}
   {{ super() }}
+  {#- Card layout for .tags-sidebar lives in docs/stylesheets/extra.css -#}
   <style>
-    .tags-sidebar { padding: 1.2em 0 0 .6em; }
-    .tags-sidebar .md-nav__title { padding: 0 0 .4em; box-shadow: none; }
     .tags-sidebar .tags-sidebar__count { opacity: .55; font-size: .9em; }
   </style>
   <script>

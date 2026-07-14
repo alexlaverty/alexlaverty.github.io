@@ -9,5 +9,4 @@ AI-generated summary below it, so you can read the notes instead of
 watching the whole thing. Pages are generated with `new-video.py` from
 the video's subtitles.
 
-- [How procrastination works in the brain](how-procrastination-works-in-the-brain.md)
 - [Free procedural tree generator for game development](free-procedural-tree-generator-for-game-development.md)
