@@ -130,6 +130,16 @@ def existing_tags() -> list[str]:
     return sorted(tags)
 
 
+def existing_page_for(video_id: str) -> Path | None:
+    """Find a page already embedding this video, regardless of its title."""
+
+    for md in VIDEOS_DIR.glob("*.md"):
+        if f"embed/{video_id}" in md.read_text(encoding="utf-8"):
+            return md
+
+    return None
+
+
 def summarize_with_claude(
     youtube_title: str,
     channel: str,
@@ -404,6 +414,11 @@ def main():
         f"YouTube title: {youtube_title}",
         file=sys.stderr,
     )
+
+    existing = existing_page_for(info["id"])
+
+    if existing:
+        sys.exit(f"A page for this video already exists: {existing}")
 
     print(
         "Extracting subtitles...",

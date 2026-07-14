@@ -1,4 +1,4 @@
----
+﻿---
 description: YouTube videos worth sharing, each embedded with an AI-generated summary and key points below it.
 ---
 
@@ -9,4 +9,5 @@ AI-generated summary below it, so you can read the notes instead of
 watching the whole thing. Pages are generated with `new-video.py` from
 the video's subtitles.
 
-- [EZ-Tree: Free Procedural Trees for Any Game Engine or DCC!](ez-tree-free-procedural-trees-for-any-game-engine-or-dcc.md)
+- [How procrastination works in the brain](how-procrastination-works-in-the-brain.md)
+- [Free procedural tree generator for game development](free-procedural-tree-generator-for-game-development.md)
