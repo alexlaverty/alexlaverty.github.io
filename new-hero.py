@@ -45,7 +45,11 @@ DEFAULT_MODEL = "claude-haiku-4-5-20251001"
 ROOT = Path(__file__).resolve().parent
 DOCS_DIR = ROOT / "docs"
 
-# width/height pairs (multiples of 64) per aspect setting
+# width/height pairs (multiples of 64) per aspect setting. Widths top out
+# at 1536px: ~2x the widest ~768px content column, so heroes stay sharp on
+# retina without over-shooting the 150KB budget (save_webp downscales to
+# 1280/1024 only if quality alone can't hit the budget). Display height is
+# capped in CSS (.page-hero), so a wide source crops rather than distorts.
 ASPECT_SIZES = {
     "21:9": (1536, 640),
     "16:9": (1344, 768),

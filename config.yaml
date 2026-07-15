@@ -6,7 +6,13 @@ hero:
   # per image (useful while deciding which style to standardise on).
   style: random
 
-  # width:height of generated hero images
+  # width:height of generated hero images. 21:9 (1536x640) is the
+  # hero-optimal choice: a panoramic banner that keeps source height low,
+  # ~2x the widest ~768px content column so it stays sharp on retina, and
+  # small enough to encode under the 150KB budget. Display height is then
+  # capped by CSS (.page-hero max-height in docs/stylesheets/extra.css) with
+  # object-fit: cover, so a wider source only crops, never distorts. Change
+  # this only if you also revisit that CSS cap.
   aspect: "21:9"
 
   # ComfyUI model files (Flux 2 Klein setup)

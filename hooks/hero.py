@@ -151,7 +151,8 @@ def on_page_markdown(markdown, page, config, files):
             if image:
                 alt = line[2:].strip()
                 inject.append(
-                    f'\n![{alt}]({image}){{ .page-hero fetchpriority="high" }}'
+                    f'\n![{alt}]({image})'
+                    '{ .page-hero fetchpriority="high" loading="eager" }'
                 )
             lines[i + 1:i + 1] = inject
             return "\n".join(lines)

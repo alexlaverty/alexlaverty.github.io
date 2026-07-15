@@ -207,9 +207,31 @@
 
 .md-typeset img.page-hero {
   width: 100%;
+  max-height: 320px;        /* cap vertical space so the lede stays above the fold */
+  object-fit: cover;        /* crop rather than distort when height-capped */
+  object-position: center;
   border-radius: 0.6rem;
   border: 1px solid var(--al-card-border);
   margin: 0.2rem 0 0.6rem;
+}
+
+@media screen and (max-width: 44rem) {
+  .md-typeset img.page-hero { max-height: 240px; }
+}
+
+/* ---------- tighten top-of-page whitespace ---------- */
+
+/* Material reserves 1.5rem above the main columns and 1.25em below every
+   H1. On article pages that stacks into a tall empty band above the
+   content and a wide gap between the title and its summary lede, pushing
+   the article down the screen. Pull both in. */
+.md-main__inner {
+  margin-top: 0.4rem;
+}
+
+.md-typeset h1:has(+ .page-summary),
+.md-typeset h1:has(+ .page-meta) {
+  margin-bottom: 0.4rem;
 }
 
 /* ---------- left nav ---------- */
