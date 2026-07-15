@@ -5,6 +5,8 @@ tags:
   - python
   - automation
 summary: "yts is a Python command-line tool that summarizes YouTube videos by downloading their subtitles with yt-dlp and sending the transcript to Claude. The tool returns a summary paragraph that answers the video's title directly, then lists key points—a format that cuts through clickbait titles."
+image: img/summarize-youtube-videos-yt-dlp-claude-hero.webp
+image_style: retro-screenprint
 ---
 
 # Summarize YouTube videos with yt-dlp and Claude
