@@ -3,7 +3,7 @@ description: The Memory of Mankind project stores text and images on ceramic tab
 tags:
   - deep-time
   - data-preservation
-image: img/memory-of-mankind-hero.png
+image: img/memory-of-mankind-hero.webp
 image_style: retro-screenprint
 summary: "Memory of Mankind stores selected texts and images on ceramic tablets in an Austrian salt mine, designed for preservation over thousands of years. The tablets resist heat, water, and chemicals without requiring energy or maintenance; contributors include institutions, museums, and individuals selecting what matters enough to keep."
 ---

@@ -8,5 +8,3 @@ Videos I found worth sharing. Each page embeds the video with an
 AI-generated summary below it, so you can read the notes instead of
 watching the whole thing. Pages are generated with `new-video.py` from
 the video's subtitles.
-
-- [Free procedural tree generator for game development](free-procedural-tree-generator-for-game-development.md)

@@ -15,6 +15,7 @@ _counts: dict[str, int] = {}
 
 PAGE_TEMPLATE = """---
 description: All pages on this site tagged {tag}.
+robots: noindex, follow
 search:
   exclude: true
 ---

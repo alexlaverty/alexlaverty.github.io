@@ -1,24 +1,32 @@
 {% extends "base.html" %}
 
-{#- BlogPosting structured data on blog posts (pages with a post date),
-    so search engines get headline, date, and author explicitly. -#}
+{#- Article/BlogPosting structured data on every article and post, so
+    search engines get headline, image, dates, and author explicitly.
+    The ISO dates and schema type are set by hooks/hero.py. -#}
 {% block extrahead %}
   {{ super() }}
-  {% if page.meta and page.meta.image and page.canonical_url %}
-    <meta property="og:image" content="{{ page.canonical_url ~ page.meta.image }}">
+  {% if page.meta and page.meta.robots %}
+    <meta name="robots" content="{{ page.meta.robots }}">
+  {% endif %}
+  {% if page.meta and page.meta.image_url %}
+    <meta property="og:image" content="{{ config.site_url ~ page.meta.image_url }}">
     <meta name="twitter:card" content="summary_large_image">
   {% endif %}
-  {% if page.config is defined and page.config.date is defined %}
+  {% if page.meta and page.meta.date_published_iso %}
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "BlogPosting",
+      "@type": {{ (page.meta.schema_type or "Article") | tojson }},
       "headline": {{ page.title | tojson }},
-      "datePublished": "{{ page.config.date.created.strftime('%Y-%m-%d') }}",
+      {% if page.meta.image_url %}
+      "image": {{ (config.site_url ~ page.meta.image_url) | tojson }},
+      {% endif %}
+      "datePublished": {{ page.meta.date_published_iso | tojson }},
+      "dateModified": {{ page.meta.date_modified_iso | tojson }},
       "mainEntityOfPage": {{ (config.site_url ~ page.url) | tojson }},
       "author": {
         "@type": "Person",
-        "name": "Alex Laverty",
+        "name": {{ config.site_author | tojson }},
         "url": {{ (config.site_url ~ "author/alex/") | tojson }}
       }
     }
@@ -26,14 +34,45 @@
   {% endif %}
 {% endblock %}
 
-{#- Tag list in the right sidebar, below the table of contents: every tag
-    with its page count, most-used first. Reads the tags.json index the
-    tags plugin exports on every build. -#}
+{#- Article header (breadcrumbs + category badge above the H1, from
+    partials/article-header.html) and tag chips at the bottom of the
+    article. The default top-of-page tag chips are disabled by the
+    empty overrides/partials/tags.html. Post pages get the header via
+    overrides/blog-post.html, which replaces this content block. -#}
+{% block content %}
+  {% include "partials/article-header.html" %}
+  {{ super() }}
+  {#- Topic landing pages list their articles as the same cards the
+      home page feed uses (entries come from hooks/timeline.py). The
+      badge is hidden: every card would repeat the page's own topic. -#}
+  {% if page.is_index and not page.is_homepage
+        and page.file.abs_src_path and timeline is defined %}
+    {% set show_category = false %}
+    {% for entry in timeline if entry.url != page.url
+                               and entry.url.startswith(page.url) %}
+      {% include "partials/timeline-card.html" %}
+    {% endfor %}
+  {% endif %}
+  {% if page.meta.tags %}
+    <nav class="md-tags page-tags" aria-label="Tags">
+      {% for tag in page.meta.tags %}
+        <a class="md-tag" href="{{ ('tags/' ~ tag ~ '/') | url }}">{{ tag }}</a>
+      {% endfor %}
+    </nav>
+  {% endif %}
+{% endblock %}
+
+{#- Categories and Tags cards in the right sidebar, below the table of
+    contents. Categories come from hooks/timeline.py (site_categories,
+    one entry per topic folder, counted by its articles) and render
+    first; Tags read the tags.json index the tags plugin exports on
+    every build. Both use the same card style. -#}
 {% block scripts %}
   {{ super() }}
   {#- Card layout for .tags-sidebar lives in docs/stylesheets/extra.css -#}
   <style>
     .tags-sidebar .tags-sidebar__count { opacity: .55; font-size: .9em; }
+    .tags-sidebar .md-nav__title a { color: inherit; }
   </style>
   <script>
     (function () {
@@ -42,6 +81,48 @@
       );
       if (!sidebar) return;
       var root = "{{ base_url }}";
+
+      function addCard(title, titleUrl, items) {
+        if (!items.length) return;
+        var nav = document.createElement("nav");
+        nav.className = "md-nav tags-sidebar";
+        var heading = document.createElement("div");
+        heading.className = "md-nav__title";
+        if (titleUrl) {
+          var titleLink = document.createElement("a");
+          titleLink.href = titleUrl;
+          titleLink.textContent = title;
+          heading.appendChild(titleLink);
+        } else {
+          heading.textContent = title;
+        }
+        nav.appendChild(heading);
+        var list = document.createElement("ul");
+        list.className = "md-nav__list";
+        items.forEach(function (it) {
+          var item = document.createElement("li");
+          item.className = "md-nav__item";
+          var link = document.createElement("a");
+          link.className = "md-nav__link";
+          link.href = it.url;
+          link.textContent = it.label + " ";
+          var count = document.createElement("span");
+          count.className = "tags-sidebar__count";
+          count.textContent = "(" + it.count + ")";
+          link.appendChild(count);
+          item.appendChild(link);
+          list.appendChild(item);
+        });
+        nav.appendChild(list);
+        sidebar.appendChild(nav);
+      }
+
+      addCard("Categories", null,
+        {{ site_categories | tojson if site_categories is defined else "[]" }}
+          .map(function (c) {
+            return { label: c.title, url: root + "/" + c.url, count: c.count };
+          }));
+
       fetch(root + "/tags.json")
         .then(function (r) { return r.ok ? r.json() : null; })
         .then(function (data) {
@@ -54,32 +135,14 @@
           });
           var tags = Object.keys(counts).sort(function (a, b) {
             return counts[b] - counts[a] || a.localeCompare(b);
-          });
-          if (!tags.length) return;
-          var nav = document.createElement("nav");
-          nav.className = "md-nav tags-sidebar";
-          var title = document.createElement("div");
-          title.className = "md-nav__title";
-          title.textContent = "Tags";
-          nav.appendChild(title);
-          var list = document.createElement("ul");
-          list.className = "md-nav__list";
-          tags.forEach(function (tag) {
-            var item = document.createElement("li");
-            item.className = "md-nav__item";
-            var link = document.createElement("a");
-            link.className = "md-nav__link";
-            link.href = root + "/tags/" + tag + "/";
-            link.textContent = tag + " ";
-            var count = document.createElement("span");
-            count.className = "tags-sidebar__count";
-            count.textContent = "(" + counts[tag] + ")";
-            link.appendChild(count);
-            item.appendChild(link);
-            list.appendChild(item);
-          });
-          nav.appendChild(list);
-          sidebar.appendChild(nav);
+          }).slice(0, 15); // top tags only; a long list dilutes the links
+          addCard("Tags", root + "/tags/", tags.map(function (tag) {
+            return {
+              label: tag,
+              url: root + "/tags/" + tag + "/",
+              count: counts[tag]
+            };
+          }));
         })
         .catch(function () { /* no tags.json; skip the widget */ });
     })();

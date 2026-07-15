@@ -1,2 +1,2 @@
 mkdocs-material>=9.5
-mkdocs-git-revision-date-localized-plugin>=1.2
+Pillow>=10  # new-hero.py WebP encoding (not needed for mkdocs build)

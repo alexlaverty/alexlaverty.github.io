@@ -1,0 +1,39 @@
+{#-
+  One article card for a timeline entry (built by hooks/timeline.py).
+  Used by overrides/blog.html (home page feed) and overrides/main.html
+  (topic landing pages). Expects `entry` in context; set
+  `show_category = false` before including to hide the badge (topic
+  landing pages, where every card would repeat the page's own topic).
+  The title link is stretched over the whole card by CSS; the category
+  badge is the only other link (kept clickable via z-index).
+-#}
+<article class="timeline-card">
+  {% if entry.image %}
+    <img class="timeline-card__thumb" src="{{ entry.image | url }}"
+         alt="{{ entry.title }}" width="128" height="128">
+  {% else %}
+    {#- Placeholder tile (the page's initial) keeps cards aligned -#}
+    <div class="timeline-card__thumb timeline-card__thumb--placeholder"
+         aria-hidden="true">{{ entry.title[:1] | upper }}</div>
+  {% endif %}
+  <div class="timeline-card__body md-typeset">
+    {% if entry.category and show_category | default(true) %}
+      <a class="page-category timeline-card__category"
+         href="{{ entry.category.url | url }}">
+        {{- entry.category.title -}}
+      </a>
+    {% endif %}
+    <h2 class="timeline-card__title">
+      <a href="{{ entry.url | url }}">{{ entry.title }}</a>
+    </h2>
+    <div class="timeline-card__meta">
+      Alex Laverty ·
+      {{ "Posted" if entry.kind == "post" else "Updated" }}
+      {{ entry.date }}
+    </div>
+    {% if entry.text %}
+      <p class="timeline-card__excerpt">{{ entry.text }}</p>
+    {% endif %}
+    <span class="timeline-card__more">Read article →</span>
+  </div>
+</article>

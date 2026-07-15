@@ -5,7 +5,11 @@
   - The home page (and generated /page/N/ pages) render the unified
     timeline built by hooks/timeline.py — blog posts and recently
     updated pages merged, newest first, ten per page — instead of the
-    plugin's posts-only listing.
+    plugin's posts-only listing. Entries render as article cards under
+    a "Latest articles" H1: thumbnail (the page's hero image, if any),
+    linked category badge, H2 title stretched over the card, a
+    consistent author/date meta line, excerpt, and a read-more cue.
+    The views also emit ItemList JSON-LD.
   - Author profile pages (under author/) show only their page content,
     without a post listing.
 
@@ -13,6 +17,33 @@
   upstream when mkdocs-material changes this template.
 -#}
 {% extends "main.html" %}
+
+{#- ItemList structured data on the timeline views, so search engines
+    recognise the home page as a curated list of articles. -#}
+{% block extrahead %}
+  {{ super() }}
+  {% if page.file.src_uri == "index.md" or (page.meta and page.meta.timeline_page) %}
+    {% set current = page.meta.timeline_page | default(1) %}
+    {% set start = (current - 1) * timeline_per_page %}
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": [
+        {% for entry in timeline[start:start + timeline_per_page] %}
+        {
+          "@type": "ListItem",
+          "position": {{ start + loop.index }},
+          "name": {{ entry.title | tojson }},
+          "url": {{ (config.site_url ~ entry.url) | tojson }}
+        }{{ "," if not loop.last }}
+        {% endfor %}
+      ]
+    }
+    </script>
+  {% endif %}
+{% endblock %}
+
 {% block container %}
   <div class="md-content" data-md-component="content">
     <div class="md-content__inner">
@@ -22,32 +53,11 @@
       {% if page.file.src_uri == "index.md" or (page.meta and page.meta.timeline_page) %}
         {% set current = page.meta.timeline_page | default(1) %}
         {% set start = (current - 1) * timeline_per_page %}
+        <header class="md-typeset">
+          <h1>Latest articles</h1>
+        </header>
         {% for entry in timeline[start:start + timeline_per_page] %}
-          <article class="md-post md-post--excerpt">
-            <header class="md-post__header">
-              <div class="md-post__meta md-meta">
-                <ul class="md-meta__list">
-                  {% if entry.kind == "post" %}
-                    <li class="md-meta__item">
-                      <a href="{{ 'author/alex/' | url }}" class="md-meta__link">
-                        {{- "Alex Laverty" -}}
-                      </a>
-                    </li>
-                  {% endif %}
-                  <li class="md-meta__item">{{ entry.date }}</li>
-                  <li class="md-meta__item">
-                    {{ "posted" if entry.kind == "post" else "updated" }}
-                  </li>
-                </ul>
-              </div>
-            </header>
-            <div class="md-post__content md-typeset">
-              <h2><a href="{{ entry.url | url }}">{{ entry.title }}</a></h2>
-              {% if entry.text %}
-                <p>{{ entry.text }}</p>
-              {% endif %}
-            </div>
-          </article>
+          {% include "partials/timeline-card.html" %}
         {% endfor %}
         {% set page_count = ((timeline | length) + timeline_per_page - 1)
                             // timeline_per_page %}

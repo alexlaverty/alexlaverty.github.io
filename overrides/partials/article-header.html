@@ -1,0 +1,49 @@
+{#-
+  Breadcrumbs and primary-category badge rendered above the page H1.
+  Included by the content blocks in overrides/main.html (regular pages)
+  and overrides/blog-post.html (daily log posts).
+-#}
+{% if not page.is_homepage %}
+  <nav class="page-breadcrumbs" aria-label="Breadcrumb">
+    <a href="{{ nav.homepage.url | url }}">Home</a>
+    {% for crumb in page.ancestors | reverse %}
+      {#- A post's ancestor is the blog index page itself; a regular
+          page's ancestors are sections, linked via their index page -#}
+      {% if crumb.is_page %}
+        {% set target = crumb %}
+      {% else %}
+        {% set target = crumb.children
+           | selectattr("is_page") | selectattr("is_index") | first %}
+      {% endif %}
+      {#- Skip the homepage (already the first crumb) and the current
+          page (a section-index article resolves to itself) -#}
+      {% if not (target and (target.is_homepage or target == page)) %}
+        <span class="page-breadcrumbs__sep">›</span>
+        {% if target %}
+          <a href="{{ target.url | url }}">{{ target.title }}</a>
+        {% else %}
+          <span>{{ crumb.title }}</span>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+    <span class="page-breadcrumbs__sep">›</span>
+    <span class="page-breadcrumbs__current">{{ page.title }}</span>
+  </nav>
+{% endif %}
+{% if page.meta.categories %}
+  {#- Blog post: badge links to the plugin's category page -#}
+  <a class="page-category"
+     href="{{ ('category/' ~ page.meta.categories[0] ~ '/') | url }}">
+    {{- page.meta.categories[0] -}}
+  </a>
+{% elif page.ancestors %}
+  {#- Topic page: badge links to the top-level topic landing page -#}
+  {% set topic = page.ancestors | last %}
+  {% set topic_index = topic.children
+     | selectattr("is_page") | selectattr("is_index") | first %}
+  {% if topic_index and topic_index != page %}
+    <a class="page-category" href="{{ topic_index.url | url }}">
+      {{- topic_index.title -}}
+    </a>
+  {% endif %}
+{% endif %}

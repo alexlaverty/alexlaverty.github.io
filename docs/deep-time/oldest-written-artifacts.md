@@ -5,7 +5,7 @@ tags:
   - data-preservation
   - archaeology
 summary: "The oldest written records survived because they were inscribed on durable materials—clay, stone, and metal last millennia, while papyrus and paper survive only in rare conditions. Which artifacts historians find today depends less on what was important than on what happened to be written where it could endure."
-image: img/oldest-written-artifacts-hero.png
+image: img/oldest-written-artifacts-hero.webp
 image_style: flat-editorial
 ---
 

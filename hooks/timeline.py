@@ -11,6 +11,7 @@ import re
 import subprocess
 from pathlib import Path
 
+from mkdocs.plugins import event_priority
 from mkdocs.structure.files import File, InclusionLevel
 
 PER_PAGE = 10
@@ -78,6 +79,53 @@ def _post_date(text: str) -> datetime.datetime | None:
     return None
 
 
+def _image(text: str, src: str) -> str | None:
+    """Site-root-relative URL of the page's hero image, if it has one.
+    The frontmatter path is relative to the source file's folder (its
+    img/ sibling), not to the rendered page URL."""
+    match = re.search(r"^image:\s*(\S+)", _frontmatter(text), re.MULTILINE)
+    if not match:
+        return None
+    folder = src.rsplit("/", 1)[0] if "/" in src else ""
+    return f"{folder}/{match.group(1)}" if folder else match.group(1)
+
+
+def _post_categories(text: str) -> list[str]:
+    lines = _frontmatter(text).splitlines()
+    cats = []
+    in_cats = False
+    for line in lines:
+        if re.match(r"^categories:\s*$", line):
+            in_cats = True
+        elif in_cats and (m := re.match(r"^\s+-\s+(\S+)", line)):
+            cats.append(m.group(1))
+        elif not line.startswith(" "):
+            in_cats = False
+    return cats
+
+
+def _category(src: str, text: str, kind: str, files) -> dict | None:
+    """Card category badge: posts link to their blog category page, topic
+    pages to their topic landing page. The label comes from the topic
+    landing page's title when one exists (categories are named after
+    topic folders)."""
+    if kind == "post":
+        cats = _post_categories(text)
+        if not cats:
+            return None
+        folder, url = cats[0], f"category/{cats[0]}/"
+    else:
+        if "/" not in src:
+            return None
+        folder = src.split("/", 1)[0]
+        url = None
+    index_file = files.get_file_from_path(f"{folder}/index.md")
+    if index_file is None or index_file.page is None:
+        return {"title": folder, "url": url} if url else None
+    return {"title": index_file.page.title,
+            "url": url or index_file.page.url}
+
+
 def _snippet(text: str, max_words: int = 40) -> str:
     """Meta description if present, else the first body paragraph as
     plain text."""
@@ -114,6 +162,20 @@ def on_files(files, config):
     return files
 
 
+@event_priority(-100)  # after the blog plugin attaches Archive/Categories
+def on_nav(nav, config, files):
+    """Left sidebar: just the Home link. Topics are reached through the
+    Categories card in the right sidebar, the article cards on the home
+    and landing pages, and breadcrumbs. All pages still build at their
+    URLs; prev/next footer links and breadcrumbs are unaffected (page
+    relationships are set before this runs)."""
+    nav.items = [
+        item for item in nav.items
+        if getattr(item, "is_page", False) and item.is_homepage
+    ]
+    return nav
+
+
 def on_env(env, config, files):
     git_dates = _git_dates()
     srcs = _sources(files)
@@ -148,9 +210,31 @@ def on_env(env, config, files):
             "ts": date.timestamp(),
             "date": f"{date.strftime('%B')} {date.day}, {date.year}",
             "text": _snippet(text),
+            "image": _image(text, src),
+            "category": _category(src, text, kind, files),
         })
 
     entries.sort(key=lambda e: -e["ts"])
     env.globals["timeline"] = entries
     env.globals["timeline_per_page"] = PER_PAGE
+
+    # Topic categories for the right-sidebar Categories card: every
+    # top-level folder with a landing page, counted by its articles
+    categories = []
+    for file in files.documentation_pages():
+        src = file.src_uri
+        if (file.page is None or "/" not in src
+                or not re.fullmatch(r"[^/]+/index\.md", src)
+                or src.startswith(EXCLUDED_PREFIXES)):
+            continue
+        url = file.page.url
+        count = sum(
+            1 for e in entries
+            if e["url"] != url and e["url"].startswith(url)
+        )
+        categories.append(
+            {"title": file.page.title, "url": url, "count": count}
+        )
+    categories.sort(key=lambda c: (-c["count"], c["title"]))
+    env.globals["site_categories"] = categories
     return env

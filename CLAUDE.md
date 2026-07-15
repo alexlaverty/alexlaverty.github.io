@@ -27,12 +27,13 @@ see "Video summary pages").
 
 1. **One folder per topic**, kebab-case, named for the term someone would
    search for: `real-estate/`, not `property-stuff/`.
-2. **Every folder has an `index.md`** — a short landing page that says what
-   the section covers and links to its pages. It renders as the section's
-   clickable entry in the sidebar (`navigation.indexes`). Prefer
-   hand-written links with a short descriptor; `hooks/section_index.py`
-   is the safety net that auto-appends a "Pages" list of anything left
-   unlinked at build time, so pages are never orphaned.
+2. **Every folder has an `index.md`** — a short landing page that says
+   what the section covers. Topic folders appear as the Categories card
+   in the right sidebar (the left sidebar shows only Home). Don't
+   hand-link the section's pages from the landing page: at build time it
+   automatically lists every page in the folder as article cards (same
+   layout as the home page feed, rendered by `overrides/main.html` from
+   the timeline data), so pages are never orphaned.
 3. **Stay flat until it hurts.** Pages go directly in the topic folder.
    Only add a subfolder when a distinct sub-topic has 3+ pages (e.g.
    `ai-coding/claude-code/`). Maximum depth: 3 levels below `docs/`.
@@ -103,8 +104,9 @@ generated, not hand-written:
 python new-video.py <youtube-url> [tag ...]   # requires yt-dlp + claude CLI
 ```
 
-The script fetches subtitles, has Claude write the summary, creates
-`docs/videos/<title-slug>.md`, and appends a link to `docs/videos/index.md`.
+The script fetches subtitles, has Claude write the summary, and creates
+`docs/videos/<title-slug>.md` (the videos landing page lists its pages
+automatically).
 Every video page gets the `videos` tag plus 1–3 topic tags (supplied as
 arguments, or suggested by Claude from the site's existing tags). Tags are
 how videos connect to topics — a permaculture video is tagged
@@ -120,8 +122,12 @@ folder names so the threads line up.
 ## Hero images and page summaries
 
 Pages can carry an AI-generated hero image and a short summary lede.
-`hooks/hero.py` renders them as Title → summary → hero image → content,
-and the image doubles as the `og:image` social preview:
+`hooks/hero.py` renders the article header as Title → summary →
+author/date meta row → hero image → content; `overrides/main.html` adds
+breadcrumbs and a category badge above the title and emits
+Article/BlogPosting JSON-LD (dates come from git history via the same
+hook). The image doubles as the `og:image` social preview. Hero images
+are WebP, kept under 150KB by `new-hero.py` (it is the LCP element):
 
 ```bash
 python new-hero.py docs/<path>.md   # hero (+ summary if missing); needs ComfyUI + claude CLI
@@ -165,9 +171,11 @@ What this page is about in one or two sentences, then straight into it.
   threads (e.g. `automation` appearing in both `ai-coding/` and
   `real-estate/`). Each tag gets its own listing page at `/tags/<tag>/`,
   generated at build time by `hooks/tag_pages.py` — never create tag
-  pages by hand. The same hook fills the count-ordered index on
-  `docs/tags.md`, and a widget in `overrides/main.html` shows all tags
-  with counts in the right sidebar.
+  pages by hand; they carry `noindex` so they don't compete with real
+  content in search. The same hook fills the count-ordered index on
+  `docs/tags.md`, and a widget in `overrides/main.html` shows the top
+  15 tags with counts in the right sidebar (below the Categories card).
+  Tag chips render at the bottom of the article, not above the title.
 - Exactly one H1 per page. Use `##`/`###` for structure — they feed the
   right-hand anchor menu. Don't skip levels.
 - Images go in an `img/` folder next to the page, with descriptive
@@ -245,21 +253,18 @@ Good (target voice):
 
 - Slug and H1 contain the term someone would actually search.
 - `description` frontmatter present, factual, ~150 chars.
-- At least one internal link to a related page on this site, and a link
-  from the topic's `index.md` to the new page.
+- At least one internal link to a related page on this site (the topic's
+  landing page picks the new page up automatically).
 - Headings are descriptive (they're what Google shows as jump links).
 - Alt text on images.
 - Don't keyword-stuff. Write normally; the structure does the SEO work.
 
 ## Publishing workflow
 
-1. Add or edit pages under `docs/`.
-2. If a new page was added, link it from its topic's `index.md` with a
-   short descriptor (the section_index hook auto-links anything you
-   forget, but hand-written entries read better).
-3. `mkdocs build --strict` — must pass.
-4. Commit with a plain message describing the content change; push to
+1. Add or edit pages under `docs/`. New pages appear automatically as
+   cards on their topic's landing page and in the home page timeline.
+2. `mkdocs build --strict` — must pass.
+3. Commit with a plain message describing the content change; push to
    `main`. GitHub Actions (`.github/workflows/deploy.yml`) builds and
-   deploys automatically. The "last updated" date on pages comes from git
-   commit history (git-revision-date-localized plugin), so no manual
-   date maintenance.
+   deploys automatically. Published/updated dates on pages come from git
+   commit history (via `hooks/hero.py`), so no manual date maintenance.

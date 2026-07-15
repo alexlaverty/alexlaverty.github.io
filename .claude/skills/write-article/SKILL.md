@@ -1,6 +1,6 @@
 ---
 name: write-article
-description: Write a researched article page for this site on a given topic. Creates the markdown file in the right topic folder under docs/, tags it, links it from the section index, and generates the hero image and summary lede via new-hero.py. Use when Alex asks to write, create, or draft an article, page, or write-up about a topic.
+description: Write a researched article page for this site on a given topic. Creates the markdown file in the right topic folder under docs/, tags it, and generates the hero image and summary lede via new-hero.py (topic landing pages list their articles automatically). Use when Alex asks to write, create, or draft an article, page, or write-up about a topic.
 ---
 
 # Write an article page
@@ -52,13 +52,7 @@ frontmatter, writing style, and SEO checklist all apply.
   links. Attribute claims that came from a specific source.
 - Link at least one related page on this site if one exists.
 
-## 4. Link from the section index
-
-Add a bullet link to the new page in its topic folder's `index.md`
-(with a short factual descriptor), so readers and `--strict` link
-checking can reach it.
-
-## 5. Hero image and summary lede
+## 4. Hero image and summary lede
 
 Run:
 
@@ -77,7 +71,7 @@ python new-hero.py --summary <path-to-new-page>
 and tell Alex the hero can be added later by re-running
 `python new-hero.py <path>` with ComfyUI running.
 
-## 6. Verify and report
+## 5. Verify and report
 
 - `mkdocs build --strict` must pass.
 - Leave everything uncommitted for Alex to review.

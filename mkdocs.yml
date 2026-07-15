@@ -4,8 +4,9 @@ site_author: Alex Laverty
 copyright: "&copy; Alex Laverty"
 
 # No `nav:` section on purpose — navigation is generated automatically from
-# the folder structure under docs/. Folders become collapsible sections in
-# the left sidebar, collapsed by default.
+# the folder structure under docs/. hooks/timeline.py trims the rendered
+# left sidebar to just the Home link; topics are reached via the Categories
+# card in the right sidebar, article cards, and breadcrumbs.
 
 theme:
   name: material
@@ -41,8 +42,7 @@ extra_css:
 hooks:
   - hooks/tag_pages.py         # per-tag listing pages + count-ordered index on tags.md
   - hooks/timeline.py          # unified home page timeline (posts + updated pages, /page/N/)
-  - hooks/hero.py              # shows frontmatter `image:` under the page H1
-  - hooks/section_index.py     # landing pages auto-link any section page not linked by hand
+  - hooks/hero.py              # article header: summary, meta row, hero image
 
 plugins:
   - blog:                      # daily log; posts live in docs/posts/
@@ -53,9 +53,6 @@ plugins:
       pagination: false        # home pagination comes from hooks/timeline.py instead
   - search
   - tags                       # frontmatter tags: [...] + listing on docs/tags.md
-  - git-revision-date-localized:
-      type: date               # "last updated" on each page from git history
-      fallback_to_build_date: true
 
 markdown_extensions:
   - admonition                 # !!! note / warning / tip callout boxes

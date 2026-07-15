@@ -3,7 +3,8 @@
 
 Fetches the video's subtitles with yt-dlp, has Claude write a factual title
 and summary, and generates a page with the video embedded and the summary below it.
-Also appends the new page to docs/videos/index.md.
+The videos landing page lists its pages automatically (article cards
+rendered by overrides/main.html), so no index update is needed.
 
 Usage:
     python new-video.py <youtube-url> [tag ...]
@@ -355,27 +356,6 @@ tags:
 """
 
 
-def append_to_index(slug: str, title: str) -> None:
-
-    index = VIDEOS_DIR / "index.md"
-
-    text = index.read_text(encoding="utf-8")
-
-    if f"({slug}.md)" in text:
-        return
-
-    if not text.endswith("\n"):
-        text += "\n"
-
-    if not text.rstrip("\n").splitlines()[-1].startswith("- "):
-        text += "\n"
-
-    index.write_text(
-        text + f"- [{title}]({slug}.md)\n",
-        encoding="utf-8",
-    )
-
-
 def main():
 
     parser = argparse.ArgumentParser(
@@ -481,14 +461,9 @@ def main():
         newline="\n",
     )
 
-    append_to_index(
-        slug,
-        page_title,
-    )
-
     print(f"Created: {path}")
     print(
-        "Linked from docs/videos/index.md. Run: mkdocs build --strict"
+        "Run: mkdocs build --strict"
     )
 
 
