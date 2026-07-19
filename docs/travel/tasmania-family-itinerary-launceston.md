@@ -1,5 +1,5 @@
 ---
-description: The popular 7-day Tasmania loop from Launceston for families with young kids: Cradle Mountain, Hobart, Port Arthur, Freycinet and Wineglass Bay.
+description: "The popular 7-day Tasmania loop from Launceston for families with young kids: Cradle Mountain, Hobart, Port Arthur, Freycinet and Wineglass Bay."
 tags:
   - travel
   - tasmania
