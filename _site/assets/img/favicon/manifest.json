@@ -1,0 +1,14 @@
+{
+  "name": "Alex Laverty",
+  "short_name": "Alex Laverty",
+  "icons": [
+    {
+      "src": "/assets/img/favicon/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ],
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "display": "standalone"
+}

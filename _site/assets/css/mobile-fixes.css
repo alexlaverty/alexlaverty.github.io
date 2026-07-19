@@ -1,0 +1,26 @@
+@media screen and (max-width: 720px) {
+  .post {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+}
+
+.home .main-content,
+.home .post-list {
+  width: 100%;
+}
+
+.home .card-post {
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  box-sizing: border-box;
+}
